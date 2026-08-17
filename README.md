@@ -2,7 +2,7 @@
 
 > **全球應用治理與交付負責人 (Global Head of Application Governance & Delivery) | VP of Tech / CIO / CISO**  
 > *27+ Years IT & Engineering Excellence | 20+ Years C-Level Leadership*  
-> 🌐 **Live Portfolio**: [https://howardliao.github.io/portfolio/](https://howardliao.github.io/portfolio/) | [https://howardliao.github.io/Howard.github.io/](https://howardliao.github.io/Howard.github.io/)
+> 🌐 **Live Portfolio**: https://howardliao.github.io/portfolio/ | https://howardliao.github.io/Howard.github.io/
 
 ---
 
