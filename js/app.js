@@ -1443,13 +1443,16 @@
       ` : ''}
 
       <div style="border-top:1px solid var(--border-color); padding-top:16px; margin-top:16px;">
-        <strong style="color:var(--text-main);">🔍 查證依據與權威連結：</strong>
+        <strong style="color:var(--text-main);">🔍 查證依據與權威佐證連結：</strong>
         <div style="margin-top:8px;">
           ${matchedSources.map(s => `
-            <div style="background:var(--bg-input); padding:10px; border-radius:var(--radius-sm); margin-bottom:8px; font-size:0.85rem;">
-              <div style="font-weight:700; color:var(--primary-light);">${s.title} (${s.publisher})</div>
-              <div style="color:var(--text-muted); margin-top:4px;">"${s.excerpt}"</div>
-              ${s.url.startsWith('http') ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:6px; color:var(--primary-light);">開啟原始連結 ↗</a>` : ''}
+            <div style="background:var(--bg-input); padding:12px; border-radius:var(--radius-sm); margin-bottom:10px; font-size:0.85rem; border:1px solid var(--border-color);">
+              <div style="font-weight:700; color:var(--primary-light); margin-bottom:4px;">${s.title} (${s.publisher})</div>
+              <div style="color:var(--text-muted); margin-bottom:8px; line-height:1.5;">"${s.excerpt}"</div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                ${s.url.startsWith('http') ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:4px 12px; font-size:0.78rem; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">🌐 開啟原始連結 ↗</a>` : ''}
+                ${item.localAssetIds && item.localAssetIds.length > 0 ? item.localAssetIds.map(aid => `<button class="btn-secondary" onclick="window.openLightbox('${aid}', '${s.title}')" style="padding:4px 12px; font-size:0.78rem; cursor:pointer;">🖼️ 檢視原文核實大圖 🔍</button>`).join('') : ''}
+              </div>
             </div>
           `).join('')}
         </div>

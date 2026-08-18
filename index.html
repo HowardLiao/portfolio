@@ -937,9 +937,9 @@ a:hover { opacity: 0.85; }
     "categoryEn": "Media",
     "categoryJp": "メディア",
     "subcategory": "科技專題報導",
-    "titleZh": "iThome 封面技術專題《隆中網絡運用 MongoDB Atlas 建構遊戲資料管理平台，打造全方位休閒娛樂平台》",
-    "titleEn": "iThome Feature: Building High-Performance Data Platforms with MongoDB Atlas",
-    "titleJp": "iThome 特集：MongoDB Atlas を活用した高可用性データ基盤構築",
+    "titleZh": "iThome 封面技術專題《【iThome 專題企劃】隆中網絡運用 MongoDB Atlas 建構遊戲資料管理平台，打造全方位休閒娛樂平台》",
+    "titleEn": "iThome Tech Feature: GameSparcs Builds High-Performance Gaming Data Platform with MongoDB Atlas",
+    "titleJp": "iThome 特集：【專題企劃】隆中網絡 MongoDB Atlas による高可用性ゲームデータ基盤構築",
     "organizationZh": "iThome 電腦報",
     "organizationEn": "iThome Tech Daily",
     "organizationJp": "iThome コンピューター報",
@@ -947,7 +947,7 @@ a:hover { opacity: 0.85; }
     "roleEn": "Featured VP of Tech",
     "roleJp": "インタビュー対象副社長",
     "location": "台北, 台灣",
-    "summaryZh": "我接受 iThome 專題採訪，分享如何運用 MongoDB Atlas 全託管雲端資料平台，支撐高併發即時對弈讀寫需求，實現跨國數據零時差同步。",
+    "summaryZh": "我接受 iThome 電腦報專題企劃採訪（2024-09-02 發表），發表《隆中網絡運用 MongoDB Atlas 建構遊戲資料管理平台，打造全方位休閒娛樂平台》。我詳細闡述如何運用 MongoDB Atlas 全託管架構兼具高擴展與高可用性，支撐全球跨區即時對弈高併發讀寫，並以敏捷架構加速休閒遊戲發行。",
     "summaryEn": "Interviewed by iThome on implementing MongoDB Atlas for high-concurrency real-time gaming data synchronization.",
     "summaryJp": "iThomeの技術特集にて、MongoDB Atlasによる高負荷データ同期プラットフォームの構築事例を発表。",
     "achievementsZh": [
@@ -1299,13 +1299,13 @@ a:hover { opacity: 0.85; }
   {
     "id": "SRC-003",
     "sourceType": "主流科技媒體",
-    "publisher": "iThome 電腦報",
-    "title": "iThome 封面技術專題：隆中網絡運用 MongoDB Atlas 建構遊戲資料管理平台，打造全方位休閒娛樂平台",
+    "publisher": "iThome 電腦報 (專題企劃 | 2024-09-02)",
+    "title": "【iThome 專題企劃】隆中網絡運用 MongoDB Atlas 建構遊戲資料管理平台，打造全方位休閒娛樂平台",
     "url": "https://www.ithome.com.tw/pr/164805",
     "accessedAt": "2026-08-14T12:00:00Z",
     "publishedAt": "2024-09-02",
-    "excerpt": "專題報導隆中網絡技術副總廖倫豪博士如何運用 MongoDB Atlas 全託管雲端資料平台，支撐高併發即時對弈讀寫需求，實現跨國數據零時差同步與彈性架構擴展。",
-    "evidenceNotes": "iThome 專題採訪，實名報導。",
+    "excerpt": "文／iThome 專題企劃 (2024-09-02 發表)：隆中網絡技術副總廖倫豪博士指出，為提供玩家最優質的即時對弈體驗，引進 MongoDB Atlas 全託管雲端資料庫平台，兼具高擴展性與 99.995% 高可用性，成功支撐全球跨區高併發讀寫需求，奠定長期競爭力。",
+    "evidenceNotes": "iThome 電腦報官方專題企劃採訪，實名刊登 Howard Liao 廖倫豪博士 MongoDB Atlas 架構實戰 (檢附 3.0 MB 原文截圖 assets/IThome_MangoDB.png)。",
     "copyrightNotes": "公開媒體報導。",
     "identityMatchReason": "實名專訪。",
     "reliabilityLevel": "高",
@@ -4730,13 +4730,16 @@ a:hover { opacity: 0.85; }
       ` : ''}
 
       <div style="border-top:1px solid var(--border-color); padding-top:16px; margin-top:16px;">
-        <strong style="color:var(--text-main);">🔍 查證依據與權威連結：</strong>
+        <strong style="color:var(--text-main);">🔍 查證依據與權威佐證連結：</strong>
         <div style="margin-top:8px;">
           ${matchedSources.map(s => `
-            <div style="background:var(--bg-input); padding:10px; border-radius:var(--radius-sm); margin-bottom:8px; font-size:0.85rem;">
-              <div style="font-weight:700; color:var(--primary-light);">${s.title} (${s.publisher})</div>
-              <div style="color:var(--text-muted); margin-top:4px;">"${s.excerpt}"</div>
-              ${s.url.startsWith('http') ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:6px; color:var(--primary-light);">開啟原始連結 ↗</a>` : ''}
+            <div style="background:var(--bg-input); padding:12px; border-radius:var(--radius-sm); margin-bottom:10px; font-size:0.85rem; border:1px solid var(--border-color);">
+              <div style="font-weight:700; color:var(--primary-light); margin-bottom:4px;">${s.title} (${s.publisher})</div>
+              <div style="color:var(--text-muted); margin-bottom:8px; line-height:1.5;">"${s.excerpt}"</div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                ${s.url.startsWith('http') ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:4px 12px; font-size:0.78rem; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">🌐 開啟原始連結 ↗</a>` : ''}
+                ${item.localAssetIds && item.localAssetIds.length > 0 ? item.localAssetIds.map(aid => `<button class="btn-secondary" onclick="window.openLightbox('${aid}', '${s.title}')" style="padding:4px 12px; font-size:0.78rem; cursor:pointer;">🖼️ 檢視原文核實大圖 🔍</button>`).join('') : ''}
+              </div>
             </div>
           `).join('')}
         </div>
