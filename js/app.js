@@ -1141,6 +1141,9 @@
   // ==========================================
   // Dedicated Tab: Enterprise AI & AISDLC Governance Proposals (專案服務建議書)
   // ==========================================
+  // ==========================================
+  // Dedicated Tab: Enterprise AI & AISDLC Governance Proposals (專案服務建議書)
+  // ==========================================
   function renderProposalView() {
     const page = document.getElementById('page-proposal');
     if (!page) return;
@@ -1148,10 +1151,11 @@
     page.innerHTML = `
       <div class="container">
         <!-- Quick Nav Sub-tabs -->
-        <div class="viz-filter-pills" style="margin-bottom:24px; justify-content:center; gap:10px;">
-          <a href="#prop-serviceagent" class="viz-pill-btn active" style="text-decoration:none; padding:6px 14px; font-size:0.85rem;">🤖 建議書一：ServiceAgent AI 中控平台</a>
-          <a href="#prop-chatgpt" class="viz-pill-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem;">🚀 建議書二：ChatGPT Enterprise 落地藍圖</a>
-          <a href="#prop-aisdlc" class="viz-pill-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem; background:rgba(168,85,247,0.2); border-color:#a855f7; color:#c084fc;">🛡️ 建議書三：AISDLC 雙軌開發治理架構</a>
+        <div class="viz-filter-pills" style="margin-bottom:24px; justify-content:center; gap:8px; flex-wrap:wrap;">
+          <a href="#prop-serviceagent" class="viz-pill-btn active" style="text-decoration:none; padding:6px 12px; font-size:0.82rem;">🤖 建議書一：ServiceAgent AI 中控平台</a>
+          <a href="#prop-chatgpt" class="viz-pill-btn" style="text-decoration:none; padding:6px 12px; font-size:0.82rem;">🚀 建議書二：ChatGPT Enterprise 藍圖</a>
+          <a href="#prop-aisdlc" class="viz-pill-btn" style="text-decoration:none; padding:6px 12px; font-size:0.82rem; background:rgba(168,85,247,0.2); border-color:#a855f7; color:#c084fc;">🛡️ 建議書三：AISDLC 雙軌開發治理</a>
+          <a href="#prop-policy" class="viz-pill-btn" style="text-decoration:none; padding:6px 12px; font-size:0.82rem; background:rgba(16,185,129,0.2); border-color:#10b981; color:#34d399;">📜 附件四：生成式 AI 與 Agent 治理辦法</a>
         </div>
 
         <!-- ========================================== -->
@@ -1461,6 +1465,88 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ATTACHMENT 4: Enterprise Generative AI & Autonomous Agent Governance Policy -->
+        <!-- ========================================== -->
+        <div id="prop-policy" class="hero-card" style="margin-bottom:24px; border-color:#10b981; background:linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(6,78,59,0.3) 100%);">
+          <div style="grid-column: 1 / -1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+              <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(16,185,129,0.25); color:#34d399; border-color:rgba(16,185,129,0.4);">📜 專案附件四：企業級生成式 AI 與 AI Agent 治理管理辦法 (內部正式規範)</span>
+              <span style="font-size:0.85rem; color:var(--text-muted);">文件編號：ENT-AI-GOV-001 | 治理擁有者：VP 暨 AI 治理委員會</span>
+            </div>
+            <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+              企業級生成式 AI 與自主 AI Agent 治理管理辦法
+            </div>
+            <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+              (整合 <strong>ISO/IEC 27001:2022 ISMS</strong>、<strong>ISO/IEC 42001:2023 AIMS</strong> 與 <strong>NIST GenAI RMF</strong> 國際合規規範)<br>
+              本管理辦法確立四大核心防線：<strong>身分與密鑰強制隔離 (SSO/MFA/Vault)</strong>、<strong>最小權限與環境分級 (A0～A4 Agent 劃分)</strong>、<strong>人類最終負責與資料遮罩 (L1～L4 分類)</strong>、<strong>全程可稽核與營運持續 (1 小時通報 SLA 與緊急 Kill Switch)</strong>。
+            </div>
+          </div>
+        </div>
+
+        <!-- Policy 1: A0~A4 Agent Autonomous Levels -->
+        <div class="section-title">🤖 AI Agent 自主性五級分級管制標準 (Agent Autonomy Tiers)</div>
+        <div class="cards-grid" style="margin-bottom:28px;">
+          <div class="info-card">
+            <div>
+              <div style="font-weight:800; color:#38bdf8; font-size:0.95rem; margin-bottom:4px;">A0 級：輔助查詢型 (Read-Only)</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">唯讀模式，僅得查詢公開或 L1～L2 授權文檔，無任何系統寫入或 API 執行權限。</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div>
+              <div style="font-weight:800; color:#10b981; font-size:0.95rem; margin-bottom:4px;">A1 級：受控建議型 (Drafting Only)</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">可生成草稿、工單建議或代碼，需經權責人員手動檢視與確認後方可由人工複製執行。</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div>
+              <div style="font-weight:800; color:#f59e0b; font-size:0.95rem; margin-bottom:4px;">A2 級：半自主審批型 (Approval Gate)</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">具備呼叫非破壞性 API 權限，涉及敏感狀態修改時強制觸發 OpenClaw 人工審批流。</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div>
+              <div style="font-weight:800; color:#ec4899; font-size:0.95rem; margin-bottom:4px;">A3 級：高度自主沙盒型 (Sandbox)</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">僅限隔離沙盒 (Sandbox) 環境內自主執行多步驟任務，全面實施實時監控與硬性配額。</div>
+            </div>
+          </div>
+          <div class="info-card" style="border-color:#ef4444;">
+            <div>
+              <div style="font-weight:800; color:#ef4444; font-size:0.95rem; margin-bottom:4px;">A4 級：完全自主型 (Prohibited)</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">無人監管之全自主系統。<strong>【企業目前全面嚴格禁止引進與使用】</strong>。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Policy 2: L1~L4 Data Classification & Five Absolute Prohibitions -->
+        <div class="viz-grid" style="margin-bottom:36px;">
+          <div class="viz-card">
+            <h3>🚫 五大絕對禁止輸入項目 (Absolute Prohibitions)</h3>
+            <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+              <ul style="margin-left:18px;">
+                <li><strong>1. 認證與存取憑證</strong>：系統密碼、MFA Token、API Key、私鑰、TLS 憑證、SSH Key、資料庫連線字串。</li>
+                <li><strong>2. 個人敏感隱私 (PII)</strong>：客戶真實姓名、身分證字號、護照、手機、住址、銀行卡號、員工薪資績效。</li>
+                <li><strong>3. 未公開商業機密</strong>：併購計畫、董事會議事錄、未公開財務預測、核心定價公式、投標底價。</li>
+                <li><strong>4. 維運與攻擊性資訊</strong>：未修補之弱點掃描報告 (DAST/SAST)、滲透測試細節、Production DB Dump。</li>
+                <li><strong>5. 核心智慧財產權</strong>：未公開之核心撮合演算法、核心加密協議代碼、受 NDA 嚴格保護之技術。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="viz-card">
+            <h3>⚡ 應變機制與緊急阻斷 (Kill Switch & SLA)</h3>
+            <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+              <ul style="margin-left:18px;">
+                <li><strong>1 小時通報 SLA</strong>：發現誤上傳機密、疑似 Token 外洩、Agent 異常連線時，須於 1 小時內通報資安團隊。</li>
+                <li><strong>緊急阻斷開關 (Kill Switch)</strong>：SRE/MIS 具備一鍵切斷 API Key、終止 Agent Session 與隔離容器之控制權。</li>
+                <li><strong>手動替代 SOP</strong>：所有關鍵 AI 輔助流程均備妥傳統人工備援操作路徑，確保業務連續性 (BCP)。</li>
+                <li><strong>每年 2 小時全員培訓</strong>：全體同仁每年須完成至少 2 小時 AI 資安與倫理培訓並通過測驗。</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     `;
