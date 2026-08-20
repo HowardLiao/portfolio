@@ -1151,7 +1151,7 @@
     page.innerHTML = `
       <div class="container">
         <!-- Quick Nav Sub-tabs -->
-        <div class="viz-filter-pills" style="margin-bottom:24px; justify-content:center; gap:8px; flex-wrap:wrap;">
+        <div class="proposal-subnav">
           <a href="#prop-serviceagent" class="viz-pill-btn active" style="text-decoration:none; padding:6px 12px; font-size:0.82rem;">🤖 建議書一：ServiceAgent AI 中控平台</a>
           <a href="#prop-chatgpt" class="viz-pill-btn" style="text-decoration:none; padding:6px 12px; font-size:0.82rem;">🚀 建議書二：ChatGPT Enterprise 藍圖</a>
           <a href="#prop-aisdlc" class="viz-pill-btn" style="text-decoration:none; padding:6px 12px; font-size:0.82rem; background:rgba(168,85,247,0.2); border-color:#a855f7; color:#c084fc;">🛡️ 建議書三：AISDLC 雙軌開發治理</a>

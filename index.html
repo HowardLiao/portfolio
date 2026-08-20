@@ -200,6 +200,36 @@ a:hover { opacity: 0.85; }
 @media (max-width: 1024px) { .hero-card { grid-template-columns: 1fr; } .bento-grid { grid-template-columns: repeat(2, 1fr); } .viz-grid { grid-template-columns: 1fr; } }
 @media (max-width: 768px) { .nav-tabs { display: none; } .stats-row { grid-template-columns: 1fr; } .bento-grid { grid-template-columns: 1fr; } .search-box-header input { width: 120px; } }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+[id^="prop-"], .hero-card {
+  scroll-margin-top: 100px;
+}
+
+#page-proposal {
+  padding-top: 120px;
+}
+
+.proposal-subnav {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 12px 16px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 76px;
+  z-index: 900;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
   </style>
 </head>
 <body>
@@ -4438,7 +4468,7 @@ a:hover { opacity: 0.85; }
     page.innerHTML = `
       <div class="container">
         <!-- Quick Nav Sub-tabs -->
-        <div class="viz-filter-pills" style="margin-bottom:24px; justify-content:center; gap:8px; flex-wrap:wrap;">
+        <div class="proposal-subnav">
           <a href="#prop-serviceagent" class="viz-pill-btn active" style="text-decoration:none; padding:6px 12px; font-size:0.82rem;">🤖 建議書一：ServiceAgent AI 中控平台</a>
           <a href="#prop-chatgpt" class="viz-pill-btn" style="text-decoration:none; padding:6px 12px; font-size:0.82rem;">🚀 建議書二：ChatGPT Enterprise 藍圖</a>
           <a href="#prop-aisdlc" class="viz-pill-btn" style="text-decoration:none; padding:6px 12px; font-size:0.82rem; background:rgba(168,85,247,0.2); border-color:#a855f7; color:#c084fc;">🛡️ 建議書三：AISDLC 雙軌開發治理</a>
