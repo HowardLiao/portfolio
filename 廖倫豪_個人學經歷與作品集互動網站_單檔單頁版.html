@@ -4938,92 +4938,108 @@ html {
                   🎡 點擊扇區探索：安全 SDLC 7 階段與 AI 賦能
                 </div>
                 <div style="display:flex; justify-content:center;">
-                  <svg id="sdlc-svg" viewBox="0 0 600 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl select-none">
-              <defs>
-                <!-- Gradients for 7 sectors -->
-                <linearGradient id="grad-plan" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#f59e0b"/>
-                  <stop offset="100%" stop-color="#d97706"/>
-                </linearGradient>
-                <linearGradient id="grad-req" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#fbbf24"/>
-                  <stop offset="100%" stop-color="#f59e0b"/>
-                </linearGradient>
-                <linearGradient id="grad-design" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0284c7"/>
-                  <stop offset="100%" stop-color="#0369a1"/>
-                </linearGradient>
-                <linearGradient id="grad-dev" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0369a1"/>
-                  <stop offset="100%" stop-color="#1d4ed8"/>
-                </linearGradient>
-                <linearGradient id="grad-test" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#2563eb"/>
-                  <stop offset="100%" stop-color="#1e40af"/>
-                </linearGradient>
-                <linearGradient id="grad-deploy" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#dc2626"/>
-                  <stop offset="100%" stop-color="#b91c1c"/>
-                </linearGradient>
-                <linearGradient id="grad-ops" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ea580c"/>
-                  <stop offset="100%" stop-color="#dc2626"/>
-                </linearGradient>
+                  <svg id="sdlc-svg" viewBox="0 0 600 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl select-none" style="filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6));">
+  <defs>
+    <!-- Gradients for all 7 sectors -->
+    <linearGradient id="grad-plan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="grad-req" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="grad-design" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="grad-dev" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="grad-test" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+    <!-- DISTINCT DEPLOY GRADIENT (Crimson/Rose) -->
+    <linearGradient id="grad-deploy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <!-- DISTINCT OPS GRADIENT (Flame Orange/Amber) -->
+    <linearGradient id="grad-ops" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
 
-                <!-- Arrow markers -->
-                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="6" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
+    <filter id="glow-sdlc" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
 
-              <!-- Background Guides -->
-              <circle cx="300" cy="300" r="280" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
-              
-              <!-- 7 Sector Arcs -->
-              <path id="sector-plan" class="wheel-sector active" onclick="selectSDLCSector('plan')" 
-                    d="M 300 300 L 300 60 A 240 240 0 0 1 487.6 150.3 Z" 
-                    fill="url(#grad-plan)" stroke="#0f172a" stroke-width="4" />
-              
-              <path id="sector-req" class="wheel-sector" onclick="selectSDLCSector('req')" 
-                    d="M 300 300 L 487.6 150.3 A 240 240 0 0 1 540 300 Z" 
-                    fill="url(#grad-req)" stroke="#0f172a" stroke-width="4" />
+  <!-- Outer Guide Ring -->
+  <circle cx="300" cy="300" r="280" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="6,4"/>
 
-              <path id="sector-design" class="wheel-sector" onclick="selectSDLCSector('design')" 
-                    d="M 300 300 L 540 300 A 240 240 0 0 1 487.6 449.7 Z" 
-                    fill="url(#grad-design)" stroke="#0f172a" stroke-width="4" />
+  <!-- 1. 規劃 (Planning) -->
+  <path id="sector-plan" class="wheel-sector active" onclick="selectSDLCSector('plan')" 
+        d="M 300 300 L 300 60 A 240 240 0 0 1 487.6 150.3 Z" 
+        fill="url(#grad-plan)" stroke="#020617" stroke-width="5" />
 
-              <path id="sector-dev" class="wheel-sector" onclick="selectSDLCSector('dev')" 
-                    d="M 300 300 L 487.6 449.7 A 240 240 0 0 1 300 540 Z" 
-                    fill="url(#grad-dev)" stroke="#0f172a" stroke-width="4" />
+  <!-- 2. 需求 (Requirements) -->
+  <path id="sector-req" class="wheel-sector" onclick="selectSDLCSector('req')" 
+        d="M 300 300 L 487.6 150.3 A 240 240 0 0 1 540 300 Z" 
+        fill="url(#grad-req)" stroke="#020617" stroke-width="5" />
 
-              <path id="sector-test" class="wheel-sector" onclick="selectSDLCSector('test')" 
-                    d="M 300 300 L 300 540 A 240 240 0 0 1 112.4 449.7 Z" 
-                    fill="url(#grad-test)" stroke="#0f172a" stroke-width="4" />
+  <!-- 3. 設計 (Design) -->
+  <path id="sector-design" class="wheel-sector" onclick="selectSDLCSector('design')" 
+        d="M 300 300 L 540 300 A 240 240 0 0 1 487.6 449.7 Z" 
+        fill="url(#grad-design)" stroke="#020617" stroke-width="5" />
 
-              <path id="sector-deploy" class="wheel-sector" onclick="selectSDLCSector('deploy')" 
-                    d="M 300 300 L 112.4 449.7 A 240 240 0 0 1 60 300 Z" 
-                    fill="url(#grad-deploy)" stroke="#0f172a" stroke-width="4" />
+  <!-- 4. 開發 (Development) -->
+  <path id="sector-dev" class="wheel-sector" onclick="selectSDLCSector('dev')" 
+        d="M 300 300 L 487.6 449.7 A 240 240 0 0 1 300 540 Z" 
+        fill="url(#grad-dev)" stroke="#020617" stroke-width="5" />
 
-              <path id="sector-ops" class="wheel-sector" onclick="selectSDLCSector('ops')" 
-                    d="M 300 300 L 60 300 A 240 240 0 0 1 300 60 Z" 
-                    fill="url(#grad-ops)" stroke="#0f172a" stroke-width="4" />
+  <!-- 5. 測試 (Testing) -->
+  <path id="sector-test" class="wheel-sector" onclick="selectSDLCSector('test')" 
+        d="M 300 300 L 300 540 A 240 240 0 0 1 112.4 449.7 Z" 
+        fill="url(#grad-test)" stroke="#020617" stroke-width="5" />
 
-              <!-- Sector Labels -->
-              <text x="375" y="155" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">規劃</text>
-              <text x="445" y="275" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">需求</text>
-              <text x="415" y="395" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">設計</text>
-              <text x="300" y="460" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">開發</text>
-              <text x="185" y="395" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">測試</text>
-              <text x="155" y="275" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">部署</text>
-              <text x="225" y="155" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">維運</text>
+  <!-- 6. 部署 (Deployment - Clearly Split) -->
+  <path id="sector-deploy" class="wheel-sector" onclick="selectSDLCSector('deploy')" 
+        d="M 300 300 L 112.4 449.7 A 240 240 0 0 1 60 300 Z" 
+        fill="url(#grad-deploy)" stroke="#020617" stroke-width="5" />
 
-              <!-- Central Core Hub: AI 安全 -->
-              <circle cx="300" cy="300" r="75" fill="#ffffff" stroke="#ef4444" stroke-width="5" filter="drop-shadow(0 4px 16px rgba(239,68,68,0.4))"/>
-              <circle cx="300" cy="300" r="65" fill="#ffffff"/>
-              <text x="300" y="290" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900" letter-spacing="1">AI</text>
-              <text x="300" y="322" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900" letter-spacing="2">安全</text>
-            </svg>
+  <!-- 7. 維運 (Operations - Clearly Split) -->
+  <path id="sector-ops" class="wheel-sector" onclick="selectSDLCSector('ops')" 
+        d="M 300 300 L 60 300 A 240 240 0 0 1 300 60 Z" 
+        fill="url(#grad-ops)" stroke="#020617" stroke-width="5" />
+
+  <!-- Flow Direction Arrows between sectors -->
+  <path d="M 400 95 L 415 105 L 400 115 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M 520 220 L 530 235 L 515 240 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M 520 380 L 515 395 L 530 400 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M 400 500 L 385 510 L 400 520 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M 200 505 L 185 495 L 200 485 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M 80 375 L 70 360 L 85 355 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M 175 110 L 190 100 L 175 90 Z" fill="#ffffff" opacity="0.8"/>
+
+  <!-- Sector Text Labels -->
+  <text x="375" y="160" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="900" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">規劃</text>
+  <text x="465" y="270" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="900" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">需求</text>
+  <text x="445" y="395" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="900" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">設計</text>
+  <text x="335" y="475" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="900" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">開發</text>
+  <text x="210" y="445" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="900" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">測試</text>
+  <text x="145" y="335" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="900" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">部署</text>
+  <text x="210" y="175" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="900" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">維運</text>
+
+  <!-- Center Circle: AI 安全 Core -->
+  <circle cx="300" cy="300" r="72" fill="#090d16" stroke="#38bdf8" stroke-width="4" filter="url(#glow-sdlc)"/>
+  <circle cx="300" cy="300" r="62" fill="none" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="300" y="295" text-anchor="middle" fill="#38bdf8" font-size="22" font-weight="900" letter-spacing="1">AI</text>
+  <text x="300" y="322" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="900">安全</text>
+</svg>
                 </div>
                 <div style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">
                   💡 點擊上方 7 個扇區（規劃、需求、設計、開發、測試、部署、維運）即時載入右側工程與資安檢核點
