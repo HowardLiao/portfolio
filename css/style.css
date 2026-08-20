@@ -222,3 +222,52 @@ html {
   flex-wrap: wrap;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
+.proposal-subnav {
+  margin-top: 10px;
+  margin-bottom: 24px;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 70px;
+  z-index: 950;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.proposal-subtab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.proposal-subtab-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-main);
+  border-color: var(--primary-light);
+}
+
+.proposal-subtab-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary-light);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+}
+
+.proposal-content-section {
+  animation: fadeIn 0.3s ease-in-out;
+}
