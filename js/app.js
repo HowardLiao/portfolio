@@ -1138,6 +1138,906 @@
   // ==========================================
   // Dedicated Tab: Enterprise AI & AISDLC Governance Proposals (專案服務建議書)
   // ==========================================
+
+  // AISDLC Datasets
+  const sdlcData = {
+    plan: {
+      badge: "Phase 1 / 7",
+      title: "規劃 (Planning)",
+      category: "商業價值與治理前置",
+      ai: "商業分析、可行性分析、風險評估、成本與效益預估、法遵與合規基線自動比對。",
+      engineering: ["商業分析", "利害關係人管理", "開發團隊組建", "Waterfall 模型", "Agile 敏捷方法", "DevSecOps 文化規劃"],
+      security: ["資安&資料治理", "法律遵循與合規檢核", "資安角色與職責定義", "資訊資產安全等級鑑別 (普/中/高)", "RFP 資安條款與預算配置"],
+      standard: "NIST SSDF: PO.1, PO.2 | ISO 27001: 5.1 | ISO 42001: 5.1",
+      gate: "Gate G0 (商業與資安立項基線)"
+    },
+    req: {
+      badge: "Phase 2 / 7",
+      title: "需求 (Requirements)",
+      category: "需求結構化與安全基線",
+      ai: "需求萃取、會議語音摘要、需求分類、需求追溯矩陣 (RTM) 自動關聯、資安需求檢核與誤用情境 (Misuse Cases) 挖掘。",
+      engineering: ["需求引出 (Elicitation)", "需求記錄 (SRS)", "需求分析與確認", "需求追溯 (Traceability)"],
+      security: ["安全需求明確化 (C.I.A. / 授權 / 會話)", "威脅與風險評估", "軟體安全查檢表 (Checklist)", "個資保護與合規驗收標準 (GDPR/HIPAA)"],
+      standard: "NIST SSDF: PW.1 | ISO 27001: 8.25 | OWASP ASVS",
+      gate: "Gate G1 (需求追溯與安全需求規格)"
+    },
+    design: {
+      badge: "Phase 3 / 7",
+      title: "設計 (Design)",
+      category: "架構強化與威脅建模",
+      ai: "架構安全模式建議、威脅建模自動推導 (STRIDE)、設計審查助手、API / 資料模型安全草稿生成、Clean Core 架構驗證。",
+      engineering: ["系統分析 (SA)", "V & V (驗證與確認)", "變更管理", "三層式架構", "虛擬機 (VM) / Container 容器架構", "資料庫結構設計", "資訊建模 (Data Modeling)", "設計審查 (Design Review)"],
+      security: ["雲端安全架構", "Serverless 安全配置", "存取管理 (IAM)", "零信任 (Zero Trust) 邊界", "資料安全與密碼學 (Encryption/KMS)", "威脅建模 (STRIDE / Attack Surface)", "安全設計原則 (Least Privilege / Defense in Depth)"],
+      standard: "NIST SSDF: PW.2, PS.1 | ISO 27001: 8.26 | ISO 42001: B.6",
+      gate: "Gate G1.5 (架構審查與威脅模型核准)"
+    },
+    dev: {
+      badge: "Phase 4 / 7",
+      title: "開發 (Development)",
+      category: "安全編碼與供應鏈防護",
+      ai: "AI 程式碼助手 (Copilot/Cursor)、單元測試自動生成、即時 Code Review、Secret/憑證外洩即時阻斷、相依套件弱點預測與自動修補建議。",
+      engineering: ["程式語言與開發框架選型", "整合開發環境 (IDE)", "Git 版本控制與分支策略", "同行代碼審查 (Peer Code Review)"],
+      security: ["軟體供應鏈安全", "軟體物料清單 (SBOM: CycloneDX/SPDX)", "金鑰與 Secret 管理 (Vault/GitGuardian)", "安全編碼實踐 (Secure Coding Standards)", "健全例外與錯誤處理", "OWASP Top 10 防護 (SQLi, XSS, CSRF, SSRF)"],
+      standard: "NIST SSDF: PS.2, PW.4, PW.5 | ISO 27001: 8.28 | SLSA Level 3",
+      gate: "Gate G2 (Clean Core、Secret Scan、SAST 門檻)"
+    },
+    test: {
+      badge: "Phase 5 / 7",
+      title: "測試 (Testing)",
+      category: "全面驗證與對抗測試",
+      ai: "自動生成極端測試案例、單元/整合測試自動化、智慧模糊測試 (AI Fuzzing)、弱點關聯與誤報過濾、AI Red Teaming 對抗性攻擊測試。",
+      engineering: ["單元測試 (Unit Test)", "整合測試 (介面/回歸測試)", "安裝與相容性測試", "使用者驗收測試 (UAT)", "系統功能測試"],
+      security: ["靜態應用安全測試 (SAST)", "動態應用安全測試 (DAST)", "互動式安全測試 (IAST)", "原始碼弱點掃描 (SCA)", "壓力與負載測試", "模糊測試 (Fuzzing)", "合成交易驗證", "Misuse Case 濫用情境測試"],
+      standard: "NIST SSDF: PW.7, PW.8 | ISO 27001: 8.29 | ISO 42001: B.8",
+      gate: "Gate G3 (動態弱掃無中高風險、UAT 資安通過)"
+    },
+    deploy: {
+      badge: "Phase 6 / 7",
+      title: "部署 (Deployment)",
+      category: "環境加固與安全發布",
+      ai: "IaC 安全語法與權限檢核、環境組態漂移預測、發布風險評估、Canary / Blue-Green 漸進發布智慧決策與自動 Rollback 觸發。",
+      engineering: ["部署環境準備 (Staging / Prod)", "配置與組態管理 (CMDB)", "CI/CD 自動化 Pipeline", "Canary / Blue-Green 發布"],
+      security: ["基礎設施即程式碼 (IaC Security: Terraform/Checkov)", "作業系統與伺服器加固 (CIS Benchmarks)", "CWE (常見弱點枚舉) 比對", "CVE (已知漏洞) 防堵", "更新與安全修補程序", "軟體製品數位簽章 (Cosign/Sigstore)"],
+      standard: "NIST SSDF: PS.3, PW.6 | ISO 27001: 8.9, 8.31 | CIS Benchmarks",
+      gate: "Gate G4 (IaC 掃描、容器簽名與發布審批)"
+    },
+    ops: {
+      badge: "Phase 7 / 7",
+      title: "維運 (Operations)",
+      category: "持續監控、防禦與營運韌性",
+      ai: "AIOps 智能維運、全鏈路日誌智慧分析 (Log Anomaly)、事件即時關聯與根因分析 (RCA)、智慧告警降噪、即時防禦修補腳本建議。",
+      engineering: ["Issue Tracking 追蹤系統", "BC (營運持續計畫)", "IR (資安事件應變)", "DR (災難復原)", "全方位監控與日誌收集 (APM/OpenTelemetry)"],
+      security: ["資安稽核 (ISMS Audit)", "全員資安教育培訓", "紅藍隊演練 (Red/Blue Teaming)", "外部滲透測試 (Pen-testing)", "惡意程式防護 (病毒/蠕蟲/木馬/勒索軟體)", "DDoS 防禦與清洗", "社交工程防禦與釣魚演練", "執行期自我防護 (RASP)"],
+      standard: "NIST SSDF: RV.1, RV.2, RV.3 | ISO 27001: 8.16, 5.24 | ISO 42001: 9.1",
+      gate: "Gate G5 (AIOps 持續監控、IR/DR 演練與漏洞修補)"
+    }
+  };
+
+  const aimlData = {
+    pre: {
+      badge: "Quadrant 1 / 4",
+      title: "開發前 (Pre-development)",
+      focus: "商業問題定義與資料整備",
+      steps: ["1. 定義問題", "2. 蒐集資料", "3. 資料前處理", "4. 探索性資料分析 (EDA)"],
+      work: "釐清商業目標、預期 KPI (如 Precision 提升至 70%)、資料來源合法性與權限評估、建立可重現的資料清洗與特徵管線、EDA 探索特徵分布以避免未來資料洩漏 (Data Leakage)。",
+      gov: [
+        "落實資料分類分級，隔離並遮罩敏感個資 (PII)",
+        "評估資料來源之資料血緣 (Data Lineage) 與智慧財產權合規性",
+        "建立受控之特徵庫 (Feature Store)，確保訓練與線上推論一致性",
+        "評估潛在樣本偏誤 (Bias) 與族群代表性失衡風險"
+      ],
+      ref: "NIST AI RMF: MAP 1.1, MAP 2.1 | ISO 42001: A.6 (AI 系統規劃)",
+      tool: "Unity Catalog, Delta Lake, Lakeflow Designer"
+    },
+    dev: {
+      badge: "Quadrant 2 / 4",
+      title: "開發 (Development)",
+      focus: "模型選型、實驗追蹤與多維驗證",
+      steps: ["5. 選擇模型 / 基礎模型", "6. 訓練模型與調參", "7. 評估模型 (Evaluation)"],
+      work: "基於資料特性選擇演算法或預訓練基礎模型 (Foundation Models)、微調 (Fine-tuning) 或 RAG 架構建置、超參數最佳化、記錄完整實驗軌跡 (Parameters / Metrics / Artifacts)。",
+      gov: [
+        "使用 MLflow / Weights & Biases 進行 100% 實驗版本可追溯性記錄",
+        "評估指標除準確度外，必須涵蓋延遲、推論成本、穩健性與公平性測試",
+        "實施 AI 安全紅隊測試 (Red Teaming) 與對抗樣本攻擊防禦檢驗",
+        "產出模型卡 (Model Card) 與詳細評估報告供跨部門審查"
+      ],
+      ref: "NIST AI RMF: MEASURE 2.5, 2.7 | ISO 42001: B.7 (開發與評估)",
+      tool: "MLflow, Ray, HuggingFace Hub, PyTorch"
+    },
+    deploy: {
+      badge: "Quadrant 3 / 4",
+      title: "部署 (Deployment)",
+      focus: "模型登錄、測試與安全上線",
+      steps: ["8. 部署模型 (Serving)", "9. 透明性與文件化 (Model Registry)"],
+      work: "將評估通過之模型封裝為即時 REST API 或批次推論管線、在 Staging 環境進行端對端整合測試、執行 Shadow Deployment 或 A/B Testing、完成上線簽核。",
+      gov: [
+        "於 Model Registry 明確標註生命週期狀態 (Staging / Production) 並綁定審批鏈",
+        "部署動態 LLM / 模型防護閘道 (LLM Firewall: 防範 Prompt Injection / 毒性輸出)",
+        "實施嚴格的 API 存取控制 (RBAC / Token Rate Limiting)",
+        "備妥即時回滾 (Rollback) 與降級機制，防範推論異常導致業務中斷"
+      ],
+      ref: "NIST AI RMF: MANAGE 2.2, 3.2 | ISO 42001: B.8 (部署與驗證)",
+      tool: "Databricks Model Serving, vLLM, KServe, Triton"
+    },
+    post: {
+      badge: "Quadrant 4 / 4",
+      title: "部署後 (Post-deployment)",
+      focus: "持續監控、漂移偵測與再訓練閉環",
+      steps: ["10. 監視與維護模型 (Monitoring)", "11. 持續回饋與改善 (Continuous Feedback)"],
+      work: "即時採集線上推論日誌 (Inference Tables)、監控特徵漂移 (Data Drift) 與概念漂移 (Concept Drift)、收集真實業務回饋、自動化觸發再訓練管線或模型退役流程。",
+      gov: [
+        "監控 Training-Serving Skew (訓練與線上推論特徵偏離)",
+        "完整記錄推論輸入/輸出日誌 (敏感資料遮罩保存) 供合規稽核追溯",
+        "定義明確的自動化再訓練 (Automated Retraining) 觸發閾值與關卡",
+        "建立模型退役 (Retirement) 與歷史權重封存歸檔政策"
+      ],
+      ref: "NIST AI RMF: MANAGE 4.2 | ISO 42001: 9.1 (監控、衡量與持續改善)",
+      tool: "Inference Tables, Evidently AI, Prometheus, Grafana"
+    }
+  };
+
+  function renderProposalView() {
+    const page = document.getElementById('page-proposal');
+    if (!page) return;
+
+    page.innerHTML = `
+      <div class="container" style="padding-top: 10px;">
+        <!-- Interactive Sub-tab Switcher -->
+        <div class="proposal-subnav">
+          <button class="proposal-subtab-btn active" id="subtab-btn-all" onclick="window.switchProposalSection('all')">
+            📑 展開全覽 (All)
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-serviceagent" onclick="window.switchProposalSection('serviceagent')">
+            🤖 建議書一：ServiceAgent AI 中控平台
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-chatgpt" onclick="window.switchProposalSection('chatgpt')">
+            🚀 建議書二：ChatGPT Enterprise 藍圖
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-aisdlc" onclick="window.switchProposalSection('aisdlc')">
+            🛡️ 建議書三：AISDLC 雙軌開發治理 (含互動圖表)
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-policy" onclick="window.switchProposalSection('policy')">
+            📜 附件四：AI 治理辦法與規範
+          </button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 1: ServiceAgent Enterprise AI Platform -->
+        <!-- ========================================== -->
+        <div id="section-serviceagent" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:var(--primary-light);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">📄 建議書一：企業董事會專案服務建議書 V1.0 (正式版)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">專案負責人：廖倫豪 博士 (Howard Liao, Ph.D.)</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                ServiceAgent 企業級生成式 AI 中控平台架構與落地建議書 (高科技製造業通用版)
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本建議書由廖倫豪博士親自為高科技製造與企業董事會規劃，旨在建立「高可控、可治理、具資安防護網」的企業級 AI 中央神經系統。結合 <strong>Enterprise GPT (智能決策中控)</strong>、<strong>Enterprise KM (25+ 格式混合 RAG 檢索)</strong>、<strong>AI Meeting (會議語音轉錄回寫)</strong>，並串接 <strong>OpenClaw (人機複核安全閘道)</strong> 與 <strong>Hermes Agent (自主學習型 Agent)</strong>，完全對齊 ISO 27001/27701、ISO 42001 (AIMS)、NIST CSF 及歐盟 AI 法案 (EU AI Act)。
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-grid" style="margin-bottom:20px;">
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏛️</div>
+              <div class="bento-lbl">統一中控治理</div>
+              <div class="bento-desc">集中管理多 LLM 模型路由調度、KM 知識庫與 Multi-Agent 流程編排，告別 API Key 混亂。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏭</div>
+              <div class="bento-lbl">產線維修自動化</div>
+              <div class="bento-desc">SCADA 異常排查時間縮短 80%，AI 自動產出 SOP 排查建議，經 OpenClaw 人工核准後執行。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏗️</div>
+              <div class="bento-lbl">領域知識智能化</div>
+              <div class="bento-desc">萃取高科技製造領域專家經驗，支援 25+ 檔案 Parser 與圖表表格重構，實現 95% 精準度 RAG。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🛡️</div>
+              <div class="bento-lbl">全面合規達標</div>
+              <div class="bento-desc">對齊 ISO 27001、ISO 42001 (AIMS)、NIST CSF、GDPR 與 EU AI Act，建立完整的安全 Guardrails。</div>
+            </div>
+          </div>
+
+          <div class="info-card" style="padding:20px;">
+            <div style="font-weight:800; color:var(--text-main); font-size:1.05rem; margin-bottom:14px;">🏗️ 三層系統架構與人機複核閘道 (3-Tier Architecture)</div>
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-bottom:16px;">
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #38bdf8;">
+                <div style="font-weight:800; color:#38bdf8; margin-bottom:4px; font-size:0.9rem;">L1 前端互動層 (Interaction)</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">支援企業 WebChat、Microsoft Teams、Slack；透過 OpenClaw 與 HermesClaw 整合外部通訊管道。</div>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #10b981;">
+                <div style="font-weight:800; color:#10b981; margin-bottom:4px; font-size:0.9rem;">L2 AI Orchestration 中台層</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">運行 ServiceAgent 核心服務；提供安全治理（SSO、RBAC、Guardrails、DLP 遮罩）；向量資料庫與多模型路由。</div>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #f59e0b;">
+                <div style="font-weight:800; color:#f59e0b; margin-bottom:4px; font-size:0.9rem;">L3 後端與 Agent Runtime 層</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">OpenClaw 人機複核執行器 (Human-in-the-Loop)、Hermes 學習型 Agent；對接 MES, SCADA, ERP, PLM, ITSM。</div>
+              </div>
+            </div>
+            <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); padding:12px; border-radius:var(--radius-sm); font-size:0.82rem; color:var(--accent-amber);">
+              🔒 <strong>Human-in-the-Loop 安全人機複核機制：</strong> Enterprise GPT 不具備直接修改底層系統資料的權限，所有敏感指令強制經由 OpenClaw 觸發審批工作流，主管核准後才對底層進行實質修改。
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 2: ChatGPT Enterprise & Agent Blueprint -->
+        <!-- ========================================== -->
+        <div id="section-chatgpt" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:var(--accent-teal);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(168,85,247,0.2); color:#c084fc;">🚀 建議書二：ChatGPT Enterprise & Agent 企業落地與治理藍圖</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">大型電商與數位生活集團 (跨國 EC 平台) 專案 | 顧問負責人：廖倫豪 博士</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                ChatGPT Enterprise & Codex 企業級 AI 應用落地、治理與普及藍圖
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本戰略藍圖旨在協助大型電商與集團事業體從「個人 AI 工具」升級為「可治理、可衡量、可普及」的企業級生成式 AI 平台。整合 <strong>ChatGPT Enterprise (安全知識工作入口)</strong>、<strong>Codex (研發、測試、文件與工程流程自動化)</strong>、<strong>GPTs Agent Workspace (專屬 AI 助理)</strong> 與 <strong>Automation Agents (跨系統流程自動化)</strong>，建立 100% Zero Data Training 安全數據隔離與 Champion 種子網絡。
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-grid" style="margin-bottom:20px;">
+            <div class="bento-card">
+              <div style="font-weight:800; color:#38bdf8; font-size:0.95rem; margin-bottom:4px;">ChatGPT Enterprise</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">全企業安全知識工作入口。連結企業知識平台、知識問答、文件生成與研究分析，全員生產力倍增。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#10b981; font-size:0.95rem; margin-bottom:4px;">Codex 工程自動化</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">研發、測試、除錯與維運自動化。支援 Agent 工作坊與 CI/CD Code Review 輔助，加速交付效率。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#f59e0b; font-size:0.95rem; margin-bottom:4px;">GPTs Agent Workspace</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">專屬 AI 助理模組。打包部門知識、SOP 與最佳實踐 (Golden Samples)，建立可複製工作模式。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#a855f7; font-size:0.95rem; margin-bottom:4px;">Automation Agents</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">跨系統流程自動化。串接企業資料庫與 SaaS 工具，自主執行多步驟任務，提升流程營運綜效。</div>
+            </div>
+          </div>
+
+          <div class="viz-grid">
+            <div class="viz-card">
+              <h3>📊 三階企業級普及推動模型</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <p><strong>Level 1 (個人應用)</strong>：AI 職能素養培訓、小專題實作與工作流打包。</p>
+                <p><strong>Level 2 (部門分流)</strong>：流程需求盤點、Golden Sample Agent POC、資安 Gate Review。</p>
+                <p><strong>Level 3 (全體普及)</strong>：全體 ChatGPT Enterprise / Codex 導入、跨部門流程再造。</p>
+              </div>
+            </div>
+            <div class="viz-card">
+              <h3>🛡️ 四大可稽核合規治理機制</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <p><strong>1. RBAC & Policy</strong>：角色權限控管、審批門檻與 AGENTS.md Repo 規範。</p>
+                <p><strong>2. Seat & Credit Pool</strong>：依角色限制 Credit 與週用量 Limit/Alert/Cap。</p>
+                <p><strong>3. Analytics API</strong>：使用率趨勢追蹤、Token Cost 訊號與 PR activity 指標。</p>
+                <p><strong>4. Compliance API</strong>：活動日誌串接 SIEM / DLP / eDiscovery，100% 可觀測可調查。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 3: AISDLC DevSecOps & AI Lifecycle Governance (WITH INTERACTIVE WHEELS & DIAGRAMS) -->
+        <!-- ========================================== -->
+        <div id="section-aisdlc" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:#a855f7; background:linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(30,27,75,0.4) 100%);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(168,85,247,0.25); color:#c084fc; border-color:rgba(168,85,247,0.4);">🛡️ 建議書三：AI in SDLC 企業級雙軌全程治理架構 (AISDLC 藍圖)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">架構負責人：廖倫豪 博士 (Howard Liao, Ph.D.)</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                AI in SDLC with DevSecOps & AI Lifecycle 企業級雙軌治理藍圖 (全動態互動視覺版)
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本架構融合<strong>安全軟體開發生命週期 (Secure SDLC + DevSecOps 7 階段輪盤)</strong>、<strong>AI 模型開發生命週期 (AI/ML Lifecycle 4 象限輪盤)</strong> 與 <strong>AI ➔ ML ➔ DL ➔ GenAI ➔ LLM 包含關係階層圖</strong>，建立企業級「全程治理底座 (Foundation Governance & Guardrails)」。
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-module Filter Pills for AISDLC -->
+          <div style="display:flex; gap:8px; margin-bottom:20px; justify-content:center; flex-wrap:wrap;">
+            <button class="aisdlc-subnav-btn active" id="btn-aisdlc-wheel-sdlc" onclick="window.switchAISDLCTab('wheel-sdlc')">
+              🎡 模組一：安全 SDLC 7 階段互動輪盤
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-wheel-aiml" onclick="window.switchAISDLCTab('wheel-aiml')">
+              🧠 模組二：AI 模型生命週期 4 象限輪盤
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-hierarchy" onclick="window.switchAISDLCTab('hierarchy')">
+              📦 模組三：AI ➔ ML ➔ DL ➔ GenAI ➔ LLM 階層圖
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-matrix" onclick="window.switchAISDLCTab('matrix')">
+              🌐 模組四：國際合規標準對應矩陣
+            </button>
+          </div>
+
+          <!-- MODULE 1: SDLC 7-STAGE INTERACTIVE WHEEL -->
+          <div id="aisdlc-tab-wheel-sdlc" class="aisdlc-view-pane" style="display:block;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:center;" class="viz-grid">
+              <!-- Left: SVG Interactive Wheel -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; text-align:center;">
+                <div style="font-weight:800; font-size:0.95rem; color:#38bdf8; margin-bottom:10px;">
+                  🎡 點擊扇區探索：安全 SDLC 7 階段與 AI 賦能
+                </div>
+                <div style="display:flex; justify-content:center;">
+                  <svg id="sdlc-svg" viewBox="0 0 600 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl select-none">
+              <defs>
+                <!-- Gradients for 7 sectors -->
+                <linearGradient id="grad-plan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+                <linearGradient id="grad-req" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fbbf24"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+                <linearGradient id="grad-design" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+                <linearGradient id="grad-dev" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0369a1"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <linearGradient id="grad-test" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#1e40af"/>
+                </linearGradient>
+                <linearGradient id="grad-deploy" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#dc2626"/>
+                  <stop offset="100%" stop-color="#b91c1c"/>
+                </linearGradient>
+                <linearGradient id="grad-ops" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ea580c"/>
+                  <stop offset="100%" stop-color="#dc2626"/>
+                </linearGradient>
+
+                <!-- Arrow markers -->
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <!-- Background Guides -->
+              <circle cx="300" cy="300" r="280" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+              
+              <!-- 7 Sector Arcs -->
+              <path id="sector-plan" class="wheel-sector active" onclick="selectSDLCSector('plan')" 
+                    d="M 300 300 L 300 60 A 240 240 0 0 1 487.6 150.3 Z" 
+                    fill="url(#grad-plan)" stroke="#0f172a" stroke-width="4" />
+              
+              <path id="sector-req" class="wheel-sector" onclick="selectSDLCSector('req')" 
+                    d="M 300 300 L 487.6 150.3 A 240 240 0 0 1 540 300 Z" 
+                    fill="url(#grad-req)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-design" class="wheel-sector" onclick="selectSDLCSector('design')" 
+                    d="M 300 300 L 540 300 A 240 240 0 0 1 487.6 449.7 Z" 
+                    fill="url(#grad-design)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-dev" class="wheel-sector" onclick="selectSDLCSector('dev')" 
+                    d="M 300 300 L 487.6 449.7 A 240 240 0 0 1 300 540 Z" 
+                    fill="url(#grad-dev)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-test" class="wheel-sector" onclick="selectSDLCSector('test')" 
+                    d="M 300 300 L 300 540 A 240 240 0 0 1 112.4 449.7 Z" 
+                    fill="url(#grad-test)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-deploy" class="wheel-sector" onclick="selectSDLCSector('deploy')" 
+                    d="M 300 300 L 112.4 449.7 A 240 240 0 0 1 60 300 Z" 
+                    fill="url(#grad-deploy)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-ops" class="wheel-sector" onclick="selectSDLCSector('ops')" 
+                    d="M 300 300 L 60 300 A 240 240 0 0 1 300 60 Z" 
+                    fill="url(#grad-ops)" stroke="#0f172a" stroke-width="4" />
+
+              <!-- Sector Labels -->
+              <text x="375" y="155" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">規劃</text>
+              <text x="445" y="275" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">需求</text>
+              <text x="415" y="395" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">設計</text>
+              <text x="300" y="460" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">開發</text>
+              <text x="185" y="395" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">測試</text>
+              <text x="155" y="275" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">部署</text>
+              <text x="225" y="155" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">維運</text>
+
+              <!-- Central Core Hub: AI 安全 -->
+              <circle cx="300" cy="300" r="75" fill="#ffffff" stroke="#ef4444" stroke-width="5" filter="drop-shadow(0 4px 16px rgba(239,68,68,0.4))"/>
+              <circle cx="300" cy="300" r="65" fill="#ffffff"/>
+              <text x="300" y="290" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900" letter-spacing="1">AI</text>
+              <text x="300" y="322" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900" letter-spacing="2">安全</text>
+            </svg>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">
+                  💡 點擊上方 7 個扇區（規劃、需求、設計、開發、測試、部署、維運）即時載入右側工程與資安檢核點
+                </div>
+              </div>
+
+              <!-- Right: Real-time Inspection Detail Card -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span id="detail-badge" class="status-badge in_progress" style="font-size:0.75rem;">Phase 1 / 7</span>
+                  <span id="detail-category" style="font-size:0.8rem; color:var(--accent-teal); font-weight:700;">商業價值與治理前置</span>
+                </div>
+                <div id="detail-title" style="font-size:1.4rem; font-weight:900; color:var(--text-main); margin-bottom:12px;">規劃 (Planning)</div>
+                
+                <div style="margin-bottom:14px; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); padding:10px; border-radius:6px; font-size:0.82rem; color:var(--primary-light);">
+                  🤖 <strong>AI 角色與賦能：</strong> <span id="detail-ai">商業分析、可行性分析、風險評估、成本與效益預估、法遵與合規基線自動比對。</span>
+                </div>
+
+                <div style="margin-bottom:12px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:var(--text-main); margin-bottom:6px;">🛠️ 工程與開發實踐：</div>
+                  <div id="detail-engineering" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:#f87171; margin-bottom:6px;">🛡️ 資安控制與防護檢核 (Security)：</div>
+                  <div id="detail-security" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="border-top:1px solid var(--border-color); padding-top:10px; font-size:0.78rem; color:var(--text-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                  <div>🚪 <strong>品質門檻：</strong> <span id="detail-gate" style="color:var(--accent-amber);">Gate G0 (商業與資安立項基線)</span></div>
+                  <div id="detail-standard" style="color:var(--text-muted);">NIST SSDF: PO.1, PO.2 | ISO 27001: 5.1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 2: AI/ML 4-QUADRANT INTERACTIVE WHEEL -->
+          <div id="aisdlc-tab-wheel-aiml" class="aisdlc-view-pane" style="display:none;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:center;" class="viz-grid">
+              <!-- Left: SVG 4-Quadrant Wheel -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; text-align:center;">
+                <div style="font-weight:800; font-size:0.95rem; color:#f59e0b; margin-bottom:10px;">
+                  🧠 點擊象限探索：AI 模型生命週期 (MLOps 治理)
+                </div>
+                <div style="display:flex; justify-content:center;">
+                  <svg id="aiml-svg" viewBox="0 0 600 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl select-none">
+              <defs>
+                <linearGradient id="grad-q1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fbbf24"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+                <linearGradient id="grad-q2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+                <linearGradient id="grad-q3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <linearGradient id="grad-q4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Outer Guide Ring -->
+              <circle cx="300" cy="300" r="275" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+              <!-- Q1: 開發前 (Pre-development) -->
+              <path id="quad-pre" class="wheel-sector active" onclick="selectAIMLQuadrant('pre')"
+                    d="M 300 300 L 300 90 A 210 210 0 0 1 510 300 Z"
+                    fill="url(#grad-q1)" stroke="#0f172a" stroke-width="5"/>
+              
+              <!-- Q2: 開發 (Development) -->
+              <path id="quad-dev" class="wheel-sector" onclick="selectAIMLQuadrant('dev')"
+                    d="M 300 300 L 510 300 A 210 210 0 0 1 300 510 Z"
+                    fill="url(#grad-q2)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Q3: 部署 (Deployment) -->
+              <path id="quad-deploy" class="wheel-sector" onclick="selectAIMLQuadrant('deploy')"
+                    d="M 300 300 L 300 510 A 210 210 0 0 1 90 300 Z"
+                    fill="url(#grad-q3)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Q4: 部署後 (Post-deployment) -->
+              <path id="quad-post" class="wheel-sector" onclick="selectAIMLQuadrant('post')"
+                    d="M 300 300 L 90 300 A 210 210 0 0 1 300 90 Z"
+                    fill="url(#grad-q4)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Quadrant Inner Labels -->
+              <text x="390" y="210" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">開發前</text>
+              <text x="390" y="232" text-anchor="middle" fill="#fef08a" font-size="12" font-weight="600">Pre-development</text>
+
+              <text x="390" y="375" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">開發</text>
+              <text x="390" y="397" text-anchor="middle" fill="#fef08a" font-size="12" font-weight="600">Development</text>
+
+              <text x="210" y="375" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">部署</text>
+              <text x="210" y="397" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="600">Deployment</text>
+
+              <text x="210" y="210" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">部署後</text>
+              <text x="210" y="232" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="600">Post-deployment</text>
+
+              <!-- Outer Orbit Step Nodes -->
+              <text x="420" y="60" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">定義問題</text>
+              <text x="520" y="140" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">蒐集資料</text>
+              <text x="535" y="225" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">資料前處理</text>
+              <text x="540" y="320" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">探索性資料分析</text>
+              <text x="530" y="415" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">選擇模型</text>
+              <text x="470" y="495" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">訓練模型</text>
+              <text x="350" y="555" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">評估模型</text>
+              <text x="180" y="525" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">部署模型</text>
+              <text x="135" y="310" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">透明性與文件化</text>
+              <text x="145" y="175" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">監視與維護模型</text>
+              <text x="245" y="60" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">持續回饋與改善</text>
+
+              <!-- Central Core: 治理 -->
+              <circle cx="300" cy="300" r="55" fill="#ffffff" stroke="#dc2626" stroke-width="4" filter="drop-shadow(0 4px 12px rgba(220,38,38,0.35))"/>
+              <text x="300" y="308" text-anchor="middle" fill="#dc2626" font-size="20" font-weight="900" letter-spacing="2">治理</text>
+            </svg>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">
+                  💡 點擊 4 大象限（開發前、開發、部署、部署後）檢視完整 MLOps 流程與資安治理措施
+                </div>
+              </div>
+
+              <!-- Right: Real-time AIML Detail Card -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span id="aiml-badge" class="status-badge verified" style="font-size:0.75rem;">Quadrant 1 / 4</span>
+                  <span id="aiml-focus" style="font-size:0.8rem; color:var(--accent-amber); font-weight:700;">商業問題定義與資料整備</span>
+                </div>
+                <div id="aiml-title" style="font-size:1.4rem; font-weight:900; color:var(--text-main); margin-bottom:12px;">開發前 (Pre-development)</div>
+                
+                <div style="margin-bottom:12px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:var(--text-main); margin-bottom:6px;">📍 階段標準步驟：</div>
+                  <div id="aiml-steps" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="margin-bottom:12px; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.25); padding:10px; border-radius:6px; font-size:0.82rem; color:var(--accent-amber);">
+                  📋 <strong>核心工作範疇：</strong> <span id="aiml-work">釐清商業目標、預期 KPI、資料來源合法性與權限評估、建立特徵管線。</span>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:#34d399; margin-bottom:6px;">🛡️ 治理與 MLOps 檢核點：</div>
+                  <ul id="aiml-gov" style="margin-left:18px; font-size:0.8rem; color:var(--text-muted); line-height:1.5;"></ul>
+                </div>
+
+                <div style="border-top:1px solid var(--border-color); padding-top:10px; font-size:0.78rem; color:var(--text-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                  <div>🛠️ <strong>推薦工具鏈：</strong> <span id="aiml-tool" style="color:#38bdf8;">Unity Catalog, Delta Lake</span></div>
+                  <div id="aiml-ref" style="color:var(--text-muted);">NIST AI RMF: MAP 1.1 | ISO 42001: A.6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 3: AI -> ML -> DL -> GenAI -> LLM HIERARCHY DIAGRAM -->
+          <div id="aisdlc-tab-hierarchy" class="aisdlc-view-pane" style="display:none;">
+            <div class="ai-hierarchy-outer">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                <span style="font-size:1.15rem; font-weight:900; color:#38bdf8;">🤖 人工智慧 (Artificial Intelligence, AI)</span>
+                <span class="status-badge" style="font-size:0.75rem; background:rgba(56,189,248,0.2); color:#38bdf8;">最外層：廣義智慧系統</span>
+              </div>
+              <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                涵蓋所有能模擬人類智慧行為之技術與系統（如智慧語音助理 Siri/Alexa、自主移動機器人、自駕車導航、專家系統與規則引擎）。
+              </div>
+
+              <!-- ML Level -->
+              <div class="ai-hierarchy-ml">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                  <span style="font-size:1.05rem; font-weight:900; color:#10b981;">📊 機器學習 (Machine Learning, ML)</span>
+                  <span class="status-badge" style="font-size:0.75rem; background:rgba(16,185,129,0.2); color:#10b981;">第二層：從資料中學習規律</span>
+                </div>
+                <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                  利用統計演算法從資料中自動學習特徵與模式（涵蓋監督式學習、非監督式學習、強化學習、隨機森林、XGBoost、特徵工程與水果/圖像分類）。
+                </div>
+
+                <!-- DL Level -->
+                <div class="ai-hierarchy-dl">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                    <span style="font-size:1.0rem; font-weight:900; color:#f59e0b;">🧠 深度學習 (Deep Learning, DL)</span>
+                    <span class="status-badge" style="font-size:0.75rem; background:rgba(245,158,11,0.2); color:#f59e0b;">第三層：多層神經網絡</span>
+                  </div>
+                  <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                    利用多層深層神經網路 (CNN、RNN、Transformer) 自主抽取高階抽象特徵（如複雜圖像識別、貓狗辨識、語音特徵合成）。
+                  </div>
+
+                  <!-- GenAI Level -->
+                  <div class="ai-hierarchy-genai">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                      <span style="font-size:0.95rem; font-weight:900; color:#c084fc;">🎨 生成式 AI (Generative AI, GenAI)</span>
+                      <span class="status-badge" style="font-size:0.75rem; background:rgba(168,85,247,0.2); color:#c084fc;">第四層：創造全新內容</span>
+                    </div>
+                    <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                      能創造全新文字、圖像、音訊、視訊與代碼之多模態模型（如 Runway 視訊生成、Midjourney 繪圖、AIVA 音樂生成、Suno、Stable Diffusion）。
+                    </div>
+
+                    <!-- LLM Level -->
+                    <div class="ai-hierarchy-llm">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                        <span style="font-size:0.95rem; font-weight:900; color:#06b6d4;">💬 大型語言模型 (Large Language Models, LLM)</span>
+                        <span class="status-badge" style="font-size:0.75rem; background:rgba(6,182,212,0.25); color:#06b6d4;">核心：數十億至兆級參數語言核心</span>
+                      </div>
+                      <div style="font-size:0.82rem; color:var(--text-main); font-weight:600;">
+                        以超大規模文字語料預訓練之 Transformer 語言架構（包含 ChatGPT / GPT-4o、Claude 3.5 Sonnet、Google Gemini 1.5/3.7、Microsoft Copilot、開源 LLaMA 3 及 DeepSeek）。
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 4: COMPLIANCE MATRIX -->
+          <div id="aisdlc-tab-matrix" class="aisdlc-view-pane" style="display:none;">
+            <div class="info-card" style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.85rem; text-align:left;">
+                <thead>
+                  <tr style="border-bottom:2px solid var(--border-color); color:var(--primary-light);">
+                    <th style="padding:12px;">生命週期階段</th>
+                    <th style="padding:12px;">ISO 27001 / 27701</th>
+                    <th style="padding:12px;">ISO 42001 (AIMS)</th>
+                    <th style="padding:12px;">NIST CSF / AI RMF</th>
+                    <th style="padding:12px;">OWASP Top 10 LLM / EU AI Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#38bdf8;">規劃 (Planning)</td>
+                    <td style="padding:10px;">A.5.8, A.5.19 供應鏈與資安要求</td>
+                    <td style="padding:10px;">Clause 4, 6 AI 目標與風險評估</td>
+                    <td style="padding:10px;">GV.OC-01, MAP 1.1 背景與風險邊界</td>
+                    <td style="padding:10px;">EU AI Act 風險分級與合規評定</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#10b981;">設計 (Design)</td>
+                    <td style="padding:10px;">A.8.25 安全系統架構與工程原則</td>
+                    <td style="padding:10px;">A.6.2 AI 系統架構設計與邊界審查</td>
+                    <td style="padding:10px;">ID.RA-01, MAP 2.2 威脅建模 (STRIDE)</td>
+                    <td style="padding:10px;">LLM01: Prompt Injection 防護設計</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#f59e0b;">開發 (Dev)</td>
+                    <td style="padding:10px;">A.8.28 安全編碼 (Secure Coding)</td>
+                    <td style="padding:10px;">A.7.2 訓練資料主權與脫敏管理</td>
+                    <td style="padding:10px;">PR.DS-01, MEASURE 2.5 SBOM 物料清單</td>
+                    <td style="padding:10px;">LLM06: 敏感資訊外洩防護 (DLP)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#ec4899;">測試 (Testing)</td>
+                    <td style="padding:10px;">A.8.29 安全測試與弱點掃描 (DAST)</td>
+                    <td style="padding:10px;">A.8.2 模型偏見評測與穩健性驗證</td>
+                    <td style="padding:10px;">PR.IP-01, MEASURE 1.1 邊界模糊測試</td>
+                    <td style="padding:10px;">LLM02: 不安全輸出處置防護</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#a855f7;">部署 (Deploy)</td>
+                    <td style="padding:10px;">A.8.31 環境隔離與變更管理</td>
+                    <td style="padding:10px;">A.9.1 AI 系統部署簽署與驗收</td>
+                    <td style="padding:10px;">PR.AC-01, MANAGE 2.2 產銷履歷驗證</td>
+                    <td style="padding:10px;">LLM05: 供應鏈脆弱性管理 (SLSA)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#06b6d4;">維運 (Ops)</td>
+                    <td style="padding:10px;">A.8.16 活動監控與日誌審計 (SIEM)</td>
+                    <td style="padding:10px;">Clause 9, 10 漂移監控與持續改進</td>
+                    <td style="padding:10px;">DE.CM-01, GOVERN 1.2 AIOps 監控</td>
+                    <td style="padding:10px;">EU AI Act 上線後監控與事件回報</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ATTACHMENT 4: Enterprise Generative AI & Autonomous Agent Governance Policy -->
+        <!-- ========================================== -->
+        <div id="section-policy" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:#10b981; background:linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(6,78,59,0.3) 100%);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(16,185,129,0.25); color:#34d399; border-color:rgba(16,185,129,0.4);">📜 專案附件四：企業級生成式 AI 與 AI Agent 治理管理辦法 (內部正式規範)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">文件編號：ENT-AI-GOV-001 | 治理擁有者：VP 暨 AI 治理委員會</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                企業級生成式 AI 與自主 AI Agent 治理管理辦法
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                (整合 <strong>ISO/IEC 27001:2022 ISMS</strong>、<strong>ISO/IEC 42001:2023 AIMS</strong> 與 <strong>NIST GenAI RMF</strong> 國際合規規範)<br>
+                本管理辦法確立四大核心防線：<strong>身分與密鑰強制隔離 (SSO/MFA/Vault)</strong>、<strong>最小權限與環境分級 (A0～A4 Agent 劃分)</strong>、<strong>人類最終負責與資料遮罩 (L1～L4 分類)</strong>、<strong>全程可稽核與營運持續 (1 小時通報 SLA 與緊急 Kill Switch)</strong>。
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy 1: A0~A4 Agent Autonomous Levels -->
+          <div class="section-title">🤖 AI Agent 自主性五級分級管制標準 (Agent Autonomy Tiers)</div>
+          <div class="cards-grid" style="margin-bottom:20px;">
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#38bdf8; font-size:0.95rem; margin-bottom:4px;">A0 級：輔助查詢型 (Read-Only)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">唯讀模式，僅得查詢公開或 L1～L2 授權文檔，無任何系統寫入或 API 執行權限。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#10b981; font-size:0.95rem; margin-bottom:4px;">A1 級：受控建議型 (Drafting Only)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">可生成草稿、工單建議或代碼，需經權責人員手動檢視與確認後方可由人工複製執行。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#f59e0b; font-size:0.95rem; margin-bottom:4px;">A2 級：半自主審批型 (Approval Gate)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">具備呼叫非破壞性 API 權限，涉及敏感狀態修改時強制觸發 OpenClaw 人工審批流。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#ec4899; font-size:0.95rem; margin-bottom:4px;">A3 級：高度自主沙盒型 (Sandbox)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">僅限隔離沙盒 (Sandbox) 環境內自主執行多步驟任務，全面實施實時監控與硬性配額。</div>
+              </div>
+            </div>
+            <div class="info-card" style="border-color:#ef4444;">
+              <div>
+                <div style="font-weight:800; color:#ef4444; font-size:0.95rem; margin-bottom:4px;">A4 級：完全自主型 (Prohibited)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">無人監管之全自主系統。<strong>【企業目前全面嚴格禁止引進與使用】</strong>。</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy 2: L1~L4 Data Classification & Five Absolute Prohibitions -->
+          <div class="viz-grid">
+            <div class="viz-card">
+              <h3>🚫 五大絕對禁止輸入項目 (Absolute Prohibitions)</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <ul style="margin-left:18px;">
+                  <li><strong>1. 認證與存取憑證</strong>：系統密碼、MFA Token、API Key、私鑰、TLS 憑證、SSH Key、資料庫連線字串。</li>
+                  <li><strong>2. 個人敏感隱私 (PII)</strong>：客戶真實姓名、身分證字號、護照、手機、住址、銀行卡號、員工薪資績效。</li>
+                  <li><strong>3. 未公開商業機密</strong>：併購計畫、董事會議事錄、未公開財務預測、核心定價公式、投標底價。</li>
+                  <li><strong>4. 維運與攻擊性資訊</strong>：未修補之弱點掃描報告 (DAST/SAST)、滲透測試細節、Production DB Dump。</li>
+                  <li><strong>5. 核心智慧財產權</strong>：未公開之核心撮合演算法、核心加密協議代碼、受 NDA 嚴格保護之技術。</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="viz-card">
+              <h3>⚡ 應變機制與緊急阻斷 (Kill Switch & SLA)</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <ul style="margin-left:18px;">
+                  <li><strong>1 小時通報 SLA</strong>：發現誤上傳機密、疑似 Token 外洩、Agent 異常連線時，須於 1 小時內通報資安團隊。</li>
+                  <li><strong>緊急阻斷開關 (Kill Switch)</strong>：SRE/MIS 具備一鍵切斷 API Key、終止 Agent Session 與隔離容器之控制權。</li>
+                  <li><strong>手動替代 SOP</strong>：所有關鍵 AI 輔助流程均備妥傳統人工備援操作路徑，確保業務連續性 (BCP)。</li>
+                  <li><strong>每年 2 小時全員培訓</strong>：全體同仁每年須完成至少 2 小時 AI 資安與倫理培訓並通過測驗。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Initialize interactive sectors
+    window.selectSDLCSector('plan');
+    window.selectAIMLQuadrant('pre');
+  }
+
+  // Sub-navigation Switcher between AISDLC Modules
+  window.switchAISDLCTab = function(moduleKey) {
+    document.querySelectorAll('.aisdlc-subnav-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.id === `btn-aisdlc-${moduleKey}`);
+    });
+
+    const modules = ['wheel-sdlc', 'wheel-aiml', 'hierarchy', 'matrix'];
+    modules.forEach(mId => {
+      const pane = document.getElementById(`aisdlc-tab-${mId}`);
+      if (pane) {
+        pane.style.display = (mId === moduleKey) ? 'block' : 'none';
+      }
+    });
+  };
+
+  // Interactive SDLC Sector Selector
+  window.selectSDLCSector = function(phaseKey) {
+    const data = sdlcData[phaseKey];
+    if (!data) return;
+
+    document.querySelectorAll('#sdlc-svg .wheel-sector').forEach(el => el.classList.remove('active'));
+    const activeSector = document.getElementById('sector-' + phaseKey);
+    if (activeSector) activeSector.classList.add('active');
+
+    const badge = document.getElementById('detail-badge');
+    const title = document.getElementById('detail-title');
+    const cat = document.getElementById('detail-category');
+    const ai = document.getElementById('detail-ai');
+    const std = document.getElementById('detail-standard');
+    const gate = document.getElementById('detail-gate');
+    const engCont = document.getElementById('detail-engineering');
+    const secCont = document.getElementById('detail-security');
+
+    if (badge) badge.innerText = data.badge;
+    if (title) title.innerText = data.title;
+    if (cat) cat.innerText = data.category;
+    if (ai) ai.innerText = data.ai;
+    if (std) std.innerText = data.standard;
+    if (gate) gate.innerText = data.gate;
+
+    if (engCont) {
+      engCont.innerHTML = data.engineering.map(tag => 
+        `<span class="node-pill" style="background:#1e293b; color:#e2e8f0; border:1px solid #334155;">${tag}</span>`
+      ).join('');
+    }
+
+    if (secCont) {
+      secCont.innerHTML = data.security.map(tag => 
+        `<span class="node-pill" style="background:rgba(239,68,68,0.15); color:#fca5a5; border:1px solid rgba(239,68,68,0.4);">${tag}</span>`
+      ).join('');
+    }
+  };
+
+  // Interactive AIML Quadrant Selector
+  window.selectAIMLQuadrant = function(quadKey) {
+    const data = aimlData[quadKey];
+    if (!data) return;
+
+    document.querySelectorAll('#aiml-svg .wheel-sector').forEach(el => el.classList.remove('active'));
+    const activeQuad = document.getElementById('quad-' + quadKey);
+    if (activeQuad) activeQuad.classList.add('active');
+
+    const badge = document.getElementById('aiml-badge');
+    const title = document.getElementById('aiml-title');
+    const focus = document.getElementById('aiml-focus');
+    const work = document.getElementById('aiml-work');
+    const ref = document.getElementById('aiml-ref');
+    const tool = document.getElementById('aiml-tool');
+    const stepsCont = document.getElementById('aiml-steps');
+    const govCont = document.getElementById('aiml-gov');
+
+    if (badge) badge.innerText = data.badge;
+    if (title) title.innerText = data.title;
+    if (focus) focus.innerText = data.focus;
+    if (work) work.innerText = data.work;
+    if (ref) ref.innerText = data.ref;
+    if (tool) tool.innerText = data.tool;
+
+    if (stepsCont) {
+      stepsCont.innerHTML = data.steps.map(s => 
+        `<span class="node-pill" style="background:rgba(245,158,11,0.2); color:#fde68a; border:1px solid rgba(245,158,11,0.5); font-weight:700;">${s}</span>`
+      ).join('');
+    }
+
+    if (govCont) {
+      govCont.innerHTML = data.gov.map(g => `<li>${g}</li>`).join('');
+    }
+  };
+
+  // Main Proposal Sub-tab Switcher
+  window.switchProposalSection = function(sectionKey) {
+    document.querySelectorAll('.proposal-subtab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.id === `subtab-btn-${sectionKey}`);
+    });
+
+    const sections = ['serviceagent', 'chatgpt', 'aisdlc', 'policy'];
+    
+    if (sectionKey === 'all') {
+      sections.forEach(secId => {
+        const el = document.getElementById(`section-${secId}`);
+        if (el) el.style.display = 'block';
+      });
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    } else {
+      sections.forEach(secId => {
+        const el = document.getElementById(`section-${secId}`);
+        if (el) {
+          if (secId === sectionKey) {
+            el.style.display = 'block';
+            const offset = el.getBoundingClientRect().top + window.pageYOffset - 140;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+          } else {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  };
+
+// ==========================================
   function renderProposalView() {
     const page = document.getElementById('page-proposal');
     if (!page) return;
@@ -1600,6 +2500,906 @@
   // ==========================================
   // Dedicated Tab: Enterprise AI & AISDLC Governance Proposals (專案服務建議書)
   // ==========================================
+
+  // AISDLC Datasets
+  const sdlcData = {
+    plan: {
+      badge: "Phase 1 / 7",
+      title: "規劃 (Planning)",
+      category: "商業價值與治理前置",
+      ai: "商業分析、可行性分析、風險評估、成本與效益預估、法遵與合規基線自動比對。",
+      engineering: ["商業分析", "利害關係人管理", "開發團隊組建", "Waterfall 模型", "Agile 敏捷方法", "DevSecOps 文化規劃"],
+      security: ["資安&資料治理", "法律遵循與合規檢核", "資安角色與職責定義", "資訊資產安全等級鑑別 (普/中/高)", "RFP 資安條款與預算配置"],
+      standard: "NIST SSDF: PO.1, PO.2 | ISO 27001: 5.1 | ISO 42001: 5.1",
+      gate: "Gate G0 (商業與資安立項基線)"
+    },
+    req: {
+      badge: "Phase 2 / 7",
+      title: "需求 (Requirements)",
+      category: "需求結構化與安全基線",
+      ai: "需求萃取、會議語音摘要、需求分類、需求追溯矩陣 (RTM) 自動關聯、資安需求檢核與誤用情境 (Misuse Cases) 挖掘。",
+      engineering: ["需求引出 (Elicitation)", "需求記錄 (SRS)", "需求分析與確認", "需求追溯 (Traceability)"],
+      security: ["安全需求明確化 (C.I.A. / 授權 / 會話)", "威脅與風險評估", "軟體安全查檢表 (Checklist)", "個資保護與合規驗收標準 (GDPR/HIPAA)"],
+      standard: "NIST SSDF: PW.1 | ISO 27001: 8.25 | OWASP ASVS",
+      gate: "Gate G1 (需求追溯與安全需求規格)"
+    },
+    design: {
+      badge: "Phase 3 / 7",
+      title: "設計 (Design)",
+      category: "架構強化與威脅建模",
+      ai: "架構安全模式建議、威脅建模自動推導 (STRIDE)、設計審查助手、API / 資料模型安全草稿生成、Clean Core 架構驗證。",
+      engineering: ["系統分析 (SA)", "V & V (驗證與確認)", "變更管理", "三層式架構", "虛擬機 (VM) / Container 容器架構", "資料庫結構設計", "資訊建模 (Data Modeling)", "設計審查 (Design Review)"],
+      security: ["雲端安全架構", "Serverless 安全配置", "存取管理 (IAM)", "零信任 (Zero Trust) 邊界", "資料安全與密碼學 (Encryption/KMS)", "威脅建模 (STRIDE / Attack Surface)", "安全設計原則 (Least Privilege / Defense in Depth)"],
+      standard: "NIST SSDF: PW.2, PS.1 | ISO 27001: 8.26 | ISO 42001: B.6",
+      gate: "Gate G1.5 (架構審查與威脅模型核准)"
+    },
+    dev: {
+      badge: "Phase 4 / 7",
+      title: "開發 (Development)",
+      category: "安全編碼與供應鏈防護",
+      ai: "AI 程式碼助手 (Copilot/Cursor)、單元測試自動生成、即時 Code Review、Secret/憑證外洩即時阻斷、相依套件弱點預測與自動修補建議。",
+      engineering: ["程式語言與開發框架選型", "整合開發環境 (IDE)", "Git 版本控制與分支策略", "同行代碼審查 (Peer Code Review)"],
+      security: ["軟體供應鏈安全", "軟體物料清單 (SBOM: CycloneDX/SPDX)", "金鑰與 Secret 管理 (Vault/GitGuardian)", "安全編碼實踐 (Secure Coding Standards)", "健全例外與錯誤處理", "OWASP Top 10 防護 (SQLi, XSS, CSRF, SSRF)"],
+      standard: "NIST SSDF: PS.2, PW.4, PW.5 | ISO 27001: 8.28 | SLSA Level 3",
+      gate: "Gate G2 (Clean Core、Secret Scan、SAST 門檻)"
+    },
+    test: {
+      badge: "Phase 5 / 7",
+      title: "測試 (Testing)",
+      category: "全面驗證與對抗測試",
+      ai: "自動生成極端測試案例、單元/整合測試自動化、智慧模糊測試 (AI Fuzzing)、弱點關聯與誤報過濾、AI Red Teaming 對抗性攻擊測試。",
+      engineering: ["單元測試 (Unit Test)", "整合測試 (介面/回歸測試)", "安裝與相容性測試", "使用者驗收測試 (UAT)", "系統功能測試"],
+      security: ["靜態應用安全測試 (SAST)", "動態應用安全測試 (DAST)", "互動式安全測試 (IAST)", "原始碼弱點掃描 (SCA)", "壓力與負載測試", "模糊測試 (Fuzzing)", "合成交易驗證", "Misuse Case 濫用情境測試"],
+      standard: "NIST SSDF: PW.7, PW.8 | ISO 27001: 8.29 | ISO 42001: B.8",
+      gate: "Gate G3 (動態弱掃無中高風險、UAT 資安通過)"
+    },
+    deploy: {
+      badge: "Phase 6 / 7",
+      title: "部署 (Deployment)",
+      category: "環境加固與安全發布",
+      ai: "IaC 安全語法與權限檢核、環境組態漂移預測、發布風險評估、Canary / Blue-Green 漸進發布智慧決策與自動 Rollback 觸發。",
+      engineering: ["部署環境準備 (Staging / Prod)", "配置與組態管理 (CMDB)", "CI/CD 自動化 Pipeline", "Canary / Blue-Green 發布"],
+      security: ["基礎設施即程式碼 (IaC Security: Terraform/Checkov)", "作業系統與伺服器加固 (CIS Benchmarks)", "CWE (常見弱點枚舉) 比對", "CVE (已知漏洞) 防堵", "更新與安全修補程序", "軟體製品數位簽章 (Cosign/Sigstore)"],
+      standard: "NIST SSDF: PS.3, PW.6 | ISO 27001: 8.9, 8.31 | CIS Benchmarks",
+      gate: "Gate G4 (IaC 掃描、容器簽名與發布審批)"
+    },
+    ops: {
+      badge: "Phase 7 / 7",
+      title: "維運 (Operations)",
+      category: "持續監控、防禦與營運韌性",
+      ai: "AIOps 智能維運、全鏈路日誌智慧分析 (Log Anomaly)、事件即時關聯與根因分析 (RCA)、智慧告警降噪、即時防禦修補腳本建議。",
+      engineering: ["Issue Tracking 追蹤系統", "BC (營運持續計畫)", "IR (資安事件應變)", "DR (災難復原)", "全方位監控與日誌收集 (APM/OpenTelemetry)"],
+      security: ["資安稽核 (ISMS Audit)", "全員資安教育培訓", "紅藍隊演練 (Red/Blue Teaming)", "外部滲透測試 (Pen-testing)", "惡意程式防護 (病毒/蠕蟲/木馬/勒索軟體)", "DDoS 防禦與清洗", "社交工程防禦與釣魚演練", "執行期自我防護 (RASP)"],
+      standard: "NIST SSDF: RV.1, RV.2, RV.3 | ISO 27001: 8.16, 5.24 | ISO 42001: 9.1",
+      gate: "Gate G5 (AIOps 持續監控、IR/DR 演練與漏洞修補)"
+    }
+  };
+
+  const aimlData = {
+    pre: {
+      badge: "Quadrant 1 / 4",
+      title: "開發前 (Pre-development)",
+      focus: "商業問題定義與資料整備",
+      steps: ["1. 定義問題", "2. 蒐集資料", "3. 資料前處理", "4. 探索性資料分析 (EDA)"],
+      work: "釐清商業目標、預期 KPI (如 Precision 提升至 70%)、資料來源合法性與權限評估、建立可重現的資料清洗與特徵管線、EDA 探索特徵分布以避免未來資料洩漏 (Data Leakage)。",
+      gov: [
+        "落實資料分類分級，隔離並遮罩敏感個資 (PII)",
+        "評估資料來源之資料血緣 (Data Lineage) 與智慧財產權合規性",
+        "建立受控之特徵庫 (Feature Store)，確保訓練與線上推論一致性",
+        "評估潛在樣本偏誤 (Bias) 與族群代表性失衡風險"
+      ],
+      ref: "NIST AI RMF: MAP 1.1, MAP 2.1 | ISO 42001: A.6 (AI 系統規劃)",
+      tool: "Unity Catalog, Delta Lake, Lakeflow Designer"
+    },
+    dev: {
+      badge: "Quadrant 2 / 4",
+      title: "開發 (Development)",
+      focus: "模型選型、實驗追蹤與多維驗證",
+      steps: ["5. 選擇模型 / 基礎模型", "6. 訓練模型與調參", "7. 評估模型 (Evaluation)"],
+      work: "基於資料特性選擇演算法或預訓練基礎模型 (Foundation Models)、微調 (Fine-tuning) 或 RAG 架構建置、超參數最佳化、記錄完整實驗軌跡 (Parameters / Metrics / Artifacts)。",
+      gov: [
+        "使用 MLflow / Weights & Biases 進行 100% 實驗版本可追溯性記錄",
+        "評估指標除準確度外，必須涵蓋延遲、推論成本、穩健性與公平性測試",
+        "實施 AI 安全紅隊測試 (Red Teaming) 與對抗樣本攻擊防禦檢驗",
+        "產出模型卡 (Model Card) 與詳細評估報告供跨部門審查"
+      ],
+      ref: "NIST AI RMF: MEASURE 2.5, 2.7 | ISO 42001: B.7 (開發與評估)",
+      tool: "MLflow, Ray, HuggingFace Hub, PyTorch"
+    },
+    deploy: {
+      badge: "Quadrant 3 / 4",
+      title: "部署 (Deployment)",
+      focus: "模型登錄、測試與安全上線",
+      steps: ["8. 部署模型 (Serving)", "9. 透明性與文件化 (Model Registry)"],
+      work: "將評估通過之模型封裝為即時 REST API 或批次推論管線、在 Staging 環境進行端對端整合測試、執行 Shadow Deployment 或 A/B Testing、完成上線簽核。",
+      gov: [
+        "於 Model Registry 明確標註生命週期狀態 (Staging / Production) 並綁定審批鏈",
+        "部署動態 LLM / 模型防護閘道 (LLM Firewall: 防範 Prompt Injection / 毒性輸出)",
+        "實施嚴格的 API 存取控制 (RBAC / Token Rate Limiting)",
+        "備妥即時回滾 (Rollback) 與降級機制，防範推論異常導致業務中斷"
+      ],
+      ref: "NIST AI RMF: MANAGE 2.2, 3.2 | ISO 42001: B.8 (部署與驗證)",
+      tool: "Databricks Model Serving, vLLM, KServe, Triton"
+    },
+    post: {
+      badge: "Quadrant 4 / 4",
+      title: "部署後 (Post-deployment)",
+      focus: "持續監控、漂移偵測與再訓練閉環",
+      steps: ["10. 監視與維護模型 (Monitoring)", "11. 持續回饋與改善 (Continuous Feedback)"],
+      work: "即時採集線上推論日誌 (Inference Tables)、監控特徵漂移 (Data Drift) 與概念漂移 (Concept Drift)、收集真實業務回饋、自動化觸發再訓練管線或模型退役流程。",
+      gov: [
+        "監控 Training-Serving Skew (訓練與線上推論特徵偏離)",
+        "完整記錄推論輸入/輸出日誌 (敏感資料遮罩保存) 供合規稽核追溯",
+        "定義明確的自動化再訓練 (Automated Retraining) 觸發閾值與關卡",
+        "建立模型退役 (Retirement) 與歷史權重封存歸檔政策"
+      ],
+      ref: "NIST AI RMF: MANAGE 4.2 | ISO 42001: 9.1 (監控、衡量與持續改善)",
+      tool: "Inference Tables, Evidently AI, Prometheus, Grafana"
+    }
+  };
+
+  function renderProposalView() {
+    const page = document.getElementById('page-proposal');
+    if (!page) return;
+
+    page.innerHTML = `
+      <div class="container" style="padding-top: 10px;">
+        <!-- Interactive Sub-tab Switcher -->
+        <div class="proposal-subnav">
+          <button class="proposal-subtab-btn active" id="subtab-btn-all" onclick="window.switchProposalSection('all')">
+            📑 展開全覽 (All)
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-serviceagent" onclick="window.switchProposalSection('serviceagent')">
+            🤖 建議書一：ServiceAgent AI 中控平台
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-chatgpt" onclick="window.switchProposalSection('chatgpt')">
+            🚀 建議書二：ChatGPT Enterprise 藍圖
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-aisdlc" onclick="window.switchProposalSection('aisdlc')">
+            🛡️ 建議書三：AISDLC 雙軌開發治理 (含互動圖表)
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-policy" onclick="window.switchProposalSection('policy')">
+            📜 附件四：AI 治理辦法與規範
+          </button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 1: ServiceAgent Enterprise AI Platform -->
+        <!-- ========================================== -->
+        <div id="section-serviceagent" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:var(--primary-light);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">📄 建議書一：企業董事會專案服務建議書 V1.0 (正式版)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">專案負責人：廖倫豪 博士 (Howard Liao, Ph.D.)</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                ServiceAgent 企業級生成式 AI 中控平台架構與落地建議書 (高科技製造業通用版)
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本建議書由廖倫豪博士親自為高科技製造與企業董事會規劃，旨在建立「高可控、可治理、具資安防護網」的企業級 AI 中央神經系統。結合 <strong>Enterprise GPT (智能決策中控)</strong>、<strong>Enterprise KM (25+ 格式混合 RAG 檢索)</strong>、<strong>AI Meeting (會議語音轉錄回寫)</strong>，並串接 <strong>OpenClaw (人機複核安全閘道)</strong> 與 <strong>Hermes Agent (自主學習型 Agent)</strong>，完全對齊 ISO 27001/27701、ISO 42001 (AIMS)、NIST CSF 及歐盟 AI 法案 (EU AI Act)。
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-grid" style="margin-bottom:20px;">
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏛️</div>
+              <div class="bento-lbl">統一中控治理</div>
+              <div class="bento-desc">集中管理多 LLM 模型路由調度、KM 知識庫與 Multi-Agent 流程編排，告別 API Key 混亂。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏭</div>
+              <div class="bento-lbl">產線維修自動化</div>
+              <div class="bento-desc">SCADA 異常排查時間縮短 80%，AI 自動產出 SOP 排查建議，經 OpenClaw 人工核准後執行。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏗️</div>
+              <div class="bento-lbl">領域知識智能化</div>
+              <div class="bento-desc">萃取高科技製造領域專家經驗，支援 25+ 檔案 Parser 與圖表表格重構，實現 95% 精準度 RAG。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🛡️</div>
+              <div class="bento-lbl">全面合規達標</div>
+              <div class="bento-desc">對齊 ISO 27001、ISO 42001 (AIMS)、NIST CSF、GDPR 與 EU AI Act，建立完整的安全 Guardrails。</div>
+            </div>
+          </div>
+
+          <div class="info-card" style="padding:20px;">
+            <div style="font-weight:800; color:var(--text-main); font-size:1.05rem; margin-bottom:14px;">🏗️ 三層系統架構與人機複核閘道 (3-Tier Architecture)</div>
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-bottom:16px;">
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #38bdf8;">
+                <div style="font-weight:800; color:#38bdf8; margin-bottom:4px; font-size:0.9rem;">L1 前端互動層 (Interaction)</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">支援企業 WebChat、Microsoft Teams、Slack；透過 OpenClaw 與 HermesClaw 整合外部通訊管道。</div>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #10b981;">
+                <div style="font-weight:800; color:#10b981; margin-bottom:4px; font-size:0.9rem;">L2 AI Orchestration 中台層</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">運行 ServiceAgent 核心服務；提供安全治理（SSO、RBAC、Guardrails、DLP 遮罩）；向量資料庫與多模型路由。</div>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #f59e0b;">
+                <div style="font-weight:800; color:#f59e0b; margin-bottom:4px; font-size:0.9rem;">L3 後端與 Agent Runtime 層</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">OpenClaw 人機複核執行器 (Human-in-the-Loop)、Hermes 學習型 Agent；對接 MES, SCADA, ERP, PLM, ITSM。</div>
+              </div>
+            </div>
+            <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); padding:12px; border-radius:var(--radius-sm); font-size:0.82rem; color:var(--accent-amber);">
+              🔒 <strong>Human-in-the-Loop 安全人機複核機制：</strong> Enterprise GPT 不具備直接修改底層系統資料的權限，所有敏感指令強制經由 OpenClaw 觸發審批工作流，主管核准後才對底層進行實質修改。
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 2: ChatGPT Enterprise & Agent Blueprint -->
+        <!-- ========================================== -->
+        <div id="section-chatgpt" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:var(--accent-teal);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(168,85,247,0.2); color:#c084fc;">🚀 建議書二：ChatGPT Enterprise & Agent 企業落地與治理藍圖</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">大型電商與數位生活集團 (跨國 EC 平台) 專案 | 顧問負責人：廖倫豪 博士</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                ChatGPT Enterprise & Codex 企業級 AI 應用落地、治理與普及藍圖
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本戰略藍圖旨在協助大型電商與集團事業體從「個人 AI 工具」升級為「可治理、可衡量、可普及」的企業級生成式 AI 平台。整合 <strong>ChatGPT Enterprise (安全知識工作入口)</strong>、<strong>Codex (研發、測試、文件與工程流程自動化)</strong>、<strong>GPTs Agent Workspace (專屬 AI 助理)</strong> 與 <strong>Automation Agents (跨系統流程自動化)</strong>，建立 100% Zero Data Training 安全數據隔離與 Champion 種子網絡。
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-grid" style="margin-bottom:20px;">
+            <div class="bento-card">
+              <div style="font-weight:800; color:#38bdf8; font-size:0.95rem; margin-bottom:4px;">ChatGPT Enterprise</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">全企業安全知識工作入口。連結企業知識平台、知識問答、文件生成與研究分析，全員生產力倍增。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#10b981; font-size:0.95rem; margin-bottom:4px;">Codex 工程自動化</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">研發、測試、除錯與維運自動化。支援 Agent 工作坊與 CI/CD Code Review 輔助，加速交付效率。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#f59e0b; font-size:0.95rem; margin-bottom:4px;">GPTs Agent Workspace</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">專屬 AI 助理模組。打包部門知識、SOP 與最佳實踐 (Golden Samples)，建立可複製工作模式。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#a855f7; font-size:0.95rem; margin-bottom:4px;">Automation Agents</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">跨系統流程自動化。串接企業資料庫與 SaaS 工具，自主執行多步驟任務，提升流程營運綜效。</div>
+            </div>
+          </div>
+
+          <div class="viz-grid">
+            <div class="viz-card">
+              <h3>📊 三階企業級普及推動模型</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <p><strong>Level 1 (個人應用)</strong>：AI 職能素養培訓、小專題實作與工作流打包。</p>
+                <p><strong>Level 2 (部門分流)</strong>：流程需求盤點、Golden Sample Agent POC、資安 Gate Review。</p>
+                <p><strong>Level 3 (全體普及)</strong>：全體 ChatGPT Enterprise / Codex 導入、跨部門流程再造。</p>
+              </div>
+            </div>
+            <div class="viz-card">
+              <h3>🛡️ 四大可稽核合規治理機制</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <p><strong>1. RBAC & Policy</strong>：角色權限控管、審批門檻與 AGENTS.md Repo 規範。</p>
+                <p><strong>2. Seat & Credit Pool</strong>：依角色限制 Credit 與週用量 Limit/Alert/Cap。</p>
+                <p><strong>3. Analytics API</strong>：使用率趨勢追蹤、Token Cost 訊號與 PR activity 指標。</p>
+                <p><strong>4. Compliance API</strong>：活動日誌串接 SIEM / DLP / eDiscovery，100% 可觀測可調查。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 3: AISDLC DevSecOps & AI Lifecycle Governance (WITH INTERACTIVE WHEELS & DIAGRAMS) -->
+        <!-- ========================================== -->
+        <div id="section-aisdlc" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:#a855f7; background:linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(30,27,75,0.4) 100%);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(168,85,247,0.25); color:#c084fc; border-color:rgba(168,85,247,0.4);">🛡️ 建議書三：AI in SDLC 企業級雙軌全程治理架構 (AISDLC 藍圖)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">架構負責人：廖倫豪 博士 (Howard Liao, Ph.D.)</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                AI in SDLC with DevSecOps & AI Lifecycle 企業級雙軌治理藍圖 (全動態互動視覺版)
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本架構融合<strong>安全軟體開發生命週期 (Secure SDLC + DevSecOps 7 階段輪盤)</strong>、<strong>AI 模型開發生命週期 (AI/ML Lifecycle 4 象限輪盤)</strong> 與 <strong>AI ➔ ML ➔ DL ➔ GenAI ➔ LLM 包含關係階層圖</strong>，建立企業級「全程治理底座 (Foundation Governance & Guardrails)」。
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-module Filter Pills for AISDLC -->
+          <div style="display:flex; gap:8px; margin-bottom:20px; justify-content:center; flex-wrap:wrap;">
+            <button class="aisdlc-subnav-btn active" id="btn-aisdlc-wheel-sdlc" onclick="window.switchAISDLCTab('wheel-sdlc')">
+              🎡 模組一：安全 SDLC 7 階段互動輪盤
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-wheel-aiml" onclick="window.switchAISDLCTab('wheel-aiml')">
+              🧠 模組二：AI 模型生命週期 4 象限輪盤
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-hierarchy" onclick="window.switchAISDLCTab('hierarchy')">
+              📦 模組三：AI ➔ ML ➔ DL ➔ GenAI ➔ LLM 階層圖
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-matrix" onclick="window.switchAISDLCTab('matrix')">
+              🌐 模組四：國際合規標準對應矩陣
+            </button>
+          </div>
+
+          <!-- MODULE 1: SDLC 7-STAGE INTERACTIVE WHEEL -->
+          <div id="aisdlc-tab-wheel-sdlc" class="aisdlc-view-pane" style="display:block;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:center;" class="viz-grid">
+              <!-- Left: SVG Interactive Wheel -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; text-align:center;">
+                <div style="font-weight:800; font-size:0.95rem; color:#38bdf8; margin-bottom:10px;">
+                  🎡 點擊扇區探索：安全 SDLC 7 階段與 AI 賦能
+                </div>
+                <div style="display:flex; justify-content:center;">
+                  <svg id="sdlc-svg" viewBox="0 0 600 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl select-none">
+              <defs>
+                <!-- Gradients for 7 sectors -->
+                <linearGradient id="grad-plan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+                <linearGradient id="grad-req" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fbbf24"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+                <linearGradient id="grad-design" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+                <linearGradient id="grad-dev" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0369a1"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <linearGradient id="grad-test" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#1e40af"/>
+                </linearGradient>
+                <linearGradient id="grad-deploy" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#dc2626"/>
+                  <stop offset="100%" stop-color="#b91c1c"/>
+                </linearGradient>
+                <linearGradient id="grad-ops" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ea580c"/>
+                  <stop offset="100%" stop-color="#dc2626"/>
+                </linearGradient>
+
+                <!-- Arrow markers -->
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <!-- Background Guides -->
+              <circle cx="300" cy="300" r="280" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+              
+              <!-- 7 Sector Arcs -->
+              <path id="sector-plan" class="wheel-sector active" onclick="selectSDLCSector('plan')" 
+                    d="M 300 300 L 300 60 A 240 240 0 0 1 487.6 150.3 Z" 
+                    fill="url(#grad-plan)" stroke="#0f172a" stroke-width="4" />
+              
+              <path id="sector-req" class="wheel-sector" onclick="selectSDLCSector('req')" 
+                    d="M 300 300 L 487.6 150.3 A 240 240 0 0 1 540 300 Z" 
+                    fill="url(#grad-req)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-design" class="wheel-sector" onclick="selectSDLCSector('design')" 
+                    d="M 300 300 L 540 300 A 240 240 0 0 1 487.6 449.7 Z" 
+                    fill="url(#grad-design)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-dev" class="wheel-sector" onclick="selectSDLCSector('dev')" 
+                    d="M 300 300 L 487.6 449.7 A 240 240 0 0 1 300 540 Z" 
+                    fill="url(#grad-dev)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-test" class="wheel-sector" onclick="selectSDLCSector('test')" 
+                    d="M 300 300 L 300 540 A 240 240 0 0 1 112.4 449.7 Z" 
+                    fill="url(#grad-test)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-deploy" class="wheel-sector" onclick="selectSDLCSector('deploy')" 
+                    d="M 300 300 L 112.4 449.7 A 240 240 0 0 1 60 300 Z" 
+                    fill="url(#grad-deploy)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-ops" class="wheel-sector" onclick="selectSDLCSector('ops')" 
+                    d="M 300 300 L 60 300 A 240 240 0 0 1 300 60 Z" 
+                    fill="url(#grad-ops)" stroke="#0f172a" stroke-width="4" />
+
+              <!-- Sector Labels -->
+              <text x="375" y="155" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">規劃</text>
+              <text x="445" y="275" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">需求</text>
+              <text x="415" y="395" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">設計</text>
+              <text x="300" y="460" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">開發</text>
+              <text x="185" y="395" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">測試</text>
+              <text x="155" y="275" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">部署</text>
+              <text x="225" y="155" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">維運</text>
+
+              <!-- Central Core Hub: AI 安全 -->
+              <circle cx="300" cy="300" r="75" fill="#ffffff" stroke="#ef4444" stroke-width="5" filter="drop-shadow(0 4px 16px rgba(239,68,68,0.4))"/>
+              <circle cx="300" cy="300" r="65" fill="#ffffff"/>
+              <text x="300" y="290" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900" letter-spacing="1">AI</text>
+              <text x="300" y="322" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900" letter-spacing="2">安全</text>
+            </svg>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">
+                  💡 點擊上方 7 個扇區（規劃、需求、設計、開發、測試、部署、維運）即時載入右側工程與資安檢核點
+                </div>
+              </div>
+
+              <!-- Right: Real-time Inspection Detail Card -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span id="detail-badge" class="status-badge in_progress" style="font-size:0.75rem;">Phase 1 / 7</span>
+                  <span id="detail-category" style="font-size:0.8rem; color:var(--accent-teal); font-weight:700;">商業價值與治理前置</span>
+                </div>
+                <div id="detail-title" style="font-size:1.4rem; font-weight:900; color:var(--text-main); margin-bottom:12px;">規劃 (Planning)</div>
+                
+                <div style="margin-bottom:14px; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); padding:10px; border-radius:6px; font-size:0.82rem; color:var(--primary-light);">
+                  🤖 <strong>AI 角色與賦能：</strong> <span id="detail-ai">商業分析、可行性分析、風險評估、成本與效益預估、法遵與合規基線自動比對。</span>
+                </div>
+
+                <div style="margin-bottom:12px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:var(--text-main); margin-bottom:6px;">🛠️ 工程與開發實踐：</div>
+                  <div id="detail-engineering" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:#f87171; margin-bottom:6px;">🛡️ 資安控制與防護檢核 (Security)：</div>
+                  <div id="detail-security" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="border-top:1px solid var(--border-color); padding-top:10px; font-size:0.78rem; color:var(--text-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                  <div>🚪 <strong>品質門檻：</strong> <span id="detail-gate" style="color:var(--accent-amber);">Gate G0 (商業與資安立項基線)</span></div>
+                  <div id="detail-standard" style="color:var(--text-muted);">NIST SSDF: PO.1, PO.2 | ISO 27001: 5.1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 2: AI/ML 4-QUADRANT INTERACTIVE WHEEL -->
+          <div id="aisdlc-tab-wheel-aiml" class="aisdlc-view-pane" style="display:none;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:center;" class="viz-grid">
+              <!-- Left: SVG 4-Quadrant Wheel -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; text-align:center;">
+                <div style="font-weight:800; font-size:0.95rem; color:#f59e0b; margin-bottom:10px;">
+                  🧠 點擊象限探索：AI 模型生命週期 (MLOps 治理)
+                </div>
+                <div style="display:flex; justify-content:center;">
+                  <svg id="aiml-svg" viewBox="0 0 600 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl select-none">
+              <defs>
+                <linearGradient id="grad-q1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fbbf24"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+                <linearGradient id="grad-q2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+                <linearGradient id="grad-q3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <linearGradient id="grad-q4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Outer Guide Ring -->
+              <circle cx="300" cy="300" r="275" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+              <!-- Q1: 開發前 (Pre-development) -->
+              <path id="quad-pre" class="wheel-sector active" onclick="selectAIMLQuadrant('pre')"
+                    d="M 300 300 L 300 90 A 210 210 0 0 1 510 300 Z"
+                    fill="url(#grad-q1)" stroke="#0f172a" stroke-width="5"/>
+              
+              <!-- Q2: 開發 (Development) -->
+              <path id="quad-dev" class="wheel-sector" onclick="selectAIMLQuadrant('dev')"
+                    d="M 300 300 L 510 300 A 210 210 0 0 1 300 510 Z"
+                    fill="url(#grad-q2)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Q3: 部署 (Deployment) -->
+              <path id="quad-deploy" class="wheel-sector" onclick="selectAIMLQuadrant('deploy')"
+                    d="M 300 300 L 300 510 A 210 210 0 0 1 90 300 Z"
+                    fill="url(#grad-q3)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Q4: 部署後 (Post-deployment) -->
+              <path id="quad-post" class="wheel-sector" onclick="selectAIMLQuadrant('post')"
+                    d="M 300 300 L 90 300 A 210 210 0 0 1 300 90 Z"
+                    fill="url(#grad-q4)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Quadrant Inner Labels -->
+              <text x="390" y="210" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">開發前</text>
+              <text x="390" y="232" text-anchor="middle" fill="#fef08a" font-size="12" font-weight="600">Pre-development</text>
+
+              <text x="390" y="375" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">開發</text>
+              <text x="390" y="397" text-anchor="middle" fill="#fef08a" font-size="12" font-weight="600">Development</text>
+
+              <text x="210" y="375" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">部署</text>
+              <text x="210" y="397" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="600">Deployment</text>
+
+              <text x="210" y="210" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">部署後</text>
+              <text x="210" y="232" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="600">Post-deployment</text>
+
+              <!-- Outer Orbit Step Nodes -->
+              <text x="420" y="60" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">定義問題</text>
+              <text x="520" y="140" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">蒐集資料</text>
+              <text x="535" y="225" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">資料前處理</text>
+              <text x="540" y="320" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">探索性資料分析</text>
+              <text x="530" y="415" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">選擇模型</text>
+              <text x="470" y="495" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">訓練模型</text>
+              <text x="350" y="555" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">評估模型</text>
+              <text x="180" y="525" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">部署模型</text>
+              <text x="135" y="310" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">透明性與文件化</text>
+              <text x="145" y="175" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">監視與維護模型</text>
+              <text x="245" y="60" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">持續回饋與改善</text>
+
+              <!-- Central Core: 治理 -->
+              <circle cx="300" cy="300" r="55" fill="#ffffff" stroke="#dc2626" stroke-width="4" filter="drop-shadow(0 4px 12px rgba(220,38,38,0.35))"/>
+              <text x="300" y="308" text-anchor="middle" fill="#dc2626" font-size="20" font-weight="900" letter-spacing="2">治理</text>
+            </svg>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">
+                  💡 點擊 4 大象限（開發前、開發、部署、部署後）檢視完整 MLOps 流程與資安治理措施
+                </div>
+              </div>
+
+              <!-- Right: Real-time AIML Detail Card -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span id="aiml-badge" class="status-badge verified" style="font-size:0.75rem;">Quadrant 1 / 4</span>
+                  <span id="aiml-focus" style="font-size:0.8rem; color:var(--accent-amber); font-weight:700;">商業問題定義與資料整備</span>
+                </div>
+                <div id="aiml-title" style="font-size:1.4rem; font-weight:900; color:var(--text-main); margin-bottom:12px;">開發前 (Pre-development)</div>
+                
+                <div style="margin-bottom:12px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:var(--text-main); margin-bottom:6px;">📍 階段標準步驟：</div>
+                  <div id="aiml-steps" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="margin-bottom:12px; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.25); padding:10px; border-radius:6px; font-size:0.82rem; color:var(--accent-amber);">
+                  📋 <strong>核心工作範疇：</strong> <span id="aiml-work">釐清商業目標、預期 KPI、資料來源合法性與權限評估、建立特徵管線。</span>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:#34d399; margin-bottom:6px;">🛡️ 治理與 MLOps 檢核點：</div>
+                  <ul id="aiml-gov" style="margin-left:18px; font-size:0.8rem; color:var(--text-muted); line-height:1.5;"></ul>
+                </div>
+
+                <div style="border-top:1px solid var(--border-color); padding-top:10px; font-size:0.78rem; color:var(--text-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                  <div>🛠️ <strong>推薦工具鏈：</strong> <span id="aiml-tool" style="color:#38bdf8;">Unity Catalog, Delta Lake</span></div>
+                  <div id="aiml-ref" style="color:var(--text-muted);">NIST AI RMF: MAP 1.1 | ISO 42001: A.6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 3: AI -> ML -> DL -> GenAI -> LLM HIERARCHY DIAGRAM -->
+          <div id="aisdlc-tab-hierarchy" class="aisdlc-view-pane" style="display:none;">
+            <div class="ai-hierarchy-outer">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                <span style="font-size:1.15rem; font-weight:900; color:#38bdf8;">🤖 人工智慧 (Artificial Intelligence, AI)</span>
+                <span class="status-badge" style="font-size:0.75rem; background:rgba(56,189,248,0.2); color:#38bdf8;">最外層：廣義智慧系統</span>
+              </div>
+              <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                涵蓋所有能模擬人類智慧行為之技術與系統（如智慧語音助理 Siri/Alexa、自主移動機器人、自駕車導航、專家系統與規則引擎）。
+              </div>
+
+              <!-- ML Level -->
+              <div class="ai-hierarchy-ml">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                  <span style="font-size:1.05rem; font-weight:900; color:#10b981;">📊 機器學習 (Machine Learning, ML)</span>
+                  <span class="status-badge" style="font-size:0.75rem; background:rgba(16,185,129,0.2); color:#10b981;">第二層：從資料中學習規律</span>
+                </div>
+                <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                  利用統計演算法從資料中自動學習特徵與模式（涵蓋監督式學習、非監督式學習、強化學習、隨機森林、XGBoost、特徵工程與水果/圖像分類）。
+                </div>
+
+                <!-- DL Level -->
+                <div class="ai-hierarchy-dl">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                    <span style="font-size:1.0rem; font-weight:900; color:#f59e0b;">🧠 深度學習 (Deep Learning, DL)</span>
+                    <span class="status-badge" style="font-size:0.75rem; background:rgba(245,158,11,0.2); color:#f59e0b;">第三層：多層神經網絡</span>
+                  </div>
+                  <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                    利用多層深層神經網路 (CNN、RNN、Transformer) 自主抽取高階抽象特徵（如複雜圖像識別、貓狗辨識、語音特徵合成）。
+                  </div>
+
+                  <!-- GenAI Level -->
+                  <div class="ai-hierarchy-genai">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                      <span style="font-size:0.95rem; font-weight:900; color:#c084fc;">🎨 生成式 AI (Generative AI, GenAI)</span>
+                      <span class="status-badge" style="font-size:0.75rem; background:rgba(168,85,247,0.2); color:#c084fc;">第四層：創造全新內容</span>
+                    </div>
+                    <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                      能創造全新文字、圖像、音訊、視訊與代碼之多模態模型（如 Runway 視訊生成、Midjourney 繪圖、AIVA 音樂生成、Suno、Stable Diffusion）。
+                    </div>
+
+                    <!-- LLM Level -->
+                    <div class="ai-hierarchy-llm">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                        <span style="font-size:0.95rem; font-weight:900; color:#06b6d4;">💬 大型語言模型 (Large Language Models, LLM)</span>
+                        <span class="status-badge" style="font-size:0.75rem; background:rgba(6,182,212,0.25); color:#06b6d4;">核心：數十億至兆級參數語言核心</span>
+                      </div>
+                      <div style="font-size:0.82rem; color:var(--text-main); font-weight:600;">
+                        以超大規模文字語料預訓練之 Transformer 語言架構（包含 ChatGPT / GPT-4o、Claude 3.5 Sonnet、Google Gemini 1.5/3.7、Microsoft Copilot、開源 LLaMA 3 及 DeepSeek）。
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 4: COMPLIANCE MATRIX -->
+          <div id="aisdlc-tab-matrix" class="aisdlc-view-pane" style="display:none;">
+            <div class="info-card" style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.85rem; text-align:left;">
+                <thead>
+                  <tr style="border-bottom:2px solid var(--border-color); color:var(--primary-light);">
+                    <th style="padding:12px;">生命週期階段</th>
+                    <th style="padding:12px;">ISO 27001 / 27701</th>
+                    <th style="padding:12px;">ISO 42001 (AIMS)</th>
+                    <th style="padding:12px;">NIST CSF / AI RMF</th>
+                    <th style="padding:12px;">OWASP Top 10 LLM / EU AI Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#38bdf8;">規劃 (Planning)</td>
+                    <td style="padding:10px;">A.5.8, A.5.19 供應鏈與資安要求</td>
+                    <td style="padding:10px;">Clause 4, 6 AI 目標與風險評估</td>
+                    <td style="padding:10px;">GV.OC-01, MAP 1.1 背景與風險邊界</td>
+                    <td style="padding:10px;">EU AI Act 風險分級與合規評定</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#10b981;">設計 (Design)</td>
+                    <td style="padding:10px;">A.8.25 安全系統架構與工程原則</td>
+                    <td style="padding:10px;">A.6.2 AI 系統架構設計與邊界審查</td>
+                    <td style="padding:10px;">ID.RA-01, MAP 2.2 威脅建模 (STRIDE)</td>
+                    <td style="padding:10px;">LLM01: Prompt Injection 防護設計</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#f59e0b;">開發 (Dev)</td>
+                    <td style="padding:10px;">A.8.28 安全編碼 (Secure Coding)</td>
+                    <td style="padding:10px;">A.7.2 訓練資料主權與脫敏管理</td>
+                    <td style="padding:10px;">PR.DS-01, MEASURE 2.5 SBOM 物料清單</td>
+                    <td style="padding:10px;">LLM06: 敏感資訊外洩防護 (DLP)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#ec4899;">測試 (Testing)</td>
+                    <td style="padding:10px;">A.8.29 安全測試與弱點掃描 (DAST)</td>
+                    <td style="padding:10px;">A.8.2 模型偏見評測與穩健性驗證</td>
+                    <td style="padding:10px;">PR.IP-01, MEASURE 1.1 邊界模糊測試</td>
+                    <td style="padding:10px;">LLM02: 不安全輸出處置防護</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#a855f7;">部署 (Deploy)</td>
+                    <td style="padding:10px;">A.8.31 環境隔離與變更管理</td>
+                    <td style="padding:10px;">A.9.1 AI 系統部署簽署與驗收</td>
+                    <td style="padding:10px;">PR.AC-01, MANAGE 2.2 產銷履歷驗證</td>
+                    <td style="padding:10px;">LLM05: 供應鏈脆弱性管理 (SLSA)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#06b6d4;">維運 (Ops)</td>
+                    <td style="padding:10px;">A.8.16 活動監控與日誌審計 (SIEM)</td>
+                    <td style="padding:10px;">Clause 9, 10 漂移監控與持續改進</td>
+                    <td style="padding:10px;">DE.CM-01, GOVERN 1.2 AIOps 監控</td>
+                    <td style="padding:10px;">EU AI Act 上線後監控與事件回報</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ATTACHMENT 4: Enterprise Generative AI & Autonomous Agent Governance Policy -->
+        <!-- ========================================== -->
+        <div id="section-policy" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:#10b981; background:linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(6,78,59,0.3) 100%);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(16,185,129,0.25); color:#34d399; border-color:rgba(16,185,129,0.4);">📜 專案附件四：企業級生成式 AI 與 AI Agent 治理管理辦法 (內部正式規範)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">文件編號：ENT-AI-GOV-001 | 治理擁有者：VP 暨 AI 治理委員會</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                企業級生成式 AI 與自主 AI Agent 治理管理辦法
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                (整合 <strong>ISO/IEC 27001:2022 ISMS</strong>、<strong>ISO/IEC 42001:2023 AIMS</strong> 與 <strong>NIST GenAI RMF</strong> 國際合規規範)<br>
+                本管理辦法確立四大核心防線：<strong>身分與密鑰強制隔離 (SSO/MFA/Vault)</strong>、<strong>最小權限與環境分級 (A0～A4 Agent 劃分)</strong>、<strong>人類最終負責與資料遮罩 (L1～L4 分類)</strong>、<strong>全程可稽核與營運持續 (1 小時通報 SLA 與緊急 Kill Switch)</strong>。
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy 1: A0~A4 Agent Autonomous Levels -->
+          <div class="section-title">🤖 AI Agent 自主性五級分級管制標準 (Agent Autonomy Tiers)</div>
+          <div class="cards-grid" style="margin-bottom:20px;">
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#38bdf8; font-size:0.95rem; margin-bottom:4px;">A0 級：輔助查詢型 (Read-Only)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">唯讀模式，僅得查詢公開或 L1～L2 授權文檔，無任何系統寫入或 API 執行權限。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#10b981; font-size:0.95rem; margin-bottom:4px;">A1 級：受控建議型 (Drafting Only)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">可生成草稿、工單建議或代碼，需經權責人員手動檢視與確認後方可由人工複製執行。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#f59e0b; font-size:0.95rem; margin-bottom:4px;">A2 級：半自主審批型 (Approval Gate)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">具備呼叫非破壞性 API 權限，涉及敏感狀態修改時強制觸發 OpenClaw 人工審批流。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#ec4899; font-size:0.95rem; margin-bottom:4px;">A3 級：高度自主沙盒型 (Sandbox)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">僅限隔離沙盒 (Sandbox) 環境內自主執行多步驟任務，全面實施實時監控與硬性配額。</div>
+              </div>
+            </div>
+            <div class="info-card" style="border-color:#ef4444;">
+              <div>
+                <div style="font-weight:800; color:#ef4444; font-size:0.95rem; margin-bottom:4px;">A4 級：完全自主型 (Prohibited)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">無人監管之全自主系統。<strong>【企業目前全面嚴格禁止引進與使用】</strong>。</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy 2: L1~L4 Data Classification & Five Absolute Prohibitions -->
+          <div class="viz-grid">
+            <div class="viz-card">
+              <h3>🚫 五大絕對禁止輸入項目 (Absolute Prohibitions)</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <ul style="margin-left:18px;">
+                  <li><strong>1. 認證與存取憑證</strong>：系統密碼、MFA Token、API Key、私鑰、TLS 憑證、SSH Key、資料庫連線字串。</li>
+                  <li><strong>2. 個人敏感隱私 (PII)</strong>：客戶真實姓名、身分證字號、護照、手機、住址、銀行卡號、員工薪資績效。</li>
+                  <li><strong>3. 未公開商業機密</strong>：併購計畫、董事會議事錄、未公開財務預測、核心定價公式、投標底價。</li>
+                  <li><strong>4. 維運與攻擊性資訊</strong>：未修補之弱點掃描報告 (DAST/SAST)、滲透測試細節、Production DB Dump。</li>
+                  <li><strong>5. 核心智慧財產權</strong>：未公開之核心撮合演算法、核心加密協議代碼、受 NDA 嚴格保護之技術。</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="viz-card">
+              <h3>⚡ 應變機制與緊急阻斷 (Kill Switch & SLA)</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <ul style="margin-left:18px;">
+                  <li><strong>1 小時通報 SLA</strong>：發現誤上傳機密、疑似 Token 外洩、Agent 異常連線時，須於 1 小時內通報資安團隊。</li>
+                  <li><strong>緊急阻斷開關 (Kill Switch)</strong>：SRE/MIS 具備一鍵切斷 API Key、終止 Agent Session 與隔離容器之控制權。</li>
+                  <li><strong>手動替代 SOP</strong>：所有關鍵 AI 輔助流程均備妥傳統人工備援操作路徑，確保業務連續性 (BCP)。</li>
+                  <li><strong>每年 2 小時全員培訓</strong>：全體同仁每年須完成至少 2 小時 AI 資安與倫理培訓並通過測驗。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Initialize interactive sectors
+    window.selectSDLCSector('plan');
+    window.selectAIMLQuadrant('pre');
+  }
+
+  // Sub-navigation Switcher between AISDLC Modules
+  window.switchAISDLCTab = function(moduleKey) {
+    document.querySelectorAll('.aisdlc-subnav-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.id === `btn-aisdlc-${moduleKey}`);
+    });
+
+    const modules = ['wheel-sdlc', 'wheel-aiml', 'hierarchy', 'matrix'];
+    modules.forEach(mId => {
+      const pane = document.getElementById(`aisdlc-tab-${mId}`);
+      if (pane) {
+        pane.style.display = (mId === moduleKey) ? 'block' : 'none';
+      }
+    });
+  };
+
+  // Interactive SDLC Sector Selector
+  window.selectSDLCSector = function(phaseKey) {
+    const data = sdlcData[phaseKey];
+    if (!data) return;
+
+    document.querySelectorAll('#sdlc-svg .wheel-sector').forEach(el => el.classList.remove('active'));
+    const activeSector = document.getElementById('sector-' + phaseKey);
+    if (activeSector) activeSector.classList.add('active');
+
+    const badge = document.getElementById('detail-badge');
+    const title = document.getElementById('detail-title');
+    const cat = document.getElementById('detail-category');
+    const ai = document.getElementById('detail-ai');
+    const std = document.getElementById('detail-standard');
+    const gate = document.getElementById('detail-gate');
+    const engCont = document.getElementById('detail-engineering');
+    const secCont = document.getElementById('detail-security');
+
+    if (badge) badge.innerText = data.badge;
+    if (title) title.innerText = data.title;
+    if (cat) cat.innerText = data.category;
+    if (ai) ai.innerText = data.ai;
+    if (std) std.innerText = data.standard;
+    if (gate) gate.innerText = data.gate;
+
+    if (engCont) {
+      engCont.innerHTML = data.engineering.map(tag => 
+        `<span class="node-pill" style="background:#1e293b; color:#e2e8f0; border:1px solid #334155;">${tag}</span>`
+      ).join('');
+    }
+
+    if (secCont) {
+      secCont.innerHTML = data.security.map(tag => 
+        `<span class="node-pill" style="background:rgba(239,68,68,0.15); color:#fca5a5; border:1px solid rgba(239,68,68,0.4);">${tag}</span>`
+      ).join('');
+    }
+  };
+
+  // Interactive AIML Quadrant Selector
+  window.selectAIMLQuadrant = function(quadKey) {
+    const data = aimlData[quadKey];
+    if (!data) return;
+
+    document.querySelectorAll('#aiml-svg .wheel-sector').forEach(el => el.classList.remove('active'));
+    const activeQuad = document.getElementById('quad-' + quadKey);
+    if (activeQuad) activeQuad.classList.add('active');
+
+    const badge = document.getElementById('aiml-badge');
+    const title = document.getElementById('aiml-title');
+    const focus = document.getElementById('aiml-focus');
+    const work = document.getElementById('aiml-work');
+    const ref = document.getElementById('aiml-ref');
+    const tool = document.getElementById('aiml-tool');
+    const stepsCont = document.getElementById('aiml-steps');
+    const govCont = document.getElementById('aiml-gov');
+
+    if (badge) badge.innerText = data.badge;
+    if (title) title.innerText = data.title;
+    if (focus) focus.innerText = data.focus;
+    if (work) work.innerText = data.work;
+    if (ref) ref.innerText = data.ref;
+    if (tool) tool.innerText = data.tool;
+
+    if (stepsCont) {
+      stepsCont.innerHTML = data.steps.map(s => 
+        `<span class="node-pill" style="background:rgba(245,158,11,0.2); color:#fde68a; border:1px solid rgba(245,158,11,0.5); font-weight:700;">${s}</span>`
+      ).join('');
+    }
+
+    if (govCont) {
+      govCont.innerHTML = data.gov.map(g => `<li>${g}</li>`).join('');
+    }
+  };
+
+  // Main Proposal Sub-tab Switcher
+  window.switchProposalSection = function(sectionKey) {
+    document.querySelectorAll('.proposal-subtab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.id === `subtab-btn-${sectionKey}`);
+    });
+
+    const sections = ['serviceagent', 'chatgpt', 'aisdlc', 'policy'];
+    
+    if (sectionKey === 'all') {
+      sections.forEach(secId => {
+        const el = document.getElementById(`section-${secId}`);
+        if (el) el.style.display = 'block';
+      });
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    } else {
+      sections.forEach(secId => {
+        const el = document.getElementById(`section-${secId}`);
+        if (el) {
+          if (secId === sectionKey) {
+            el.style.display = 'block';
+            const offset = el.getBoundingClientRect().top + window.pageYOffset - 140;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+          } else {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  };
+
+// ==========================================
   function renderProposalView() {
     const page = document.getElementById('page-proposal');
     if (!page) return;
@@ -2062,6 +3862,906 @@
   // ==========================================
   // Dedicated Tab: Enterprise AI & AISDLC Governance Proposals (專案服務建議書)
   // ==========================================
+
+  // AISDLC Datasets
+  const sdlcData = {
+    plan: {
+      badge: "Phase 1 / 7",
+      title: "規劃 (Planning)",
+      category: "商業價值與治理前置",
+      ai: "商業分析、可行性分析、風險評估、成本與效益預估、法遵與合規基線自動比對。",
+      engineering: ["商業分析", "利害關係人管理", "開發團隊組建", "Waterfall 模型", "Agile 敏捷方法", "DevSecOps 文化規劃"],
+      security: ["資安&資料治理", "法律遵循與合規檢核", "資安角色與職責定義", "資訊資產安全等級鑑別 (普/中/高)", "RFP 資安條款與預算配置"],
+      standard: "NIST SSDF: PO.1, PO.2 | ISO 27001: 5.1 | ISO 42001: 5.1",
+      gate: "Gate G0 (商業與資安立項基線)"
+    },
+    req: {
+      badge: "Phase 2 / 7",
+      title: "需求 (Requirements)",
+      category: "需求結構化與安全基線",
+      ai: "需求萃取、會議語音摘要、需求分類、需求追溯矩陣 (RTM) 自動關聯、資安需求檢核與誤用情境 (Misuse Cases) 挖掘。",
+      engineering: ["需求引出 (Elicitation)", "需求記錄 (SRS)", "需求分析與確認", "需求追溯 (Traceability)"],
+      security: ["安全需求明確化 (C.I.A. / 授權 / 會話)", "威脅與風險評估", "軟體安全查檢表 (Checklist)", "個資保護與合規驗收標準 (GDPR/HIPAA)"],
+      standard: "NIST SSDF: PW.1 | ISO 27001: 8.25 | OWASP ASVS",
+      gate: "Gate G1 (需求追溯與安全需求規格)"
+    },
+    design: {
+      badge: "Phase 3 / 7",
+      title: "設計 (Design)",
+      category: "架構強化與威脅建模",
+      ai: "架構安全模式建議、威脅建模自動推導 (STRIDE)、設計審查助手、API / 資料模型安全草稿生成、Clean Core 架構驗證。",
+      engineering: ["系統分析 (SA)", "V & V (驗證與確認)", "變更管理", "三層式架構", "虛擬機 (VM) / Container 容器架構", "資料庫結構設計", "資訊建模 (Data Modeling)", "設計審查 (Design Review)"],
+      security: ["雲端安全架構", "Serverless 安全配置", "存取管理 (IAM)", "零信任 (Zero Trust) 邊界", "資料安全與密碼學 (Encryption/KMS)", "威脅建模 (STRIDE / Attack Surface)", "安全設計原則 (Least Privilege / Defense in Depth)"],
+      standard: "NIST SSDF: PW.2, PS.1 | ISO 27001: 8.26 | ISO 42001: B.6",
+      gate: "Gate G1.5 (架構審查與威脅模型核准)"
+    },
+    dev: {
+      badge: "Phase 4 / 7",
+      title: "開發 (Development)",
+      category: "安全編碼與供應鏈防護",
+      ai: "AI 程式碼助手 (Copilot/Cursor)、單元測試自動生成、即時 Code Review、Secret/憑證外洩即時阻斷、相依套件弱點預測與自動修補建議。",
+      engineering: ["程式語言與開發框架選型", "整合開發環境 (IDE)", "Git 版本控制與分支策略", "同行代碼審查 (Peer Code Review)"],
+      security: ["軟體供應鏈安全", "軟體物料清單 (SBOM: CycloneDX/SPDX)", "金鑰與 Secret 管理 (Vault/GitGuardian)", "安全編碼實踐 (Secure Coding Standards)", "健全例外與錯誤處理", "OWASP Top 10 防護 (SQLi, XSS, CSRF, SSRF)"],
+      standard: "NIST SSDF: PS.2, PW.4, PW.5 | ISO 27001: 8.28 | SLSA Level 3",
+      gate: "Gate G2 (Clean Core、Secret Scan、SAST 門檻)"
+    },
+    test: {
+      badge: "Phase 5 / 7",
+      title: "測試 (Testing)",
+      category: "全面驗證與對抗測試",
+      ai: "自動生成極端測試案例、單元/整合測試自動化、智慧模糊測試 (AI Fuzzing)、弱點關聯與誤報過濾、AI Red Teaming 對抗性攻擊測試。",
+      engineering: ["單元測試 (Unit Test)", "整合測試 (介面/回歸測試)", "安裝與相容性測試", "使用者驗收測試 (UAT)", "系統功能測試"],
+      security: ["靜態應用安全測試 (SAST)", "動態應用安全測試 (DAST)", "互動式安全測試 (IAST)", "原始碼弱點掃描 (SCA)", "壓力與負載測試", "模糊測試 (Fuzzing)", "合成交易驗證", "Misuse Case 濫用情境測試"],
+      standard: "NIST SSDF: PW.7, PW.8 | ISO 27001: 8.29 | ISO 42001: B.8",
+      gate: "Gate G3 (動態弱掃無中高風險、UAT 資安通過)"
+    },
+    deploy: {
+      badge: "Phase 6 / 7",
+      title: "部署 (Deployment)",
+      category: "環境加固與安全發布",
+      ai: "IaC 安全語法與權限檢核、環境組態漂移預測、發布風險評估、Canary / Blue-Green 漸進發布智慧決策與自動 Rollback 觸發。",
+      engineering: ["部署環境準備 (Staging / Prod)", "配置與組態管理 (CMDB)", "CI/CD 自動化 Pipeline", "Canary / Blue-Green 發布"],
+      security: ["基礎設施即程式碼 (IaC Security: Terraform/Checkov)", "作業系統與伺服器加固 (CIS Benchmarks)", "CWE (常見弱點枚舉) 比對", "CVE (已知漏洞) 防堵", "更新與安全修補程序", "軟體製品數位簽章 (Cosign/Sigstore)"],
+      standard: "NIST SSDF: PS.3, PW.6 | ISO 27001: 8.9, 8.31 | CIS Benchmarks",
+      gate: "Gate G4 (IaC 掃描、容器簽名與發布審批)"
+    },
+    ops: {
+      badge: "Phase 7 / 7",
+      title: "維運 (Operations)",
+      category: "持續監控、防禦與營運韌性",
+      ai: "AIOps 智能維運、全鏈路日誌智慧分析 (Log Anomaly)、事件即時關聯與根因分析 (RCA)、智慧告警降噪、即時防禦修補腳本建議。",
+      engineering: ["Issue Tracking 追蹤系統", "BC (營運持續計畫)", "IR (資安事件應變)", "DR (災難復原)", "全方位監控與日誌收集 (APM/OpenTelemetry)"],
+      security: ["資安稽核 (ISMS Audit)", "全員資安教育培訓", "紅藍隊演練 (Red/Blue Teaming)", "外部滲透測試 (Pen-testing)", "惡意程式防護 (病毒/蠕蟲/木馬/勒索軟體)", "DDoS 防禦與清洗", "社交工程防禦與釣魚演練", "執行期自我防護 (RASP)"],
+      standard: "NIST SSDF: RV.1, RV.2, RV.3 | ISO 27001: 8.16, 5.24 | ISO 42001: 9.1",
+      gate: "Gate G5 (AIOps 持續監控、IR/DR 演練與漏洞修補)"
+    }
+  };
+
+  const aimlData = {
+    pre: {
+      badge: "Quadrant 1 / 4",
+      title: "開發前 (Pre-development)",
+      focus: "商業問題定義與資料整備",
+      steps: ["1. 定義問題", "2. 蒐集資料", "3. 資料前處理", "4. 探索性資料分析 (EDA)"],
+      work: "釐清商業目標、預期 KPI (如 Precision 提升至 70%)、資料來源合法性與權限評估、建立可重現的資料清洗與特徵管線、EDA 探索特徵分布以避免未來資料洩漏 (Data Leakage)。",
+      gov: [
+        "落實資料分類分級，隔離並遮罩敏感個資 (PII)",
+        "評估資料來源之資料血緣 (Data Lineage) 與智慧財產權合規性",
+        "建立受控之特徵庫 (Feature Store)，確保訓練與線上推論一致性",
+        "評估潛在樣本偏誤 (Bias) 與族群代表性失衡風險"
+      ],
+      ref: "NIST AI RMF: MAP 1.1, MAP 2.1 | ISO 42001: A.6 (AI 系統規劃)",
+      tool: "Unity Catalog, Delta Lake, Lakeflow Designer"
+    },
+    dev: {
+      badge: "Quadrant 2 / 4",
+      title: "開發 (Development)",
+      focus: "模型選型、實驗追蹤與多維驗證",
+      steps: ["5. 選擇模型 / 基礎模型", "6. 訓練模型與調參", "7. 評估模型 (Evaluation)"],
+      work: "基於資料特性選擇演算法或預訓練基礎模型 (Foundation Models)、微調 (Fine-tuning) 或 RAG 架構建置、超參數最佳化、記錄完整實驗軌跡 (Parameters / Metrics / Artifacts)。",
+      gov: [
+        "使用 MLflow / Weights & Biases 進行 100% 實驗版本可追溯性記錄",
+        "評估指標除準確度外，必須涵蓋延遲、推論成本、穩健性與公平性測試",
+        "實施 AI 安全紅隊測試 (Red Teaming) 與對抗樣本攻擊防禦檢驗",
+        "產出模型卡 (Model Card) 與詳細評估報告供跨部門審查"
+      ],
+      ref: "NIST AI RMF: MEASURE 2.5, 2.7 | ISO 42001: B.7 (開發與評估)",
+      tool: "MLflow, Ray, HuggingFace Hub, PyTorch"
+    },
+    deploy: {
+      badge: "Quadrant 3 / 4",
+      title: "部署 (Deployment)",
+      focus: "模型登錄、測試與安全上線",
+      steps: ["8. 部署模型 (Serving)", "9. 透明性與文件化 (Model Registry)"],
+      work: "將評估通過之模型封裝為即時 REST API 或批次推論管線、在 Staging 環境進行端對端整合測試、執行 Shadow Deployment 或 A/B Testing、完成上線簽核。",
+      gov: [
+        "於 Model Registry 明確標註生命週期狀態 (Staging / Production) 並綁定審批鏈",
+        "部署動態 LLM / 模型防護閘道 (LLM Firewall: 防範 Prompt Injection / 毒性輸出)",
+        "實施嚴格的 API 存取控制 (RBAC / Token Rate Limiting)",
+        "備妥即時回滾 (Rollback) 與降級機制，防範推論異常導致業務中斷"
+      ],
+      ref: "NIST AI RMF: MANAGE 2.2, 3.2 | ISO 42001: B.8 (部署與驗證)",
+      tool: "Databricks Model Serving, vLLM, KServe, Triton"
+    },
+    post: {
+      badge: "Quadrant 4 / 4",
+      title: "部署後 (Post-deployment)",
+      focus: "持續監控、漂移偵測與再訓練閉環",
+      steps: ["10. 監視與維護模型 (Monitoring)", "11. 持續回饋與改善 (Continuous Feedback)"],
+      work: "即時採集線上推論日誌 (Inference Tables)、監控特徵漂移 (Data Drift) 與概念漂移 (Concept Drift)、收集真實業務回饋、自動化觸發再訓練管線或模型退役流程。",
+      gov: [
+        "監控 Training-Serving Skew (訓練與線上推論特徵偏離)",
+        "完整記錄推論輸入/輸出日誌 (敏感資料遮罩保存) 供合規稽核追溯",
+        "定義明確的自動化再訓練 (Automated Retraining) 觸發閾值與關卡",
+        "建立模型退役 (Retirement) 與歷史權重封存歸檔政策"
+      ],
+      ref: "NIST AI RMF: MANAGE 4.2 | ISO 42001: 9.1 (監控、衡量與持續改善)",
+      tool: "Inference Tables, Evidently AI, Prometheus, Grafana"
+    }
+  };
+
+  function renderProposalView() {
+    const page = document.getElementById('page-proposal');
+    if (!page) return;
+
+    page.innerHTML = `
+      <div class="container" style="padding-top: 10px;">
+        <!-- Interactive Sub-tab Switcher -->
+        <div class="proposal-subnav">
+          <button class="proposal-subtab-btn active" id="subtab-btn-all" onclick="window.switchProposalSection('all')">
+            📑 展開全覽 (All)
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-serviceagent" onclick="window.switchProposalSection('serviceagent')">
+            🤖 建議書一：ServiceAgent AI 中控平台
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-chatgpt" onclick="window.switchProposalSection('chatgpt')">
+            🚀 建議書二：ChatGPT Enterprise 藍圖
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-aisdlc" onclick="window.switchProposalSection('aisdlc')">
+            🛡️ 建議書三：AISDLC 雙軌開發治理 (含互動圖表)
+          </button>
+          <button class="proposal-subtab-btn" id="subtab-btn-policy" onclick="window.switchProposalSection('policy')">
+            📜 附件四：AI 治理辦法與規範
+          </button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 1: ServiceAgent Enterprise AI Platform -->
+        <!-- ========================================== -->
+        <div id="section-serviceagent" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:var(--primary-light);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">📄 建議書一：企業董事會專案服務建議書 V1.0 (正式版)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">專案負責人：廖倫豪 博士 (Howard Liao, Ph.D.)</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                ServiceAgent 企業級生成式 AI 中控平台架構與落地建議書 (高科技製造業通用版)
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本建議書由廖倫豪博士親自為高科技製造與企業董事會規劃，旨在建立「高可控、可治理、具資安防護網」的企業級 AI 中央神經系統。結合 <strong>Enterprise GPT (智能決策中控)</strong>、<strong>Enterprise KM (25+ 格式混合 RAG 檢索)</strong>、<strong>AI Meeting (會議語音轉錄回寫)</strong>，並串接 <strong>OpenClaw (人機複核安全閘道)</strong> 與 <strong>Hermes Agent (自主學習型 Agent)</strong>，完全對齊 ISO 27001/27701、ISO 42001 (AIMS)、NIST CSF 及歐盟 AI 法案 (EU AI Act)。
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-grid" style="margin-bottom:20px;">
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏛️</div>
+              <div class="bento-lbl">統一中控治理</div>
+              <div class="bento-desc">集中管理多 LLM 模型路由調度、KM 知識庫與 Multi-Agent 流程編排，告別 API Key 混亂。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏭</div>
+              <div class="bento-lbl">產線維修自動化</div>
+              <div class="bento-desc">SCADA 異常排查時間縮短 80%，AI 自動產出 SOP 排查建議，經 OpenClaw 人工核准後執行。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🏗️</div>
+              <div class="bento-lbl">領域知識智能化</div>
+              <div class="bento-desc">萃取高科技製造領域專家經驗，支援 25+ 檔案 Parser 與圖表表格重構，實現 95% 精準度 RAG。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-size:1.6rem; margin-bottom:4px;">🛡️</div>
+              <div class="bento-lbl">全面合規達標</div>
+              <div class="bento-desc">對齊 ISO 27001、ISO 42001 (AIMS)、NIST CSF、GDPR 與 EU AI Act，建立完整的安全 Guardrails。</div>
+            </div>
+          </div>
+
+          <div class="info-card" style="padding:20px;">
+            <div style="font-weight:800; color:var(--text-main); font-size:1.05rem; margin-bottom:14px;">🏗️ 三層系統架構與人機複核閘道 (3-Tier Architecture)</div>
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-bottom:16px;">
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #38bdf8;">
+                <div style="font-weight:800; color:#38bdf8; margin-bottom:4px; font-size:0.9rem;">L1 前端互動層 (Interaction)</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">支援企業 WebChat、Microsoft Teams、Slack；透過 OpenClaw 與 HermesClaw 整合外部通訊管道。</div>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #10b981;">
+                <div style="font-weight:800; color:#10b981; margin-bottom:4px; font-size:0.9rem;">L2 AI Orchestration 中台層</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">運行 ServiceAgent 核心服務；提供安全治理（SSO、RBAC、Guardrails、DLP 遮罩）；向量資料庫與多模型路由。</div>
+              </div>
+              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #f59e0b;">
+                <div style="font-weight:800; color:#f59e0b; margin-bottom:4px; font-size:0.9rem;">L3 後端與 Agent Runtime 層</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.4;">OpenClaw 人機複核執行器 (Human-in-the-Loop)、Hermes 學習型 Agent；對接 MES, SCADA, ERP, PLM, ITSM。</div>
+              </div>
+            </div>
+            <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); padding:12px; border-radius:var(--radius-sm); font-size:0.82rem; color:var(--accent-amber);">
+              🔒 <strong>Human-in-the-Loop 安全人機複核機制：</strong> Enterprise GPT 不具備直接修改底層系統資料的權限，所有敏感指令強制經由 OpenClaw 觸發審批工作流，主管核准後才對底層進行實質修改。
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 2: ChatGPT Enterprise & Agent Blueprint -->
+        <!-- ========================================== -->
+        <div id="section-chatgpt" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:var(--accent-teal);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(168,85,247,0.2); color:#c084fc;">🚀 建議書二：ChatGPT Enterprise & Agent 企業落地與治理藍圖</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">大型電商與數位生活集團 (跨國 EC 平台) 專案 | 顧問負責人：廖倫豪 博士</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                ChatGPT Enterprise & Codex 企業級 AI 應用落地、治理與普及藍圖
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本戰略藍圖旨在協助大型電商與集團事業體從「個人 AI 工具」升級為「可治理、可衡量、可普及」的企業級生成式 AI 平台。整合 <strong>ChatGPT Enterprise (安全知識工作入口)</strong>、<strong>Codex (研發、測試、文件與工程流程自動化)</strong>、<strong>GPTs Agent Workspace (專屬 AI 助理)</strong> 與 <strong>Automation Agents (跨系統流程自動化)</strong>，建立 100% Zero Data Training 安全數據隔離與 Champion 種子網絡。
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-grid" style="margin-bottom:20px;">
+            <div class="bento-card">
+              <div style="font-weight:800; color:#38bdf8; font-size:0.95rem; margin-bottom:4px;">ChatGPT Enterprise</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">全企業安全知識工作入口。連結企業知識平台、知識問答、文件生成與研究分析，全員生產力倍增。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#10b981; font-size:0.95rem; margin-bottom:4px;">Codex 工程自動化</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">研發、測試、除錯與維運自動化。支援 Agent 工作坊與 CI/CD Code Review 輔助，加速交付效率。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#f59e0b; font-size:0.95rem; margin-bottom:4px;">GPTs Agent Workspace</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">專屬 AI 助理模組。打包部門知識、SOP 與最佳實踐 (Golden Samples)，建立可複製工作模式。</div>
+            </div>
+            <div class="bento-card">
+              <div style="font-weight:800; color:#a855f7; font-size:0.95rem; margin-bottom:4px;">Automation Agents</div>
+              <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">跨系統流程自動化。串接企業資料庫與 SaaS 工具，自主執行多步驟任務，提升流程營運綜效。</div>
+            </div>
+          </div>
+
+          <div class="viz-grid">
+            <div class="viz-card">
+              <h3>📊 三階企業級普及推動模型</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <p><strong>Level 1 (個人應用)</strong>：AI 職能素養培訓、小專題實作與工作流打包。</p>
+                <p><strong>Level 2 (部門分流)</strong>：流程需求盤點、Golden Sample Agent POC、資安 Gate Review。</p>
+                <p><strong>Level 3 (全體普及)</strong>：全體 ChatGPT Enterprise / Codex 導入、跨部門流程再造。</p>
+              </div>
+            </div>
+            <div class="viz-card">
+              <h3>🛡️ 四大可稽核合規治理機制</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <p><strong>1. RBAC & Policy</strong>：角色權限控管、審批門檻與 AGENTS.md Repo 規範。</p>
+                <p><strong>2. Seat & Credit Pool</strong>：依角色限制 Credit 與週用量 Limit/Alert/Cap。</p>
+                <p><strong>3. Analytics API</strong>：使用率趨勢追蹤、Token Cost 訊號與 PR activity 指標。</p>
+                <p><strong>4. Compliance API</strong>：活動日誌串接 SIEM / DLP / eDiscovery，100% 可觀測可調查。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROPOSAL 3: AISDLC DevSecOps & AI Lifecycle Governance (WITH INTERACTIVE WHEELS & DIAGRAMS) -->
+        <!-- ========================================== -->
+        <div id="section-aisdlc" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:#a855f7; background:linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(30,27,75,0.4) 100%);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(168,85,247,0.25); color:#c084fc; border-color:rgba(168,85,247,0.4);">🛡️ 建議書三：AI in SDLC 企業級雙軌全程治理架構 (AISDLC 藍圖)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">架構負責人：廖倫豪 博士 (Howard Liao, Ph.D.)</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                AI in SDLC with DevSecOps & AI Lifecycle 企業級雙軌治理藍圖 (全動態互動視覺版)
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                本架構融合<strong>安全軟體開發生命週期 (Secure SDLC + DevSecOps 7 階段輪盤)</strong>、<strong>AI 模型開發生命週期 (AI/ML Lifecycle 4 象限輪盤)</strong> 與 <strong>AI ➔ ML ➔ DL ➔ GenAI ➔ LLM 包含關係階層圖</strong>，建立企業級「全程治理底座 (Foundation Governance & Guardrails)」。
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-module Filter Pills for AISDLC -->
+          <div style="display:flex; gap:8px; margin-bottom:20px; justify-content:center; flex-wrap:wrap;">
+            <button class="aisdlc-subnav-btn active" id="btn-aisdlc-wheel-sdlc" onclick="window.switchAISDLCTab('wheel-sdlc')">
+              🎡 模組一：安全 SDLC 7 階段互動輪盤
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-wheel-aiml" onclick="window.switchAISDLCTab('wheel-aiml')">
+              🧠 模組二：AI 模型生命週期 4 象限輪盤
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-hierarchy" onclick="window.switchAISDLCTab('hierarchy')">
+              📦 模組三：AI ➔ ML ➔ DL ➔ GenAI ➔ LLM 階層圖
+            </button>
+            <button class="aisdlc-subnav-btn" id="btn-aisdlc-matrix" onclick="window.switchAISDLCTab('matrix')">
+              🌐 模組四：國際合規標準對應矩陣
+            </button>
+          </div>
+
+          <!-- MODULE 1: SDLC 7-STAGE INTERACTIVE WHEEL -->
+          <div id="aisdlc-tab-wheel-sdlc" class="aisdlc-view-pane" style="display:block;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:center;" class="viz-grid">
+              <!-- Left: SVG Interactive Wheel -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; text-align:center;">
+                <div style="font-weight:800; font-size:0.95rem; color:#38bdf8; margin-bottom:10px;">
+                  🎡 點擊扇區探索：安全 SDLC 7 階段與 AI 賦能
+                </div>
+                <div style="display:flex; justify-content:center;">
+                  <svg id="sdlc-svg" viewBox="0 0 600 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl select-none">
+              <defs>
+                <!-- Gradients for 7 sectors -->
+                <linearGradient id="grad-plan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+                <linearGradient id="grad-req" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fbbf24"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+                <linearGradient id="grad-design" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+                <linearGradient id="grad-dev" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0369a1"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <linearGradient id="grad-test" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#1e40af"/>
+                </linearGradient>
+                <linearGradient id="grad-deploy" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#dc2626"/>
+                  <stop offset="100%" stop-color="#b91c1c"/>
+                </linearGradient>
+                <linearGradient id="grad-ops" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ea580c"/>
+                  <stop offset="100%" stop-color="#dc2626"/>
+                </linearGradient>
+
+                <!-- Arrow markers -->
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <!-- Background Guides -->
+              <circle cx="300" cy="300" r="280" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+              
+              <!-- 7 Sector Arcs -->
+              <path id="sector-plan" class="wheel-sector active" onclick="selectSDLCSector('plan')" 
+                    d="M 300 300 L 300 60 A 240 240 0 0 1 487.6 150.3 Z" 
+                    fill="url(#grad-plan)" stroke="#0f172a" stroke-width="4" />
+              
+              <path id="sector-req" class="wheel-sector" onclick="selectSDLCSector('req')" 
+                    d="M 300 300 L 487.6 150.3 A 240 240 0 0 1 540 300 Z" 
+                    fill="url(#grad-req)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-design" class="wheel-sector" onclick="selectSDLCSector('design')" 
+                    d="M 300 300 L 540 300 A 240 240 0 0 1 487.6 449.7 Z" 
+                    fill="url(#grad-design)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-dev" class="wheel-sector" onclick="selectSDLCSector('dev')" 
+                    d="M 300 300 L 487.6 449.7 A 240 240 0 0 1 300 540 Z" 
+                    fill="url(#grad-dev)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-test" class="wheel-sector" onclick="selectSDLCSector('test')" 
+                    d="M 300 300 L 300 540 A 240 240 0 0 1 112.4 449.7 Z" 
+                    fill="url(#grad-test)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-deploy" class="wheel-sector" onclick="selectSDLCSector('deploy')" 
+                    d="M 300 300 L 112.4 449.7 A 240 240 0 0 1 60 300 Z" 
+                    fill="url(#grad-deploy)" stroke="#0f172a" stroke-width="4" />
+
+              <path id="sector-ops" class="wheel-sector" onclick="selectSDLCSector('ops')" 
+                    d="M 300 300 L 60 300 A 240 240 0 0 1 300 60 Z" 
+                    fill="url(#grad-ops)" stroke="#0f172a" stroke-width="4" />
+
+              <!-- Sector Labels -->
+              <text x="375" y="155" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">規劃</text>
+              <text x="445" y="275" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">需求</text>
+              <text x="415" y="395" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">設計</text>
+              <text x="300" y="460" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">開發</text>
+              <text x="185" y="395" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">測試</text>
+              <text x="155" y="275" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">部署</text>
+              <text x="225" y="155" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="800" pointer-events="none" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.8))">維運</text>
+
+              <!-- Central Core Hub: AI 安全 -->
+              <circle cx="300" cy="300" r="75" fill="#ffffff" stroke="#ef4444" stroke-width="5" filter="drop-shadow(0 4px 16px rgba(239,68,68,0.4))"/>
+              <circle cx="300" cy="300" r="65" fill="#ffffff"/>
+              <text x="300" y="290" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900" letter-spacing="1">AI</text>
+              <text x="300" y="322" text-anchor="middle" fill="#dc2626" font-size="21" font-weight="900" letter-spacing="2">安全</text>
+            </svg>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">
+                  💡 點擊上方 7 個扇區（規劃、需求、設計、開發、測試、部署、維運）即時載入右側工程與資安檢核點
+                </div>
+              </div>
+
+              <!-- Right: Real-time Inspection Detail Card -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span id="detail-badge" class="status-badge in_progress" style="font-size:0.75rem;">Phase 1 / 7</span>
+                  <span id="detail-category" style="font-size:0.8rem; color:var(--accent-teal); font-weight:700;">商業價值與治理前置</span>
+                </div>
+                <div id="detail-title" style="font-size:1.4rem; font-weight:900; color:var(--text-main); margin-bottom:12px;">規劃 (Planning)</div>
+                
+                <div style="margin-bottom:14px; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.25); padding:10px; border-radius:6px; font-size:0.82rem; color:var(--primary-light);">
+                  🤖 <strong>AI 角色與賦能：</strong> <span id="detail-ai">商業分析、可行性分析、風險評估、成本與效益預估、法遵與合規基線自動比對。</span>
+                </div>
+
+                <div style="margin-bottom:12px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:var(--text-main); margin-bottom:6px;">🛠️ 工程與開發實踐：</div>
+                  <div id="detail-engineering" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:#f87171; margin-bottom:6px;">🛡️ 資安控制與防護檢核 (Security)：</div>
+                  <div id="detail-security" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="border-top:1px solid var(--border-color); padding-top:10px; font-size:0.78rem; color:var(--text-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                  <div>🚪 <strong>品質門檻：</strong> <span id="detail-gate" style="color:var(--accent-amber);">Gate G0 (商業與資安立項基線)</span></div>
+                  <div id="detail-standard" style="color:var(--text-muted);">NIST SSDF: PO.1, PO.2 | ISO 27001: 5.1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 2: AI/ML 4-QUADRANT INTERACTIVE WHEEL -->
+          <div id="aisdlc-tab-wheel-aiml" class="aisdlc-view-pane" style="display:none;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:center;" class="viz-grid">
+              <!-- Left: SVG 4-Quadrant Wheel -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; text-align:center;">
+                <div style="font-weight:800; font-size:0.95rem; color:#f59e0b; margin-bottom:10px;">
+                  🧠 點擊象限探索：AI 模型生命週期 (MLOps 治理)
+                </div>
+                <div style="display:flex; justify-content:center;">
+                  <svg id="aiml-svg" viewBox="0 0 600 600" class="w-full max-w-[500px] h-auto drop-shadow-2xl select-none">
+              <defs>
+                <linearGradient id="grad-q1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fbbf24"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+                <linearGradient id="grad-q2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+                <linearGradient id="grad-q3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
+                </linearGradient>
+                <linearGradient id="grad-q4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0284c7"/>
+                  <stop offset="100%" stop-color="#0369a1"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Outer Guide Ring -->
+              <circle cx="300" cy="300" r="275" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+              <!-- Q1: 開發前 (Pre-development) -->
+              <path id="quad-pre" class="wheel-sector active" onclick="selectAIMLQuadrant('pre')"
+                    d="M 300 300 L 300 90 A 210 210 0 0 1 510 300 Z"
+                    fill="url(#grad-q1)" stroke="#0f172a" stroke-width="5"/>
+              
+              <!-- Q2: 開發 (Development) -->
+              <path id="quad-dev" class="wheel-sector" onclick="selectAIMLQuadrant('dev')"
+                    d="M 300 300 L 510 300 A 210 210 0 0 1 300 510 Z"
+                    fill="url(#grad-q2)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Q3: 部署 (Deployment) -->
+              <path id="quad-deploy" class="wheel-sector" onclick="selectAIMLQuadrant('deploy')"
+                    d="M 300 300 L 300 510 A 210 210 0 0 1 90 300 Z"
+                    fill="url(#grad-q3)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Q4: 部署後 (Post-deployment) -->
+              <path id="quad-post" class="wheel-sector" onclick="selectAIMLQuadrant('post')"
+                    d="M 300 300 L 90 300 A 210 210 0 0 1 300 90 Z"
+                    fill="url(#grad-q4)" stroke="#0f172a" stroke-width="5"/>
+
+              <!-- Quadrant Inner Labels -->
+              <text x="390" y="210" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">開發前</text>
+              <text x="390" y="232" text-anchor="middle" fill="#fef08a" font-size="12" font-weight="600">Pre-development</text>
+
+              <text x="390" y="375" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">開發</text>
+              <text x="390" y="397" text-anchor="middle" fill="#fef08a" font-size="12" font-weight="600">Development</text>
+
+              <text x="210" y="375" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">部署</text>
+              <text x="210" y="397" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="600">Deployment</text>
+
+              <text x="210" y="210" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">部署後</text>
+              <text x="210" y="232" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="600">Post-deployment</text>
+
+              <!-- Outer Orbit Step Nodes -->
+              <text x="420" y="60" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">定義問題</text>
+              <text x="520" y="140" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">蒐集資料</text>
+              <text x="535" y="225" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">資料前處理</text>
+              <text x="540" y="320" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">探索性資料分析</text>
+              <text x="530" y="415" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">選擇模型</text>
+              <text x="470" y="495" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">訓練模型</text>
+              <text x="350" y="555" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">評估模型</text>
+              <text x="180" y="525" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">部署模型</text>
+              <text x="135" y="310" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">透明性與文件化</text>
+              <text x="145" y="175" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">監視與維護模型</text>
+              <text x="245" y="60" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">持續回饋與改善</text>
+
+              <!-- Central Core: 治理 -->
+              <circle cx="300" cy="300" r="55" fill="#ffffff" stroke="#dc2626" stroke-width="4" filter="drop-shadow(0 4px 12px rgba(220,38,38,0.35))"/>
+              <text x="300" y="308" text-anchor="middle" fill="#dc2626" font-size="20" font-weight="900" letter-spacing="2">治理</text>
+            </svg>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">
+                  💡 點擊 4 大象限（開發前、開發、部署、部署後）檢視完整 MLOps 流程與資安治理措施
+                </div>
+              </div>
+
+              <!-- Right: Real-time AIML Detail Card -->
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span id="aiml-badge" class="status-badge verified" style="font-size:0.75rem;">Quadrant 1 / 4</span>
+                  <span id="aiml-focus" style="font-size:0.8rem; color:var(--accent-amber); font-weight:700;">商業問題定義與資料整備</span>
+                </div>
+                <div id="aiml-title" style="font-size:1.4rem; font-weight:900; color:var(--text-main); margin-bottom:12px;">開發前 (Pre-development)</div>
+                
+                <div style="margin-bottom:12px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:var(--text-main); margin-bottom:6px;">📍 階段標準步驟：</div>
+                  <div id="aiml-steps" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                </div>
+
+                <div style="margin-bottom:12px; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.25); padding:10px; border-radius:6px; font-size:0.82rem; color:var(--accent-amber);">
+                  📋 <strong>核心工作範疇：</strong> <span id="aiml-work">釐清商業目標、預期 KPI、資料來源合法性與權限評估、建立特徵管線。</span>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <div style="font-weight:700; font-size:0.82rem; color:#34d399; margin-bottom:6px;">🛡️ 治理與 MLOps 檢核點：</div>
+                  <ul id="aiml-gov" style="margin-left:18px; font-size:0.8rem; color:var(--text-muted); line-height:1.5;"></ul>
+                </div>
+
+                <div style="border-top:1px solid var(--border-color); padding-top:10px; font-size:0.78rem; color:var(--text-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                  <div>🛠️ <strong>推薦工具鏈：</strong> <span id="aiml-tool" style="color:#38bdf8;">Unity Catalog, Delta Lake</span></div>
+                  <div id="aiml-ref" style="color:var(--text-muted);">NIST AI RMF: MAP 1.1 | ISO 42001: A.6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 3: AI -> ML -> DL -> GenAI -> LLM HIERARCHY DIAGRAM -->
+          <div id="aisdlc-tab-hierarchy" class="aisdlc-view-pane" style="display:none;">
+            <div class="ai-hierarchy-outer">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                <span style="font-size:1.15rem; font-weight:900; color:#38bdf8;">🤖 人工智慧 (Artificial Intelligence, AI)</span>
+                <span class="status-badge" style="font-size:0.75rem; background:rgba(56,189,248,0.2); color:#38bdf8;">最外層：廣義智慧系統</span>
+              </div>
+              <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                涵蓋所有能模擬人類智慧行為之技術與系統（如智慧語音助理 Siri/Alexa、自主移動機器人、自駕車導航、專家系統與規則引擎）。
+              </div>
+
+              <!-- ML Level -->
+              <div class="ai-hierarchy-ml">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                  <span style="font-size:1.05rem; font-weight:900; color:#10b981;">📊 機器學習 (Machine Learning, ML)</span>
+                  <span class="status-badge" style="font-size:0.75rem; background:rgba(16,185,129,0.2); color:#10b981;">第二層：從資料中學習規律</span>
+                </div>
+                <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                  利用統計演算法從資料中自動學習特徵與模式（涵蓋監督式學習、非監督式學習、強化學習、隨機森林、XGBoost、特徵工程與水果/圖像分類）。
+                </div>
+
+                <!-- DL Level -->
+                <div class="ai-hierarchy-dl">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                    <span style="font-size:1.0rem; font-weight:900; color:#f59e0b;">🧠 深度學習 (Deep Learning, DL)</span>
+                    <span class="status-badge" style="font-size:0.75rem; background:rgba(245,158,11,0.2); color:#f59e0b;">第三層：多層神經網絡</span>
+                  </div>
+                  <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                    利用多層深層神經網路 (CNN、RNN、Transformer) 自主抽取高階抽象特徵（如複雜圖像識別、貓狗辨識、語音特徵合成）。
+                  </div>
+
+                  <!-- GenAI Level -->
+                  <div class="ai-hierarchy-genai">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                      <span style="font-size:0.95rem; font-weight:900; color:#c084fc;">🎨 生成式 AI (Generative AI, GenAI)</span>
+                      <span class="status-badge" style="font-size:0.75rem; background:rgba(168,85,247,0.2); color:#c084fc;">第四層：創造全新內容</span>
+                    </div>
+                    <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
+                      能創造全新文字、圖像、音訊、視訊與代碼之多模態模型（如 Runway 視訊生成、Midjourney 繪圖、AIVA 音樂生成、Suno、Stable Diffusion）。
+                    </div>
+
+                    <!-- LLM Level -->
+                    <div class="ai-hierarchy-llm">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap;">
+                        <span style="font-size:0.95rem; font-weight:900; color:#06b6d4;">💬 大型語言模型 (Large Language Models, LLM)</span>
+                        <span class="status-badge" style="font-size:0.75rem; background:rgba(6,182,212,0.25); color:#06b6d4;">核心：數十億至兆級參數語言核心</span>
+                      </div>
+                      <div style="font-size:0.82rem; color:var(--text-main); font-weight:600;">
+                        以超大規模文字語料預訓練之 Transformer 語言架構（包含 ChatGPT / GPT-4o、Claude 3.5 Sonnet、Google Gemini 1.5/3.7、Microsoft Copilot、開源 LLaMA 3 及 DeepSeek）。
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 4: COMPLIANCE MATRIX -->
+          <div id="aisdlc-tab-matrix" class="aisdlc-view-pane" style="display:none;">
+            <div class="info-card" style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.85rem; text-align:left;">
+                <thead>
+                  <tr style="border-bottom:2px solid var(--border-color); color:var(--primary-light);">
+                    <th style="padding:12px;">生命週期階段</th>
+                    <th style="padding:12px;">ISO 27001 / 27701</th>
+                    <th style="padding:12px;">ISO 42001 (AIMS)</th>
+                    <th style="padding:12px;">NIST CSF / AI RMF</th>
+                    <th style="padding:12px;">OWASP Top 10 LLM / EU AI Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#38bdf8;">規劃 (Planning)</td>
+                    <td style="padding:10px;">A.5.8, A.5.19 供應鏈與資安要求</td>
+                    <td style="padding:10px;">Clause 4, 6 AI 目標與風險評估</td>
+                    <td style="padding:10px;">GV.OC-01, MAP 1.1 背景與風險邊界</td>
+                    <td style="padding:10px;">EU AI Act 風險分級與合規評定</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#10b981;">設計 (Design)</td>
+                    <td style="padding:10px;">A.8.25 安全系統架構與工程原則</td>
+                    <td style="padding:10px;">A.6.2 AI 系統架構設計與邊界審查</td>
+                    <td style="padding:10px;">ID.RA-01, MAP 2.2 威脅建模 (STRIDE)</td>
+                    <td style="padding:10px;">LLM01: Prompt Injection 防護設計</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#f59e0b;">開發 (Dev)</td>
+                    <td style="padding:10px;">A.8.28 安全編碼 (Secure Coding)</td>
+                    <td style="padding:10px;">A.7.2 訓練資料主權與脫敏管理</td>
+                    <td style="padding:10px;">PR.DS-01, MEASURE 2.5 SBOM 物料清單</td>
+                    <td style="padding:10px;">LLM06: 敏感資訊外洩防護 (DLP)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#ec4899;">測試 (Testing)</td>
+                    <td style="padding:10px;">A.8.29 安全測試與弱點掃描 (DAST)</td>
+                    <td style="padding:10px;">A.8.2 模型偏見評測與穩健性驗證</td>
+                    <td style="padding:10px;">PR.IP-01, MEASURE 1.1 邊界模糊測試</td>
+                    <td style="padding:10px;">LLM02: 不安全輸出處置防護</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#a855f7;">部署 (Deploy)</td>
+                    <td style="padding:10px;">A.8.31 環境隔離與變更管理</td>
+                    <td style="padding:10px;">A.9.1 AI 系統部署簽署與驗收</td>
+                    <td style="padding:10px;">PR.AC-01, MANAGE 2.2 產銷履歷驗證</td>
+                    <td style="padding:10px;">LLM05: 供應鏈脆弱性管理 (SLSA)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:10px; font-weight:700; color:#06b6d4;">維運 (Ops)</td>
+                    <td style="padding:10px;">A.8.16 活動監控與日誌審計 (SIEM)</td>
+                    <td style="padding:10px;">Clause 9, 10 漂移監控與持續改進</td>
+                    <td style="padding:10px;">DE.CM-01, GOVERN 1.2 AIOps 監控</td>
+                    <td style="padding:10px;">EU AI Act 上線後監控與事件回報</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ATTACHMENT 4: Enterprise Generative AI & Autonomous Agent Governance Policy -->
+        <!-- ========================================== -->
+        <div id="section-policy" class="proposal-content-section" style="margin-bottom:36px;">
+          <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:#10b981; background:linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(6,78,59,0.3) 100%);">
+            <div style="grid-column: 1 / -1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px; background:rgba(16,185,129,0.25); color:#34d399; border-color:rgba(16,185,129,0.4);">📜 專案附件四：企業級生成式 AI 與 AI Agent 治理管理辦法 (內部正式規範)</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">文件編號：ENT-AI-GOV-001 | 治理擁有者：VP 暨 AI 治理委員會</span>
+              </div>
+              <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
+                企業級生成式 AI 與自主 AI Agent 治理管理辦法
+              </div>
+              <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
+                (整合 <strong>ISO/IEC 27001:2022 ISMS</strong>、<strong>ISO/IEC 42001:2023 AIMS</strong> 與 <strong>NIST GenAI RMF</strong> 國際合規規範)<br>
+                本管理辦法確立四大核心防線：<strong>身分與密鑰強制隔離 (SSO/MFA/Vault)</strong>、<strong>最小權限與環境分級 (A0～A4 Agent 劃分)</strong>、<strong>人類最終負責與資料遮罩 (L1～L4 分類)</strong>、<strong>全程可稽核與營運持續 (1 小時通報 SLA 與緊急 Kill Switch)</strong>。
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy 1: A0~A4 Agent Autonomous Levels -->
+          <div class="section-title">🤖 AI Agent 自主性五級分級管制標準 (Agent Autonomy Tiers)</div>
+          <div class="cards-grid" style="margin-bottom:20px;">
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#38bdf8; font-size:0.95rem; margin-bottom:4px;">A0 級：輔助查詢型 (Read-Only)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">唯讀模式，僅得查詢公開或 L1～L2 授權文檔，無任何系統寫入或 API 執行權限。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#10b981; font-size:0.95rem; margin-bottom:4px;">A1 級：受控建議型 (Drafting Only)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">可生成草稿、工單建議或代碼，需經權責人員手動檢視與確認後方可由人工複製執行。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#f59e0b; font-size:0.95rem; margin-bottom:4px;">A2 級：半自主審批型 (Approval Gate)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">具備呼叫非破壞性 API 權限，涉及敏感狀態修改時強制觸發 OpenClaw 人工審批流。</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div>
+                <div style="font-weight:800; color:#ec4899; font-size:0.95rem; margin-bottom:4px;">A3 級：高度自主沙盒型 (Sandbox)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">僅限隔離沙盒 (Sandbox) 環境內自主執行多步驟任務，全面實施實時監控與硬性配額。</div>
+              </div>
+            </div>
+            <div class="info-card" style="border-color:#ef4444;">
+              <div>
+                <div style="font-weight:800; color:#ef4444; font-size:0.95rem; margin-bottom:4px;">A4 級：完全自主型 (Prohibited)</div>
+                <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">無人監管之全自主系統。<strong>【企業目前全面嚴格禁止引進與使用】</strong>。</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy 2: L1~L4 Data Classification & Five Absolute Prohibitions -->
+          <div class="viz-grid">
+            <div class="viz-card">
+              <h3>🚫 五大絕對禁止輸入項目 (Absolute Prohibitions)</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <ul style="margin-left:18px;">
+                  <li><strong>1. 認證與存取憑證</strong>：系統密碼、MFA Token、API Key、私鑰、TLS 憑證、SSH Key、資料庫連線字串。</li>
+                  <li><strong>2. 個人敏感隱私 (PII)</strong>：客戶真實姓名、身分證字號、護照、手機、住址、銀行卡號、員工薪資績效。</li>
+                  <li><strong>3. 未公開商業機密</strong>：併購計畫、董事會議事錄、未公開財務預測、核心定價公式、投標底價。</li>
+                  <li><strong>4. 維運與攻擊性資訊</strong>：未修補之弱點掃描報告 (DAST/SAST)、滲透測試細節、Production DB Dump。</li>
+                  <li><strong>5. 核心智慧財產權</strong>：未公開之核心撮合演算法、核心加密協議代碼、受 NDA 嚴格保護之技術。</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="viz-card">
+              <h3>⚡ 應變機制與緊急阻斷 (Kill Switch & SLA)</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+                <ul style="margin-left:18px;">
+                  <li><strong>1 小時通報 SLA</strong>：發現誤上傳機密、疑似 Token 外洩、Agent 異常連線時，須於 1 小時內通報資安團隊。</li>
+                  <li><strong>緊急阻斷開關 (Kill Switch)</strong>：SRE/MIS 具備一鍵切斷 API Key、終止 Agent Session 與隔離容器之控制權。</li>
+                  <li><strong>手動替代 SOP</strong>：所有關鍵 AI 輔助流程均備妥傳統人工備援操作路徑，確保業務連續性 (BCP)。</li>
+                  <li><strong>每年 2 小時全員培訓</strong>：全體同仁每年須完成至少 2 小時 AI 資安與倫理培訓並通過測驗。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Initialize interactive sectors
+    window.selectSDLCSector('plan');
+    window.selectAIMLQuadrant('pre');
+  }
+
+  // Sub-navigation Switcher between AISDLC Modules
+  window.switchAISDLCTab = function(moduleKey) {
+    document.querySelectorAll('.aisdlc-subnav-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.id === `btn-aisdlc-${moduleKey}`);
+    });
+
+    const modules = ['wheel-sdlc', 'wheel-aiml', 'hierarchy', 'matrix'];
+    modules.forEach(mId => {
+      const pane = document.getElementById(`aisdlc-tab-${mId}`);
+      if (pane) {
+        pane.style.display = (mId === moduleKey) ? 'block' : 'none';
+      }
+    });
+  };
+
+  // Interactive SDLC Sector Selector
+  window.selectSDLCSector = function(phaseKey) {
+    const data = sdlcData[phaseKey];
+    if (!data) return;
+
+    document.querySelectorAll('#sdlc-svg .wheel-sector').forEach(el => el.classList.remove('active'));
+    const activeSector = document.getElementById('sector-' + phaseKey);
+    if (activeSector) activeSector.classList.add('active');
+
+    const badge = document.getElementById('detail-badge');
+    const title = document.getElementById('detail-title');
+    const cat = document.getElementById('detail-category');
+    const ai = document.getElementById('detail-ai');
+    const std = document.getElementById('detail-standard');
+    const gate = document.getElementById('detail-gate');
+    const engCont = document.getElementById('detail-engineering');
+    const secCont = document.getElementById('detail-security');
+
+    if (badge) badge.innerText = data.badge;
+    if (title) title.innerText = data.title;
+    if (cat) cat.innerText = data.category;
+    if (ai) ai.innerText = data.ai;
+    if (std) std.innerText = data.standard;
+    if (gate) gate.innerText = data.gate;
+
+    if (engCont) {
+      engCont.innerHTML = data.engineering.map(tag => 
+        `<span class="node-pill" style="background:#1e293b; color:#e2e8f0; border:1px solid #334155;">${tag}</span>`
+      ).join('');
+    }
+
+    if (secCont) {
+      secCont.innerHTML = data.security.map(tag => 
+        `<span class="node-pill" style="background:rgba(239,68,68,0.15); color:#fca5a5; border:1px solid rgba(239,68,68,0.4);">${tag}</span>`
+      ).join('');
+    }
+  };
+
+  // Interactive AIML Quadrant Selector
+  window.selectAIMLQuadrant = function(quadKey) {
+    const data = aimlData[quadKey];
+    if (!data) return;
+
+    document.querySelectorAll('#aiml-svg .wheel-sector').forEach(el => el.classList.remove('active'));
+    const activeQuad = document.getElementById('quad-' + quadKey);
+    if (activeQuad) activeQuad.classList.add('active');
+
+    const badge = document.getElementById('aiml-badge');
+    const title = document.getElementById('aiml-title');
+    const focus = document.getElementById('aiml-focus');
+    const work = document.getElementById('aiml-work');
+    const ref = document.getElementById('aiml-ref');
+    const tool = document.getElementById('aiml-tool');
+    const stepsCont = document.getElementById('aiml-steps');
+    const govCont = document.getElementById('aiml-gov');
+
+    if (badge) badge.innerText = data.badge;
+    if (title) title.innerText = data.title;
+    if (focus) focus.innerText = data.focus;
+    if (work) work.innerText = data.work;
+    if (ref) ref.innerText = data.ref;
+    if (tool) tool.innerText = data.tool;
+
+    if (stepsCont) {
+      stepsCont.innerHTML = data.steps.map(s => 
+        `<span class="node-pill" style="background:rgba(245,158,11,0.2); color:#fde68a; border:1px solid rgba(245,158,11,0.5); font-weight:700;">${s}</span>`
+      ).join('');
+    }
+
+    if (govCont) {
+      govCont.innerHTML = data.gov.map(g => `<li>${g}</li>`).join('');
+    }
+  };
+
+  // Main Proposal Sub-tab Switcher
+  window.switchProposalSection = function(sectionKey) {
+    document.querySelectorAll('.proposal-subtab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.id === `subtab-btn-${sectionKey}`);
+    });
+
+    const sections = ['serviceagent', 'chatgpt', 'aisdlc', 'policy'];
+    
+    if (sectionKey === 'all') {
+      sections.forEach(secId => {
+        const el = document.getElementById(`section-${secId}`);
+        if (el) el.style.display = 'block';
+      });
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    } else {
+      sections.forEach(secId => {
+        const el = document.getElementById(`section-${secId}`);
+        if (el) {
+          if (secId === sectionKey) {
+            el.style.display = 'block';
+            const offset = el.getBoundingClientRect().top + window.pageYOffset - 140;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+          } else {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  };
+
+// ==========================================
   function renderProposalView() {
     const page = document.getElementById('page-proposal');
     if (!page) return;
