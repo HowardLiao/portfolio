@@ -59,4 +59,4 @@
 ## 📄 License & Confidentiality
 
 © 2026 Howard Liao, Ph.D. All Rights Reserved.  
-Contact: `Liao.Howard@gmail.com` | `+886-975-323161`
+Contact: `Liao.Howard@gmail.com` | `+886-975-***-161`
