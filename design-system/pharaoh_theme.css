@@ -1,0 +1,190 @@
+/**
+ * Egyptian Pharaoh Academic Design System (CSS Variables & Utility Classes)
+ * Howard Liao Ph.D. (廖倫豪 博士)
+ */
+
+:root {
+  /* Colors */
+  --pharaoh-primary: #D96B27;
+  --pharaoh-primary-hover: #BC581A;
+  --pharaoh-secondary: #2B5F6B;
+  --pharaoh-tertiary: #E5A93C;
+  --pharaoh-neutral: #1F2421;
+  --pharaoh-muted: #6B726C;
+  --pharaoh-surface: #FFFFFF;
+  --pharaoh-surface-warm: #FAF7F2;
+  --pharaoh-border: #E8DFD8;
+  --pharaoh-accent-soft: #FEF7E9;
+
+  /* Typography */
+  --font-heading: 'Outfit', 'PingFang TC', 'Microsoft JhengHei UI', sans-serif;
+  --font-body: 'Inter', 'PingFang TC', 'Noto Sans TC', system-ui, sans-serif;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(31, 36, 33, 0.04);
+  --shadow-md: 0 4px 12px rgba(217, 107, 39, 0.08);
+  --shadow-lg: 0 8px 24px rgba(31, 36, 33, 0.08);
+}
+
+/* Base resets */
+body.pharaoh-theme {
+  background-color: var(--pharaoh-surface);
+  color: var(--pharaoh-neutral);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+.pharaoh-h1 {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--pharaoh-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.pharaoh-h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--pharaoh-secondary);
+  letter-spacing: -0.01em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.pharaoh-h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--pharaoh-neutral);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Components */
+.pharaoh-card {
+  background-color: var(--pharaoh-surface-warm);
+  border: 1px solid var(--pharaoh-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pharaoh-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pharaoh-card-highlight {
+  background-color: var(--pharaoh-accent-soft);
+  border: 2px solid var(--pharaoh-tertiary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.pharaoh-badge-primary {
+  display: inline-block;
+  background-color: var(--pharaoh-primary);
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.pharaoh-badge-secondary {
+  display: inline-block;
+  background-color: var(--pharaoh-secondary);
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.pharaoh-badge-tertiary {
+  display: inline-block;
+  background-color: var(--pharaoh-tertiary);
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.pharaoh-btn-primary {
+  background-color: var(--pharaoh-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pharaoh-btn-primary:hover {
+  background-color: var(--pharaoh-primary-hover);
+}
+
+.pharaoh-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--pharaoh-border);
+}
+
+.pharaoh-table th {
+  background-color: var(--pharaoh-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.875rem 1rem;
+}
+
+.pharaoh-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--pharaoh-border);
+  color: var(--pharaoh-neutral);
+}
+
+.pharaoh-table tr:nth-child(even) td {
+  background-color: var(--pharaoh-surface-warm);
+}
+
+.pharaoh-callout {
+  border-left: 4px solid var(--pharaoh-tertiary);
+  background-color: var(--pharaoh-accent-soft);
+  padding: 1rem 1.25rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 1.25rem 0;
+}
+
+.pharaoh-attribution {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--pharaoh-secondary);
+  border-top: 1px dashed var(--pharaoh-border);
+  padding-top: 0.75rem;
+  margin-top: 2rem;
+}

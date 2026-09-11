@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <!-- Anti-Scraping & Privacy Protection -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>埃及法老溫暖學術風格 - 設計系統視覺展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pharaoh_theme.css">
+  <style>
+    body {
+      padding: 2.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+      background-color: #FAF7F2;
+    }
+    .spec-container {
+      background: #FFFFFF;
+      border: 1px solid var(--pharaoh-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .color-chip {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--pharaoh-border);
+      background: #FFFFFF;
+    }
+    .color-swatch {
+      height: 70px;
+      width: 100%;
+    }
+    .color-info {
+      padding: 0.75rem;
+      font-size: 0.8125rem;
+    }
+    .color-name {
+      font-weight: 700;
+      color: var(--pharaoh-neutral);
+    }
+    .color-hex {
+      color: var(--pharaoh-muted);
+      font-family: monospace;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .tag-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="pharaoh-theme">
+
+  <div class="spec-container">
+    <div class="tag-row">
+      <span class="pharaoh-badge-primary">DESIGN SYSTEM SPECIFICATION</span>
+      <span class="pharaoh-badge-secondary">v1.0 OFFICIAL</span>
+      <span class="pharaoh-badge-tertiary">CROSS-PLATFORM</span>
+    </div>
+
+    <h1 class="pharaoh-h1" style="margin-top: 0.5rem;">埃及法老溫暖學術風格設計系統</h1>
+    <p style="color: var(--pharaoh-muted); font-size: 1.05rem; margin-bottom: 2rem;">
+      專為 <strong>Howard Liao Ph.D. (廖倫豪 博士)</strong> 定制之跨 PPT、Word、Google Docs 及 Web 前端的一致性視覺規範。
+    </p>
+
+    <!-- Color Palette Showcase -->
+    <h2 class="pharaoh-h2">1. 核心色票調度體系 (Tokens Palette)</h2>
+    <div class="palette-grid">
+      <div class="color-chip">
+        <div class="color-swatch" style="background-color: #D96B27;"></div>
+        <div class="color-info">
+          <div class="color-name">暖赭石橙 (Primary)</div>
+          <div class="color-hex">#D96B27</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background-color: #2B5F6B;"></div>
+        <div class="color-info">
+          <div class="color-name">綠松石青 (Secondary)</div>
+          <div class="color-hex">#2B5F6B</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background-color: #E5A93C;"></div>
+        <div class="color-info">
+          <div class="color-name">法老琥珀金 (Tertiary)</div>
+          <div class="color-hex">#E5A93C</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background-color: #1F2421;"></div>
+        <div class="color-info">
+          <div class="color-name">曜石深灰 (Neutral Text)</div>
+          <div class="color-hex">#1F2421</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background-color: #FAF7F2; border-bottom: 1px solid #E8DFD8;"></div>
+        <div class="color-info">
+          <div class="color-name">羊皮紙暖白 (Surface Warm)</div>
+          <div class="color-hex">#FAF7F2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UI Components Demo -->
+    <h2 class="pharaoh-h2">2. 核心元件與排版層次 (Core Components)</h2>
+
+    <div class="card-grid">
+      <div class="pharaoh-card">
+        <h3 class="pharaoh-h3" style="margin-top: 0; color: var(--pharaoh-primary);">經典研究卡片 (Standard Card)</h3>
+        <p style="color: var(--pharaoh-neutral); font-size: 0.9375rem;">
+          採用羊皮紙暖白底色（#FAF7F2）搭配柔和暖沙灰微邊框，適合作為一般論述、報告章節段落或次要資料展示容器。
+        </p>
+        <button class="pharaoh-btn-primary" style="margin-top: 0.5rem;">查看章節詳情 →</button>
+      </div>
+
+      <div class="pharaoh-card-highlight">
+        <h3 class="pharaoh-h3" style="margin-top: 0; color: var(--pharaoh-secondary);">重點亮點卡片 (Amber Highlight)</h3>
+        <p style="color: var(--pharaoh-neutral); font-size: 0.9375rem;">
+          外圍包覆 2px 法老琥珀金飾邊，搭配琥珀柔光底色（#FEF7E9），專門用於聚焦核心 KPI、重要決策結論或關鍵洞見。
+        </p>
+        <span class="pharaoh-badge-tertiary">★ 關鍵決策推薦</span>
+      </div>
+    </div>
+
+    <!-- Table Demo -->
+    <h2 class="pharaoh-h2">3. 跨格式表格標準 (Structured Data Table)</h2>
+    <table class="pharaoh-table">
+      <thead>
+        <tr>
+          <th>平台載體</th>
+          <th>生成技術管線</th>
+          <th>對應模板與母片產物</th>
+          <th>視覺保證</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PowerPoint (.pptx)</strong></td>
+          <td>python-pptx</td>
+          <td>Pharaoh_Academic_Presentation_HowardLiao.pptx</td>
+          <td>16:9 寬螢幕、暖橘標題、琥珀金裝飾線</td>
+        </tr>
+        <tr>
+          <td><strong>Word (.docx)</strong></td>
+          <td>python-docx</td>
+          <td>Pharaoh_Academic_Report_HowardLiao.docx</td>
+          <td>A4 標準、暖橘底白字表頭、左側金線提示框</td>
+        </tr>
+        <tr>
+          <td><strong>Web / 前端 (HTML/CSS)</strong></td>
+          <td>pharaoh_theme.css</td>
+          <td>CSS 變數 + 獨立元件類別 + JSON Tokens</td>
+          <td>100% 吻合設計規範、護眼低刺眼曜石深灰</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Callout Demo -->
+    <div class="pharaoh-callout">
+      <strong style="color: var(--pharaoh-primary); font-size: 1.05rem;">標準法定署名條款：</strong><br>
+      所有正式產物封面與頁尾均固定配置落款標籤：<br>
+      <span style="font-weight: 700; color: var(--pharaoh-secondary); font-size: 1.1rem; display: inline-block; margin-top: 0.5rem;">
+        報告人 Howard Liao Ph.D.(廖倫豪 博士)
+      </span>
+    </div>
+
+    <div class="pharaoh-attribution">
+      埃及法老溫暖學術風格設計系統規範 | 廖倫豪 博士 (Howard Liao Ph.D.) 知識產權所有 © 2026
+    </div>
+  </div>
+
+</body>
+</html>

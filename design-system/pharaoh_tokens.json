@@ -1,0 +1,56 @@
+{
+  "name": "Egyptian Pharaoh Academic",
+  "version": "1.0.0",
+  "author": "Howard Liao Ph.D. (廖倫豪 博士)",
+  "color": {
+    "primary": {
+      "$value": "#D96B27",
+      "$type": "color",
+      "$description": "暖赭石橙 (Egyptian Ochre Orange) — 主標題、主按鈕、章節核心"
+    },
+    "secondary": {
+      "$value": "#2B5F6B",
+      "$type": "color",
+      "$description": "尼羅河綠松石青 (Nile Turquoise Cyan) — 副標題、專業徽章、圖表輔助"
+    },
+    "tertiary": {
+      "$value": "#E5A93C",
+      "$type": "color",
+      "$description": "法老琥珀金 (Pharaoh Amber Gold) — 關鍵高亮、重點摘要卡片、Accent"
+    },
+    "neutral": {
+      "$value": "#1F2421",
+      "$type": "color",
+      "$description": "曜石深灰 (Obsidian Dark Gray) — 主要正文文字"
+    },
+    "muted": {
+      "$value": "#6B726C",
+      "$type": "color",
+      "$description": "沉香灰 (Muted Gray) — 註腳、輔助資訊、次要元數據"
+    },
+    "surface": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "畫布純白 (Canvas White) — 文件主要背景底色"
+    },
+    "surface_warm": {
+      "$value": "#FAF7F2",
+      "$type": "color",
+      "$description": "羊皮紙暖白 (Papyrus Warm Ivory) — 卡片底色、引用區塊底色"
+    },
+    "border": {
+      "$value": "#E8DFD8",
+      "$type": "color",
+      "$description": "暖沙灰 (Warm Sand Border) — 微細分隔線、卡片邊框"
+    },
+    "accent_soft": {
+      "$value": "#FEF7E9",
+      "$type": "color",
+      "$description": "琥珀柔光底 (Soft Amber Glow) — 標註螢光背景、提醒方塊底色"
+    }
+  },
+  "attribution": {
+    "cover_format": "報告人 Howard Liao Ph.D.(廖倫豪 博士)",
+    "footer_format": "Howard Liao Ph.D. | 機密與專業報告"
+  }
+}
