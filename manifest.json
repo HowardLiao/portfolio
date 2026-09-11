@@ -1,0 +1,37 @@
+{
+  "name": "廖倫豪 博士 | 戰略資歷與高階作品集",
+  "short_name": "廖倫豪 博士",
+  "description": "廖倫豪博士 (Howard Liao, Ph.D.) 跨國企業技術高管、CIO、CISO 戰略資歷與核實作品集",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0f1d",
+  "theme_color": "#0a0f1d",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
