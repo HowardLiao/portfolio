@@ -365,7 +365,7 @@
         <!-- Hero Card -->
         <div class="hero-card">
           <div class="hero-portrait-container">
-            <img src="assets/202605_Howard_003.png" alt="Dr. Howard Liao UOMO Cover">
+            <img src="assets/202605_Howard_003.png" alt="廖倫豪 博士 (Howard Liao, Ph.D.) 專業形象證照">
           </div>
           <div class="hero-details">
             <div class="hero-name-row">
@@ -2697,7 +2697,7 @@
             🛡️ 人物身分消歧 (Identity Disambiguation) 與資料保護規範聲明
           </div>
           <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
-            1. <strong>唯一身分鑑別</strong>：本檔案庫所載之「廖倫豪 博士 (Howard Liao, Ph.D.)」專指畢業於朝陽科技大學資訊科技管理研究所（指導教授：李朱慧 博士，國圖論文專屬 ID 106IKTC0183002），曾任隆中網絡技術副總與跨國集團資訊長之資深高管。<br>
+            1. <strong>唯一身分鑑別</strong>：本檔案庫所載之「廖倫豪 博士 (Howard Liao, Ph.D.)」專指畢業於朝陽科技大學資訊科技管理研究所（指導教授：李朱慧 博士，國圖論文專屬 ID 106IKTC0183002），曾任隆中網絡 IT Director 與跨國集團資訊長之資深高管。<br>
             2. <strong>同名同姓排除</strong>：嚴格排除同名之臺灣高等檢察署檢察官、臨床專任醫師、政治人物及非資訊工程領域人員之公開資訊，絕無身分混淆。<br>
             3. <strong>去識別化與商業保密</strong>：本作品集已落實嚴格商業秘密保護，去識別化所有歷史/現任機構敏感資訊與個資，僅展現可公開驗證之技術架構、方法論與量化成果。
           </div>

@@ -1975,7 +1975,7 @@ svg {
     "url": "https://www.ithome.com.tw/pr/163534",
     "accessedAt": "2026-08-14T12:00:00Z",
     "publishedAt": "2024-09-02",
-    "excerpt": "文／iThome 專題企劃 (2024-09-02 發表)：隆中網絡技術副總廖倫豪博士指出，為提供玩家最優質的即時對弈體驗，引進 MongoDB Atlas 全託管雲端資料庫平台，兼具高擴展性與 99.995% 高可用性，成功支撐全球跨區高併發讀寫需求，奠定長期競爭力。",
+    "excerpt": "文／iThome 專題企劃 (2024-09-02 發表)：隆中網絡 IT Director 廖倫豪博士指出，為提供玩家最優質的即時對弈體驗，引進 MongoDB Atlas 全託管雲端資料庫平台，兼具高擴展性與 99.995% 高可用性，成功支撐全球跨區高併發讀寫需求，奠定長期競爭力。",
     "evidenceNotes": "iThome 電腦報官方專題企劃採訪，實名刊登 Howard Liao 廖倫豪博士 MongoDB Atlas 架構實戰 (檢附 3.0 MB 原文截圖 assets/IThome_MangoDB.png)。",
     "copyrightNotes": "公開媒體報導。",
     "identityMatchReason": "實名專訪。",
@@ -4519,44 +4519,8 @@ https://howardliao.github.io/portfolio/
     sessionStorage.setItem('pwa_dismissed', '1');
   };
 
-  // Ease-out Number Counter Animation
-  window.animateCounter = function(el, targetStr) {
-    const match = targetStr.match(/([+\-$]*)(\d+)([%M+]?)/);
-    if (!match) {
-      el.textContent = targetStr;
-      return;
-    }
-    const prefix = match[1] || '';
-    const num = parseInt(match[2], 10);
-    const suffix = match[3] || '';
-    
-    let start = 0;
-    const duration = 1200;
-    const startTime = performance.now();
-
-    function update(time) {
-      const elapsed = time - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(ease * num);
-      el.textContent = prefix + current + suffix;
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        el.textContent = targetStr;
-      }
-    }
-    requestAnimationFrame(update);
-  };
-
-  window.triggerDashboardCounters = function() {
-    document.querySelectorAll('.bento-val').forEach(el => {
-      const original = el.getAttribute('data-target') || el.textContent.trim();
-      el.setAttribute('data-target', original);
-      window.animateCounter(el, original);
-    });
-  };
+  // Static clean KPI numbers - no flicker or crawler corruption
+  window.triggerDashboardCounters = function() {};
 
   function renderDashboardView() {
     const t = i18n[state.currentLang];
@@ -4576,7 +4540,7 @@ https://howardliao.github.io/portfolio/
         <!-- Hero Card -->
         <div class="hero-card">
           <div class="hero-portrait-container">
-            <img src="assets/20260712_韓系證照.png" alt="Dr. Howard Liao UOMO Cover">
+            <img src="assets/20260712_韓系證照.png" alt="廖倫豪 博士 (Howard Liao, Ph.D.) 專業形象證照">
           </div>
           <div class="hero-details">
             <div class="hero-name-row">
@@ -6909,7 +6873,7 @@ https://howardliao.github.io/portfolio/
             🛡️ 人物身分消歧 (Identity Disambiguation) 與資料保護規範聲明
           </div>
           <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
-            1. <strong>唯一身分鑑別</strong>：本檔案庫所載之「廖倫豪 博士 (Howard Liao, Ph.D.)」專指畢業於朝陽科技大學資訊科技管理研究所（指導教授：李朱慧 博士，國圖論文專屬 ID 106IKTC0183002），曾任隆中網絡技術副總與跨國集團資訊長之資深高管。<br>
+            1. <strong>唯一身分鑑別</strong>：本檔案庫所載之「廖倫豪 博士 (Howard Liao, Ph.D.)」專指畢業於朝陽科技大學資訊科技管理研究所（指導教授：李朱慧 博士，國圖論文專屬 ID 106IKTC0183002），曾任隆中網絡 IT Director 與跨國集團資訊長之資深高管。<br>
             2. <strong>同名同姓排除</strong>：嚴格排除同名之臺灣高等檢察署檢察官、臨床專任醫師、政治人物及非資訊工程領域人員之公開資訊，絕無身分混淆。<br>
             3. <strong>去識別化與商業保密</strong>：本作品集已落實嚴格商業秘密保護，去識別化所有歷史/現任機構敏感資訊與個資，僅展現可公開驗證之技術架構、方法論與量化成果。
           </div>
