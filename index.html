@@ -5,7 +5,7 @@
   <meta property="og:site_name" content="Howard Liao Ph.D. | Strategic Executive Portfolio">
   <meta property="og:title" content="廖倫豪 博士 (Howard Liao, Ph.D.) | 跨國企業技術高管 暨 資訊長 (CIO/CISO) 戰略檔案">
   <meta property="og:description" content="27年跨國IT與工程底蘊。Google Cloud全球客戶成功案例專訪主角、朝陽科大資訊科技管理博士。專精全球應用治理、GKE容器化、MongoDB Atlas現代化、DevSecOps與AI SDLC治理。">
-  <meta property="og:image" content="https://howardliao.github.io/portfolio/assets/20260712_韓系證照.png">
+  <meta property="og:image" content="https://howardliao.github.io/portfolio/assets/howard_portrait.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://howardliao.github.io/portfolio/">
@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="廖倫豪 博士 (Howard Liao, Ph.D.) | 戰略資歷與高階作品集">
   <meta name="twitter:description" content="跨國企業技術高管 (VP) 暨 資訊長 (CIO / CISO / CDAIO)。Google Cloud 全球成功案例專訪主角。">
-  <meta name="twitter:image" content="https://howardliao.github.io/portfolio/assets/20260712_韓系證照.png">
+  <meta name="twitter:image" content="https://howardliao.github.io/portfolio/assets/howard_portrait.png">
 
   <!-- Anti-Scraping & Privacy Protection -->
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
@@ -524,12 +524,38 @@ html {
   .bento-grid { grid-template-columns: 1fr !important; }
   
   .hero-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     padding: 18px 14px !important;
-    gap: 16px !important;
+    gap: 14px !important;
+    margin-top: 10px !important;
+    text-align: center !important;
   }
   .hero-portrait-container {
-    max-width: 220px !important;
-    margin: 0 auto !important;
+    width: 96px !important;
+    max-width: 96px !important;
+    height: 96px !important;
+    flex-shrink: 0 !important;
+    aspect-ratio: 1/1 !important;
+    margin: 0 auto 4px auto !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    border: 3px solid #38bdf8 !important;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.45) !important;
+  }
+  .hero-portrait-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+  .hero-details {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
   }
   .hero-name-zh {
     font-size: 1.7rem !important;
@@ -974,6 +1000,415 @@ svg {
 .audit-table tr:hover td {
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-main);
+}
+
+
+/* ==========================================
+   MOBILE-FIRST UX & APP BAR REFACTORING
+   ========================================== */
+
+/* Mobile Bottom Navigation Bar */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 62px;
+  background: rgba(10, 15, 29, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.45);
+  z-index: 2200;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 6px env(safe-area-inset-bottom, 0) 6px;
+}
+.bottom-nav-item {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  position: relative;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.bottom-nav-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.bottom-nav-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.bottom-nav-item.active {
+  color: #38bdf8;
+}
+.bottom-nav-item.active::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  width: 16px;
+  height: 3px;
+  background: #38bdf8;
+  border-radius: 3px;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+/* Mobile Drawer */
+.mobile-drawer-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 2300;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.mobile-drawer-overlay.active {
+  display: block;
+  opacity: 1;
+}
+.mobile-drawer-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0f172a;
+  border-top: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 20px 20px 0 0;
+  padding: 14px 18px env(safe-area-inset-bottom, 20px) 18px;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-drawer-overlay.active .mobile-drawer-sheet {
+  transform: translateY(0);
+}
+.mobile-drawer-handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin: 0 auto 12px auto;
+}
+.mobile-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.drawer-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.mobile-drawer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.drawer-grid-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.drawer-grid-item:active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+}
+.drawer-item-icon {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+.drawer-item-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+.drawer-item-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* SMARTPHONE BREAKPOINTS (<= 768px) */
+@media (max-width: 768px) {
+  /* Show Mobile Bottom Nav */
+  .mobile-bottom-nav {
+    display: flex !important;
+  }
+
+  /* Adjust Page Container Padding for Bottom Nav */
+  .tab-page {
+    padding-top: 66px !important;
+    padding-bottom: 84px !important;
+  }
+  #page-proposal {
+    padding-top: 66px !important;
+    padding-bottom: 84px !important;
+  }
+
+  /* Compact Navbar Header */
+  .navbar {
+    height: 54px !important;
+    padding: 0 !important;
+  }
+  .nav-content {
+    height: 54px !important;
+    padding: 0 12px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  
+  /* Hide the crowded Top Tabs on Mobile */
+  .nav-tabs {
+    display: none !important;
+  }
+
+  /* Nav Actions on Mobile */
+  .search-box-header {
+    display: none !important;
+  }
+  .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+  .btn-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  #btn-copy-cover-letter {
+    display: none !important; /* Accessible via drawer */
+  }
+  #btn-download-word-resume {
+    padding: 5px 10px !important;
+    font-size: 0.75rem !important;
+    border-radius: 14px !important;
+  }
+
+  /* Brand on Mobile */
+  .brand {
+    font-size: 0.98rem !important;
+    gap: 6px !important;
+  }
+  .brand-text-desktop { display: none !important; }
+  .brand-text-mobile { display: inline-block !important; font-weight: 900 !important; }
+  .verified-badge {
+    font-size: 0.68rem !important;
+    padding: 2px 6px !important;
+  }
+
+  /* Hero Card Compact Mobile Layout */
+  .hero-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 18px 14px !important;
+    gap: 14px !important;
+    margin-top: 10px !important;
+    margin-bottom: 16px !important;
+    border-radius: var(--radius-md) !important;
+    text-align: center !important;
+  }
+  .hero-portrait-container {
+    max-width: 96px !important;
+    height: 96px !important;
+    margin: 0 auto !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    border: 2px solid #0284c7 !important;
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.4) !important;
+  }
+  .hero-portrait-container {
+    width: 92px !important;
+    max-width: 92px !important;
+    height: 92px !important;
+    aspect-ratio: 1/1 !important;
+    margin: 0 auto !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    border: 2px solid #38bdf8 !important;
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.45) !important;
+  }
+  .hero-portrait-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+  /* Hero Tags Horizontal Scrollable Chips on Mobile */
+  .hero-tags {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 4px !important;
+    gap: 6px !important;
+    justify-content: flex-start !important;
+    margin-bottom: 12px !important;
+  }
+  .hero-tags::-webkit-scrollbar {
+    display: none !important;
+  }
+  .hero-tags .tag-item {
+    flex-shrink: 0 !important;
+    font-size: 0.74rem !important;
+    padding: 4px 10px !important;
+  }
+  .hero-details {
+    text-align: center !important;
+  }
+  .hero-name-row {
+    justify-content: center !important;
+    margin-bottom: 4px !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  .hero-name-zh {
+    font-size: 1.45rem !important;
+    font-weight: 900 !important;
+  }
+  .hero-name-en {
+    font-size: 0.95rem !important;
+    color: #38bdf8 !important;
+  }
+  .hero-headline {
+    font-size: 0.84rem !important;
+    color: #cbd5e1 !important;
+    line-height: 1.45 !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Expandable Summary on Mobile */
+  .hero-summary-mobile-wrapper {
+    position: relative;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    margin-bottom: 12px;
+  }
+  .hero-summary-collapsed {
+    max-height: 64px;
+    overflow: hidden;
+    line-height: 1.55;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .hero-summary-collapsed.expanded {
+    max-height: none;
+  }
+  .summary-toggle-btn {
+    background: none;
+    border: none;
+    color: #38bdf8;
+    font-size: 0.76rem;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 4px 0 0 0;
+    display: inline-block;
+  }
+
+  /* Bento Grid 2x2 on Mobile */
+  .bento-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+  }
+  .bento-card {
+    padding: 12px 10px !important;
+    border-radius: var(--radius-sm) !important;
+  }
+  .bento-val {
+    font-size: 1.45rem !important;
+    margin-bottom: 2px !important;
+  }
+  .bento-lbl {
+    font-size: 0.75rem !important;
+    margin-bottom: 4px !important;
+  }
+  .bento-desc {
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* Stats Row on Mobile */
+  .stats-row {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 6px !important;
+    margin-bottom: 16px !important;
+  }
+  .stat-card {
+    padding: 8px 6px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 4px !important;
+  }
+  .stat-icon-box {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.85rem !important;
+  }
+  .stat-num {
+    font-size: 1.05rem !important;
+  }
+  .stat-label {
+    font-size: 0.65rem !important;
+  }
+
+  /* Hide Crowded Complex Visualizations on Small Screen */
+  #dashboard-viz-container {
+    display: none !important;
+  }
+
+  /* Quick Contact FAB reposition on mobile so it does not block bottom nav */
+  .quick-contact-fab {
+    bottom: 74px !important;
+    right: 14px !important;
+  }
+  .fab-btn {
+    padding: 8px 14px !important;
+    font-size: 0.78rem !important;
+  }
 }
 
 </style>
@@ -2049,7 +2484,7 @@ svg {
       "SRC-008"
     ],
     "localAssetIds": [
-      "assets/20260712_韓系證照.png"
+      "assets/howard_portrait.png"
     ],
     "visibility": "public",
     "isHighlighted": true,
@@ -2266,7 +2701,7 @@ svg {
     "sourceType": "國際認證機構",
     "publisher": "BSI / SGS 國際認證機構",
     "title": "BSI / SGS 國際驗證機構：ISO 27001 資安主任稽核員 & ISO 42001 (AIMS) AI 治理主任稽核員認證",
-    "url": "assets/20260712_韓系證照.png",
+    "url": "assets/howard_portrait.png",
     "accessedAt": "2026-08-14T12:00:00Z",
     "publishedAt": "2023-11-01",
     "excerpt": "通過 ISO 27001 資訊安全管理系統與最新 ISO 42001 人工智慧管理系統 (AIMS) 主任稽核員認證考試合格，持有人姓名：廖倫豪。",
@@ -3724,8 +4159,8 @@ svg {
     "linkedTimelineIds": [
       "TL-001"
     ],
-    "thumbnailPath": "assets/20260712_韓系證照.png",
-    "originalAssetPath": "assets/20260712_韓系證照.png",
+    "thumbnailPath": "assets/howard_portrait.png",
+    "originalAssetPath": "assets/howard_portrait.png",
     "ocrStatus": "completed",
     "notes": "來自『圖片及媒體檔』目錄，核實無誤，開放作品集展示。"
   },
@@ -4023,8 +4458,8 @@ svg {
     "linkedTimelineIds": [
       "TL-001"
     ],
-    "thumbnailPath": "assets/20260712_韓系證照.png",
-    "originalAssetPath": "assets/20260712_韓系證照.png",
+    "thumbnailPath": "assets/howard_portrait.png",
+    "originalAssetPath": "assets/howard_portrait.png",
     "ocrStatus": "completed",
     "notes": "來自『圖片及媒體檔』目錄，核實無誤，開放作品集展示。"
   },
@@ -4951,6 +5386,51 @@ https://howardliao.github.io/portfolio/
     });
   }
 
+  
+  // ==========================================
+  // Mobile Bottom Nav & Drawer Interactions
+  // ==========================================
+  window.toggleMobileDrawer = function(forceState) {
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    if (!overlay) return;
+    if (typeof forceState === 'boolean') {
+      if (forceState) overlay.classList.add('active');
+      else overlay.classList.remove('active');
+    } else {
+      overlay.classList.toggle('active');
+    }
+  };
+
+  window.toggleHeroSummary = function() {
+    const el = document.getElementById('hero-summary-text');
+    const btn = document.getElementById('hero-summary-toggle');
+    if (!el || !btn) return;
+    el.classList.toggle('expanded');
+    if (el.classList.contains('expanded')) {
+      btn.textContent = '▲ 收合自述';
+    } else {
+      btn.textContent = '▼ 展開完整高階自述';
+    }
+  };
+
+  // Sync Bottom Nav Active Tab with switchTab
+  const originalSwitchTab = window.switchTab;
+  window.switchTab = function(tabKey) {
+    if (typeof originalSwitchTab === 'function') {
+      originalSwitchTab(tabKey);
+    }
+    // Update bottom nav buttons
+    document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+      if (btn.getAttribute('data-tab') === tabKey) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    // Smooth scroll to top on mobile tab change
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   function renderDashboardView() {
     const t = i18n[state.currentLang];
     const page = document.getElementById('page-dashboard');
@@ -4969,7 +5449,7 @@ https://howardliao.github.io/portfolio/
         <!-- Hero Card -->
         <div class="hero-card">
           <div class="hero-portrait-container">
-            <img src="assets/20260712_韓系證照.png" alt="廖倫豪 博士 (Howard Liao, Ph.D.) 專業形象證照">
+            <img src="assets/howard_portrait.png" alt="廖倫豪 博士 (Howard Liao, Ph.D.) 專業形象證照">
           </div>
           <div class="hero-details">
             <div class="hero-name-row">
@@ -4978,7 +5458,10 @@ https://howardliao.github.io/portfolio/
               <span class="verified-badge">${t.verifiedBadge}</span>
             </div>
             <div class="hero-headline">${headline}</div>
-            <div class="hero-summary">${summary}</div>
+            <div class="hero-summary-mobile-wrapper">
+              <div class="hero-summary-collapsed" id="hero-summary-text">${summary}</div>
+              <button class="summary-toggle-btn" id="hero-summary-toggle" onclick="window.toggleHeroSummary()">▼ 展開完整高階自述</button>
+            </div>
             <div class="hero-tags">
               ${state.profile.verifiedExpertiseTags.map(tag => `<span class="tag-item">${tag}</span>`).join('')}
             </div>
@@ -5036,7 +5519,7 @@ https://howardliao.github.io/portfolio/
         </div>
 
         <!-- Inline SVG Visualizations -->
-        <div class="section-title">${t.vizTitle}</div>
+        <div id="dashboard-viz-container"><div class="section-title">${t.vizTitle}</div>
         <div class="viz-grid">
           <div class="viz-card">
             <h3>${t.vizYearly}</h3>
@@ -5057,6 +5540,7 @@ https://howardliao.github.io/portfolio/
         </div>
 
         <!-- Highlights Row -->
+        </div>
         <div class="section-title">${t.highlightsTitle}</div>
         <div class="cards-grid">
           ${state.timeline.filter(x => x.isHighlighted && x.identityStatus === 'verified').slice(0, 3).map(item => `
@@ -7181,7 +7665,7 @@ https://howardliao.github.io/portfolio/
       return `
         <div class="info-card gallery-item" style="padding:12px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; transition:transform 0.2s ease, border-color 0.2s ease;" onclick="window.openLightbox('${assetUrl}', '${displayTitle}')">
           <div style="position:relative; width:100%; height:200px; background:#000000; border-radius:var(--radius-sm); overflow:hidden; display:flex; align-items:center; justify-content:center; margin-bottom:10px;">
-            <img src="${assetUrl}" alt="${displayTitle}" loading="lazy" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.onerror=null; this.src='assets/20260712_韓系證照.png';">
+            <img src="${assetUrl}" alt="${displayTitle}" loading="lazy" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.onerror=null; this.src='assets/howard_portrait.png';">
             <span style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); color:#94a3b8; font-size:0.7rem; padding:2px 6px; border-radius:4px;">🔍 點擊放大</span>
           </div>
 
@@ -7403,5 +7887,69 @@ https://howardliao.github.io/portfolio/
 })();
 
   </script>
+
+  <!-- ==========================================
+       MOBILE APP BOTTOM NAVIGATION & DRAWER
+       ========================================== -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+    <button class="bottom-nav-item active" data-tab="dashboard" onclick="window.switchTab('dashboard')">
+      <span class="bottom-nav-icon">📊</span>
+      <span class="bottom-nav-label">首頁</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="timeline" onclick="window.switchTab('timeline')">
+      <span class="bottom-nav-icon">⏳</span>
+      <span class="bottom-nav-label">歷程</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="proposal" onclick="window.switchTab('proposal')">
+      <span class="bottom-nav-icon">💡</span>
+      <span class="bottom-nav-label">建議書</span>
+    </button>
+    <button class="bottom-nav-item" data-tab="portfolio" onclick="window.switchTab('portfolio')">
+      <span class="bottom-nav-icon">🖼️</span>
+      <span class="bottom-nav-label">作品</span>
+    </button>
+    <button class="bottom-nav-item" id="btn-mobile-more" onclick="window.toggleMobileDrawer()">
+      <span class="bottom-nav-icon">☰</span>
+      <span class="bottom-nav-label">更多</span>
+    </button>
+  </nav>
+
+  <!-- Mobile More Drawer (滑出抽屜選單) -->
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="window.toggleMobileDrawer(false)">
+    <div class="mobile-drawer-sheet" onclick="event.stopPropagation()">
+      <div class="mobile-drawer-handle"></div>
+      <div class="mobile-drawer-header">
+        <div style="font-size:1.1rem; font-weight:800; color:var(--text-main);">所有專案與延伸資歷</div>
+        <button onclick="window.toggleMobileDrawer(false)" class="drawer-close-btn">&times;</button>
+      </div>
+      <div class="mobile-drawer-grid">
+        <button class="drawer-grid-item" onclick="window.switchTab('education'); window.toggleMobileDrawer(false);">
+          <span class="drawer-item-icon">🎓</span>
+          <span class="drawer-item-title">學歷與研究</span>
+          <span class="drawer-item-desc">博士論文與 SCI 期刊</span>
+        </button>
+        <button class="drawer-grid-item" onclick="window.switchTab('experience'); window.toggleMobileDrawer(false);">
+          <span class="drawer-item-icon">🏢</span>
+          <span class="drawer-item-title">工作與專案</span>
+          <span class="drawer-item-desc">27 年 C-Level 歷練</span>
+        </button>
+        <button class="drawer-grid-item" onclick="window.switchTab('media'); window.toggleMobileDrawer(false);">
+          <span class="drawer-item-icon">🎤</span>
+          <span class="drawer-item-title">演講與媒體</span>
+          <span class="drawer-item-desc">Google / iThome 專訪</span>
+        </button>
+        <button class="drawer-grid-item" onclick="window.switchTab('sources'); window.toggleMobileDrawer(false);">
+          <span class="drawer-item-icon">🔍</span>
+          <span class="drawer-item-title">來源與查證</span>
+          <span class="drawer-item-desc">100% 核實出處清單</span>
+        </button>
+      </div>
+      <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+        <button class="btn-secondary" onclick="window.openCoverLetterModal(); window.toggleMobileDrawer(false);" style="font-size:0.8rem; padding:6px 14px;">✉️ 自薦信</button>
+        <button class="btn-secondary" onclick="window.openAuditConsole(); window.toggleMobileDrawer(false);" style="font-size:0.8rem; padding:6px 14px;">🛡️ 存取稽核</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
