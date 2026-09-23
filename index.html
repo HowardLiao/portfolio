@@ -4644,7 +4644,7 @@ svg {
     }
   };
 
-  const i18n = {
+    const i18n = {
     zh: {
       siteTitle: '廖倫豪 博士 | 跨國企業技術副總 (VP) 暨 資訊長 (CIO) & 資安長 (CISO) 戰略資歷檔案',
       verifiedBadge: '✓ 雙重驗證',
@@ -4662,6 +4662,15 @@ svg {
       pending: '待確認',
       excluded: '已排除同名',
       all: '全部',
+
+      // Bottom Nav
+      bnavHome: '首頁',
+      bnavTimeline: '歷程',
+      bnavProposal: '建議書',
+      bnavPortfolio: '作品',
+      bnavMore: '更多',
+      summaryExpand: '▼ 展開完整高階自述',
+      summaryCollapse: '▲ 收合自述',
 
       kpiTitle: '⚡ 戰略營運與技術成效 Dashboard (Bento Grid)',
       kpi1_val: '$10M+', kpi1_lbl: '全球IT/ERP資本治理', kpi1_desc: '直報董事會之全球 IT、SAP Clean Core 與外包 SI 預算',
@@ -4694,6 +4703,24 @@ svg {
       showingCount: '顯示條件結果：',
       viewDetail: '查看細節與佐證 ↗',
 
+      // Sources Tab
+      srcTitle: '來源清單、人物身分消歧與查證日誌',
+      srcDesc: '所有收錄之學歷、經歷、國際期刊與媒體報導，均嚴格遵循國際公開資訊與事實查核準則，透過 Google Cloud 官方影音、CIO Taiwan 封面報導、iThome 專案企劃、Springer SCI 期刊（DOI）與國家圖書館（NCL）全文典藏進行交叉比對，排除所有同名同姓個案，確保 100% 真實可溯源。',
+      srcStat1Lbl: '已查證公開來源 (Confirmed)',
+      srcStat1Desc: '包含國際頂級 SCI 期刊、雲端大廠官方影片、權威媒體報導與國圖典藏。',
+      srcStat2Lbl: '待確認爭議項目 (Pending)',
+      srcStat2Desc: '所有歷程均完成雙重文檔比對與官方網址對齊，零未決疑點。',
+      srcStat3Lbl: '同名同姓排除 (Disambiguated)',
+      srcStat3Desc: '排除同名司法官、醫師與非資訊科技管理領域學者，確保身分唯一性。',
+      srcFilterAll: '🌟 全部',
+      srcFilterTech: '📰 主流科技媒體',
+      srcFilterAcad: '🎓 國際學術期刊',
+      srcFilterNcl: '🏛️ 國家圖書館',
+      srcFilterGov: '🏫 政府學習平台',
+      srcFilterCloud: '☁️ 雲端大廠',
+      srcFilterCsr: '🤝 公益組織',
+      srcSearchPlaceholder: '搜尋來源或標題...',
+
       coverLetterTitle: '廖倫豪 博士 - 高階資訊主管 (CIO/CISO/VP) 全球銀行級求職自薦信',
       copySuccess: '自薦信已成功複製到剪貼簿！'
     },
@@ -4708,18 +4735,27 @@ svg {
       proposal: '💡 Proposals',
       portfolio: '🖼️ Portfolio',
       sources: '🔍 Verification',
-      searchPlaceholder: 'Search site...',
+      searchPlaceholder: 'Search site (e.g., Multi-cloud, FinOps, GKE)...',
       coverLetterBtn: '✉️ Cover Letter',
       verified: 'Verified',
       pending: 'Pending',
       excluded: 'Excluded',
       all: 'All',
 
+      // Bottom Nav
+      bnavHome: 'Home',
+      bnavTimeline: 'Timeline',
+      bnavProposal: 'Proposals',
+      bnavPortfolio: 'Portfolio',
+      bnavMore: 'More',
+      summaryExpand: '▼ Expand Full Executive Summary',
+      summaryCollapse: '▲ Collapse Summary',
+
       kpiTitle: '⚡ Strategic Operations & Technology Impact Dashboard',
       kpi1_val: '$10M+', kpi1_lbl: 'Global IT/ERP Capital Governed', kpi1_desc: 'Board-level governance of global IT, SAP Clean Core & SI budgets',
-      kpi2_val: '-30%', kpi2_lbl: 'Multi-cloud FinOps Cost', kpi2_desc: 'Multi-cloud container resource governance',
-      kpi3_val: '+15%', kpi3_lbl: 'Smart Manufacturing Yield', kpi3_desc: 'AI yield prediction model optimization',
-      kpi4_val: '100%', kpi4_lbl: 'Zero Outage Record', kpi4_desc: '6-Cloud GKE & MongoDB Atlas Managed',
+      kpi2_val: '-30%', kpi2_lbl: 'Multi-cloud FinOps Cost', kpi2_desc: 'Multi-cloud container resource governance & FinOps optimization',
+      kpi3_val: '+15%', kpi3_lbl: 'Smart Manufacturing Yield', kpi3_desc: 'Edge AIoT & ML predictive yield optimization models',
+      kpi4_val: '100%', kpi4_lbl: 'Zero Outage Record', kpi4_desc: '6-Cloud GKE & MongoDB Atlas Managed Global Reliability',
 
       statConfirmed: 'Verified Data (Confirmed)',
       statPending: 'Pending Items (Pending)',
@@ -4746,6 +4782,24 @@ svg {
       showingCount: 'Matching Records: ',
       viewDetail: 'View Evidence & Details ↗',
 
+      // Sources Tab
+      srcTitle: 'Sources, Identity Disambiguation & Verification Audit',
+      srcDesc: 'All academic credentials, executive leadership milestones, SCI journal publications, and media features are cross-verified with official citations from Google Cloud Global Case Studies, CIO Taiwan, iThome, Springer SCI (DOI), and the National Central Library of Taiwan. All homonymous persons are explicitly disambiguated to ensure 100% authenticity.',
+      srcStat1Lbl: 'Confirmed Public Sources (Confirmed)',
+      srcStat1Desc: 'Includes tier-1 SCI journals, official cloud vendor features, leading tech media & national archives.',
+      srcStat2Lbl: 'Pending Disputed Items (Pending)',
+      srcStat2Desc: 'All historical milestones have dual-document alignment and official URL validation with zero ambiguity.',
+      srcStat3Lbl: 'Disambiguated Homonyms (Disambiguated)',
+      srcStat3Desc: 'Explicitly excludes prosecutors, physicians, and unrelated scholars sharing the same name.',
+      srcFilterAll: '🌟 All',
+      srcFilterTech: '📰 Tech Media',
+      srcFilterAcad: '🎓 Academic Journals',
+      srcFilterNcl: '🏛️ National Library',
+      srcFilterGov: '🏫 Gov Learning',
+      srcFilterCloud: '☁️ Cloud Hyperscalers',
+      srcFilterCsr: '🤝 Non-Profit / CSR',
+      srcSearchPlaceholder: 'Search sources or titles...',
+
       coverLetterTitle: 'Dr. Howard Liao - Executive CIO/CISO Cover Letter',
       copySuccess: 'Cover letter successfully copied to clipboard!'
     },
@@ -4760,18 +4814,27 @@ svg {
       proposal: '💡 提案書',
       portfolio: '🖼️ 作品・実績集',
       sources: '🔍 出所・検証',
-      searchPlaceholder: 'サイト内検索...',
+      searchPlaceholder: 'サイト内検索 (例: マルチクラウド, FinOps, GKE)...',
       coverLetterBtn: '✉️ カバーレター',
       verified: '検証済み',
       pending: '確認中',
       excluded: '除外',
       all: 'すべて',
 
+      // Bottom Nav
+      bnavHome: 'ホーム',
+      bnavTimeline: '経歴',
+      bnavProposal: '提案書',
+      bnavPortfolio: '実績',
+      bnavMore: 'その他',
+      summaryExpand: '▼ 詳細プロフィールを展開',
+      summaryCollapse: '▲ プロフィールを折りたたむ',
+
       kpiTitle: '⚡ 戦略運用および技術成效ダッシュボード (Bento Grid)',
       kpi1_val: '$10M+', kpi1_lbl: 'グローバルIT資本統括', kpi1_desc: '最高1,000万米ドル規模のグローバルIT・SAP予算統括',
-      kpi2_val: '-30%', kpi2_lbl: 'マルチクラウドFinOpsコスト', kpi2_desc: 'コンテナ資源ガバナンスと最適化',
-      kpi3_val: '+15%', kpi3_lbl: 'スマート製造歩留まり', kpi3_desc: 'AI 予測モデルによる品質改善',
-      kpi4_val: '100%', kpi4_lbl: 'Zero Outage (障害ゼロ)', kpi4_desc: '6クラウド GKE & MongoDB Atlas 運用',
+      kpi2_val: '-30%', kpi2_lbl: 'マルチクラウドFinOpsコスト', kpi2_desc: 'コンテナ資源ガバナンスとTCO 30%削減',
+      kpi3_val: '+15%', kpi3_lbl: 'スマート製造歩留まり', kpi3_desc: 'AI 予測モデルによる品質改善歩留まり+15%',
+      kpi4_val: '100%', kpi4_lbl: 'Zero Outage (無停止)', kpi4_desc: '6クラウド GKE & MongoDB Atlas 完全無停止運用',
 
       statConfirmed: '検証済みデータ (Confirmed)',
       statPending: '確認待ち項目 (Pending)',
@@ -4797,6 +4860,24 @@ svg {
       clearFilters: '条件クリア',
       showingCount: '該当件数: ',
       viewDetail: '詳細・検証根拠を見る ↗',
+
+      // Sources Tab
+      srcTitle: '情報出所・身元同定および検証監査ログ',
+      srcDesc: '収録されたすべての学歴、経歴、SCI国際論文、メディア報道は、Google Cloud公式成功事例、CIO Taiwan、iThome、Springer SCI（DOI）、国家図書館（台湾）の公的記録に基づき厳格に照合・検証済みです。同姓同名の別人事例を明確に除外し、100%の真正性を保証します。',
+      srcStat1Lbl: '検証済み公開出所 (Confirmed)',
+      srcStat1Desc: 'トップSCI学術誌、クラウド公式事例、主要テックメディア、国立図書館所蔵を含む。',
+      srcStat2Lbl: '確認中・保留項目 (Pending)',
+      srcStat2Desc: '全経歴は二重公的文書照合および公式URL検証を完了しており、未決事項ゼロ。',
+      srcStat3Lbl: '除外された同姓同名 (Disambiguated)',
+      srcStat3Desc: '同姓同名の法官、医師、他分野学者を厳格に除外し、唯一性を確立。',
+      srcFilterAll: '🌟 全て',
+      srcFilterTech: '📰 主要テックメディア',
+      srcFilterAcad: '🎓 国際学術誌',
+      srcFilterNcl: '🏛️ 国家図書館',
+      srcFilterGov: '🏫 行政院研修基盤',
+      srcFilterCloud: '☁️ クラウド主要ベンダー',
+      srcFilterCsr: '🤝 公益・CSR活動',
+      srcSearchPlaceholder: '出所またはタイトルを検索...',
 
       coverLetterTitle: '廖倫豪 博士 - エグゼクティブ CIO/CISO カバーレター',
       copySuccess: 'カバーレターがクリップボードにコピーされました！'
@@ -5022,22 +5103,35 @@ Sincerely,
 Howard Liao, Ph.D.
 Mobile: +886-975-323161 | Email: Liao.Howard@gmail.com`;
     } else if (state.currentLang === 'jp') {
-      coverText = `採用委任 / エグゼクティブ各位
+      coverText = `拝啓
 
-廖倫豪 博士 (Dr. Howard Liao, Ph.D.) と申します。グローバルCIOおよび取締役会直属として、20年以上のエンタープライズアプリケーション統括、SAP ERPロードマップ、Java/Spring Bootマイクロサービスアーキテクチャ、DevSecOps、AI SDLCの実績を有します。最高1,000万米ドル規模のIT・SI予算を統括してまいりました。
+時下益々ご清栄のこととお慶び申し上げます。
 
-【グローバルアプリケーション統括】3カ年アプリケーションロードマップを策定し、SAP S/4HANA Clean Core原則(アドオン35%削減)、Java/Spring Boot Architecture Review Board (ARB)、Kafka/EDI/IDoc統合基盤を主導。DevSecOps Quality GatesおよびAI for SDLC(AIコードレビュー、テスト自動生成)を導入し、開発リードタイム40%短縮、不具合流出率35%低減、マルチクラウドTCO 20–30%削減、障害ゼロ(100% Zero Outage)を達成。
+私、廖倫豪（リョウ・リンホウ、Howard Liao, Ph.D.）は、20年以上にわたりグローバル・エンタープライズにおけるアプリケーションガバナンス、SAP ERP戦略ブループリント、Java/Spring Bootマイクロサービス設計、およびサイバーセキュリティ／AI SDLCの実務を牽引してまいりました。直近では多国籍エンターテインメント・テクノロジー企業グループにて、Global CIOおよび取締役会直属の副社長兼IT Directorを務め、最大1,000万米ドル規模のIT投資（CAPEX/OPEX）および世界的な大手SIerを統制しております。
 
-【セキュリティ・CISO】Zero Trust、ISO 27001、ISO 42001 (AIMS)、NIST CSF、SoD/IAM統制を導入し、セキュリティインシデントを年間30%以上削減。
+私のコアコンピタンスおよび実績は以下の通りです：
 
-詳細な戦略ポートフォリオおよび実績は下記をご参照ください：  
-https://howardliao.github.io/portfolio/
+1. グローバル・アプリケーションガバナンス＆SAP Clean Core推進：
+   S/4HANA Clean Core原則を徹底し、35%以上のレガシー個別開発（アドオン）を削減、標準業務プロセス適合率を90%以上に引き上げました。またアーキテクチャ審査委員会（ARB）を主導し、Java/Spring BootによるAPI-first標準化、Apache Kafka/EDI/IDoc基盤のエンタープライズ統合ハブを確立しました。
 
-貴社のグローバルアプリケーション統括責任者として貢献できる機会を楽しみにしております。
+2. クラウドネイティブ刷新＆100%障害ゼロ運用（Zero Outage）：
+   GKE（Google Kubernetes Engine）による全面コンテナ化とCI/CDパイプライン刷新により、デプロイ効率を100%向上。基幹データベースをMongoDB Atlasフルマネージド・グローバル分散クラスタへ平滑移行し、数百万人の同時アクセス負荷下においても「100%障害停止ゼロ」を達成。Google Cloud公式のAPAC旗艦顧客事例として世界発信されました。
 
-敬具  
+3. FinOpsクラウドコスト最適化（TCO -30%削減）：
+   マルチクラウド環境における動的リソーススケーリングと厳格な費用配賦モデルを確立し、爆発的な事業成長を支えながら、クラウド総保有コスト（TCO）の30%削減を達成しました。
+
+4. ゼロトラストセキュリティ＆AIガバナンス（ISO 27001/42001 主任審査員）：
+   ISO 27001（ISMS）および最新のISO 42001（AIマネジメントシステム）主任審査員資格を保持し、DevSecOps自動品質ゲート（SAST/DAST/SBOM）を完備。最高水準のセキュリティとAIガバナンスを両立させています。
+
+私の学術的バックグラウンド（情報技術管理学博士、SCI論文発表、国家図書館永久収蔵）と、27年に及ぶハイテク製造・上場IT企業・外資系ベンダー（Borland/Sybase）での実戦経験を融合させ、貴社のグローバル展開とエンタープライズDXを成功に導く所存です。
+
+面談の機会を賜れますことを心より楽しみに申し上げております。
+
+敬具
+
 廖倫豪 博士 (Howard Liao, Ph.D.)
-携帯：+886-975-323161 | メール：Liao.Howard@gmail.com`;
+E-mail: liao.howard@gmail.com
+Portfolio: https://howardliao.github.io/portfolio/`;
     } else {
       coverText = `敬啟者您好：
 
@@ -5088,7 +5182,23 @@ https://howardliao.github.io/portfolio/
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  
+  function updateNavLabels() {
+    const t = i18n[state.currentLang] || i18n.zh;
+    document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+      const tab = btn.getAttribute('data-tab');
+      const lbl = btn.querySelector('.bottom-nav-label');
+      if (!lbl) return;
+      if (tab === 'dashboard') lbl.textContent = t.bnavHome || '首頁';
+      else if (tab === 'timeline') lbl.textContent = t.bnavTimeline || '歷程';
+      else if (tab === 'proposal') lbl.textContent = t.bnavProposal || '建議書';
+      else if (tab === 'portfolio') lbl.textContent = t.bnavPortfolio || '作品';
+      else if (btn.id === 'btn-mobile-more') lbl.textContent = t.bnavMore || '更多';
+    });
+  }
+
   function renderAllViews() {
+    updateNavLabels();
     renderHeaderUI();
     renderDashboardView();
     renderTimelineView();

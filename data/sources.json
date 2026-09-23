@@ -12,7 +12,13 @@
     "copyrightNotes": "公開官方影音資料。",
     "identityMatchReason": "受訪主管與職涯吻合。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "Google Cloud Global Customer Stories",
+    "publisherJp": "Google Cloud グローバル顧客事例",
+    "titleEn": "Google Cloud Official APAC Customer Success Story Video Interview",
+    "titleJp": "Google Cloud公式 APAC顧客成功事例 ビデオインタビュー",
+    "excerptEn": "Detailed case study on how Howard Liao led multi-cloud container modernization with Google Kubernetes Engine (GKE), maintaining a 100% Zero Outage record for high-concurrency mobile titles.",
+    "excerptJp": "廖倫豪博士率いる技術チームがGKEマルチクラウド基盤を構築し、世界的ゲームの高負荷アクセス下で100%無停止運用を達成した公式ビデオ特集。"
   },
   {
     "id": "SRC-002",
@@ -27,7 +33,13 @@
     "copyrightNotes": "公開科技媒體採訪。",
     "identityMatchReason": "實名專訪。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "CIO Taiwan Magazine",
+    "publisherJp": "CIO Taiwan 専門誌",
+    "titleEn": "CIO Taiwan Interview: Capitalizing on Public Cloud for Global Gaming",
+    "titleJp": "CIO Taiwan特別取材：パブリッククラウドを活用し世界のゲーム商機を掴む",
+    "excerptEn": "In-depth interview conducted by Editor-in-Chief Richard Shih on Multi-Cloud Networking (MCN) and cloud cost governance.",
+    "excerptJp": "施鑫澤編集長による独占インタビュー。マルチクラウドネットワーキング（MCN）とFinOpsによる運用最適化を提言。"
   },
   {
     "id": "SRC-003",
@@ -42,7 +54,13 @@
     "copyrightNotes": "公開媒體報導。",
     "identityMatchReason": "實名專訪。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "iThome Computer Newspaper",
+    "publisherJp": "iThome 電脳報",
+    "titleEn": "iThome Special Feature: Building Gaming Data Platforms with MongoDB Atlas",
+    "titleJp": "iThome技術企画：MongoDB Atlasによるゲームデータ管理基盤の構築",
+    "excerptEn": "iThome technical feature interviewing IT Director Dr. Howard Liao on deploying MongoDB Atlas to support global real-time gaming transactions.",
+    "excerptJp": "IT Director 廖倫豪博士の取材記事。MongoDB Atlas全託管クラスタを導入し、世界規模の即時対戦データを支えるアーキテクチャを解説。"
   },
   {
     "id": "SRC-004",
@@ -57,7 +75,13 @@
     "copyrightNotes": "公開大會議程。",
     "identityMatchReason": "主講人 廖倫豪 博士。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "CIO Value Institute",
+    "publisherJp": "CIO バリューインスティテュート",
+    "titleEn": "CIO Value Institute 17th Annual Summit Keynote Address",
+    "titleJp": "CIO バリューインスティテュート第17期総会 基調講演",
+    "excerptEn": "Keynote speech sharing multi-cloud resource governance, security compliance, and FinOps practices.",
+    "excerptJp": "上場企業CIO・CISO向けにマルチクラウド資源統治とFinOps実践ノウハウを伝授した基調講演。"
   },
   {
     "id": "SRC-005",
@@ -72,7 +96,13 @@
     "copyrightNotes": "學術出版版權歸 Springer。",
     "identityMatchReason": "作者名、朝陽科大與博士論文研究方向完全一致。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "Springer Nature (SCI)",
+    "publisherJp": "シュプリンガー (Springer Nature SCI)",
+    "titleEn": "Springer SCI Paper: Reversible secret-image sharing with high visual quality",
+    "titleJp": "Springer SCI論文：高画質可逆秘密画像分散共有法",
+    "excerptEn": "This paper proposes a reversible secret-image sharing scheme for sharing a secret image among shadow images with high visual quality. Authors: Ching-Chiuan Lin, Lun-Hao Liao (廖倫豪), Kuo-Feng Hwang, Shih-Chieh Chen.",
+    "excerptJp": "高品質可逆秘密画像分散法を提案した学術論文。著者：林政泉、廖倫豪 (Lun-Hao Liao)、黄国峰、陳世傑。"
   },
   {
     "id": "SRC-006",
@@ -87,7 +117,13 @@
     "copyrightNotes": "國家圖書館公開典藏資料。",
     "identityMatchReason": "研究生姓名 廖倫豪，身分證字號與身分消歧核對無誤。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "National Central Library of Taiwan (NCL)",
+    "publisherJp": "国家図書館 (台湾)",
+    "titleEn": "Doctoral Dissertation Statutory Archive (System ID: 106IKTC0183002)",
+    "titleJp": "博士学位論文 法定永久収蔵 (論文ID: 106IKTC0183002)",
+    "excerptEn": "Chaoyang University of Technology Ph.D. Dissertation by Howard Liao, establishing adaptive SOA IT governance models.",
+    "excerptJp": "朝陽科技大学 廖倫豪（Howard Liao）博士論文。適応型SOAアーキテクチャによるITガバナンスモデルを確立。"
   },
   {
     "id": "SRC-007",
@@ -102,7 +138,13 @@
     "copyrightNotes": "公部門教育訓練資料。",
     "identityMatchReason": "講師 廖倫豪 博士。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "Civil Service Development Institute, Executive Yuan",
+    "publisherJp": "行政院（内閣）人事行政総処 e等公務員研修プラットフォーム",
+    "titleEn": "Executive Yuan Masterclass: Cloud Management & Practice",
+    "titleJp": "行政院マスター講座：クラウド管理と実務の洞察",
+    "excerptEn": "Official government training course recorded by Dr. Howard Liao for senior civil servants.",
+    "excerptJp": "廖倫豪博士が講師を務め、公務員向けに配信されたクラウド転換・情報統治講座。"
   },
   {
     "id": "SRC-008",
@@ -117,7 +159,13 @@
     "copyrightNotes": "個人認證憑證。",
     "identityMatchReason": "證書持有人姓名 廖倫豪。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "BSI / SGS International Certification Bodies",
+    "publisherJp": "BSI / SGS 国際認証機関",
+    "titleEn": "ISO 27001 ISMS & ISO 42001 AIMS Lead Auditor Certifications",
+    "titleJp": "ISO 27001 情報セキュリティ & ISO 42001 AIガバナンス 主任審査員認定",
+    "excerptEn": "Official certifications verifying qualified Lead Auditor status for enterprise ISMS and AI governance systems.",
+    "excerptJp": "ISMS情報セキュリティおよびAIガバナンスマネジメントシステムの国際主任審査員合格証書。"
   },
   {
     "id": "SRC-009",
@@ -132,7 +180,13 @@
     "copyrightNotes": "公開媒體報導。",
     "identityMatchReason": "實名提及。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "DIGITIMES Tech News",
+    "publisherJp": "DIGITIMES 科技網",
+    "titleEn": "DIGITIMES Feature: MongoDB 8.0 Launches to Bridge Enterprises with GenAI",
+    "titleJp": "DIGITIMES報道：MongoDB 8.0発表、生成AIと企業接続を推進",
+    "excerptEn": "Comprehensive news coverage highlighting GameSparcs customer success presentation at MongoDB annual conference.",
+    "excerptJp": "MongoDB 8.0発表会におけるエンタープライズ成功事例として隆中網絡の登壇内容を報道。"
   },
   {
     "id": "SRC-010",
@@ -147,7 +201,13 @@
     "copyrightNotes": "國家圖書館公開資料。",
     "identityMatchReason": "指導學者姓名 廖倫豪 博士。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "National Digital Library of Theses and Dissertations in Taiwan",
+    "publisherJp": "国家図書館 台湾博修士論文知識加値システム",
+    "titleEn": "National Central Library Academic Mentorship Archive (Advisor ID: 106IKTC0183002)",
+    "titleJp": "国家図書館 学術研究指導・審査委員アーカイブレコード (コード: 106IKTC0183002)",
+    "excerptEn": "Official statutory archive recognizing Dr. Howard Liao's academic role as dissertation advisor and oral committee member.",
+    "excerptJp": "廖倫豪博士が修士・博士論文指導学者および審査委員を務めた公式アーカイブレコード。"
   },
   {
     "id": "SRC-011",
@@ -162,6 +222,12 @@
     "copyrightNotes": "公開公益團體檔案。",
     "identityMatchReason": "受聘董事兼資訊長 廖倫豪博士。",
     "reliabilityLevel": "高",
-    "status": "verified"
+    "status": "verified",
+    "publisherEn": "Cancer NoNo Foundation",
+    "publisherJp": "公益財団法人 康善基金会",
+    "titleEn": "Cancer NoNo Foundation: Board Member & CIO Digital CSR Initiative",
+    "titleJp": "康善基金会：理事 兼 最高情報責任者 (CIO) デジタル社会貢献・ESG活動",
+    "excerptEn": "Official board member appointment and IT modernization records supporting children's nutrition and health education.",
+    "excerptJp": "子どもの健康教育および医療情報セキュリティを支援するCIO理事就任記録。"
   }
 ]
