@@ -1492,106 +1492,285 @@ table {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
   position: relative;
+  pointer-events: none !important;
 }
 .bottom-nav-icon svg {
-  width: 22px;
-  height: 22px;
-  stroke: currentColor;
+  width: 24px;
+  height: 24px;
   display: block;
+  overflow: visible;
+  pointer-events: none !important;
+}
+.bottom-nav-icon svg * {
+  pointer-events: none !important;
+}
+.bottom-nav-label {
+  pointer-events: none !important;
 }
 
-/* 點擊回彈動畫 */
+/* 點擊回彈動畫與環境光 */
+.bottom-nav-item:active {
+  transform: scale(0.92);
+}
 .bottom-nav-item:active .bottom-nav-icon {
   transform: scale(0.85);
 }
 .bottom-nav-item.active .bottom-nav-icon {
   color: #38bdf8;
-  transform: translateY(-2px) scale(1.1);
+  transform: translateY(-3px) scale(1.15);
   filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
 }
 
-/* 1. 首頁 (Dashboard) 格狀微呼吸 */
-.bottom-nav-item.active .anim-grid-1 {
-  animation: gridPulse 2s infinite ease-in-out;
+/* Ambient Glowing Pod behind Active Item */
+.bottom-nav-item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0) 70%);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 0;
 }
-.bottom-nav-item.active .anim-grid-3 {
-  animation: gridPulse 2s infinite ease-in-out 0.4s;
-}
-@keyframes gridPulse {
-  0%, 100% { opacity: 1; fill: transparent; }
-  50% { opacity: 0.7; fill: rgba(56, 189, 248, 0.3); }
+.bottom-nav-item.active::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.15);
 }
 
-/* 2. 歷程 (Timeline) 軌道與指針平滑掃描 */
-.bottom-nav-item.active .anim-needle {
+/* 1. 首頁 (Dashboard / Matrix Hub) 錯位呼吸 */
+.icon-dashboard-svg .dash-q1 {
+  fill: rgba(56, 189, 248, 0.15);
+  stroke: #64748b;
+  stroke-width: 1.8;
+  transition: all 0.3s ease;
+}
+.icon-dashboard-svg .dash-q2 {
+  fill: rgba(168, 85, 247, 0.15);
+  stroke: #64748b;
+  stroke-width: 1.8;
+  transition: all 0.3s ease;
+}
+.icon-dashboard-svg .dash-q3 {
+  fill: rgba(56, 189, 248, 0.15);
+  stroke: #64748b;
+  stroke-width: 1.8;
+  transition: all 0.3s ease;
+}
+.icon-dashboard-svg .dash-q4 {
+  fill: rgba(245, 158, 11, 0.15);
+  stroke: #64748b;
+  stroke-width: 1.8;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-item.active .icon-dashboard-svg .dash-q1 {
+  stroke: #38bdf8;
+  fill: rgba(56, 189, 248, 0.45);
+  animation: dashPulse1 2.2s infinite ease-in-out;
+}
+.bottom-nav-item.active .icon-dashboard-svg .dash-q2 {
+  stroke: #a855f7;
+  fill: rgba(168, 85, 247, 0.45);
+  animation: dashPulse2 2.2s infinite ease-in-out 0.3s;
+}
+.bottom-nav-item.active .icon-dashboard-svg .dash-q3 {
+  stroke: #38bdf8;
+  fill: rgba(56, 189, 248, 0.45);
+  animation: dashPulse3 2.2s infinite ease-in-out 0.6s;
+}
+.bottom-nav-item.active .icon-dashboard-svg .dash-q4 {
+  stroke: #38bdf8;
+  fill: rgba(56, 189, 248, 0.45);
+  animation: dashPulse4 2.2s infinite ease-in-out 0.9s;
+}
+
+@keyframes dashPulse1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-1px, -1px); filter: drop-shadow(0 0 6px #38bdf8); }
+}
+@keyframes dashPulse2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(1px, -1px); filter: drop-shadow(0 0 6px #a855f7); }
+}
+@keyframes dashPulse3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-1px, 1px); filter: drop-shadow(0 0 6px #38bdf8); }
+}
+@keyframes dashPulse4 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(1px, 1px); filter: drop-shadow(0 0 6px #38bdf8); }
+}
+
+/* 2. 歷程 (Timeline / Chronometer Compass) 雷達與天體軌道 */
+.icon-timeline-svg .orbit-track {
+  stroke: #64748b;
+  stroke-dasharray: 4 2;
+  transition: all 0.3s ease;
+}
+.icon-timeline-svg .scan-hand {
+  stroke: #64748b;
   transform-origin: 12px 12px;
-  animation: needleTick 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transition: all 0.3s ease;
 }
-@keyframes needleTick {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(90deg); }
-  50% { transform: rotate(180deg); }
-  75% { transform: rotate(270deg); }
-  100% { transform: rotate(360deg); }
+.icon-timeline-svg .center-core {
+  fill: #64748b;
+  transition: all 0.3s ease;
 }
-.bottom-nav-item.active .anim-orbit {
-  animation: orbitSpin 12s linear infinite;
+
+.bottom-nav-item.active .icon-timeline-svg .orbit-track {
+  stroke: #38bdf8;
+  animation: orbitRotate 10s linear infinite;
   transform-origin: 12px 12px;
 }
-@keyframes orbitSpin {
+.bottom-nav-item.active .icon-timeline-svg .scan-hand {
+  stroke: #f59e0b;
+  animation: radarSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.bottom-nav-item.active .icon-timeline-svg .center-core {
+  fill: #f59e0b;
+  animation: corePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes orbitRotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(120deg); }
+  60% { transform: rotate(240deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes corePulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #f59e0b); }
+  50% { transform: scale(1.4); filter: drop-shadow(0 0 8px #f59e0b); }
+}
 
-/* 3. 建議書 (Proposal) 科技星芒微閃 */
-.bottom-nav-item.active .anim-sparkle {
-  animation: sparkPulse 2.5s infinite ease-in-out;
+/* 3. 建議書 (Proposal / Strategic Blueprint & AI Flare) */
+.icon-proposal-svg .doc-sheet {
+  stroke: #64748b;
+  fill: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+.icon-proposal-svg .sparkle-flare {
+  stroke: #64748b;
+  fill: transparent;
+  transform-origin: 18px 6.5px;
+  transition: all 0.3s ease;
+}
+.icon-proposal-svg .doc-lines {
+  stroke: #64748b;
+  stroke-dasharray: 4 2;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-item.active .icon-proposal-svg .doc-sheet {
+  stroke: #c084fc;
+  fill: rgba(192, 132, 252, 0.18);
+  filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.4));
+}
+.bottom-nav-item.active .icon-proposal-svg .doc-lines {
+  stroke: #38bdf8;
+  animation: lineFlow 1.6s infinite linear;
+}
+.bottom-nav-item.active .icon-proposal-svg .sparkle-flare {
+  stroke: #f59e0b;
+  fill: #f59e0b;
+  animation: flareGlow 2.4s infinite ease-in-out;
+}
+
+@keyframes lineFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -12; }
+}
+@keyframes flareGlow {
+  0%, 100% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.3) rotate(90deg); opacity: 1; filter: drop-shadow(0 0 8px #f59e0b); }
+}
+
+/* 4. 作品 (Portfolio / 3D Isometric Stack) 晶片浮動 */
+.icon-portfolio-svg .iso-layer-top {
+  stroke: #64748b;
+  fill: rgba(255, 255, 255, 0.04);
+  transform-origin: 12px 6px;
+  transition: all 0.3s ease;
+}
+.icon-portfolio-svg .iso-layer-mid {
+  stroke: #64748b;
+  fill: rgba(255, 255, 255, 0.02);
   transform-origin: 12px 12px;
+  transition: all 0.3s ease;
 }
-@keyframes sparkPulse {
-  0%, 100% { transform: scale(1); opacity: 1; stroke: #38bdf8; }
-  50% { transform: scale(1.12); opacity: 0.6; stroke: #7dd3fc; }
-}
-.bottom-nav-item.active .anim-core {
-  animation: coreGlow 2s infinite alternate ease-in-out;
-}
-@keyframes coreGlow {
-  0% { fill: rgba(56, 189, 248, 0.15); }
-  100% { fill: rgba(56, 189, 248, 0.45); }
+.icon-portfolio-svg .iso-layer-bottom {
+  stroke: #64748b;
+  fill: rgba(255, 255, 255, 0.01);
+  transform-origin: 12px 18px;
+  transition: all 0.3s ease;
 }
 
-/* 4. 作品 (Portfolio) 圖層層疊懸浮 */
-.bottom-nav-item.active .anim-layer-top {
-  animation: layerFloat 2.8s ease-in-out infinite;
+.bottom-nav-item.active .icon-portfolio-svg .iso-layer-top {
+  stroke: #38bdf8;
+  fill: rgba(56, 189, 248, 0.3);
+  animation: layerHoverTop 3s ease-in-out infinite;
 }
-.bottom-nav-item.active .anim-layer-mid {
-  animation: layerFloat 2.8s ease-in-out infinite 0.3s;
+.bottom-nav-item.active .icon-portfolio-svg .iso-layer-mid {
+  stroke: #818cf8;
+  fill: rgba(129, 140, 248, 0.25);
+  animation: layerHoverMid 3s ease-in-out infinite 0.25s;
 }
-.bottom-nav-item.active .anim-layer-bottom {
-  animation: layerFloat 2.8s ease-in-out infinite 0.6s;
+.bottom-nav-item.active .icon-portfolio-svg .iso-layer-bottom {
+  stroke: #c084fc;
+  fill: rgba(192, 132, 252, 0.2);
+  animation: layerHoverBottom 3s ease-in-out infinite 0.5s;
 }
-@keyframes layerFloat {
+
+@keyframes layerHoverTop {
+  0%, 100% { transform: translateY(0); filter: drop-shadow(0 2px 4px rgba(56, 189, 248, 0.3)); }
+  50% { transform: translateY(-2.5px); filter: drop-shadow(0 6px 12px rgba(56, 189, 248, 0.6)); }
+}
+@keyframes layerHoverMid {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-1.5px); }
+  50% { transform: translateY(-1.2px); }
+}
+@keyframes layerHoverBottom {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(0.8px); }
 }
 
-/* 5. 更多 (More) 圓點波浪躍動 */
-.bottom-nav-item.active .anim-dot-1 {
-  animation: dotWave 1.4s infinite ease-in-out;
+/* 5. 更多 (More / Quantum Wave Cluster) 三色波浪 */
+.icon-more-svg .dot-1,
+.icon-more-svg .dot-2,
+.icon-more-svg .dot-3 {
+  fill: #64748b;
+  transition: all 0.3s ease;
+  transform-origin: center;
 }
-.bottom-nav-item.active .anim-dot-2 {
-  animation: dotWave 1.4s infinite ease-in-out 0.2s;
+
+.bottom-nav-item.active .icon-more-svg .dot-1 {
+  fill: #38bdf8;
+  animation: dotWave 1.4s infinite ease-in-out 0s;
 }
-.bottom-nav-item.active .anim-dot-3 {
-  animation: dotWave 1.4s infinite ease-in-out 0.4s;
+.bottom-nav-item.active .icon-more-svg .dot-2 {
+  fill: #a855f7;
+  animation: dotWave 1.4s infinite ease-in-out 0.25s;
 }
+.bottom-nav-item.active .icon-more-svg .dot-3 {
+  fill: #f59e0b;
+  animation: dotWave 1.4s infinite ease-in-out 0.5s;
+}
+
 @keyframes dotWave {
-  0%, 100% { transform: translateY(0); opacity: 0.7; }
-  50% { transform: translateY(-2px); opacity: 1; fill: #38bdf8; }
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px currentColor); }
+  50% { transform: scale(1.4) translateY(-2px); filter: drop-shadow(0 0 8px currentColor); }
 }
 
 </style>
@@ -5154,6 +5333,23 @@ table {
 
     document.getElementById('btn-copy-cover-letter').addEventListener('click', openCoverLetterModal);
     
+    // Robust mobile bottom nav touch & click bindings
+    document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+      const handleAction = function(e) {
+        if (e.type === 'touchend') {
+          e.preventDefault();
+        }
+        const tab = this.getAttribute('data-tab');
+        if (tab) {
+          window.switchTab(tab);
+        } else if (this.id === 'btn-mobile-more') {
+          window.toggleMobileDrawer();
+        }
+      };
+      btn.addEventListener('click', handleAction);
+      btn.addEventListener('touchend', handleAction, { passive: false });
+    });
+    
     const btnWord = document.getElementById('btn-download-word-resume');
     if (btnWord) {
       btnWord.addEventListener('click', () => {
@@ -5353,6 +5549,7 @@ https://howardliao.github.io/portfolio/
       alert(t.copySuccess);
     });
   }
+  window.openCoverLetterModal = openCoverLetterModal;
 
   function switchTab(tabKey) {
     state.currentTab = tabKey;
@@ -8174,52 +8371,59 @@ https://howardliao.github.io/portfolio/
        MOBILE APP BOTTOM NAVIGATION (HIGH-TECH ANIMATED SVG)
        ========================================== -->
   <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
-    <button class="bottom-nav-item active" data-tab="dashboard" onclick="window.switchTab('dashboard')">
+    <button class="bottom-nav-item active" data-tab="dashboard">
       <span class="bottom-nav-icon icon-dashboard">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="7" height="9" rx="2" class="anim-grid-1"></rect>
-          <rect x="14" y="3" width="7" height="5" rx="2" class="anim-grid-2"></rect>
-          <rect x="14" y="12" width="7" height="9" rx="2" class="anim-grid-3"></rect>
-          <rect x="3" y="16" width="7" height="5" rx="2" class="anim-grid-4"></rect>
+        <svg class="icon-dashboard-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="3" width="7.5" height="7.5" rx="2.5" class="dash-q1"></rect>
+          <rect x="13.5" y="3" width="7.5" height="7.5" rx="2.5" class="dash-q2"></rect>
+          <rect x="3" y="13.5" width="7.5" height="7.5" rx="2.5" class="dash-q3"></rect>
+          <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2.5" class="dash-q4"></rect>
         </svg>
       </span>
       <span class="bottom-nav-label">首頁</span>
     </button>
-    <button class="bottom-nav-item" data-tab="timeline" onclick="window.switchTab('timeline')">
+    <button class="bottom-nav-item" data-tab="timeline">
       <span class="bottom-nav-icon icon-timeline">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="9" stroke-dasharray="4 2" class="anim-orbit"></circle>
-          <polyline points="12 7 12 12 15 15" class="anim-needle"></polyline>
-          <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+        <svg class="icon-timeline-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="9" class="orbit-track" stroke-width="1.8"></circle>
+          <line x1="12" y1="12" x2="18" y2="7" class="scan-hand" stroke-width="2" stroke-linecap="round"></line>
+          <circle cx="12" cy="12" r="2.2" class="center-core"></circle>
+          <circle cx="12" cy="4" r="0.8" fill="#94a3b8"></circle>
+          <circle cx="20" cy="12" r="0.8" fill="#94a3b8"></circle>
+          <circle cx="12" cy="20" r="0.8" fill="#94a3b8"></circle>
+          <circle cx="4" cy="12" r="0.8" fill="#94a3b8"></circle>
         </svg>
       </span>
       <span class="bottom-nav-label">歷程</span>
     </button>
-    <button class="bottom-nav-item" data-tab="proposal" onclick="window.switchTab('proposal')">
+    <button class="bottom-nav-item" data-tab="proposal">
       <span class="bottom-nav-icon icon-proposal">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" class="anim-sparkle"></path>
-          <circle cx="12" cy="12" r="4.5" class="anim-core" fill="rgba(56, 189, 248, 0.2)"></circle>
+        <svg class="icon-proposal-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" class="doc-sheet" stroke-width="1.8"></path>
+          <polyline points="14 2 14 8 20 8" stroke="#94a3b8" stroke-width="1.8"></polyline>
+          <line x1="8" y1="13" x2="13" y2="13" class="doc-lines" stroke-width="1.8" stroke-linecap="round"></line>
+          <line x1="8" y1="17" x2="16" y2="17" class="doc-lines" stroke-width="1.8" stroke-linecap="round"></line>
+          <path d="M18 3L19 5.5L21.5 6.5L19 7.5L18 10L17 7.5L14.5 6.5L17 5.5Z" class="sparkle-flare" stroke-width="1.2"></path>
         </svg>
       </span>
       <span class="bottom-nav-label">建議書</span>
     </button>
-    <button class="bottom-nav-item" data-tab="portfolio" onclick="window.switchTab('portfolio')">
+    <button class="bottom-nav-item" data-tab="portfolio">
       <span class="bottom-nav-icon icon-portfolio">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 2 7 12 12 22 7 12 2" class="anim-layer-top"></polygon>
-          <polyline points="2 17 12 22 22 17" class="anim-layer-bottom"></polyline>
-          <polyline points="2 12 12 17 22 12" class="anim-layer-mid"></polyline>
+        <svg class="icon-portfolio-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polygon points="12 2 20 6.5 12 11 4 6.5" class="iso-layer-top" stroke-width="1.8" stroke-linejoin="round"></polygon>
+          <path d="M20 11.5L12 16L4 11.5" class="iso-layer-mid" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M20 16.5L12 21L4 16.5" class="iso-layer-bottom" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </span>
       <span class="bottom-nav-label">作品</span>
     </button>
-    <button class="bottom-nav-item" id="btn-mobile-more" onclick="window.toggleMobileDrawer()">
+    <button class="bottom-nav-item" id="btn-mobile-more">
       <span class="bottom-nav-icon icon-more">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="5" cy="12" r="2" fill="currentColor" class="anim-dot-1"></circle>
-          <circle cx="12" cy="12" r="2" fill="currentColor" class="anim-dot-2"></circle>
-          <circle cx="19" cy="12" r="2" fill="currentColor" class="anim-dot-3"></circle>
+        <svg class="icon-more-svg" viewBox="0 0 24 24" fill="none">
+          <circle cx="5" cy="12" r="2.2" class="dot-1"></circle>
+          <circle cx="12" cy="12" r="2.2" class="dot-2"></circle>
+          <circle cx="19" cy="12" r="2.2" class="dot-3"></circle>
         </svg>
       </span>
       <span class="bottom-nav-label">更多</span>
