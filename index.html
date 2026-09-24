@@ -1411,6 +1411,79 @@ svg {
   }
 }
 
+
+/* ==========================================
+   VIEWPORT & RESPONSIVE LAYOUT STABILIZATION
+   ========================================== */
+
+/* 全域文字長字串與網址折行防護 */
+body, .container, .hero-card, .timeline-card, .bento-card, .modal-body {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* 確保所有表格在行動端可平滑橫向滾動 */
+table {
+  max-width: 100%;
+}
+.table-responsive, .pipeline-scroll-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 桌面端與筆記型電腦 (1024px ~ 1366px) 導覽列防擠壓溢出 */
+@media (min-width: 769px) and (max-width: 1366px) {
+  .nav-content {
+    gap: 8px !important;
+  }
+  .nav-tab-btn {
+    padding: 6px 10px !important;
+    font-size: 0.8rem !important;
+  }
+  .search-box-header {
+    max-width: 160px !important;
+  }
+  .btn-primary#btn-copy-cover-letter {
+    padding: 6px 10px !important;
+    font-size: 0.78rem !important;
+  }
+  .btn-primary#btn-download-word-resume {
+    padding: 6px 12px !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+/* 手機端 (<= 768px) 網格與容器安全單欄化 */
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .hero-details {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .hero-tags {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .modal-container {
+    max-width: calc(100vw - 24px) !important;
+    width: calc(100% - 24px) !important;
+    margin: 12px auto !important;
+  }
+  .pwa-install-banner {
+    left: 12px !important;
+    right: 12px !important;
+    max-width: calc(100vw - 24px) !important;
+    width: auto !important;
+  }
+}
+
 </style>
 </head>
 <body>
