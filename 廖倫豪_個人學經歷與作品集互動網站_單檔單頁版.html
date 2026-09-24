@@ -5362,8 +5362,12 @@ https://howardliao.github.io/portfolio/
     document.querySelectorAll('.tab-page').forEach(page => {
       page.classList.toggle('active', page.id === `page-${tabKey}`);
     });
+    document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabKey);
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+  window.switchTab = switchTab;
 
   
   function updateNavLabels() {
@@ -5704,24 +5708,6 @@ https://howardliao.github.io/portfolio/
     } else {
       btn.textContent = '▼ 展開完整高階自述';
     }
-  };
-
-  // Sync Bottom Nav Active Tab with switchTab
-  const originalSwitchTab = window.switchTab;
-  window.switchTab = function(tabKey) {
-    if (typeof originalSwitchTab === 'function') {
-      originalSwitchTab(tabKey);
-    }
-    // Update bottom nav buttons
-    document.querySelectorAll('.bottom-nav-item').forEach(btn => {
-      if (btn.getAttribute('data-tab') === tabKey) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-    // Smooth scroll to top on mobile tab change
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   function renderDashboardView() {
