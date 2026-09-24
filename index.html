@@ -1484,6 +1484,116 @@ table {
   }
 }
 
+
+/* ==========================================
+   HIGH-TECH SVG BOTTOM NAV WITH MICRO-ANIMATIONS
+   ========================================== */
+.bottom-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+  position: relative;
+}
+.bottom-nav-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  display: block;
+}
+
+/* 點擊回彈動畫 */
+.bottom-nav-item:active .bottom-nav-icon {
+  transform: scale(0.85);
+}
+.bottom-nav-item.active .bottom-nav-icon {
+  color: #38bdf8;
+  transform: translateY(-2px) scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
+}
+
+/* 1. 首頁 (Dashboard) 格狀微呼吸 */
+.bottom-nav-item.active .anim-grid-1 {
+  animation: gridPulse 2s infinite ease-in-out;
+}
+.bottom-nav-item.active .anim-grid-3 {
+  animation: gridPulse 2s infinite ease-in-out 0.4s;
+}
+@keyframes gridPulse {
+  0%, 100% { opacity: 1; fill: transparent; }
+  50% { opacity: 0.7; fill: rgba(56, 189, 248, 0.3); }
+}
+
+/* 2. 歷程 (Timeline) 軌道與指針平滑掃描 */
+.bottom-nav-item.active .anim-needle {
+  transform-origin: 12px 12px;
+  animation: needleTick 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes needleTick {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+.bottom-nav-item.active .anim-orbit {
+  animation: orbitSpin 12s linear infinite;
+  transform-origin: 12px 12px;
+}
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 3. 建議書 (Proposal) 科技星芒微閃 */
+.bottom-nav-item.active .anim-sparkle {
+  animation: sparkPulse 2.5s infinite ease-in-out;
+  transform-origin: 12px 12px;
+}
+@keyframes sparkPulse {
+  0%, 100% { transform: scale(1); opacity: 1; stroke: #38bdf8; }
+  50% { transform: scale(1.12); opacity: 0.6; stroke: #7dd3fc; }
+}
+.bottom-nav-item.active .anim-core {
+  animation: coreGlow 2s infinite alternate ease-in-out;
+}
+@keyframes coreGlow {
+  0% { fill: rgba(56, 189, 248, 0.15); }
+  100% { fill: rgba(56, 189, 248, 0.45); }
+}
+
+/* 4. 作品 (Portfolio) 圖層層疊懸浮 */
+.bottom-nav-item.active .anim-layer-top {
+  animation: layerFloat 2.8s ease-in-out infinite;
+}
+.bottom-nav-item.active .anim-layer-mid {
+  animation: layerFloat 2.8s ease-in-out infinite 0.3s;
+}
+.bottom-nav-item.active .anim-layer-bottom {
+  animation: layerFloat 2.8s ease-in-out infinite 0.6s;
+}
+@keyframes layerFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+
+/* 5. 更多 (More) 圓點波浪躍動 */
+.bottom-nav-item.active .anim-dot-1 {
+  animation: dotWave 1.4s infinite ease-in-out;
+}
+.bottom-nav-item.active .anim-dot-2 {
+  animation: dotWave 1.4s infinite ease-in-out 0.2s;
+}
+.bottom-nav-item.active .anim-dot-3 {
+  animation: dotWave 1.4s infinite ease-in-out 0.4s;
+}
+@keyframes dotWave {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(-2px); opacity: 1; fill: #38bdf8; }
+}
+
 </style>
 </head>
 <body>
@@ -8074,25 +8184,58 @@ https://howardliao.github.io/portfolio/
   <!-- ==========================================
        MOBILE APP BOTTOM NAVIGATION & DRAWER
        ========================================== -->
+  <!-- ==========================================
+       MOBILE APP BOTTOM NAVIGATION (HIGH-TECH ANIMATED SVG)
+       ========================================== -->
   <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
     <button class="bottom-nav-item active" data-tab="dashboard" onclick="window.switchTab('dashboard')">
-      <span class="bottom-nav-icon">📊</span>
+      <span class="bottom-nav-icon icon-dashboard">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="9" rx="2" class="anim-grid-1"></rect>
+          <rect x="14" y="3" width="7" height="5" rx="2" class="anim-grid-2"></rect>
+          <rect x="14" y="12" width="7" height="9" rx="2" class="anim-grid-3"></rect>
+          <rect x="3" y="16" width="7" height="5" rx="2" class="anim-grid-4"></rect>
+        </svg>
+      </span>
       <span class="bottom-nav-label">首頁</span>
     </button>
     <button class="bottom-nav-item" data-tab="timeline" onclick="window.switchTab('timeline')">
-      <span class="bottom-nav-icon">⏳</span>
+      <span class="bottom-nav-icon icon-timeline">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9" stroke-dasharray="4 2" class="anim-orbit"></circle>
+          <polyline points="12 7 12 12 15 15" class="anim-needle"></polyline>
+          <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+        </svg>
+      </span>
       <span class="bottom-nav-label">歷程</span>
     </button>
     <button class="bottom-nav-item" data-tab="proposal" onclick="window.switchTab('proposal')">
-      <span class="bottom-nav-icon">💡</span>
+      <span class="bottom-nav-icon icon-proposal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" class="anim-sparkle"></path>
+          <circle cx="12" cy="12" r="4.5" class="anim-core" fill="rgba(56, 189, 248, 0.2)"></circle>
+        </svg>
+      </span>
       <span class="bottom-nav-label">建議書</span>
     </button>
     <button class="bottom-nav-item" data-tab="portfolio" onclick="window.switchTab('portfolio')">
-      <span class="bottom-nav-icon">🖼️</span>
+      <span class="bottom-nav-icon icon-portfolio">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2" class="anim-layer-top"></polygon>
+          <polyline points="2 17 12 22 22 17" class="anim-layer-bottom"></polyline>
+          <polyline points="2 12 12 17 22 12" class="anim-layer-mid"></polyline>
+        </svg>
+      </span>
       <span class="bottom-nav-label">作品</span>
     </button>
     <button class="bottom-nav-item" id="btn-mobile-more" onclick="window.toggleMobileDrawer()">
-      <span class="bottom-nav-icon">☰</span>
+      <span class="bottom-nav-icon icon-more">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="5" cy="12" r="2" fill="currentColor" class="anim-dot-1"></circle>
+          <circle cx="12" cy="12" r="2" fill="currentColor" class="anim-dot-2"></circle>
+          <circle cx="19" cy="12" r="2" fill="currentColor" class="anim-dot-3"></circle>
+        </svg>
+      </span>
       <span class="bottom-nav-label">更多</span>
     </button>
   </nav>
