@@ -13,7 +13,6 @@
     timeline: [],
     sources: [],
     inventory: [],
-    verificationLog: [],
     
     currentTab: 'dashboard',
     currentLang: 'zh', // 'zh', 'en', 'jp'
@@ -32,9 +31,9 @@
     }
   };
 
-  const i18n = {
+    const i18n = {
     zh: {
-      siteTitle: '廖倫豪 博士 | 跨國企業技術副總 (VP) 暨 資訊長 (CIO) & 資安長 (CISO) 戰略資歷檔案',
+      siteTitle: '廖倫豪 博士 (Howard Liao, Ph.D.) | CIO 資訊長',
       verifiedBadge: '✓ 雙重驗證',
       dashboard: '📊 首頁儀表板',
       timeline: '⏳ 職涯時間軸',
@@ -51,8 +50,17 @@
       excluded: '已排除同名',
       all: '全部',
 
+      // Bottom Nav
+      bnavHome: '首頁',
+      bnavTimeline: '歷程',
+      bnavProposal: '建議書',
+      bnavPortfolio: '作品',
+      bnavMore: '更多',
+      summaryExpand: '▼ 展開完整高階自述',
+      summaryCollapse: '▲ 收合自述',
+
       kpiTitle: '⚡ 戰略營運與技術成效 Dashboard (Bento Grid)',
-      kpi1_val: '+55%', kpi1_lbl: 'AI 運維自動化效率', kpi1_desc: 'Agentic AI 運維自動化與工單處理',
+      kpi1_val: '$10M+', kpi1_lbl: '全球IT/ERP資本治理', kpi1_desc: '直報董事會之全球 IT、SAP Clean Core 與外包 SI 預算',
       kpi2_val: '-30%', kpi2_lbl: '跨國多雲架構成本', kpi2_desc: 'FinOps 多雲容器部署與資源治理',
       kpi3_val: '+15%', kpi3_lbl: '智慧製造產品良率', kpi3_desc: 'AI 預測模型與大數據生產優化',
       kpi4_val: '100%', kpi4_lbl: 'Zero Outage 零停機', kpi4_desc: '六朵雲 GKE 與 MongoDB Atlas 全託管',
@@ -82,11 +90,29 @@
       showingCount: '顯示條件結果：',
       viewDetail: '查看細節與佐證 ↗',
 
+      // Sources Tab
+      srcTitle: '來源清單、人物身分消歧與查證日誌',
+      srcDesc: '所有收錄之學歷、經歷、國際期刊與媒體報導，均嚴格遵循國際公開資訊與事實查核準則，透過 Google Cloud 官方影音、CIO Taiwan 封面報導、iThome 專案企劃、Springer SCI 期刊（DOI）與國家圖書館（NCL）全文典藏進行交叉比對，排除所有同名同姓個案，確保 100% 真實可溯源。',
+      srcStat1Lbl: '已查證公開來源 (Confirmed)',
+      srcStat1Desc: '包含國際頂級 SCI 期刊、雲端大廠官方影片、權威媒體報導與國圖典藏。',
+      srcStat2Lbl: '待確認爭議項目 (Pending)',
+      srcStat2Desc: '所有歷程均完成雙重文檔比對與官方網址對齊，零未決疑點。',
+      srcStat3Lbl: '同名同姓排除 (Disambiguated)',
+      srcStat3Desc: '排除同名司法官、醫師與非資訊科技管理領域學者，確保身分唯一性。',
+      srcFilterAll: '🌟 全部',
+      srcFilterTech: '📰 主流科技媒體',
+      srcFilterAcad: '🎓 國際學術期刊',
+      srcFilterNcl: '🏛️ 國家圖書館',
+      srcFilterGov: '🏫 政府學習平台',
+      srcFilterCloud: '☁️ 雲端大廠',
+      srcFilterCsr: '🤝 公益組織',
+      srcSearchPlaceholder: '搜尋來源或標題...',
+
       coverLetterTitle: '廖倫豪 博士 - 高階資訊主管 (CIO/CISO/VP) 全球銀行級求職自薦信',
       copySuccess: '自薦信已成功複製到剪貼簿！'
     },
     en: {
-      siteTitle: 'Howard Liao, Ph.D. | VP of Tech / CIO & CISO Executive Portfolio',
+      siteTitle: 'Howard Liao, Ph.D. | Chief Information Officer (CIO)',
       verifiedBadge: '✓ Verified',
       dashboard: '📊 Dashboard',
       timeline: '⏳ Timeline',
@@ -96,18 +122,27 @@
       proposal: '💡 Proposals',
       portfolio: '🖼️ Portfolio',
       sources: '🔍 Verification',
-      searchPlaceholder: 'Search site...',
+      searchPlaceholder: 'Search site (e.g., Multi-cloud, FinOps, GKE)...',
       coverLetterBtn: '✉️ Cover Letter',
       verified: 'Verified',
       pending: 'Pending',
       excluded: 'Excluded',
       all: 'All',
 
+      // Bottom Nav
+      bnavHome: 'Home',
+      bnavTimeline: 'Timeline',
+      bnavProposal: 'Proposals',
+      bnavPortfolio: 'Portfolio',
+      bnavMore: 'More',
+      summaryExpand: '▼ Expand Full Executive Summary',
+      summaryCollapse: '▲ Collapse Summary',
+
       kpiTitle: '⚡ Strategic Operations & Technology Impact Dashboard',
-      kpi1_val: '+55%', kpi1_lbl: 'AI Operations Efficiency', kpi1_desc: 'Agentic AI automated ticket processing',
-      kpi2_val: '-30%', kpi2_lbl: 'Multi-cloud FinOps Cost', kpi2_desc: 'Multi-cloud container resource governance',
-      kpi3_val: '+15%', kpi3_lbl: 'Smart Manufacturing Yield', kpi3_desc: 'AI yield prediction model optimization',
-      kpi4_val: '100%', kpi4_lbl: 'Zero Outage Record', kpi4_desc: '6-Cloud GKE & MongoDB Atlas Managed',
+      kpi1_val: '$10M+', kpi1_lbl: 'Global IT/ERP Capital Governed', kpi1_desc: 'Board-level governance of global IT, SAP Clean Core & SI budgets',
+      kpi2_val: '-30%', kpi2_lbl: 'Multi-cloud FinOps Cost', kpi2_desc: 'Multi-cloud container resource governance & FinOps optimization',
+      kpi3_val: '+15%', kpi3_lbl: 'Smart Manufacturing Yield', kpi3_desc: 'Edge AIoT & ML predictive yield optimization models',
+      kpi4_val: '100%', kpi4_lbl: 'Zero Outage Record', kpi4_desc: '6-Cloud GKE & MongoDB Atlas Managed Global Reliability',
 
       statConfirmed: 'Verified Data (Confirmed)',
       statPending: 'Pending Items (Pending)',
@@ -134,11 +169,29 @@
       showingCount: 'Matching Records: ',
       viewDetail: 'View Evidence & Details ↗',
 
+      // Sources Tab
+      srcTitle: 'Sources, Identity Disambiguation & Verification Audit',
+      srcDesc: 'All academic credentials, executive leadership milestones, SCI journal publications, and media features are cross-verified with official citations from Google Cloud Global Case Studies, CIO Taiwan, iThome, Springer SCI (DOI), and the National Central Library of Taiwan. All homonymous persons are explicitly disambiguated to ensure 100% authenticity.',
+      srcStat1Lbl: 'Confirmed Public Sources (Confirmed)',
+      srcStat1Desc: 'Includes tier-1 SCI journals, official cloud vendor features, leading tech media & national archives.',
+      srcStat2Lbl: 'Pending Disputed Items (Pending)',
+      srcStat2Desc: 'All historical milestones have dual-document alignment and official URL validation with zero ambiguity.',
+      srcStat3Lbl: 'Disambiguated Homonyms (Disambiguated)',
+      srcStat3Desc: 'Explicitly excludes prosecutors, physicians, and unrelated scholars sharing the same name.',
+      srcFilterAll: '🌟 All',
+      srcFilterTech: '📰 Tech Media',
+      srcFilterAcad: '🎓 Academic Journals',
+      srcFilterNcl: '🏛️ National Library',
+      srcFilterGov: '🏫 Gov Learning',
+      srcFilterCloud: '☁️ Cloud Hyperscalers',
+      srcFilterCsr: '🤝 Non-Profit / CSR',
+      srcSearchPlaceholder: 'Search sources or titles...',
+
       coverLetterTitle: 'Dr. Howard Liao - Executive CIO/CISO Cover Letter',
       copySuccess: 'Cover letter successfully copied to clipboard!'
     },
     jp: {
-      siteTitle: '廖倫豪 博士 | 企業技術副社長 兼 CIO & CISO ポータル',
+      siteTitle: '廖倫豪 博士 (Howard Liao, Ph.D.) | 最高情報責任者 (CIO)',
       verifiedBadge: '✓ 検証済み',
       dashboard: '📊 ダッシュボード',
       timeline: '⏳ 経歴タイムライン',
@@ -148,18 +201,27 @@
       proposal: '💡 提案書',
       portfolio: '🖼️ 作品・実績集',
       sources: '🔍 出所・検証',
-      searchPlaceholder: 'サイト内検索...',
+      searchPlaceholder: 'サイト内検索 (例: マルチクラウド, FinOps, GKE)...',
       coverLetterBtn: '✉️ カバーレター',
       verified: '検証済み',
       pending: '確認中',
       excluded: '除外',
       all: 'すべて',
 
+      // Bottom Nav
+      bnavHome: 'ホーム',
+      bnavTimeline: '経歴',
+      bnavProposal: '提案書',
+      bnavPortfolio: '実績',
+      bnavMore: 'その他',
+      summaryExpand: '▼ 詳細プロフィールを展開',
+      summaryCollapse: '▲ プロフィールを折りたたむ',
+
       kpiTitle: '⚡ 戦略運用および技術成效ダッシュボード (Bento Grid)',
-      kpi1_val: '+55%', kpi1_lbl: 'AI 運用自動化効率', kpi1_desc: 'Agentic AI 運用自動化とチケット処理',
-      kpi2_val: '-30%', kpi2_lbl: 'マルチクラウドFinOpsコスト', kpi2_desc: 'コンテナ資源ガバナンスと最適化',
-      kpi3_val: '+15%', kpi3_lbl: 'スマート製造歩留まり', kpi3_desc: 'AI 予測モデルによる品質改善',
-      kpi4_val: '100%', kpi4_lbl: 'Zero Outage (障害ゼロ)', kpi4_desc: '6クラウド GKE & MongoDB Atlas 運用',
+      kpi1_val: '$10M+', kpi1_lbl: 'グローバルIT資本統括', kpi1_desc: '最高1,000万米ドル規模のグローバルIT・SAP予算統括',
+      kpi2_val: '-30%', kpi2_lbl: 'マルチクラウドFinOpsコスト', kpi2_desc: 'コンテナ資源ガバナンスとTCO 30%削減',
+      kpi3_val: '+15%', kpi3_lbl: 'スマート製造歩留まり', kpi3_desc: 'AI 予測モデルによる品質改善歩留まり+15%',
+      kpi4_val: '100%', kpi4_lbl: 'Zero Outage (無停止)', kpi4_desc: '6クラウド GKE & MongoDB Atlas 完全無停止運用',
 
       statConfirmed: '検証済みデータ (Confirmed)',
       statPending: '確認待ち項目 (Pending)',
@@ -186,6 +248,24 @@
       showingCount: '該当件数: ',
       viewDetail: '詳細・検証根拠を見る ↗',
 
+      // Sources Tab
+      srcTitle: '情報出所・身元同定および検証監査ログ',
+      srcDesc: '収録されたすべての学歴、経歴、SCI国際論文、メディア報道は、Google Cloud公式成功事例、CIO Taiwan、iThome、Springer SCI（DOI）、国家図書館（台湾）の公的記録に基づき厳格に照合・検証済みです。同姓同名の別人事例を明確に除外し、100%の真正性を保証します。',
+      srcStat1Lbl: '検証済み公開出所 (Confirmed)',
+      srcStat1Desc: 'トップSCI学術誌、クラウド公式事例、主要テックメディア、国立図書館所蔵を含む。',
+      srcStat2Lbl: '確認中・保留項目 (Pending)',
+      srcStat2Desc: '全経歴は二重公的文書照合および公式URL検証を完了しており、未決事項ゼロ。',
+      srcStat3Lbl: '除外された同姓同名 (Disambiguated)',
+      srcStat3Desc: '同姓同名の法官、医師、他分野学者を厳格に除外し、唯一性を確立。',
+      srcFilterAll: '🌟 全て',
+      srcFilterTech: '📰 主要テックメディア',
+      srcFilterAcad: '🎓 国際学術誌',
+      srcFilterNcl: '🏛️ 国家図書館',
+      srcFilterGov: '🏫 行政院研修基盤',
+      srcFilterCloud: '☁️ クラウド主要ベンダー',
+      srcFilterCsr: '🤝 公益・CSR活動',
+      srcSearchPlaceholder: '出所またはタイトルを検索...',
+
       coverLetterTitle: '廖倫豪 博士 - エグゼクティブ CIO/CISO カバーレター',
       copySuccess: 'カバーレターがクリップボードにコピーされました！'
     }
@@ -201,11 +281,17 @@
     return '';
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function initApp() {
     initTheme();
     loadData();
     setupEventListeners();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
 
   function initTheme() {
     if (state.theme === 'light') {
@@ -217,30 +303,31 @@
 
   async function loadData() {
     try {
-      const [profileRes, timelineRes, sourcesRes, inventoryRes, vlogRes] = await Promise.all([
+      const [profileRes, timelineRes, sourcesRes, inventoryRes] = await Promise.all([
         fetch('data/profile.json'),
         fetch('data/timeline.json'),
         fetch('data/sources.json'),
-        fetch('data/local-file-inventory.json'),
-        fetch('data/verification-log.json')
+        fetch('data/local-file-inventory.json')
       ]);
 
-      if (profileRes.ok && timelineRes.ok && sourcesRes.ok && inventoryRes.ok && vlogRes.ok) {
+      if (profileRes.ok && timelineRes.ok && sourcesRes.ok && inventoryRes.ok) {
         state.profile = await profileRes.json();
         state.timeline = await timelineRes.json();
         state.sources = await sourcesRes.json();
         state.inventory = await inventoryRes.json();
-        state.verificationLog = await vlogRes.json();
       } else {
         throw new Error('HTTP Fetch failed, using embedded DOM JSON script tags');
       }
     } catch (err) {
       console.warn('Fallback to embedded DOM script tags for offline file:// loading:', err);
-      state.profile = JSON.parse(document.getElementById('data-profile').textContent);
-      state.timeline = JSON.parse(document.getElementById('data-timeline').textContent);
-      state.sources = JSON.parse(document.getElementById('data-sources').textContent);
-      state.inventory = JSON.parse(document.getElementById('data-local-file-inventory').textContent);
-      state.verificationLog = JSON.parse(document.getElementById('data-verification-log').textContent);
+      const profEl = document.getElementById('data-profile');
+      const timeEl = document.getElementById('data-timeline');
+      const srcEl = document.getElementById('data-sources');
+      const invEl = document.getElementById('data-local-file-inventory');
+      if (profEl) state.profile = JSON.parse(profEl.textContent);
+      if (timeEl) state.timeline = JSON.parse(timeEl.textContent);
+      if (srcEl) state.sources = JSON.parse(srcEl.textContent);
+      if (invEl) state.inventory = JSON.parse(invEl.textContent);
     }
 
     renderAllViews();
@@ -278,12 +365,29 @@
 
     document.getElementById('btn-copy-cover-letter').addEventListener('click', openCoverLetterModal);
     
+    // Robust mobile bottom nav touch & click bindings
+    document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+      const handleAction = function(e) {
+        if (e.type === 'touchend') {
+          e.preventDefault();
+        }
+        const tab = this.getAttribute('data-tab');
+        if (tab) {
+          window.switchTab(tab);
+        } else if (this.id === 'btn-mobile-more') {
+          window.toggleMobileDrawer();
+        }
+      };
+      btn.addEventListener('click', handleAction);
+      btn.addEventListener('touchend', handleAction, { passive: false });
+    });
+    
     const btnWord = document.getElementById('btn-download-word-resume');
     if (btnWord) {
       btnWord.addEventListener('click', () => {
         const link = document.createElement('a');
-        link.href = 'assets/廖倫豪_博士_高階履歷_Gemini生成版.docx';
-        link.download = '廖倫豪_博士_高階履歷_Gemini生成版.docx';
+        link.href = 'assets/HowardLiao_Resume_2026.docx';
+        link.download = 'HowardLiao_Resume_2026.docx';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -305,6 +409,178 @@
     });
   }
 
+  
+  // ==========================================
+  // Modal Handlers: Detail, Lightbox & Cover Letter
+  // ==========================================
+  window.openDetailModal = function(id) {
+    const item = (state.timeline || []).find(x => x.id === id);
+    if (!item) {
+      console.warn('Timeline item not found:', id);
+      return;
+    }
+
+    const modal = document.getElementById('modal-detail');
+    if (!modal) return;
+
+    const matchedSources = (state.sources || []).filter(s => item.sourceIds && item.sourceIds.includes(s.id));
+
+    modal.querySelector('.modal-body').innerHTML = `
+      <div style="font-size:1.35rem; font-weight:800; margin-bottom:6px; color:var(--text-main);">${getLangField(item, 'title')}</div>
+      <div style="font-size:1.05rem; color:var(--primary-light); font-weight:700; margin-bottom:12px;">${getLangField(item, 'organization')}</div>
+      
+      <div class="timeline-card-meta" style="margin-bottom:16px; display:flex; gap:12px; flex-wrap:wrap; font-size:0.88rem;">
+        <span>📅 <strong>${item.displayDate}</strong></span>
+        <span>📍 ${item.location || '台灣'}</span>
+        <span class="status-badge ${item.identityStatus || 'verified'}">✓ ${item.identityStatus || 'verified'}</span>
+      </div>
+
+      <div style="font-size:0.95rem; color:var(--text-main); margin-bottom:16px; line-height:1.8; background:var(--bg-card); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+        <strong style="color:var(--primary-light); display:block; margin-bottom:8px;">📋 完整職涯戰績與實戰成效：</strong>
+        ${getLangField(item, 'summary')}
+      </div>
+
+      ${item.achievementsZh && item.achievementsZh.length > 0 ? `
+        <div style="font-size:0.92rem; color:var(--text-main); margin-bottom:16px;">
+          <strong style="color:var(--text-main);">🎯 主要數據與量化指標：</strong>
+          <ul style="margin-left:20px; margin-top:8px; color:var(--text-muted); line-height:1.6;">
+            ${(item.achievementsZh || []).map(a => `<li>${a}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+
+      ${item.skills && item.skills.length > 0 ? `
+        <div style="margin-bottom:16px;">
+          <strong style="color:var(--text-main); font-size:0.92rem;">🛠️ 核心技能與關鍵字：</strong>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
+            ${item.skills.map(sk => `<span class="tag-item" style="font-size:0.8rem; padding:3px 10px;">${sk}</span>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <div style="border-top:1px solid var(--border-color); padding-top:16px; margin-top:16px;">
+        <strong style="color:var(--text-main); font-size:0.95rem;">🔍 查證依據與權威佐證連結：</strong>
+        <div style="margin-top:10px;">
+          ${matchedSources.length > 0 ? matchedSources.map(s => `
+            <div style="background:var(--bg-input); padding:12px 14px; border-radius:var(--radius-sm); margin-bottom:10px; font-size:0.86rem; border:1px solid var(--border-color);">
+              <div style="font-weight:700; color:var(--primary-light); margin-bottom:4px;">${s.title} (${s.publisher})</div>
+              <div style="color:var(--text-muted); margin-bottom:8px; line-height:1.5;">"${s.excerpt}"</div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                ${s.url && s.url.startsWith('http') ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:4px 12px; font-size:0.78rem; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">🌐 開啟原始連結 ↗</a>` : ''}
+              </div>
+            </div>
+          `).join('') : '<div style="color:var(--text-muted); font-size:0.85rem;">本項目已經內部架構審查與專案歷程查核完畢。</div>'}
+        </div>
+      </div>
+    `;
+
+    modal.classList.add('active');
+  };
+
+  window.openLightbox = function(imgSrc, caption) {
+    const modal = document.getElementById('modal-lightbox');
+    if (!modal) return;
+    const img = modal.querySelector('img');
+    const cap = modal.querySelector('.lightbox-caption');
+    if (img) img.src = imgSrc;
+    if (cap) cap.textContent = caption || '';
+    modal.classList.add('active');
+  };
+
+  function openCoverLetterModal() {
+    const t = i18n[state.currentLang] || i18n.zh;
+    const modal = document.getElementById('modal-cover-letter');
+    if (!modal) return;
+
+    let coverText = '';
+
+    if (state.currentLang === 'en') {
+      coverText = `Dear Sir/Madam,
+
+My name is Dr. Howard Liao (Howard Liao, Ph.D.), and I bring over 20 years of global application governance, SAP ERP strategy, Java/Spring Boot microservices architecture, and cybersecurity/AI SDLC leadership directly reporting to C-suite executives and boards. I have managed technology and security budgets of up to USD 10M across multinational gaming, manufacturing, and software vendor groups.
+
+From the Global Application Governance & Delivery perspective, I specialize in transforming enterprise strategy into 3-year application roadmaps. I govern SAP S/4HANA Clean Core principles (reducing custom objects by 35%), Java API-first Architecture Review Boards (ARB), and Kafka/EDI/IDoc enterprise integration platforms. By driving DevSecOps Quality Gates and AI for SDLC (AI code review, test generation, prompt risk controls), I achieved a 40% reduction in development lead time, 35% lower defect escape rates, and 20–30% multi-cloud TCO savings, maintaining a 100% Zero Outage record.
+
+From the Security & CISO perspective, I have implemented Zero Trust, ISO 27001, ISO 42001 (AIMS), NIST CSF, and SoD/IAM internal controls, building three-lines-of-defense security observability that reduced incidents by >30% YoY.
+
+My full executive portfolio and quantified achievements can be found at:  
+https://howardliao.github.io/portfolio/
+
+I look forward to discussing how I can lead global application governance and delivery to drive digital transformation for your organization.
+
+Sincerely,  
+Howard Liao, Ph.D.
+Email: Liao.Howard@gmail.com | LinkedIn: https://www.linkedin.com/in/howardliao78/`;
+    } else if (state.currentLang === 'jp') {
+      coverText = `拝啓
+
+時下益々ご清栄のこととお慶び申し上げます。
+
+私、廖倫豪（リョウ・リンホウ、Howard Liao, Ph.D.）は、27年に及ぶIT経験（うち20年マネジメント）を有し、グローバル・エンタープライズにおけるアプリケーションガバナンス、SAP ERP戦略ブループリント、Java/Spring Bootマイクロサービス設計、およびサイバーセキュリティ／AI SDLCの実務を牽引してまいりました。直近では多国籍エンターテインメント・テクノロジー企業グループにて、Global CIOおよび取締役会直属の副社長兼IT Directorを務め、最大1,000万米ドル規模のIT投資（CAPEX/OPEX）および世界的な大手SIerを統制しております。
+
+私のコアコンピタンスおよび実績は以下の通りです：
+
+1. グローバル・アプリケーションガバナンス＆SAP Clean Core推進：
+   S/4HANA Clean Core原則を徹底し、35%以上のレガシー個別開発（アドオン）を削減、標準業務プロセス適合率を90%以上に引き上げました。またアーキテクチャ審査委員会（ARB）を主導し、Java/Spring BootによるAPI-first標準化、Apache Kafka/EDI/IDoc基盤のエンタープライズ統合ハブを確立しました。
+
+2. クラウドネイティブ刷新＆100%障害ゼロ運用（Zero Outage）：
+   GKE（Google Kubernetes Engine）による全面コンテナ化とCI/CDパイプライン刷新により、デプロイ効率を100%向上。基幹データベースをMongoDB Atlasフルマネージド・グローバル分散クラスタへ平滑移行し、数百万人の同時アクセス負荷下においても「100%障害停止ゼロ」を達成。Google Cloud公式のAPAC旗艦顧客事例として世界発信されました。
+
+3. FinOpsクラウドコスト最適化（TCO -30%削減）：
+   マルチクラウド環境における動的リソーススケーリングと厳格な費用配賦モデルを確立し、爆発的な事業成長を支えながら、クラウド総保有コスト（TCO）の30%削減を達成しました。
+
+4. ゼロトラストセキュリティ＆AIガバナンス（ISO 27001/42001 主任審査員）：
+   ISO 27001（ISMS）および最新のISO 42001（AIマネジメントシステム）主任審査員資格を保持し、DevSecOps自動品質ゲート（SAST/DAST/SBOM）を完備。最高水準のセキュリティとAIガバナンスを両立させています。
+
+私の学術的バックグラウンド（情報技術管理学博士、SCI論文発表、国家図書館永久収蔵）と、27年に及ぶハイテク製造・上場IT企業・外資系ベンダー（Borland/Sybase）での実戦経験を融合させ、貴社のグローバル展開とエンタープライズDXを成功に導く所存です。
+
+面談の機会を賜れますことを心より楽しみに申し上げております。
+
+敬具
+
+廖倫豪 博士 (Howard Liao, Ph.D.)
+E-mail: liao.howard@gmail.com | LinkedIn: https://www.linkedin.com/in/howardliao78/
+Portfolio: https://howardliao.github.io/portfolio/`;
+    } else {
+      coverText = `敬啟者您好：
+
+本人廖倫豪博士（Howard Liao, Ph.D.），擁有 27 年 IT 經驗，其中 20 年擔任主管，具備直接向 Global CIO 與董事會匯報之全球應用治理與交付 (Global Application Governance & Delivery) 實戰經驗。曾於美商 Sybase、Borland 及上市櫃遊戲與高科技製造集團擔任 VP of Tech / CIO / CISO / IT Director，掌控最高 1,000 萬美元級別之全球 IT、SAP ERP 與外包 SI 顧問預算。
+
+在「全球應用治理與交付」面向，我擅長將 CIO 的企業策略轉化為 3 年應用地圖 (Application Roadmap)。我主導 SAP S/4HANA Clean Core 原則（削減客製物件 35%、提高標準流程覆蓋率至 90%+）、Java/Spring Boot 微服務 API-first 架構審查委員會 (ARB) 與 Kafka/EDI/IDoc 企業整合中台。我推動 DevSecOps Quality Gates (SAST/DAST/SBOM) 與 AI for SDLC（AI 輔助 Code Review、測試自動生成、Prompt 風控），實現開發 Lead Time 縮短 40%、缺陷逃逸率降低 35%、多雲 TCO 壓降 20–30%，並保持 100% Zero Outage 紀錄。
+
+在「資安與合規治理」面向，我落實 Zero Trust、ISO 27001 / ISO 42001 (AIMS)、NIST CSF 及 SoD / IAM 內部控管，建立三道防線與 SOC 聯防中樞，資安事件年減逾 30%。
+
+我的完整戰略履歷與量化成果請參閱：  
+https://howardliao.github.io/portfolio/
+
+謹盼有機會與貴公司進一步交流，說明我如何將 ERP、微服務、資安與 AI 工程治理整合成可擴張、可稽核、可量化 ROI 的全球應用營運能力。
+
+此致  
+敬禮
+
+廖倫豪 博士 (Howard Liao, Ph.D.)
+Email：Liao.Howard@gmail.com | LinkedIn：https://www.linkedin.com/in/howardliao78/`;
+    }
+
+    modal.querySelector('.modal-body').innerHTML = `
+      <div style="font-size:1.2rem; font-weight:800; margin-bottom:12px;">${t.coverLetterTitle}</div>
+      <textarea id="cover-letter-text" style="width:100%; height:340px; background:var(--bg-input); color:var(--text-main); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:14px; font-family:monospace; font-size:0.88rem; line-height:1.6; resize:none;">${coverText}</textarea>
+      <div style="margin-top:16px; text-align:right;">
+        <button class="btn-primary" id="btn-do-copy">${t.coverLetterBtn}</button>
+      </div>
+    `;
+
+    modal.classList.add('active');
+
+    document.getElementById('btn-do-copy').addEventListener('click', () => {
+      const textarea = document.getElementById('cover-letter-text');
+      textarea.select();
+      navigator.clipboard.writeText(textarea.value);
+      alert(t.copySuccess);
+    });
+  }
+  window.openCoverLetterModal = openCoverLetterModal;
+
   function switchTab(tabKey) {
     state.currentTab = tabKey;
     document.querySelectorAll('.nav-tab-btn').forEach(btn => {
@@ -313,10 +589,30 @@
     document.querySelectorAll('.tab-page').forEach(page => {
       page.classList.toggle('active', page.id === `page-${tabKey}`);
     });
+    document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabKey);
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  window.switchTab = switchTab;
+
+  
+  function updateNavLabels() {
+    const t = i18n[state.currentLang] || i18n.zh;
+    document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+      const tab = btn.getAttribute('data-tab');
+      const lbl = btn.querySelector('.bottom-nav-label');
+      if (!lbl) return;
+      if (tab === 'dashboard') lbl.textContent = t.bnavHome || '首頁';
+      else if (tab === 'timeline') lbl.textContent = t.bnavTimeline || '歷程';
+      else if (tab === 'proposal') lbl.textContent = t.bnavProposal || '建議書';
+      else if (tab === 'portfolio') lbl.textContent = t.bnavPortfolio || '作品';
+      else if (btn.id === 'btn-mobile-more') lbl.textContent = t.bnavMore || '更多';
+    });
   }
 
   function renderAllViews() {
+    updateNavLabels();
     renderHeaderUI();
     renderDashboardView();
     renderTimelineView();
@@ -347,6 +643,92 @@
   }
 
   // Dashboard View
+  
+  // ==========================================
+  // Executive Hunter Features: Quick Connect, Toast & PWA
+  // ==========================================
+  window.showToast = function(msg) {
+    const toast = document.getElementById('hunter-toast');
+    const msgSpan = document.getElementById('hunter-toast-msg');
+    if (!toast || !msgSpan) return;
+    msgSpan.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3500);
+  };
+
+  window.quickCopyEmail = function(e) {
+    if (e) e.stopPropagation();
+    const email = 'liao.howard@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      window.showToast('✓ 廖博士官方信箱 (' + email + ') 已複製至剪貼簿！隨時歡迎來信。');
+    }).catch(() => {
+      window.location.href = 'mailto:' + email + '?subject=Executive%20Opportunity%20Inquiry%20-%20Dr.%20Howard%20Liao';
+    });
+  };
+
+  // PWA Install Prompt Capture
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner && !sessionStorage.getItem('pwa_dismissed')) {
+      banner.classList.add('show');
+    }
+  });
+
+  window.triggerPwaInstall = function() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted PWA install');
+        }
+        deferredPrompt = null;
+        window.dismissPwaBanner();
+      });
+    }
+  };
+
+  window.dismissPwaBanner = function() {
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) banner.classList.remove('show');
+    sessionStorage.setItem('pwa_dismissed', '1');
+  };
+
+  // Static clean KPI numbers - no flicker or crawler corruption
+  window.triggerDashboardCounters = function() {};
+
+  
+  // ==========================================
+  // Mobile Bottom Nav & Drawer Interactions
+  // ==========================================
+  window.toggleMobileDrawer = function(forceState) {
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    if (!overlay) return;
+    if (typeof forceState === 'boolean') {
+      if (forceState) overlay.classList.add('active');
+      else overlay.classList.remove('active');
+    } else {
+      overlay.classList.toggle('active');
+    }
+  };
+
+  window.toggleHeroSummary = function() {
+    const el = document.getElementById('hero-summary-text');
+    const btn = document.getElementById('hero-summary-toggle');
+    if (!el || !btn) return;
+    el.classList.toggle('expanded');
+    if (el.classList.contains('expanded')) {
+      btn.textContent = '▲ 收合自述';
+    } else {
+      btn.textContent = '▼ 展開完整高階自述';
+    }
+  };
+
   function renderDashboardView() {
     const t = i18n[state.currentLang];
     const page = document.getElementById('page-dashboard');
@@ -365,7 +747,7 @@
         <!-- Hero Card -->
         <div class="hero-card">
           <div class="hero-portrait-container">
-            <img src="assets/202605_Howard_003.png" alt="廖倫豪 博士 (Howard Liao, Ph.D.) 專業形象證照">
+            <img src="assets/howard_portrait.png" alt="廖倫豪 博士 (Howard Liao, Ph.D.) 專業形象證照" width="220" height="264" loading="eager" fetchpriority="high">
           </div>
           <div class="hero-details">
             <div class="hero-name-row">
@@ -374,7 +756,10 @@
               <span class="verified-badge">${t.verifiedBadge}</span>
             </div>
             <div class="hero-headline">${headline}</div>
-            <div class="hero-summary">${summary}</div>
+            <div class="hero-summary-mobile-wrapper">
+              <div class="hero-summary-collapsed" id="hero-summary-text">${summary}</div>
+              <button class="summary-toggle-btn" id="hero-summary-toggle" onclick="window.toggleHeroSummary()">▼ 展開完整高階自述</button>
+            </div>
             <div class="hero-tags">
               ${state.profile.verifiedExpertiseTags.map(tag => `<span class="tag-item">${tag}</span>`).join('')}
             </div>
@@ -406,33 +791,8 @@
           </div>
         </div>
 
-        <!-- Verification Stat Trigger Cards -->
-        <div class="stats-row">
-          <div class="stat-card" onclick="window.filterByStatus('verified')">
-            <div class="stat-icon-box confirmed">✓</div>
-            <div>
-              <div class="stat-num">${verifiedCount}</div>
-              <div class="stat-label">${t.statConfirmed}</div>
-            </div>
-          </div>
-          <div class="stat-card" onclick="window.filterByStatus('pending')">
-            <div class="stat-icon-box pending">⏳</div>
-            <div>
-              <div class="stat-num">${pendingCount}</div>
-              <div class="stat-label">${t.statPending}</div>
-            </div>
-          </div>
-          <div class="stat-card" onclick="window.filterByStatus('excluded')">
-            <div class="stat-icon-box excluded">🚫</div>
-            <div>
-              <div class="stat-num">${excludedCount}</div>
-              <div class="stat-label">${t.statExcluded}</div>
-            </div>
-          </div>
-        </div>
-
         <!-- Inline SVG Visualizations -->
-        <div class="section-title">${t.vizTitle}</div>
+        <div id="dashboard-viz-container"><div class="section-title">${t.vizTitle}</div>
         <div class="viz-grid">
           <div class="viz-card">
             <h3>${t.vizYearly}</h3>
@@ -443,16 +803,13 @@
             <div class="viz-svg-container" id="svg-tech-radar"></div>
           </div>
           <div class="viz-card">
-            <h3>${t.vizDonut}</h3>
-            <div class="viz-svg-container" id="svg-verification-donut"></div>
-          </div>
-          <div class="viz-card">
             <h3>${t.vizSource}</h3>
             <div class="viz-svg-container" id="svg-source-breakdown"></div>
           </div>
         </div>
 
         <!-- Highlights Row -->
+        </div>
         <div class="section-title">${t.highlightsTitle}</div>
         <div class="cards-grid">
           ${state.timeline.filter(x => x.isHighlighted && x.identityStatus === 'verified').slice(0, 3).map(item => `
@@ -475,8 +832,8 @@
 
     renderSVGYearlyDistribution();
     renderSVGTechRadar();
-    renderSVGVerificationDonut();
     renderSVGSourceBreakdown();
+    triggerDashboardCounters();
   }
 
   window.filterByStatus = function(status) {
@@ -745,86 +1102,6 @@
     setTimeout(() => {
       box.style.display = 'none';
     }, 4500);
-  };
-
-  // Chart 3: Verification Breakdown Donut
-  function renderSVGVerificationDonut() {
-    const container = document.getElementById('svg-verification-donut');
-    if (!container) return;
-
-    container.innerHTML = `
-      <div style="position:relative; width:100%; height:100%; display:flex; flex-direction:column; align-items:center;">
-        <div class="viz-filter-pills" style="margin-bottom:6px;">
-          <button class="viz-pill-btn active" onclick="window.filterDonutStatus('all')">全域 100%</button>
-          <button class="viz-pill-btn" style="border-color:#10b981; color:#10b981;" onclick="window.filterDonutStatus('verified')">已驗證 (85%)</button>
-          <button class="viz-pill-btn" style="border-color:#f59e0b; color:#f59e0b;" onclick="window.filterDonutStatus('pending')">待確認 (10%)</button>
-          <button class="viz-pill-btn" style="border-color:#6b7280; color:#6b7280;" onclick="window.filterDonutStatus('excluded')">已排除 (5%)</button>
-        </div>
-
-        <svg width="100%" height="190" viewBox="0 0 320 210" style="overflow:visible;">
-          <circle cx="120" cy="105" r="72" fill="none" stroke="rgba(16,185,129,0.2)" stroke-width="10" stroke-dasharray="10 20" class="spin-ring"/>
-
-          <circle cx="120" cy="105" r="62" fill="none" stroke="#10b981" stroke-width="18" stroke-dasharray="280 120" class="donut-segment donut-seg-verified" 
-                  style="color:#10b981; cursor:pointer;" 
-                  onclick="window.filterByStatus('verified')"
-                  onmouseover="window.showDonutHover('85%', '已驗證 (Confirmed)', '18 筆項目具備權威雙重佐證')" />
-
-          <circle cx="120" cy="105" r="62" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="35 365" stroke-dashoffset="-280" class="donut-segment donut-seg-pending"
-                  style="color:#f59e0b; cursor:pointer;" 
-                  onclick="window.filterByStatus('pending')"
-                  onmouseover="window.showDonutHover('10%', '待確認 (Pending)', '2 筆內部擬議過渡草稿')" />
-
-          <circle cx="120" cy="105" r="62" fill="none" stroke="#6b7280" stroke-width="18" stroke-dasharray="25 375" stroke-dashoffset="-315" class="donut-segment donut-seg-excluded"
-                  style="color:#6b7280; cursor:pointer;" 
-                  onclick="window.filterByStatus('excluded')"
-                  onmouseover="window.showDonutHover('5%', '已排除同名 (Excluded)', '體育同名選手資訊排除')" />
-
-          <text id="donut-center-pct" x="120" y="107" fill="#f8fafc" font-size="20" font-weight="900" text-anchor="middle" class="pulse-node" style="color:#38bdf8;">100%</text>
-          <text id="donut-center-lbl" x="120" y="123" fill="#10b981" font-size="9" font-weight="700" text-anchor="middle">核實健康度</text>
-
-          <g transform="translate(205,45)" onclick="window.filterByStatus('verified')" style="cursor:pointer;">
-            <rect width="14" height="14" fill="#10b981" rx="3" class="pulse-node" style="color:#10b981;"/>
-            <text x="22" y="12" fill="#f8fafc" font-size="11" font-weight="700">已驗證 (85%)</text>
-          </g>
-          <g transform="translate(205,85)" onclick="window.filterByStatus('pending')" style="cursor:pointer;">
-            <rect width="14" height="14" fill="#f59e0b" rx="3"/>
-            <text x="22" y="12" fill="#f8fafc" font-size="11" font-weight="700">待確認 (10%)</text>
-          </g>
-          <g transform="translate(205,125)" onclick="window.filterByStatus('excluded')" style="cursor:pointer;">
-            <rect width="14" height="14" fill="#6b7280" rx="3"/>
-            <text x="22" y="12" fill="#f8fafc" font-size="11" font-weight="700">已排除 (5%)</text>
-          </g>
-        </svg>
-
-        <div id="donut-hover-card" style="position:absolute; bottom:2px; left:10px; right:10px; background:rgba(15,23,42,0.92); border:1px solid var(--border-color); padding:5px 12px; border-radius:6px; font-size:0.75rem; color:#94a3b8; text-align:center;">
-          點擊圓環區塊可自動篩選時間軸對應項目
-        </div>
-      </div>
-    `;
-  }
-
-  window.filterDonutStatus = function(statusKey) {
-    document.querySelectorAll('#svg-verification-donut .viz-pill-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${statusKey}'`));
-    });
-
-    const segs = document.querySelectorAll('.donut-segment');
-    segs.forEach(seg => {
-      if (statusKey === 'all' || seg.classList.contains(`donut-seg-${statusKey}`)) {
-        seg.style.opacity = '1';
-        seg.style.strokeWidth = '18';
-      } else {
-        seg.style.opacity = '0.2';
-        seg.style.strokeWidth = '12';
-      }
-    });
-  };
-
-  window.showDonutHover = function(pct, title, desc) {
-    const pctTxt = document.getElementById('donut-center-pct');
-    const card = document.getElementById('donut-hover-card');
-    if (pctTxt) pctTxt.textContent = pct;
-    if (card) card.innerHTML = `<strong style="color:#f8fafc;">${title}:</strong> ${desc}`;
   };
 
   // Chart 4: Source Pipeline Distribution
@@ -1282,6 +1559,16 @@
 
     page.innerHTML = `
       <div class="container" style="padding-top: 10px;">
+        <!-- Architecture Capability Demonstration Disclaimer Banner -->
+        <div class="info-card" style="margin-bottom:20px; border-left:4px solid var(--primary-light); background:rgba(2,132,199,0.08); padding:14px 18px;">
+          <div style="font-weight:800; color:var(--primary-light); font-size:0.95rem; margin-bottom:4px; display:flex; align-items:center; gap:8px;">
+            <span>ℹ️</span> 戰略技術能力展示聲明 (Architecture Capability Demonstration)
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+            本專案建議書為廖倫豪博士之<strong>企業架構設計能力、AI 治理方法論與大型系統規劃展示</strong>，內容經去識別化與通用化處理，不涉及任何特定客戶之非公開商業機密或專利資產。歡迎企業董事會與高階管理層參考交流。
+          </div>
+        </div>
+
         <!-- Interactive Sub-tab Switcher -->
         <div class="proposal-subnav">
           <button class="proposal-subtab-btn active" id="subtab-btn-all" onclick="window.switchProposalSection('all')">
@@ -2520,21 +2807,32 @@
     if (!page) return;
 
     const inventory = state.inventory || [];
-    const categories = ['全部', '個人形象 / Cover 主視覺', '媒體採訪 / 專題報導', '專業資格 / 認證影本', 'Keynote 大會演講 / 專題'];
+    const catCounts = {};
+    inventory.forEach(item => {
+      const cat = item.fileCategory || '其他';
+      catCounts[cat] = (catCounts[cat] || 0) + 1;
+    });
+
+    const categoryPillsHtml = [
+      `<button class="viz-pill-btn active" onclick="window.filterPortfolioCategory('全部')">🌟 全部 (${inventory.length})</button>`,
+      ...Object.keys(catCounts).map(cat => 
+        `<button class="viz-pill-btn" onclick="window.filterPortfolioCategory('${cat}')">${cat} (${catCounts[cat]})</button>`
+      )
+    ].join('');
 
     page.innerHTML = `
       <div class="container" style="padding-top: 10px;">
         <div class="hero-card" style="margin-top:0; margin-bottom:24px; border-color:var(--primary-light);">
           <div style="grid-column: 1 / -1;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:10px;">
-              <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">🖼️ 嚴格核實本機作品集</span>
-              <span style="font-size:0.85rem; color:var(--text-muted);">收錄公開檔案：${inventory.length} 筆 (100% 本機核實)</span>
+              <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">🖼️ 高階管理與技術成果佐證作品庫</span>
+              <span style="font-size:0.85rem; color:var(--text-muted);">收錄公開檔案：${inventory.length} 筆</span>
             </div>
             <div style="font-size:1.6rem; font-weight:900; color:var(--text-main); margin-bottom:6px;">
-              廖倫豪 博士 本機高階作品集與公開佐證檔案庫
+              廖倫豪 博士 高階作品集與公開佐證檔案庫
             </div>
             <div style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
-              嚴格收錄來自 <code>圖片及媒體檔/</code> 之 76 筆經雙重查證之公開形象照片、國際證照影本、主流媒體報導（CIO Taiwan、iThome、Google Cloud、MongoDB.local）與學術發表佐證。所有檔案均經 URL 安全化規格處理，支援分類篩選與高解析度 Lightbox 燈箱放大檢視。
+              收錄形象照片、國際證照影本、主流媒體報導（CIO Taiwan、iThome、Google Cloud、MongoDB.local）與學術發表佐證。所有檔案均經最佳化規格處理，支援分類篩選與高解析度 Lightbox 燈箱放大檢視。
             </div>
           </div>
         </div>
@@ -2542,11 +2840,7 @@
         <!-- Filter & Search Controls -->
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
           <div class="viz-filter-pills" id="portfolio-filter-pills" style="margin-bottom:0; flex-wrap:wrap; gap:6px;">
-            <button class="viz-pill-btn active" onclick="window.filterPortfolioCategory('全部')">🌟 全部 (${inventory.length})</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('個人形象 / Cover 主視覺')">👤 個人形象 (43)</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('媒體採訪 / 專題報導')">📰 媒體報導 (16)</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('專業資格 / 認證影本')">📜 專業證照 (9)</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('Keynote 大會演講 / 專題')">🎤 大會演講 (8)</button>
+            ${categoryPillsHtml}
           </div>
 
           <div class="search-box-header" style="max-width:280px; width:100%;">
@@ -2565,7 +2859,7 @@
 
   function renderGalleryCards(items) {
     if (!items || items.length === 0) {
-      return `<div style="grid-column: 1 / -1; text-align:center; padding:60px; color:var(--text-muted); font-size:1rem;">查無符合條件之本機作品集檔案</div>`;
+      return `<div style="grid-column: 1 / -1; text-align:center; padding:60px; color:var(--text-muted); font-size:1rem;">查無符合條件之作品集檔案</div>`;
     }
 
     return items.map(item => {
@@ -2576,7 +2870,7 @@
       return `
         <div class="info-card gallery-item" style="padding:12px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; transition:transform 0.2s ease, border-color 0.2s ease;" onclick="window.openLightbox('${assetUrl}', '${displayTitle}')">
           <div style="position:relative; width:100%; height:200px; background:#000000; border-radius:var(--radius-sm); overflow:hidden; display:flex; align-items:center; justify-content:center; margin-bottom:10px;">
-            <img src="${assetUrl}" alt="${displayTitle}" loading="lazy" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.onerror=null; this.src='assets/202605_Howard_003.png';">
+            <img src="${assetUrl}" alt="${displayTitle}" width="280" height="200" loading="lazy" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.onerror=null; this.src='assets/howard_portrait.png';">
             <span style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); color:#94a3b8; font-size:0.7rem; padding:2px 6px; border-radius:4px;">🔍 點擊放大</span>
           </div>
 
@@ -2630,6 +2924,23 @@
 
     const sources = state.sources || [];
     const verifiedCount = sources.length;
+    const confirmedCount = sources.filter(s => s.status === 'verified' || !s.status).length;
+    const pendingCount = sources.filter(s => s.status === 'pending').length;
+    const excludedCount = sources.filter(s => s.status === 'excluded').length;
+
+    // Dynamic category aggregation
+    const catMap = {};
+    sources.forEach(s => {
+      const type = s.sourceType || '其他';
+      catMap[type] = (catMap[type] || 0) + 1;
+    });
+
+    const categoryPillsHtml = [
+      `<button class="viz-pill-btn active" onclick="window.filterSourcesType('全部')">🌟 全部 (${sources.length})</button>`,
+      ...Object.keys(catMap).map(cat => 
+        `<button class="viz-pill-btn" onclick="window.filterSourcesType('${cat}')">${cat} (${catMap[cat]})</button>`
+      )
+    ].join('');
 
     page.innerHTML = `
       <div class="container" style="padding-top: 10px;">
@@ -2649,20 +2960,20 @@
           </div>
         </div>
 
-        <!-- 3 KPI Statistics Cards -->
+        <!-- 3 KPI Statistics Cards (Dynamically Computed) -->
         <div class="bento-grid" style="margin-bottom:24px;">
           <div class="bento-card">
-            <div style="font-size:1.8rem; margin-bottom:4px; color:#10b981;">11</div>
+            <div style="font-size:1.8rem; margin-bottom:4px; color:#10b981;">${confirmedCount}</div>
             <div class="bento-lbl">已查證公開來源 (Confirmed)</div>
             <div class="bento-desc">包含國際頂級 SCI 期刊、雲端大廠官方影片、權威媒體報導與國圖典藏。</div>
           </div>
           <div class="bento-card">
-            <div style="font-size:1.8rem; margin-bottom:4px; color:#38bdf8;">0</div>
+            <div style="font-size:1.8rem; margin-bottom:4px; color:#38bdf8;">${pendingCount}</div>
             <div class="bento-lbl">待確認爭議項目 (Pending)</div>
             <div class="bento-desc">所有歷程均完成雙重文檔比對與官方網址對齊，零未決疑點。</div>
           </div>
           <div class="bento-card">
-            <div style="font-size:1.8rem; margin-bottom:4px; color:#f59e0b;">5</div>
+            <div style="font-size:1.8rem; margin-bottom:4px; color:#f59e0b;">${excludedCount}</div>
             <div class="bento-lbl">同名同姓排除 (Disambiguated)</div>
             <div class="bento-desc">排除同名司法官、醫師與非資訊科技管理領域學者，確保身分唯一性。</div>
           </div>
@@ -2671,13 +2982,7 @@
         <!-- Sources Filter Controls -->
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
           <div class="viz-filter-pills" id="sources-filter-pills" style="margin-bottom:0; flex-wrap:wrap; gap:6px;">
-            <button class="viz-pill-btn active" onclick="window.filterSourcesType('全部')">🌟 全部 (${sources.length})</button>
-            <button class="viz-pill-btn" onclick="window.filterSourcesType('主流科技媒體')">📰 主流科技媒體 (4)</button>
-            <button class="viz-pill-btn" onclick="window.filterSourcesType('國際學術期刊')">🎓 國際學術期刊 (1)</button>
-            <button class="viz-pill-btn" onclick="window.filterSourcesType('國家圖書館')">🏛️ 國家圖書館 (2)</button>
-            <button class="viz-pill-btn" onclick="window.filterSourcesType('政府數位學習平台')">🏫 政府學習平台 (1)</button>
-            <button class="viz-pill-btn" onclick="window.filterSourcesType('雲端大廠')">☁️ 雲端大廠 (1)</button>
-            <button class="viz-pill-btn" onclick="window.filterSourcesType('公益')">🤝 公益組織 (1)</button>
+            ${categoryPillsHtml}
           </div>
 
           <div class="search-box-header" style="max-width:280px; width:100%;">
@@ -2700,7 +3005,9 @@
             1. <strong>唯一身分鑑別</strong>：本檔案庫所載之「廖倫豪 博士 (Howard Liao, Ph.D.)」專指畢業於朝陽科技大學資訊科技管理研究所（指導教授：李朱慧 博士，國圖論文專屬 ID 106IKTC0183002），曾任隆中網絡 IT Director 與跨國集團資訊長之資深高管。<br>
             2. <strong>同名同姓排除</strong>：嚴格排除同名之臺灣高等檢察署檢察官、臨床專任醫師、政治人物及非資訊工程領域人員之公開資訊，絕無身分混淆。<br>
             3. <strong>去識別化與商業保密</strong>：本作品集已落實嚴格商業秘密保護，去識別化所有歷史/現任機構敏感資訊與個資，僅展現可公開驗證之技術架構、方法論與量化成果。
-          </div>
+          <div style="margin-top:14px; padding-top:10px; border-top:1px dashed rgba(255,255,255,0.1); font-size:0.75rem; color:#64748b;">
+            <span>🔒 本作品集為純靜態架構，不蒐集訪客任何隱私個資與存取紀錄。</span>
+          </div></div>
         </div>
       </div>
     `;
@@ -2779,5 +3086,17 @@
     const container = document.getElementById('sources-cards-container');
     if (container) container.innerHTML = renderSourcesCards(filtered);
   };
+
+
+  // ==========================================
+  // PWA Service Worker Registration
+  // ==========================================
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then((reg) => console.log('✓ PWA Service Worker successfully registered:', reg.scope))
+        .catch((err) => console.warn('PWA Service Worker registration warning:', err));
+    });
+  }
 
 })();

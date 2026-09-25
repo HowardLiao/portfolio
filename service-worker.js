@@ -3,6 +3,8 @@ const PRECACHE_ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './css/style.css',
+  './js/app.js',
   './assets/icon-192.png',
   './assets/icon-512.png',
   './assets/20260712_韓系證照.png',
@@ -10,8 +12,7 @@ const PRECACHE_ASSETS = [
   './data/timeline.json',
   './data/profile.json',
   './data/sources.json',
-  './data/local-file-inventory.json',
-  './data/verification-log.json'
+  './data/local-file-inventory.json'
 ];
 
 // Install Event: pre-cache critical shell assets
