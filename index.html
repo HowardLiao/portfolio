@@ -4874,7 +4874,6 @@ table {
     timeline: [],
     sources: [],
     inventory: [],
-    verificationLog: [],
     
     currentTab: 'dashboard',
     currentLang: 'zh', // 'zh', 'en', 'jp'
@@ -5159,30 +5158,31 @@ table {
 
   async function loadData() {
     try {
-      const [profileRes, timelineRes, sourcesRes, inventoryRes, vlogRes] = await Promise.all([
+      const [profileRes, timelineRes, sourcesRes, inventoryRes] = await Promise.all([
         fetch('data/profile.json'),
         fetch('data/timeline.json'),
         fetch('data/sources.json'),
-        fetch('data/local-file-inventory.json'),
-        fetch('data/verification-log.json')
+        fetch('data/local-file-inventory.json')
       ]);
 
-      if (profileRes.ok && timelineRes.ok && sourcesRes.ok && inventoryRes.ok && vlogRes.ok) {
+      if (profileRes.ok && timelineRes.ok && sourcesRes.ok && inventoryRes.ok) {
         state.profile = await profileRes.json();
         state.timeline = await timelineRes.json();
         state.sources = await sourcesRes.json();
         state.inventory = await inventoryRes.json();
-        state.verificationLog = await vlogRes.json();
       } else {
         throw new Error('HTTP Fetch failed, using embedded DOM JSON script tags');
       }
     } catch (err) {
       console.warn('Fallback to embedded DOM script tags for offline file:// loading:', err);
-      state.profile = JSON.parse(document.getElementById('data-profile').textContent);
-      state.timeline = JSON.parse(document.getElementById('data-timeline').textContent);
-      state.sources = JSON.parse(document.getElementById('data-sources').textContent);
-      state.inventory = JSON.parse(document.getElementById('data-local-file-inventory').textContent);
-      state.verificationLog = JSON.parse(document.getElementById('data-verification-log').textContent);
+      const profEl = document.getElementById('data-profile');
+      const timeEl = document.getElementById('data-timeline');
+      const srcEl = document.getElementById('data-sources');
+      const invEl = document.getElementById('data-local-file-inventory');
+      if (profEl) state.profile = JSON.parse(profEl.textContent);
+      if (timeEl) state.timeline = JSON.parse(timeEl.textContent);
+      if (srcEl) state.sources = JSON.parse(srcEl.textContent);
+      if (invEl) state.inventory = JSON.parse(invEl.textContent);
     }
 
     renderAllViews();
@@ -6414,6 +6414,16 @@ Email：Liao.Howard@gmail.com | LinkedIn：https://www.linkedin.com/in/howardlia
 
     page.innerHTML = `
       <div class="container" style="padding-top: 10px;">
+        <!-- Architecture Capability Demonstration Disclaimer Banner -->
+        <div class="info-card" style="margin-bottom:20px; border-left:4px solid var(--primary-light); background:rgba(2,132,199,0.08); padding:14px 18px;">
+          <div style="font-weight:800; color:var(--primary-light); font-size:0.95rem; margin-bottom:4px; display:flex; align-items:center; gap:8px;">
+            <span>ℹ️</span> 戰略技術能力展示聲明 (Architecture Capability Demonstration)
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+            本專案建議書為廖倫豪博士之<strong>企業架構設計能力、AI 治理方法論與大型系統規劃展示</strong>，內容經去識別化與通用化處理，不涉及任何特定客戶之非公開商業機密或專利資產。歡迎企業董事會與高階管理層參考交流。
+          </div>
+        </div>
+
         <!-- Interactive Sub-tab Switcher -->
         <div class="proposal-subnav">
           <button class="proposal-subtab-btn active" id="subtab-btn-all" onclick="window.switchProposalSection('all')">
@@ -7652,21 +7662,32 @@ Email：Liao.Howard@gmail.com | LinkedIn：https://www.linkedin.com/in/howardlia
     if (!page) return;
 
     const inventory = state.inventory || [];
-    const categories = ['全部', '個人形象 / Cover 主視覺', '媒體採訪 / 專題報導', '專業資格 / 認證影本', 'Keynote 大會演講 / 專題'];
+    const catCounts = {};
+    inventory.forEach(item => {
+      const cat = item.fileCategory || '其他';
+      catCounts[cat] = (catCounts[cat] || 0) + 1;
+    });
+
+    const categoryPillsHtml = [
+      `<button class="viz-pill-btn active" onclick="window.filterPortfolioCategory('全部')">🌟 全部 (${inventory.length})</button>`,
+      ...Object.keys(catCounts).map(cat => 
+        `<button class="viz-pill-btn" onclick="window.filterPortfolioCategory('${cat}')">${cat} (${catCounts[cat]})</button>`
+      )
+    ].join('');
 
     page.innerHTML = `
       <div class="container" style="padding-top: 10px;">
         <div class="hero-card" style="margin-top:0; margin-bottom:24px; border-color:var(--primary-light);">
           <div style="grid-column: 1 / -1;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:10px;">
-              <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">🖼️ 嚴格核實本機作品集</span>
-              <span style="font-size:0.85rem; color:var(--text-muted);">收錄公開檔案：${inventory.length} 筆 (100% 本機核實)</span>
+              <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">🖼️ 高階管理與技術成果佐證作品庫</span>
+              <span style="font-size:0.85rem; color:var(--text-muted);">收錄公開檔案：${inventory.length} 筆</span>
             </div>
             <div style="font-size:1.6rem; font-weight:900; color:var(--text-main); margin-bottom:6px;">
-              廖倫豪 博士 本機高階作品集與公開佐證檔案庫
+              廖倫豪 博士 高階作品集與公開佐證檔案庫
             </div>
             <div style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
-              嚴格收錄來自 <code>圖片及媒體檔/</code> 之 76 筆經雙重查證之公開形象照片、國際證照影本、主流媒體報導（CIO Taiwan、iThome、Google Cloud、MongoDB.local）與學術發表佐證。所有檔案均經 URL 安全化規格處理，支援分類篩選與高解析度 Lightbox 燈箱放大檢視。
+              收錄形象照片、國際證照影本、主流媒體報導（CIO Taiwan、iThome、Google Cloud、MongoDB.local）與學術發表佐證。所有檔案均經最佳化規格處理，支援分類篩選與高解析度 Lightbox 燈箱放大檢視。
             </div>
           </div>
         </div>
@@ -7674,11 +7695,7 @@ Email：Liao.Howard@gmail.com | LinkedIn：https://www.linkedin.com/in/howardlia
         <!-- Filter & Search Controls -->
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
           <div class="viz-filter-pills" id="portfolio-filter-pills" style="margin-bottom:0; flex-wrap:wrap; gap:6px;">
-            <button class="viz-pill-btn active" onclick="window.filterPortfolioCategory('全部')">🌟 全部 (${inventory.length})</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('個人形象 / Cover 主視覺')">👤 個人形象 (43)</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('媒體採訪 / 專題報導')">📰 媒體報導 (16)</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('專業資格 / 認證影本')">📜 專業證照 (9)</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('Keynote 大會演講 / 專題')">🎤 大會演講 (8)</button>
+            ${categoryPillsHtml}
           </div>
 
           <div class="search-box-header" style="max-width:280px; width:100%;">
@@ -7697,7 +7714,7 @@ Email：Liao.Howard@gmail.com | LinkedIn：https://www.linkedin.com/in/howardlia
 
   function renderGalleryCards(items) {
     if (!items || items.length === 0) {
-      return `<div style="grid-column: 1 / -1; text-align:center; padding:60px; color:var(--text-muted); font-size:1rem;">查無符合條件之本機作品集檔案</div>`;
+      return `<div style="grid-column: 1 / -1; text-align:center; padding:60px; color:var(--text-muted); font-size:1rem;">查無符合條件之作品集檔案</div>`;
     }
 
     return items.map(item => {
