@@ -9,9 +9,9 @@
     "categoryEn": "Experience",
     "categoryJp": "職歴",
     "subcategory": "全球應用治理與高階管理",
-    "titleZh": "副總 暨 IT Director (直報 Global CIO) - 全球應用治理與交付負責人",
-    "titleEn": "VP & IT Director (Reporting to Global CIO) - Global Application Governance & Delivery Leader",
-    "titleJp": "副社長 兼 IT Director (Global CIO直属) - グローバルアプリケーション統括責任者",
+    "titleZh": "副總 暨 IT Director（直報 Global CIO）— 全球應用治理與交付",
+    "titleEn": "VP & IT Director (reporting to Global CIO) — Global Application Governance & Delivery",
+    "titleJp": "副社長 兼 IT Director（Global CIO直属）— グローバルアプリケーションガバナンス＆デリバリー",
     "organizationZh": "跨國網絡科技與娛樂平台集團 (高雄 / 台北 / 上海)",
     "organizationEn": "Multinational Web Tech & Digital Entertainment Group (Kaohsiung / Taipei / Shanghai)",
     "organizationJp": "多国籍ネットテクノロジー・エンターテインメント企業グループ (高雄 / 台北 / 上海)",
@@ -19,14 +19,13 @@
     "roleEn": "VP of Technology / Global Head of Application Governance",
     "roleJp": "技術担当副社長 / グローバルアプリケーションガバナンス責任者",
     "location": "高雄 / 台北 / 上海",
-    "summaryZh": "我直接向 Global CIO 與集團董事會匯報，統籌管理跨高雄、台北、上海三地研發中心與全球跨區業務之應用治理與技術交付（Global Application Governance & Delivery）。我主導制定集團「3 年企業應用地圖 (Application Roadmap)」，全面管控最高 1,000 萬美元級別之 IT 資本支出（CAPEX）與營運費用（OPEX），並嚴格治理跨國 SI 系統整合商及顧問供應商。在架構層面，我推行 SAP S/4HANA Clean Core 原則，削減高達 35% 之客製程式碼，使標準業務流程覆蓋率躍升至 90% 以上；同時主導架構審查委員會 (ARB)，確立 Java / Spring Boot API-first 微服務技術標準。為破除企業資訊孤島，我建立以 Apache Kafka、EDI 及 IDoc 為核心的企業級整合中台與 Canonical Data Model，杜絕點對點相依技術債。此外，我全面導入 DevSecOps 自動化品質關卡 (SAST/DAST/SBOM) 及 AI-augmented SDLC（AI 輔助代碼審查與測試自動生成），使系統交付 Lead Time 縮短 40%、缺陷逃逸率降低 35%、多雲持有成本壓降 30%，並在跨國業務高峰下維持 100% Zero Outage 完美營運。",
-    "summaryEn": "Reporting directly to the Global CIO and Group Board of Directors, I oversee global application governance and technology delivery across R&D centers in Kaohsiung, Taipei, and Shanghai. I spearhead the group's 3-Year Enterprise Application Roadmap, governing enterprise IT CAPEX/OPEX of up to USD 10M and strictly managing global SI vendors and management consultancies. Architecturally, I enforce SAP S/4HANA Clean Core principles, eliminating over 35% of legacy custom code and raising standard business process coverage above 90%. I chair the Architecture Review Board (ARB), establishing Java/Spring Boot API-first microservices technical standards. To eliminate enterprise data silos, I engineered an enterprise integration hub using Apache Kafka, EDI, and IDocs centered on a Canonical Data Model, preventing point-to-point technical debt. Furthermore, I fully implemented automated DevSecOps quality gates (SAST/DAST/SBOM) and an AI-augmented SDLC (AI code reviews and automated test generation), slashing system delivery lead time by 40%, decreasing defect escape rates by 35%, cutting multi-cloud TCO by 30%, and achieving a flawless 100% Zero Outage record during global peak traffic.",
-    "summaryJp": "Global CIOおよび取締役会に直属し、高雄・台北・上海の3拠点にまたがる研究開発センターとグローバル展開事業におけるアプリケーションガバナンスおよびデリバリー（Global Application Governance & Delivery）を統括。グループの「3カ年エンタープライズ・アプリケーション・ロードマップ」を策定し、最高1,000万米ドル規模のIT投資（CAPEX）および運用コスト（OPEX）を厳格に管理、世界的な大手SIerおよびコンサルティングベンダーを統制している。アーキテクチャ面では、SAP S/4HANA Clean Core原則を推進して35%以上のレガシー個別開発（アドオン）を削減し、標準業務プロセス適合率を90%以上に向上。さらにアーキテクチャ審査委員会（ARB）を主宰し、Java / Spring BootによるAPI-firstマイクロサービス技術標準を確立した。企業内のデータサイロを解体するため、Apache Kafka、EDI、IDocを基盤とするエンタープライズ統合ハブとCanonical Data Modelを構築し、スパゲッティ化したポイント・ツー・ポイント依存を根絶。DevSecOps自動品質ゲート（SAST/DAST/SBOM）およびAI支援SDLCを全面導入し、システム納期を40%短縮、バグ流出率を35%低減、マルチクラウドTCOを30%削減しながら、世界的トラフィックピーク下においても「100% Zero Outage（完全無停止運用）」を堅持している。",
+    "summaryZh": "負責集團高雄、台北、上海三地研發中心的全球應用治理與交付，帶領 30 人以上團隊。<br>• 制定 3 年企業應用地圖，管理年度 IT 預算最高 1,000 萬美元（CAPEX/OPEX）與跨國 SI／顧問供應商。<br>• 推動 SAP S/4HANA Clean Core，客製程式碼減少 35%，標準流程覆蓋率提升至 90% 以上。<br>• 主持架構審查委員會（ARB），訂定 Java／Spring Boot API-first 與 Kafka／EDI／IDoc 企業整合標準。<br>• 導入 DevSecOps 品質關卡（SAST/DAST/SBOM）與 AI 輔助程式碼審查，交付 Lead Time 縮短 40%、缺陷逃逸率降低 35%。",
+    "summaryEn": "Leads global application governance and delivery across R&D centers in Kaohsiung, Taipei and Shanghai, with a team of 30+.<br>• Owns the 3-year enterprise application roadmap, an annual IT budget of up to US$10M (CAPEX/OPEX), and global SI / consulting vendors.<br>• Drove SAP S/4HANA Clean Core: custom code down 35%, standard-process coverage above 90%.<br>• Chairs the Architecture Review Board; set Java/Spring Boot API-first and Kafka/EDI/IDoc integration standards.<br>• Introduced DevSecOps quality gates (SAST/DAST/SBOM) and AI-assisted code review: delivery lead time −40%, defect escape rate −35%.",
+    "summaryJp": "高雄・台北・上海の研究開発拠点にまたがるグローバルなアプリケーションガバナンスとデリバリーを統括（チーム30名以上）。<br>• 3カ年アプリケーションロードマップ、年間最大1,000万米ドルのIT予算（CAPEX/OPEX）、グローバルSI・コンサルティングベンダーを管理。<br>• SAP S/4HANA Clean Coreを推進し、個別開発コードを35%削減、標準プロセス適用率を90%以上に向上。<br>• アーキテクチャレビュー委員会を主宰し、Java/Spring Boot API-firstおよびKafka/EDI/IDoc連携の標準を策定。<br>• DevSecOps品質ゲート（SAST/DAST/SBOM）とAI支援コードレビューを導入し、リードタイム40%短縮、欠陥流出率35%低減。",
     "achievementsZh": [
-      "直報 Global CIO / 董事會，管控最高 1,000 萬美元級別全球 IT 與 SI 顧問預算",
-      "主導 SAP S/4HANA Clean Core 與 Java/Spring Boot API-first 軟體工程架構",
-      "建立 DevSecOps Quality Gates (SAST/DAST/SBOM) 與 AI for SDLC (Lead Time -40%)",
-      "建置 Kafka / EDI / IDoc 企業整合平台，實現六朵雲 GKE & MongoDB 100% Zero Outage"
+      "帶領 30 人以上團隊，管理年度 IT 預算最高 1,000 萬美元與跨國 SI 供應商",
+      "SAP S/4HANA Clean Core：客製程式碼 -35%",
+      "DevSecOps 與 AI 輔助開發：Lead Time -40%"
     ],
     "skills": [
       "全球應用治理 (Global App Governance)",
@@ -40,11 +39,7 @@
     "identityStatus": "verified",
     "confidence": "高",
     "evidenceScore": 100,
-    "sourceIds": [
-      "SRC-001",
-      "SRC-002",
-      "SRC-003"
-    ],
+    "sourceIds": [],
     "localAssetIds": [
       "assets/202605_Howard_003.png",
       "assets/2024_CIO報導.png"
@@ -64,22 +59,23 @@
     "categoryEn": "Experience",
     "categoryJp": "職歴",
     "subcategory": "高管治理與雲端轉型",
-    "titleZh": "IT Director (CIO / CISO / CDAIO)",
-    "titleEn": "IT Director (CIO / CISO / CDAIO)",
-    "titleJp": "IT Director (最高情報責任者 CIO / 最高情報セキュリティ責任者 CISO / 最高AIデータ責任者 CDAIO)",
-    "organizationZh": "上市櫃數位科技與娛樂集團 (6542.TWO)",
-    "organizationEn": "Publicly Listed Digital Tech & Entertainment Group (6542.TWO)",
-    "organizationJp": "上場デジタルテクノロジー＆エンターテインメント企業グループ (台湾証券取引所: 6542.TWO)",
+    "titleZh": "IT Director（資訊、資安與資料平台主管）",
+    "titleEn": "IT Director (IT, Security & Data Platform)",
+    "titleJp": "IT Director（IT・セキュリティ・データ基盤統括）",
+    "organizationZh": "隆中網絡 GameSparcs（6542.TWO）",
+    "organizationEn": "GameSparcs (TPEx: 6542)",
+    "organizationJp": "隆中網絡 GameSparcs（6542.TWO）",
     "roleZh": "IT Director / 資安長 / 數位AI長",
     "roleEn": "IT Director / Head of Engineering & Security",
     "roleJp": "IT Director / エンジニアリング＆情報セキュリティ統括",
     "location": "台北 / 高雄, 台灣",
-    "summaryZh": "我全面掌管集團跨國多雲基礎設施、資訊安全體系與海量大數據平台，統籌跨兩岸三地的技術架構研發與維運治理。任內主導集團核心業務自傳統虛擬機全面向雲原生（Cloud-Native）架構演進，全面推進 Google Kubernetes Engine (GKE) 容器化改造與自動化 CI/CD 流水線，將新功能發布與環境交付週期縮短一倍以上，達成部署效率提升 100% 的突破性躍進。在資料層現代化方面，我率領架構團隊將龐大且高負載的核心交易與遊戲數據，平滑遷移至 MongoDB Atlas 全託管跨國分散式叢集，建構兼具全球即時讀寫分離與自動水平擴展之高可用架構。面對海外多區百萬級玩家跨國連線的極端高併發峰值與巨量突發流量，透過自我修復（Self-Healing）機制與跨區域容災備援設計，達成跨國服務 100% 零中斷（Zero Outage）的極致可靠性指標。同時，我深度推行 FinOps 雲端成本治理與運算資源動態調度，建立精準的資源計量與持續優化模型，在支撐全球業務量高速增長的同時，實現多雲總持有成本（TCO）實質降低 30%。在資安與合規層面，我主導全面落實 ISO 27001 資訊安全管理系統（ISMS）與零信任（Zero Trust）架構，建立自動化靜態與動態安全檢測關卡，兼顧高敏捷交付與企業級資安防禦。此一現代化雲端轉型專案更獲 Google Cloud 官方評選為全球客戶成功案例並進行專題專訪，成為亞太地區數位娛樂與高併發架構轉型的旗艦標竿。",
-    "summaryEn": "I fully governed the group's multinational multi-cloud infrastructure, cybersecurity architecture, and massive big data platform, managing engineering R&D and operations across cross-strait hubs. During my tenure, I led the core business migration from legacy virtual machines to a modern Cloud-Native architecture, accelerating Google Kubernetes Engine (GKE) containerization and automated CI/CD pipelines, which halved release cycles and achieved a 100% deployment efficiency boost. For data tier modernization, I led the architecture team in migrating massive, high-load transactional and gaming data to a fully managed MongoDB Atlas global distributed cluster, establishing an ultra-reliable architecture featuring global read-write splitting and automatic horizontal scaling. Faced with extreme high-concurrency spikes from millions of players across overseas regions, I engineered self-healing mechanisms and cross-region disaster recovery, attaining a flawless 100% Zero Outage operational standard. Concurrently, I drove rigorous FinOps cloud cost governance and dynamic resource scheduling, resulting in a verified 30% reduction in multi-cloud Total Cost of Ownership (TCO) while supporting exponential business growth. In security and compliance, I instituted ISO 27001 Information Security Management Systems (ISMS) and a Zero Trust defense architecture. This landmark modernization was selected as an official APAC Customer Success Story by Google Cloud, featuring dedicated video and case study coverage.",
-    "summaryJp": "グループにおけるマルチクラウドインフラ、情報セキュリティ体制、大規模データプラットフォームを一手に統括し、台湾・中国にまたがる技術研究開発および運用保守を指揮。在任中、基幹サービスを旧来の仮想マシン環境からクラウドネイティブ（Cloud-Native）基盤へ抜本的に移行させ、Google Kubernetes Engine (GKE) の全面コンテナ化とCI/CD自動化パイプラインを確立。新機能リリースおよび環境デプロイ期間を半減させ、デプロイ効率100%向上を達成した。データ層の近代化においては、アーキテクチャチームを率いて高負荷なコアトランザクションおよびゲームデータをMongoDB Atlasフルマネージド・グローバル分散クラスタへ平滑に移行し、世界規模でのリアルタイム読み書き分離と自動水平拡張を実現。世界数百万人のアクティブユーザーによる極度の高トラフィックに対しても、自己修復機能（Self-Healing）とリージョン間ディザスタリカバリ設計により「100% Zero Outage（障害停止ゼロ）」という最高峰の信頼性を記録した。同時にFinOpsコストガバナンスと動的リソーススケーリングを徹底し、マルチクラウド総保有コスト（TCO）の30%実質削減に成功。ISO 27001（ISMS）およびゼロトラスト（Zero Trust）防御網を確立し、本プロジェクトはGoogle Cloud公式のグローバル顧客成功事例（APAC旗艦事例）として選出され、公式動画・インタビューで全世界に発信された。",
+    "summaryZh": "負責集團多雲基礎架構、資訊安全與資料平台，團隊橫跨台灣與中國。<br>• 核心服務由虛擬機遷移至 GKE 容器化與 CI/CD 自動化，發布週期縮短一半。<br>• 將核心交易與遊戲資料遷移至 MongoDB Atlas 跨區叢集，支撐海外多區百萬級玩家高併發連線，任內核心服務零中斷（Zero Outage）。<br>• 推行 FinOps 成本治理，多雲總持有成本（TCO）降低 30%。<br>• 建立 ISO 27001 資訊安全管理系統與零信任架構。<br>• 本專案獲 Google Cloud 選為 APAC 客戶成功案例並拍攝專訪影片。",
+    "summaryEn": "Ran multi-cloud infrastructure, information security and the data platform, with teams in Taiwan and China.<br>• Moved core services from VMs to GKE containers with automated CI/CD, halving release cycles.<br>• Migrated core transaction and game data to multi-region MongoDB Atlas clusters serving millions of players across overseas regions, with zero outages to core services during tenure.<br>• Introduced FinOps governance, reducing multi-cloud TCO by 30%.<br>• Established an ISO 27001 ISMS and a Zero Trust architecture.<br>• The program was featured by Google Cloud as an APAC customer success story (video interview).",
+    "summaryJp": "マルチクラウド基盤、情報セキュリティ、データ基盤を統括（台湾・中国のチーム）。<br>• 基幹サービスを仮想マシンからGKEコンテナとCI/CD自動化へ移行し、リリースサイクルを半減。<br>• 基幹トランザクション・ゲームデータをMongoDB Atlasのマルチリージョンクラスタへ移行し、海外複数地域の数百万規模のプレイヤーを支え、在任中の基幹サービス無停止を実現。<br>• FinOpsによりマルチクラウドTCOを30%削減。<br>• ISO 27001 ISMSとゼロトラストアーキテクチャを構築。<br>• 本プロジェクトはGoogle Cloud APAC導入事例（動画インタビュー）に選出。",
     "achievementsZh": [
-      "Google Cloud 官方全球成功案例專訪",
-      "多雲持有成本 (TCO) 降低 30%"
+      "Google Cloud APAC 客戶成功案例",
+      "多雲總持有成本（TCO）降低 30%",
+      "GKE 與 MongoDB Atlas 雲原生轉型"
     ],
     "skills": [
       "GKE 容器化",
@@ -124,15 +120,16 @@
     "roleEn": "Chief Information Officer & Chief Information Security Officer (CIO / CISO)",
     "roleJp": "最高情報責任者 兼 最高情報セキュリティ責任者 (CIO / CISO)",
     "location": "台中 / 深圳",
-    "summaryZh": "我全面統籌集團跨國多廠區之智慧製造 OT/IT 深度融合工程與企業級資訊戰略規劃。在核心營運維度，我主導導入 SAP S/4HANA Clean Core 架構，無縫對接製造執行系統（MES）、產品生命週期管理（PLM）與進階規劃排程系統（APS），徹底打通自客戶訂單、物料供應鏈至現場工單執行的全鏈路自動化數據流。為實踐工業 4.0 智慧工廠願景，我帶隊打造工業級 Edge AIoT 數據中台，於上千台 SMT 與組裝產線設備佈署邊緣感測與即時數據採集系統，並自行研發機器學習不良品預測模型與設備預測性維護算法，使關鍵產品製程良率實質躍升 15%、產線設備綜合效率（OEE）增長 18%，大幅降低非計畫性停機損失。在資安治理方面，我依循 IEC 62443 工控安全標準與 ISO 27001 規範，規劃 OT/IT 網路微隔離架構與身分存取治理，嚴防勒索病毒穿透產線；同時建立與國際一線品牌客戶之 B2B EDI 供應鏈自動化對接體系，為跨國製造營運奠定零盲區的數據治理基石。",
-    "summaryEn": "I fully orchestrated the deep integration of smart manufacturing OT/IT engineering and corporate information strategy across multiple multinational production campuses. On the core operational front, I spearheaded the deployment of SAP S/4HANA Clean Core architecture, seamlessly bridging Manufacturing Execution Systems (MES), Product Lifecycle Management (PLM), and Advanced Planning & Scheduling (APS) to establish automated end-to-end data flows from customer sales orders to shop-floor work orders. To realize the Industry 4.0 smart factory vision, I established an industrial-grade Edge AIoT data backbone, deploying edge sensors and real-time telemetry across thousands of SMT and assembly machines. I independently developed machine learning defect prediction algorithms and predictive maintenance models, boosting key manufacturing yield by 15% and increasing Overall Equipment Effectiveness (OEE) by 18%, substantially curbing unplanned downtime. In cybersecurity governance, I strictly enforced IEC 62443 industrial control security and ISO 27001 standards, implementing OT/IT micro-segmentation and strict IAM to prevent ransomware penetration into factory floors, while delivering automated B2B EDI integration with premier global electronics brands.",
-    "summaryJp": "グローバル多拠点工場におけるスマート製造OT/IT統合エンジニアリングおよび全社IT戦略を統括。基幹業務領域においてSAP S/4HANA Clean Coreアーキテクチャを導入し、製造実行システム（MES）、製品ライフサイクル管理（PLM）、高度計画スケジューリング（APS）を直結。顧客受注からサプライチェーン、生産現場の作業指示に至る全プロセスの自動データ連携を完遂した。インダストリー4.0スマートファクトリーを実現するため、数千台におよぶSMT実装機および組立ラインに産業用Edge AIoTデータ基盤を展開し、リアルタイムデータ収集を実施。自ら機械学習による不良品予兆検知モデルと予知保全アルゴリズムを開発し、主要製品の製造歩留まりを15%向上、設備総合効率（OEE）を18%改善させ、計画外停止損失を大幅に削減した。セキュリティ面ではIEC 62443およびISO 27001に準拠し、OT/ITネットワークのマイクロセグメンテーションと厳格な権限管理を実施、工場のランサムウェア侵入を鉄壁に遮断した。",
+    "summaryZh": "負責集團台中、深圳多廠區資訊策略與智慧製造 OT/IT 整合。<br>• 主導 SAP S/4HANA 導入，以標準功能優先、降低客製化，串接 MES、PLM、APS，打通訂單到現場工單的資料流。<br>• 建置 Edge AIoT 資料平台，涵蓋上千台 SMT 與組裝設備；以機器學習不良預測與預測性維護，使關鍵產品良率提升 15%、OEE 提升 18%。<br>• 依 IEC 62443 與 ISO 27001 規劃 OT/IT 網路分段與身分存取管理。<br>• 建立與國際品牌客戶的 B2B EDI 供應鏈整合。",
+    "summaryEn": "Led IT strategy and smart-manufacturing OT/IT integration across plants in Taichung and Shenzhen.<br>• Led the SAP S/4HANA rollout with a standard-first, low-customization approach, integrating MES, PLM and APS from sales order to shop-floor work order.<br>• Built an Edge AIoT data platform covering 1,000+ SMT and assembly machines; ML defect prediction and predictive maintenance raised key product yield by 15% and OEE by 18%.<br>• Designed OT/IT network segmentation and identity & access management to IEC 62443 and ISO 27001.<br>• Delivered B2B EDI supply-chain integration with global brand customers.",
+    "summaryJp": "台中・深圳の複数工場におけるIT戦略とスマート製造のOT/IT統合を統括。<br>• 標準機能優先・個別開発最小化の方針でSAP S/4HANA導入を主導し、MES・PLM・APSと連携して受注から製造指示までのデータを統合。<br>• 1,000台超のSMT・組立設備を対象にEdge AIoTデータ基盤を構築し、機械学習による不良予測と予知保全で主要製品の歩留まりを15%、OEEを18%改善。<br>• IEC 62443とISO 27001に基づきOT/ITネットワーク分離とID・アクセス管理を設計。<br>• グローバルブランド顧客とのB2B EDIサプライチェーン連携を構築。",
     "achievementsZh": [
-      "產品製造良率提升 15%",
-      "建構 OT/IT 隔離防護與 IEC 62443 工控資安體系"
+      "關鍵產品良率提升 15%、OEE 提升 18%",
+      "SAP S/4HANA 導入並串接 MES／PLM／APS",
+      "IEC 62443 工控資安與 OT/IT 網路分段"
     ],
     "skills": [
-      "SAP Clean Core",
+      "SAP S/4HANA",
       "MES/ERP 整合",
       "OT/IT 融合",
       "AI 良率預測",
@@ -141,9 +138,7 @@
     "identityStatus": "verified",
     "confidence": "高",
     "evidenceScore": 95,
-    "sourceIds": [
-      "SRC-008"
-    ],
+    "sourceIds": [],
     "localAssetIds": [],
     "visibility": "public",
     "isHighlighted": true,
@@ -170,9 +165,9 @@
     "roleEn": "VP of Technology / Digital Transformation Director",
     "roleJp": "技術担当副社長 / DX統括ディレクター",
     "location": "台北, 台灣",
-    "summaryZh": "我掌管集團軟體研發中心、大數據應用與企業數位轉型總體策略推進，領導逾 50 位跨職能工程師、架構師與產品顧問組成的多個敏捷交付戰隊（Agile Squads）。任內針對集團面臨的高負載瓶頸，大刀闊斧推動核心系統從肥大單體架構（Monolith）徹底重構為 Java / Spring Cloud 微服務與 API-First 開放架構，實現跨模組解耦與水平彈性伸縮。我全面建立現代化軟體工程規範，落實測試驅動開發（TDD）、代碼自動化靜態分析（SonarQube）與標準化 CI/CD 持續整合部署流水線，將新產品交付前置時間（Lead Time）顯著壓縮 40% 以上。在商業端，我主導面向大型 B2B 企業客戶的關鍵數位平台規劃與落地，主持架構設計審查與非功能性需求（NFR）驗收，達成年度營運服務協議（SLA）99.95% 以上之穩定指標，並成功在系統上線首年創造超越預期之正向投資報酬率（ROI），成功樹立傳統軟體服務向現代化 SaaS 與微服務架構演進之轉型典範。",
-    "summaryEn": "I led the software engineering R&D center, enterprise big data applications, and strategic digital transformation initiatives, managing agile squads of over 50 cross-functional software engineers, enterprise architects, and technical consultants. Addressing severe legacy bottlenecks, I spearheaded the complete architectural refactoring of mission-critical systems from a monolithic architecture into Java/Spring Cloud microservices and an API-First ecosystem, achieving decoupled modules and elastic horizontal scaling. I established modern engineering standards, enforcing Test-Driven Development (TDD), SonarQube automated static code analysis, and standardized CI/CD pipelines, shortening new feature delivery lead times by over 40%. Commercially, I led the architecture and delivery of flagship digital platforms for tier-1 B2B enterprise clients, chairing Architecture Review Boards (ARB) and Non-Functional Requirement (NFR) audits to sustain SLAs above 99.95%, delivering substantial positive ROI within the first year of rollout and creating a proven benchmark for SaaS migration.",
-    "summaryJp": "ソフトウェア開発センター、ビッグデータ活用、および全社DX戦略を総括し、50名以上のエンジニア、アーキテクト、コンサルタントからなるアジャイルスクワッドを指揮。レガシーシステムの負荷ボトルネックを解消するため、モノリス（単一巨大基盤）からJava / Spring CloudマイクロサービスおよびAPI-Firstオープンアーキテクチャへの全面刷新を断行。テスト駆動開発（TDD）、SonarQube静的コード解析、CI/CD自動化パイプラインを標準化し、システムデリバリーのリードタイムを40%以上短縮した。ビジネス面では大手B2B法人顧客向けの中核プラットフォーム構築を牽引し、アーキテクチャ審査（ARB）と非機能要件（NFR）検証を徹底して年間SLA 99.95%以上を達成。稼働初年度にして投資対効果（ROI）を大幅にプラス化させ、伝統的受託開発からモダンSaaS・マイクロサービスへの変革モデルを確立した。",
+    "summaryZh": "負責軟體研發中心、大數據應用與數位轉型，帶領 50 人以上跨職能敏捷團隊。<br>• 將核心系統由單體架構重構為 Java／Spring Cloud 微服務與 API-first 架構。<br>• 建立 TDD、SonarQube 靜態分析與 CI/CD 標準，新產品交付 Lead Time 縮短 40% 以上。<br>• 主導大型 B2B 客戶數位平台的架構審查與非功能需求驗收，SLA 維持 99.95% 以上。",
+    "summaryEn": "Led the software R&D center, big-data applications and digital transformation, managing 50+ engineers, architects and consultants in agile squads.<br>• Re-architected core systems from a monolith to Java/Spring Cloud microservices and API-first design.<br>• Set TDD, SonarQube static analysis and CI/CD standards, cutting new-product lead time by 40%+.<br>• Led architecture reviews and NFR acceptance for large B2B client platforms, sustaining SLAs above 99.95%.",
+    "summaryJp": "ソフトウェア開発センター、ビッグデータ活用、DXを統括し、50名以上のアジャイルチームを指揮。<br>• 基幹システムをモノリスからJava/Spring CloudマイクロサービスとAPI-first構成へ刷新。<br>• TDD、SonarQube静的解析、CI/CDを標準化し、新製品のリードタイムを40%以上短縮。<br>• 大手B2B顧客向けプラットフォームのアーキテクチャレビューと非機能要件の受入を主導し、SLA 99.95%以上を維持。",
     "achievementsZh": [
       "完成企業級商業入口網站與 SOA 架構落地",
       "入選國家優秀 IT 經理人案例"
@@ -186,9 +181,7 @@
     "identityStatus": "verified",
     "confidence": "高",
     "evidenceScore": 95,
-    "sourceIds": [
-      "SRC-006"
-    ],
+    "sourceIds": [],
     "localAssetIds": [],
     "visibility": "public",
     "isHighlighted": false,
@@ -208,19 +201,19 @@
     "titleZh": "大中華區資深技術經理 / 產品服務負責人",
     "titleEn": "Senior Technical Manager / Head of Professional Services (Greater China)",
     "titleJp": "大中華圏シニアテクニカルマネージャー / プロフェッショナルサービス責任者",
-    "organizationZh": "美商寶蘭股份有限公司 (Borland Taiwan) / 美商 Sybase",
-    "organizationEn": "Borland Software Corporation (Borland Taiwan) / Sybase Inc.",
-    "organizationJp": "米国ボーランド (Borland Taiwan) / 米国サイベース (Sybase Inc.)",
+    "organizationZh": "美商 Borland（2009 年併入 Micro Focus）／美商 Sybase（2010 年併入 SAP）",
+    "organizationEn": "Borland (acquired by Micro Focus, 2009) / Sybase (acquired by SAP, 2010)",
+    "organizationJp": "米国 Borland（2009年 Micro Focus が買収）／米国 Sybase（2010年 SAP が買収）",
     "roleZh": "資深技術經理 / 產品服務顧問",
     "roleEn": "Senior Technical Manager / Solution Architect",
     "roleJp": "シニアテクニカルマネージャー / ソリューションアーキテクト",
     "location": "台北 / 上海",
-    "summaryZh": "我負責美商 Borland 與 Sybase 於大中華區之應用生命週期管理（ALM）、編譯器核心技術與企業級關聯式資料庫解決方案之諮詢交付與技術團隊治理。任內深入跨國第一線，為兩岸三地頂級金融機構（銀行核心帳務、證券高頻交易）、大型電信營運商及跨國高科技製造龍頭提供核心技術診斷。我專精於高併發交易環境下的底層效能調校、C/C++ 與 Java 編譯器最佳化、資料庫索引與交易死鎖排查，以及分散式資料庫跨節點高可用容災架構（HA/DR）規劃。同時，我推廣現代軟體工程規範，輔導客戶建立從需求雙向追溯、自動化功能與壓力測試、缺陷管理至版本配置管控之端到端 ALM 體系，累計主持超過 30 個跨國級核心關鍵系統改造與效能翻倍專案。我多次在大中華區技術年會中擔任首席講師與技術嘉賓，將矽谷最前沿的軟體工程理論、嚴謹工程品管與底層運算效能調校心法，深度植入企業核心資訊體系之中。",
-    "summaryEn": "I spearheaded Application Lifecycle Management (ALM) and enterprise database architecture consulting across the Greater China region. I drove the enterprise implementation of Borland's premier engineering suite—including Caliber (requirements definition), Together (model-driven architecture), and StarTeam (configuration management)—guiding tier-1 multinational financial institutions (e.g., Citibank, HSBC), telecom operators, and leading semiconductor foundries through agile transformation and enterprise software governance. During my tenure at Sybase, I led the solution architecture and performance tuning of enterprise relational database systems (Sybase ASE) and real-time Replication Servers, empowering mission-critical high-frequency transaction systems with sub-second replication latency and zero data loss. I led consulting squads to consistently exceed annual service delivery targets and achieve a 120% client renewal quota.",
-    "summaryJp": "大中華圏におけるアプリケーション・ライフサイクル管理（ALM）およびデータベース統合基盤のアーキテクチャコンサルティングを統括。米国ボーランドのCaliber（要件定義）、Together（モデル駆動型UML）、StarTeam（構成管理）等のエンタープライズツール導入を主導し、シティバンクやHSBC等の大手金融機関、通信キャリア、半導体ファウンドリに対してアジャイル開発転換およびソフトウェアガバナンス指導を提供した。サイベース（Sybase）在籍時は、ミッションクリティカルな高頻度トランザクションを支える高可用性リレーショナルデータベース（Sybase ASE）およびリアルタイム・レプリケーション・サーバーの設計・チューニングを指揮し、ミリ秒単位のデータ整合性を担保。コンサルティングチームを牽引し、年間目標達成率120%および卓越した保守継続率を達成した。",
+    "summaryZh": "負責 Borland 與 Sybase 在大中華區的應用生命週期管理（ALM）與企業資料庫解決方案顧問交付，並帶領技術團隊。<br>• 服務兩岸三地金融（核心帳務、證券交易）、電信與高科技製造客戶，負責高併發交易效能調校與資料庫 HA/DR 架構規劃。<br>• 協助客戶建立需求追溯、自動化測試、缺陷與組態管理的端到端 ALM 流程，累計主持 30 餘個大型系統改造專案。<br>• 多次擔任大中華區技術年會講師。<br>• 任期橫跨 Borland 併入 Micro Focus 與 Sybase 併入 SAP，併購後持續任職。",
+    "summaryEn": "Led ALM and enterprise database consulting delivery for Borland and Sybase in Greater China, managing the technical team.<br>• Served banks (core banking, securities trading), telecom operators and high-tech manufacturers across the region on high-concurrency performance tuning and database HA/DR architecture.<br>• Helped clients build end-to-end ALM: requirements traceability, test automation, defect and configuration management; led 30+ major system modernization projects.<br>• Regular speaker at regional technology conferences.<br>• Remained through both acquisitions (Borland by Micro Focus; Sybase by SAP).",
+    "summaryJp": "BorlandおよびSybaseの大中華圏におけるALMとエンタープライズデータベースのコンサルティングを統括し、技術チームを指揮。<br>• 金融（勘定系・証券取引）、通信、ハイテク製造の顧客に対し、高負荷トランザクションの性能チューニングとデータベースHA/DR設計を提供。<br>• 要件トレーサビリティ、テスト自動化、欠陥・構成管理を含むALMプロセス構築を支援し、30件以上の大規模システム刷新を主導。<br>• 地域技術カンファレンスで講師を歴任。<br>• BorlandのMicro Focusによる買収、SybaseのSAPによる買収後も継続して在籍。",
     "achievementsZh": [
-      "交付逾 50 家大型金融與製造客戶 ALM 平台",
-      "美商原廠認證講師資格"
+      "主持 30 餘個大型系統改造專案",
+      "金融、電信與製造業 ALM 與資料庫 HA/DR 顧問"
     ],
     "skills": [
       "ALM 軟體生命週期",
@@ -231,9 +224,7 @@
     "identityStatus": "verified",
     "confidence": "高",
     "evidenceScore": 90,
-    "sourceIds": [
-      "SRC-004"
-    ],
+    "sourceIds": [],
     "localAssetIds": [
       "assets/Oracle_AI_講師_02.png"
     ],
@@ -253,21 +244,21 @@
     "categoryJp": "職歴",
     "subcategory": "系統架構與軟體工程",
     "titleZh": "資深系統架構師 / 專案經理 (PMP)",
-    "titleEn": "Senior Enterprise System Architect / Software Engineering Project Manager",
-    "titleJp": "シニアエンタープライズシステムアーキテクト / ソフトウェアエンジニアリングPM",
+    "titleEn": "Senior Systems Architect / Project Manager (PMP)",
+    "titleJp": "シニアシステムアーキテクト／プロジェクトマネージャー（PMP）",
     "organizationZh": "台灣知名系統整合 (SI) 與網路科技公司",
-    "organizationEn": "Institute for Information Industry (III / MIC) / National Think Tank",
-    "organizationJp": "台湾情報産業推進機構 (資策會 III / MIC) / 国家政策シンクタンク",
+    "organizationEn": "Leading Taiwanese Systems Integration (SI) & Internet Technology Company",
+    "organizationJp": "台湾の大手システムインテグレーター（SI）・ネットワーク技術企業",
     "roleZh": "系統架構師 / 專案經理",
     "roleEn": "Lead Enterprise Architect / Senior Researcher",
     "roleJp": "主席システムアーキテクト / 主任研究員",
     "location": "台中 / 台北",
-    "summaryZh": "作為擁有國際專案管理師（PMP）認證與深厚底層編程功底之核心架構負責人，我主導承攬多項大型政府機關、國營事業與金融機構之百萬級 J2EE / Java 企業分散式中介軟體與大型入口網站建置專案。在專案管理上，我嚴格依循 PMBOK 指南，全方位掌控範疇界定、工期里程碑、預算成本與風險矩陣，帶領逾 20 人的研發與系統整合團隊，多次在緊迫時程下達成 100% 如期如質驗收交付。在技術架構上，我親自負責核心分散式交易處理、資料庫物件導向對應（ORM）、分散式快取、負載平衡機制與高併發連線池最佳化，確保系統具備毫秒級回應能力與 99.9% 系統可用性。在此黃金奠基階段，我不僅積累了數十萬行生產級代碼的架構與實作淬鍊，更磨練出極致嚴謹的工程規範意識、跨部門協調推進力與面對複雜業務邏輯的架構解構能力，為日後執掌跨國 C-Level 資訊戰略與雲端現代化轉型奠定了最堅實的底層實戰根基。",
-    "summaryEn": "I dedicated my early career to national-level corporate informatization projects and forward-looking enterprise software research and development. I served as Lead Software Architect for key e-government initiatives under the Ministry of Economic Affairs and large public-private consortia, architecting high-throughput distributed systems and Enterprise Application Integration (EAI) platforms capable of handling tens of millions of transactions. Specializing in early-generation Java J2EE, CORBA, distributed RPC, and Object-Oriented Analysis & Design (OOAD / UML), I formulated standardized software component libraries and XML/SOAP EDI interchange specifications for public and private industry sectors. I spearheaded enterprise security audits and disaster recovery drills for organizations with thousands of users, establishing the rigorous technical foundation that underpins my 27-year engineering leadership.",
-    "summaryJp": "国家級の大規模情報化プロジェクトおよび先端ソフトウェアアーキテクチャ研究開発に従事。台湾経済部（省に相当）商業司および主要公的機関における大規模分散システム（Distributed Systems）および企業アプリケーション統合（EAI）プロジェクトの主席アーキテクトを務め、千万件規模のトランザクションを処理する高信頼基盤を設計した。Java J2EE、CORBA、RPC、オブジェクト指向分析設計（OOAD/UML）を駆使し、政府および産業界向けの共通ソフトウェアコンポーネントライブラリやデータ交換標準（XML/SOAP EDI）を策定。数千人規模の組織を対象とする情報セキュリティ診断およびディザスタリカバリ演習を主導し、27年に及ぶITエンジニアリングリーダーシップの堅固な礎を築いた。",
+    "summaryZh": "擔任系統架構師與專案經理（PMP），承接政府機關、國營事業與金融機構的 J2EE／Java 分散式系統與大型入口網站專案。<br>• 依 PMBOK 管理範疇、時程、預算與風險，帶領 20 人以上研發與整合團隊。<br>• 負責分散式交易、ORM、快取、負載平衡與連線池等核心架構設計，系統可用性 99.9%。",
+    "summaryEn": "Systems architect and project manager (PMP) delivering J2EE/Java distributed systems and large portals for government agencies, state-owned enterprises and financial institutions.<br>• Managed scope, schedule, budget and risk per PMBOK, leading R&D and integration teams of 20+.<br>• Designed core architecture — distributed transactions, ORM, caching, load balancing, connection pooling — achieving 99.9% availability.",
+    "summaryJp": "システムアーキテクト兼PM（PMP）として、政府機関・公営企業・金融機関向けJ2EE/Java分散システムと大規模ポータルを構築。<br>• PMBOKに基づき範囲・スケジュール・予算・リスクを管理し、20名以上のチームを指揮。<br>• 分散トランザクション、ORM、キャッシュ、負荷分散、コネクションプール等の中核設計を担当し、可用性99.9%を実現。",
     "achievementsZh": [
-      "取得 PMP 國際專案管理師認證",
-      "主導大型製造與零售客戶 ERP 上線"
+      "PMP 國際專案管理師",
+      "政府、國營事業與金融機構大型 Java 系統建置"
     ],
     "skills": [
       "系統架構",
@@ -278,9 +269,7 @@
     "identityStatus": "verified",
     "confidence": "高",
     "evidenceScore": 88,
-    "sourceIds": [
-      "SRC-008"
-    ],
+    "sourceIds": [],
     "localAssetIds": [],
     "visibility": "public",
     "isHighlighted": false,
@@ -307,12 +296,12 @@
     "roleEn": "Doctor of Philosophy (Ph.D.)",
     "roleJp": "博士号 (工学・情報技術管理)",
     "location": "台中, 台灣",
-    "summaryZh": "我於 2014 年取得資訊科技管理博士學位，論文題目為《整合系統的商業自助式入口網站植基於調適性服務導向架構資訊科技治理之研究》。將博士學位定位為高階實戰專家 (Executive Industry Practitioner)，結合 ITIL V3 與 SOA 架構建立企業入口網站 IT 治理模型，典藏於國家圖書館 (ndltd.ncl.edu.tw)。",
-    "summaryEn": "Awarded Doctor of Philosophy in IT Management in 2014 for the dissertation: 'A Study on Adaptive Service-Oriented Architecture IT Governance for Integrated Commercial Self-Service Portals'. Combining ITIL V3 and Service-Oriented Architecture (SOA), I formulated an enterprise portal IT governance framework. Officially archived in the National Central Library of Taiwan (ndltd.ncl.edu.tw).",
+    "summaryZh": "2014 年取得資訊科技管理博士（在職進修）。論文《整合系統的商業自助式入口網站植基於調適性服務導向架構資訊科技治理之研究》，結合 ITIL V3 與 SOA 建立企業入口網站 IT 治理模型，典藏於國家圖書館臺灣博碩士論文知識加值系統。",
+    "summaryEn": "Ph.D. in IT Management (2014, completed while working). Dissertation: \"A Study on Adaptive Service-Oriented Architecture IT Governance for Integrated Commercial Self-Service Portals\", combining ITIL V3 and SOA into an IT governance model for enterprise portals. Archived in Taiwan's National Digital Library of Theses and Dissertations.",
     "summaryJp": "2014年に情報技術管理学の博士号を取得。学位論文題目『整合系統的商業自助式入口網站植基於調適性服務導向架構資訊科技治理之研究（適応型SOA ITガバナンスに基づく統合型セルフサービスポータルの研究）』。ITIL V3とサービス指向アーキテクチャ（SOA）を融合した企業ポータル統治モデルを提唱し、国家図書館（台湾）に法定永久収蔵。",
     "achievementsZh": [
-      "博士論文榮獲國家圖書館典藏",
-      "發表 Springer SCI 期刊論文"
+      "博士論文典藏於國家圖書館",
+      "發表 SCI 期刊論文（共同作者）"
     ],
     "skills": [
       "資訊科技管理",
@@ -344,18 +333,18 @@
     "categoryJp": "学歴",
     "subcategory": "碩士學位",
     "titleZh": "資訊科技管理碩士 (Master in IT Management)",
-    "titleEn": "Master of Business Administration (MBA) / MS in Information Management",
-    "titleJp": "経営情報学 修士 (MBA / MS in Information Management)",
-    "organizationZh": "國立中興大學 / 朝陽科技大學",
-    "organizationEn": "National University System / Graduate Institute of Information Management",
-    "organizationJp": "国立大学大学院 情報マネジメント研究科",
+    "titleEn": "Master in Information Technology Management",
+    "titleJp": "情報技術管理 修士",
+    "organizationZh": "國立中興大學",
+    "organizationEn": "National Chung Hsing University",
+    "organizationJp": "国立中興大学",
     "roleZh": "碩士研究生 / 計畫協同主持人",
     "roleEn": "Master of Science / MBA",
     "roleJp": "情報学修士 / MBA",
     "location": "台中, 台灣",
-    "summaryZh": "我於 2006 年取得資訊科技管理碩士學位，專攻 Data Mining 資料探勘、決策支援系統 (DSS)、現代密碼學與資料治理。期間兼任衛生署台中醫院『醫療雲端照護』協同主持人，奠定巨量資料分析與分散式架構扎實基礎。",
-    "summaryEn": "Completed graduate studies focusing on enterprise information management, software engineering metrics, and strategic technology planning, bridging high-level corporate strategy with hands-on systems architecture.",
-    "summaryJp": "企業情報管理、ソフトウェア品質メトリクス、および技術経営戦略を専攻し修士号を取得。経営戦略と実践的システム工学を結ぶ学術基盤を確立。",
+    "summaryZh": "2006 年取得國立中興大學資訊科技管理碩士，主修資料探勘、決策支援系統與密碼學。期間擔任衛生署台中醫院「醫療雲端照護」計畫協同主持人。",
+    "summaryEn": "Master in IT Management, National Chung Hsing University (2006), focusing on data mining, decision support systems, cryptography and data governance. Co-principal investigator on the \"Medical Cloud Care\" project at the Department of Health Taichung Hospital.",
+    "summaryJp": "2006年に国立中興大学で情報技術管理修士を取得。データマイニング、意思決定支援システム、暗号、データガバナンスを専攻。衛生署台中病院「医療クラウドケア」プロジェクトの共同主任研究者を務める。",
     "achievementsZh": [
       "擔任衛生署台中醫院『醫療雲端照護』協同主持人",
       "完成巨量資料探勘研究論文"
@@ -369,9 +358,7 @@
     "identityStatus": "verified",
     "confidence": "高",
     "evidenceScore": 100,
-    "sourceIds": [
-      "SRC-006"
-    ],
+    "sourceIds": [],
     "localAssetIds": [],
     "visibility": "public",
     "isHighlighted": true,
@@ -388,28 +375,28 @@
     "categoryEn": "Research",
     "categoryJp": "研究出版",
     "subcategory": "SCI 頂級國際期刊論文",
-    "titleZh": "Springer SCI 國際頂級期刊論文發表《Reversible secret-image sharing with high visual quality》",
-    "titleEn": "Springer SCI International Journal Paper: Reversible Secret-Image Sharing",
-    "titleJp": "シュプリンガー SCI国際学術誌論文発表『高画質可逆秘密画像分散法』",
-    "organizationZh": "Springer International Publishing (DOI: 10.1007/s11042-014-2014-x)",
-    "organizationEn": "Springer International Publishing (Multimedia Tools and Applications, DOI: 10.1007/s11042-014-2014-x)",
-    "organizationJp": "シュプリンガー (Springer Nature, DOI: 10.1007/s11042-014-2014-x)",
+    "titleZh": "SCI 期刊論文（共同作者）《Reversible secret-image sharing with high visual quality》",
+    "titleEn": "SCI Journal Paper (co-author): Reversible Secret-Image Sharing with High Visual Quality",
+    "titleJp": "SCI 学術誌論文（共著）『Reversible secret-image sharing with high visual quality』",
+    "organizationZh": "Springer《Multimedia Tools and Applications》Vol. 70, 2014（DOI: 10.1007/s11042-012-1190-1）",
+    "organizationEn": "Springer, Multimedia Tools and Applications, Vol. 70, 2014 (DOI: 10.1007/s11042-012-1190-1)",
+    "organizationJp": "Springer『Multimedia Tools and Applications』Vol. 70, 2014（DOI: 10.1007/s11042-012-1190-1）",
     "roleZh": "第一作者 / 核心研究員 (First Author: Lun-Hao Liao)",
-    "roleEn": "Co-Author / Senior Researcher (Lun-Hao Liao)",
-    "roleJp": "共著者 / 共同研究者 (廖倫豪 / Lun-Hao Liao)",
+    "roleEn": "Co-author",
+    "roleJp": "共著者",
     "location": "International Journal (SCI)",
-    "summaryZh": "我於 Springer 旗下頂級 SCI 國際期刊發表論文《Reversible secret-image sharing with high visual quality》，提出高視覺品質之可逆秘密圖像分享演算法，建立零信任資料防護密碼學模型。",
-    "summaryEn": "Published 'Reversible secret-image sharing with high visual quality' in Springer's premier SCI-indexed journal, proposing an advanced cryptographic algorithm for zero-trust data protection and visual information security.",
-    "summaryJp": "Springer傘下のトップSCI国際学術誌に論文『Reversible secret-image sharing with high visual quality』を発表。ゼロトラスト時代の情報秘匿と高品質可逆画像復元アルゴリズムを数学的に実証。",
+    "summaryZh": "與 Ching-Chiuan Lin 等人共同發表於 Springer SCI 期刊《Multimedia Tools and Applications》，提出高視覺品質的可逆秘密影像分享方法。",
+    "summaryEn": "Co-authored with Ching-Chiuan Lin et al. in Springer's SCI-indexed journal Multimedia Tools and Applications, proposing a reversible secret-image sharing scheme with high visual quality.",
+    "summaryJp": "Ching-Chiuan Lin らとの共著として Springer の SCI 学術誌『Multimedia Tools and Applications』に掲載。高画質な可逆秘密画像分散法を提案。",
     "achievementsZh": [
-      "SCI 期刊 Impact Factor 3.6+",
-      "建立可逆秘密影像密碼學分享演算法模型"
+      "SCI 期刊論文（共同作者）",
+      "可逆秘密影像分享演算法"
     ],
     "skills": [
       "密碼學 (Cryptography)",
-      "零信任防護",
-      "演算法優化",
-      "SCI 論文發表"
+      "影像處理",
+      "演算法",
+      "SCI 論文"
     ],
     "identityStatus": "verified",
     "confidence": "高",
@@ -459,9 +446,7 @@
     "identityStatus": "verified",
     "confidence": "高",
     "evidenceScore": 95,
-    "sourceIds": [
-      "SRC-005"
-    ],
+    "sourceIds": [],
     "localAssetIds": [],
     "visibility": "public",
     "isHighlighted": false,
@@ -508,7 +493,7 @@
       "SRC-010"
     ],
     "localAssetIds": [],
-    "visibility": "public",
+    "visibility": "hidden",
     "isHighlighted": true,
     "createdAt": "2026-08-14T12:00:00Z",
     "updatedAt": "2026-08-14T12:00:00Z"
@@ -570,22 +555,22 @@
     "categoryEn": "Media",
     "categoryJp": "メディア",
     "subcategory": "科技媒體封面人物",
-    "titleZh": "CIO Taiwan 官方專訪《【專訪】隆中網絡 GameSparcs IT Director Howard Liao | 善用公有雲服務 搶攻全球遊戲商機》",
-    "titleEn": "CIO Taiwan Official Feature Interview: Capitalizing on Public Cloud for Global Gaming",
+    "titleZh": "CIO Taiwan 專訪《隆中網絡 GameSparcs IT Director Howard Liao｜善用公有雲服務 搶攻全球遊戲商機》",
+    "titleEn": "CIO Taiwan Interview: Using Public Cloud to Win in Global Gaming",
     "titleJp": "CIO Taiwan公式 特別インタビュー『パブリッククラウドを活用し世界のゲーム商機を掴む』",
     "organizationZh": "CIO Taiwan 雜誌",
-    "organizationEn": "CIO Taiwan Magazine (Cover Feature, May 2024 Issue)",
+    "organizationEn": "CIO Taiwan Magazine (May 2024 issue)",
     "organizationJp": "CIO Taiwan 誌 (2024年5月号 独占取材)",
-    "roleZh": "封面人物 / IT Director",
-    "roleEn": "Featured Interviewee (Howard Liao, Ph.D., Online GameSparcs IT Director)",
+    "roleZh": "受訪者 / IT Director",
+    "roleEn": "Interviewee / IT Director",
     "roleJp": "取材対象 (オンラインゲームスパークス IT Director 廖倫豪 博士)",
     "location": "台北, 台灣",
-    "summaryZh": "我接受 CIO Taiwan 總編輯施鑫澤與資深採訪團隊專題專訪（刊期 2024.05），發表《善用公有雲服務 搶攻全球遊戲商機》。我深入剖析遊戲產業採用多雲網路（Multi-Cloud Networking, MCN）與 Kubernetes 原生架構的戰略優勢，並分享如何以單一管理控制台跨公有雲與邊緣運算整合，打造雲端維運團隊並降低整體營運負擔。",
-    "summaryEn": "Featured in an in-depth interview by Editor-in-Chief Richard Shih in CIO Taiwan, exploring Multi-Cloud Networking (MCN), unified Kubernetes management consoles, and FinOps cloud cost containment strategies.",
+    "summaryZh": "接受 CIO Taiwan 專訪（2024 年 5 月刊），談遊戲產業採用多雲網路（MCN）與 Kubernetes 的效益，以及跨公有雲與邊緣的統一管理與雲端維運團隊建立。",
+    "summaryEn": "Interviewed by CIO Taiwan (May 2024 issue) on multi-cloud networking, Kubernetes and FinOps for global gaming operations.",
     "summaryJp": "CIO Taiwan誌の施鑫澤編集長チームによる単独取材。『パブリッククラウドを活用し世界のゲーム商機を掴む』と題し、マルチクラウドネットワーキング（MCN）の優位性と運用自動化を提言。",
     "achievementsZh": [
-      "榮登 CIO Taiwan 封面人物專訪",
-      "解析 FinOps 雲端治理與成本控制框架"
+      "CIO Taiwan 專訪",
+      "多雲與 FinOps 雲端治理實務"
     ],
     "skills": [
       "CIO 戰略領導",
@@ -617,8 +602,8 @@
     "categoryEn": "Media",
     "categoryJp": "メディア",
     "subcategory": "科技專題報導",
-    "titleZh": "iThome 封面技術專題《【iThome 專題企劃】隆中網絡運用 MongoDB Atlas 建構遊戲資料管理平台，打造全方位休閒娛樂平台》",
-    "titleEn": "iThome In-Depth Technology Feature: High-Concurrency Data Platform with MongoDB Atlas",
+    "titleZh": "iThome 專題企劃《隆中網絡運用 MongoDB Atlas 建構遊戲資料管理平台，打造全方位休閒娛樂平台》",
+    "titleEn": "iThome Feature: GameSparcs Builds Its Gaming Data Platform on MongoDB Atlas",
     "titleJp": "iThome コンピュータ報 技術特集『MongoDB Atlasによるゲームデータ基盤の構築』",
     "organizationZh": "iThome 電腦報",
     "organizationEn": "iThome Computer Newspaper (Published Sept 2, 2024)",
@@ -627,12 +612,12 @@
     "roleEn": "Featured Technology Executive",
     "roleJp": "取材対象 技術エグゼクティブ",
     "location": "台北, 台灣",
-    "summaryZh": "我接受 iThome 電腦報專題企劃採訪（2024-09-02 發表），發表《隆中網絡運用 MongoDB Atlas 建構遊戲資料管理平台，打造全方位休閒娛樂平台》。我詳細闡述如何運用 MongoDB Atlas 全託管架構兼具高擴展與高可用性，支撐全球跨區即時對弈高併發讀寫，並以敏捷架構加速休閒遊戲發行。",
+    "summaryZh": "iThome 專題企劃（2024-09-02）報導隆中網絡以 MongoDB Atlas 全託管架構支撐全球跨區即時對弈的高併發讀寫，並說明架構選型與效益。",
     "summaryEn": "Featured by iThome on engineering high-concurrency gaming data architectures using fully managed MongoDB Atlas clusters, achieving 99.995% high availability and seamless global real-time synchronization.",
     "summaryJp": "iThome技術企画に掲載。世界規模のリアルタイム対戦を支えるため、MongoDB Atlas全託管クラスタを導入し、99.995%の高可用性とミリ秒応答を実現したアーキテクチャ設計を解説。",
     "achievementsZh": [
-      "iThome 官方深度技術報導",
-      "建置全球全託管遊戲資料管理中台"
+      "iThome 專題企劃報導",
+      "全託管遊戲資料平台"
     ],
     "skills": [
       "MongoDB Atlas",
@@ -678,8 +663,8 @@
     "summaryEn": "Delivered the mainstage Keynote address at MongoDB.local Taipei before 500+ enterprise IT directors and architects, demonstrating zero-downtime database sharding and real-time read-write optimization.",
     "summaryJp": "MongoDB.local台北大会のメインステージにて基調講演を実施。500名超のITリーダーを前に、無停止データベースシャーディングと高負荷データ同期の実践手法を公開。",
     "achievementsZh": [
-      "獲邀擔任 MongoDB.local 旗艦年會 Keynote 演講嘉賓",
-      "分享千萬級日活躍用戶之資料架構實戰"
+      "MongoDB.local Taipei 主題演講",
+      "分享全球遊戲資料平台架構實務"
     ],
     "skills": [
       "Keynote 演講",
@@ -727,8 +712,8 @@
     "summaryEn": "Invited Keynote speaker addressing corporate CIOs and CISOs from publicly listed companies on multi-cloud asset governance, FinOps implementation, and Zero-Trust cloud security.",
     "summaryJp": "上場企業のCIO・CISOが集う年次サミットにて基調講演を実施。マルチクラウド資源統治、FinOps実践ノウハウ、およびゼロトラスト適合の具体的フレームワークを伝授。",
     "achievementsZh": [
-      "獲頒 CIO 價值學院特聘講師榮譽",
-      "分享企業多雲 FinOps 治理典範"
+      "CIO 價值學院大會演講",
+      "分享企業多雲 FinOps 治理實務"
     ],
     "skills": [
       "CIO 演講",
@@ -775,8 +760,8 @@
     "summaryEn": "Recorded the official executive digital masterclass 'Cloud Management & Practice' for Taiwan's Executive Yuan, educating senior government officials on digital transformation and cloud modernization.",
     "summaryJp": "台湾の最高行政機関（内閣）公務員向けに『クラウド管理と実務の洞察』マスター講座を収録・配信。行政DXとモダンガバナンスの啓発に貢献。",
     "achievementsZh": [
-      "受聘行政院 e等公務園大師講座講師",
-      "課程列入全台公務同仁核心推薦培訓"
+      "行政院 e等公務園+ 數位課程講師",
+      "公部門雲端轉型課程"
     ],
     "skills": [
       "公部門培訓",
@@ -812,19 +797,19 @@
     "titleZh": "ISO 27001 資安主任稽核員 & ISO 42001 (AIMS) AI 治理主任稽核員認證",
     "titleEn": "ISO 27001 Lead Auditor & ISO 42001 (AIMS) AI Governance Lead Auditor Certifications",
     "titleJp": "ISO 27001 情報セキュリティ主任審査員 & ISO 42001 (AIMS) AIガバナンス主任審査員 資格",
-    "organizationZh": "BSI / SGS / 國際驗證機構",
-    "organizationEn": "BSI / SGS / International Accredited Certification Bodies",
-    "organizationJp": "BSI / SGS / 国際認証認定機関",
+    "organizationZh": "BSI 英國標準協會",
+    "organizationEn": "BSI (British Standards Institution)",
+    "organizationJp": "BSI（英国規格協会）",
     "roleZh": "主任稽核員 (Lead Auditor)",
     "roleEn": "Certified Lead Auditor (ISMS & AIMS)",
     "roleJp": "国際主任審査員資格保持者 (ISMS & AIMS)",
     "location": "Global",
-    "summaryZh": "我通過 ISO 27001 資訊安全管理系統與最新 ISO 42001 人工智慧管理系統 (AIMS) 主任稽核員考試合格，具備評估企業 AI 演算法偏見、資料治理與資安合規之法定專家資格。",
-    "summaryEn": "Qualified as an accredited Lead Auditor for ISO/IEC 27001 (Information Security) and ISO/IEC 42001 (Artificial Intelligence Management Systems), holding legal authority to audit AI bias and security.",
-    "summaryJp": "ISO 27001（ISMS）および最新のISO 42001（人工知能マネジメントシステム AIMS）主任審査員試験に合格。AIアルゴリズム倫理、偏見是正、およびサイバーセキュリティ統治の国際法定審査資格を保有。",
+    "summaryZh": "通過 ISO/IEC 27001 資訊安全管理系統與 ISO/IEC 42001 人工智慧管理系統（AIMS）主任稽核員訓練與考試。",
+    "summaryEn": "Certified Lead Auditor for ISO/IEC 27001 (Information Security) and ISO/IEC 42001 (AI Management Systems).",
+    "summaryJp": "ISO/IEC 27001（情報セキュリティ）および ISO/IEC 42001（AIマネジメントシステム）主任審査員資格を取得。",
     "achievementsZh": [
-      "取得 ISO 27001 / ISO 42001 國際雙重主任稽核員資格",
-      "建立企業級 AI 倫理與合規稽核流程"
+      "ISO 27001 與 ISO 42001 主任稽核員",
+      "AI 治理與資安合規稽核"
     ],
     "skills": [
       "ISO 27001",
@@ -866,12 +851,12 @@
     "roleEn": "Certified Professional & Authorized Instructor",
     "roleJp": "公式認定プロフェッショナル / 公認講師",
     "location": "Global",
-    "summaryZh": "我持有 Oracle OCP / 官方 AI 講師認證、WBSA 中華行銷企劃師專業合格認證、GS1 國際供應鏈條碼管理師認證與台灣金融研訓院金融科技專業認證，具備跨領域綜合理論與實戰能力。",
+    "summaryZh": "持有 Oracle OCP 與 Oracle 官方講師認證、WBSA 行銷企劃師、GS1 供應鏈條碼管理師，以及台灣金融研訓院金融科技認證。",
     "summaryEn": "Holds official Oracle OCP and certified AI instructor credentials, WBSA Business Planning Specialist certification, GS1 International Supply Chain Manager, and Fintech specialist qualifications.",
     "summaryJp": "オラクル公認OCPおよび公式AIインストラクター、WBSAビジネス企画スペシャリスト、GS1国際サプライチェーンマネージャー、フィンテック専門資格を保持し、技術と経営を横断。",
     "achievementsZh": [
-      "榮獲 Oracle 官方高級認證講師憑證",
-      "通過 GS1 國際條碼供應鏈管理考照"
+      "Oracle OCP 與官方講師認證",
+      "GS1 供應鏈條碼管理師"
     ],
     "skills": [
       "Oracle OCP",
@@ -882,9 +867,7 @@
     "identityStatus": "verified",
     "confidence": "高",
     "evidenceScore": 100,
-    "sourceIds": [
-      "SRC-008"
-    ],
+    "sourceIds": [],
     "localAssetIds": [
       "assets/WBSA證照.png",
       "assets/GS1證照.png",

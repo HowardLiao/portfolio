@@ -1,4 +1,4 @@
-const CACHE_NAME = 'howard-portfolio-v1';
+const CACHE_NAME = 'howard-portfolio-v2';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
