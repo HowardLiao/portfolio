@@ -1472,8 +1472,10 @@ table {
 
 /* === 2026-10 portrait refresh: circular headshot on all breakpoints === */
 .hero-portrait-container { aspect-ratio: 1/1 !important; border-radius: 50% !important; background: #ffffff !important; align-self: start; }
+@media (min-width: 769px) { .hero-portrait-container { width: 100% !important; max-width: 240px !important; height: auto !important; margin-left: auto !important; margin-right: auto !important; justify-self: center !important; } }
 .hero-portrait-container img { object-fit: cover !important; object-position: center top !important; }
-.nav-actions .btn-primary { background: linear-gradient(135deg, #D96B27 0%, #BC581A 100%); color: #ffffff; border: none; padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 14px rgba(217, 107, 39, 0.25); transition: var(--transition); }
+.nav-actions .btn-primary { background: linear-gradient(135deg, #D96B27 0%, #BC581A 100%); color: #ffffff; border: none; padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 14px rgba(217, 107, 39, 0.25); transition: var(--transition); white-space: nowrap !important; flex-shrink: 0 !important; }
+.hero-tags .tag-item { white-space: nowrap !important; flex-shrink: 0 !important; display: inline-block !important; }
 </style>
 </head>
 <body>
