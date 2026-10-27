@@ -1,11 +1,11 @@
-const CACHE_NAME = 'howard-portfolio-v2';
+const CACHE_NAME = 'howard-portfolio-v3';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  './assets/20260712_韓系證照.png',
+  './assets/howard_portrait.jpg',
   './data/timeline.json',
   './data/profile.json',
   './data/sources.json',
