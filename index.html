@@ -1476,6 +1476,366 @@ table {
 .hero-portrait-container img { object-fit: cover !important; object-position: center top !important; }
 .nav-actions .btn-primary { background: linear-gradient(135deg, #D96B27 0%, #BC581A 100%); color: #ffffff; border: none; padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 14px rgba(217, 107, 39, 0.25); transition: var(--transition); white-space: nowrap !important; flex-shrink: 0 !important; }
 .hero-tags .tag-item { white-space: nowrap !important; flex-shrink: 0 !important; display: inline-block !important; }
+
+/* =========================================================
+   NEON EXECUTIVE UPGRADE v4.0 (Dual-Theme, Zero-Clip Nav,
+   Interactive Topology, Warm Portfolio Stage, Mobile Polish)
+   ========================================================= */
+:root, body.pharaoh-theme {
+  --media-stage-bg: linear-gradient(145deg, #FBF6EE 0%, #F2E8D8 100%);
+  --media-stage-border: #E5D9C8;
+  --surface-subtle: #F7F1E7;
+  --surface-elevated: #FFFFFF;
+  --pill-bg: #FEF7E9;
+  --pill-border: #E8DFD8;
+  --badge-dark-bg: rgba(31, 36, 33, 0.78);
+  --badge-dark-text: #FAF7F2;
+  --svg-node-bg: #FFFFFF;
+  --svg-line-muted: rgba(217, 107, 39, 0.22);
+  --code-card-bg: #F8F4EC;
+  --code-card-border: #E5D9C8;
+}
+
+body.dark-mode {
+  color-scheme: dark;
+  --bg-main: #0B1120;
+  --bg-header: rgba(11, 17, 32, 0.92);
+  --bg-card: #131C31;
+  --bg-card-hover: #19243D;
+  --bg-input: #0F172A;
+  --bg-modal: #131C31;
+  --border-color: #26334D;
+  --primary: #F59E0B;
+  --primary-light: #FBBF24;
+  --primary-glow: rgba(245, 158, 11, 0.22);
+  --accent-teal: #38BDF8;
+  --accent-amber: #FBBF24;
+  --accent-gray: #94A3B8;
+  --accent-purple: #C084FC;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --text-dark: #F8FAFC;
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 18px 44px rgba(0, 0, 0, 0.55);
+  --media-stage-bg: linear-gradient(145deg, #0F172A 0%, #1E293B 100%);
+  --media-stage-border: #2D3B55;
+  --surface-subtle: #182238;
+  --surface-elevated: #131C31;
+  --pill-bg: rgba(245, 158, 11, 0.14);
+  --pill-border: rgba(245, 158, 11, 0.35);
+  --badge-dark-bg: rgba(15, 23, 42, 0.85);
+  --badge-dark-text: #F8FAFC;
+  --svg-node-bg: #182238;
+  --svg-line-muted: rgba(245, 158, 11, 0.28);
+  --code-card-bg: #0F172A;
+  --code-card-border: #26334D;
+}
+
+body.dark-mode .nav-tab-btn:hover,
+body.dark-mode .nav-tab-btn.active {
+  background: rgba(245, 158, 11, 0.14);
+  color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+body.dark-mode .tag-item,
+body.dark-mode .verified-badge,
+body.dark-mode .viz-pill-btn {
+  background: var(--surface-subtle);
+  border-color: var(--border-color);
+  color: var(--text-main);
+}
+
+body.dark-mode .viz-pill-btn.active {
+  background: var(--primary);
+  color: #0B1120;
+  border-color: var(--primary);
+}
+
+body.dark-mode .status-badge.verified {
+  background: rgba(16, 185, 129, 0.16);
+  color: #34D399;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+body.dark-mode .pwa-install-banner,
+body.dark-mode .mobile-bottom-nav,
+body.dark-mode .mobile-drawer-sheet {
+  background: rgba(19, 28, 49, 0.96);
+  border-color: var(--border-color);
+}
+
+body.dark-mode .hunter-toast {
+  background: rgba(15, 23, 42, 0.96);
+  color: #F8FAFC;
+  border-color: var(--primary);
+}
+
+/* 1. Desktop Navbar Zero-Clipping Architecture */
+.navbar .container {
+  max-width: 1440px;
+  padding: 0 20px;
+}
+
+.navbar .nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.navbar .brand {
+  flex: 0 0 auto;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.navbar .nav-tabs {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  gap: 2px;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 2px 0;
+  min-width: 0;
+}
+.navbar .nav-tabs::-webkit-scrollbar { display: none; }
+
+.navbar .nav-tab-btn {
+  padding: 6px 8px;
+  font-size: 0.79rem;
+  font-weight: 700;
+  gap: 3px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navbar .nav-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Expandable Compact Search Pill on Desktop Navbar */
+.navbar .search-box-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.navbar .search-box-header input {
+  width: 36px;
+  height: 36px;
+  padding: 0 0 0 36px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: transparent;
+  transition: width 0.25s ease, padding 0.25s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.navbar .search-box-header input::placeholder {
+  color: transparent;
+}
+.navbar .search-box-header:hover input,
+.navbar .search-box-header input:focus,
+.navbar .search-box-header input:not(:placeholder-shown) {
+  width: 170px;
+  padding: 6px 12px 6px 34px;
+  color: var(--text-main);
+  cursor: text;
+}
+.navbar .search-box-header:hover input::placeholder,
+.navbar .search-box-header input:focus::placeholder {
+  color: var(--text-muted);
+}
+.navbar .search-box-header .search-icon {
+  left: 10px;
+  font-size: 0.85rem;
+}
+
+.navbar .btn-icon {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.navbar .nav-actions .btn-primary {
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+@media (min-width: 769px) and (max-width: 1380px) {
+  .navbar .brand-text-en-ext { display: none; }
+  .navbar .nav-tab-btn {
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+  .navbar .nav-actions .btn-primary {
+    padding: 6px 10px;
+    font-size: 0.76rem;
+  }
+}
+
+/* 2. Desktop Hero Summary Fix (Never show unstyled toggle button on desktop) */
+.summary-toggle-btn {
+  display: none;
+}
+.hero-summary-collapsed {
+  max-height: none;
+  overflow: visible;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .hero-summary-collapsed {
+    position: relative;
+    max-height: 76px;
+    overflow: hidden;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+  }
+  .hero-summary-collapsed.expanded {
+    max-height: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .summary-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
+    color: var(--primary);
+    font-size: 0.76rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  /* Fix right-edge clipping of Hero skill tags on 390px mobile */
+  .hero-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    overflow: visible !important;
+    gap: 6px !important;
+    padding-bottom: 0 !important;
+  }
+  .hero-tags .tag-item {
+    font-size: 0.74rem !important;
+    padding: 4px 10px !important;
+    white-space: nowrap;
+  }
+}
+
+/* 3. Portfolio Gallery Warm Stage & Skeleton Shimmer */
+.gallery-stage {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  background: var(--media-stage-bg);
+  border: 1px solid var(--media-stage-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.gallery-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.gallery-item:hover .gallery-stage img {
+  transform: scale(1.03);
+}
+.gallery-zoom-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: var(--badge-dark-bg);
+  color: var(--badge-dark-text);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+/* 4. Interactive 4-Tier Proposal Topology Cards */
+.topology-tier-card {
+  background: var(--surface-subtle);
+  padding: 15px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.topology-tier-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.topology-tier-card.active {
+  background: var(--bg-card);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+.topology-contract-panel {
+  background: var(--code-card-bg);
+  border: 1px solid var(--code-card-border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  transition: var(--transition);
+}
+.node-pill {
+  display: inline-block;
+  background: var(--pill-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--pill-border) !important;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 2px 4px 2px 0;
+}
+
+/* 5. Theme-aware Pipeline Detail Card */
+#pipeline-detail-card {
+  background: var(--code-card-bg) !important;
+  border: 1px solid var(--code-card-border) !important;
+  color: var(--text-main) !important;
+}
+
+/* 6. Refined Print Isolation */
+@media print {
+  .mobile-bottom-nav,
+  .mobile-drawer-overlay,
+  .hunter-toast,
+  .summary-toggle-btn,
+  .quick-contact-fab {
+    display: none !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1484,7 +1844,7 @@ table {
   <header class="navbar">
     <div class="container nav-content">
       <div class="brand" onclick="window.location.reload();">
-        <span class="brand-text-desktop" style="white-space:nowrap;">廖倫豪 Howard Liao, Ph.D.</span>
+        <span class="brand-text-desktop" style="white-space:nowrap;">廖倫豪 博士<span class="brand-text-en-ext"> · Howard Liao, Ph.D.</span></span>
         <span class="brand-text-mobile">廖倫豪 博士</span>
       </div>
 
@@ -1548,7 +1908,7 @@ table {
   <div class="modal-overlay" id="modal-lightbox">
     <div class="modal-container" style="max-width:900px; text-align:center; background:#000;">
       <button class="modal-close-btn">&times;</button>
-      <img src="" alt="Zoomed view" style="max-width:100%; max-height:75vh; object-fit:contain; border-radius:var(--radius-sm);">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Zoomed view" style="max-width:100%; max-height:75vh; object-fit:contain; border-radius:var(--radius-sm);">
       <div class="lightbox-caption" style="margin-top:12px; color:#94a3b8; font-size:0.9rem;"></div>
     </div>
   </div>
@@ -1577,7 +1937,7 @@ table {
         </div>
 
         <div style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin-bottom:18px; background:var(--bg-input); padding:12px 14px; border-radius:var(--radius-sm); border-left:3px solid var(--primary-light);">
-          本專案建議書與高階履歷包含跨國集團技術架構細節與商業機密。請輸入您的公務公務信箱與機構稱謂，通過身分核驗後系統將立即為您解鎖完整檔案。
+          本專案建議書與高階履歷包含跨國集團技術架構細節與商業機密。請輸入您的公務信箱與機構稱謂，通過身分核驗後系統將立即為您解鎖完整檔案。
         </div>
 
         <form id="form-clearance" onsubmit="window.submitAccessClearance(event)">
@@ -5015,12 +5375,20 @@ table {
   });
 
   function initTheme() {
-    state.theme = 'pharaoh';
-    localStorage.setItem('hl_theme', 'pharaoh');
-    document.body.classList.add('pharaoh-theme');
-    document.documentElement.style.colorScheme = 'light';
+    const saved = localStorage.getItem('hl_theme');
+    if (!state.theme || state.theme === 'light') {
+      state.theme = (saved === 'dark') ? 'dark' : 'pharaoh';
+    }
+    const isDark = state.theme === 'dark';
+    document.body.classList.toggle('dark-mode', isDark);
+    document.body.classList.toggle('pharaoh-theme', !isDark);
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
     const themeBtn = document.getElementById('theme-toggle-btn');
-    if (themeBtn) themeBtn.style.display = 'none';
+    if (themeBtn) {
+      themeBtn.style.display = 'inline-flex';
+      themeBtn.innerHTML = isDark ? '<span>☀️</span>' : '<span>🌙</span>';
+      themeBtn.title = isDark ? '切換至埃及法老溫暖明亮模式' : '切換至曜石黑戰情模式';
+    }
   }
 
   async function loadData() {
@@ -5068,9 +5436,13 @@ table {
     });
 
     document.getElementById('theme-toggle-btn').addEventListener('click', () => {
-      state.theme = state.theme === 'dark' ? 'light' : 'dark';
+      state.theme = state.theme === 'dark' ? 'pharaoh' : 'dark';
       localStorage.setItem('hl_theme', state.theme);
       initTheme();
+      if (typeof renderSVGTechRadar === 'function') renderSVGTechRadar();
+      if (typeof showHunterToast === 'function') {
+        showHunterToast(state.theme === 'dark' ? '🌙 已切換至曜石黑戰情模式 (Deep Obsidian)' : '☀️ 已切換至埃及法老暖明亮模式 (Egyptian Pharaoh)');
+      }
     });
 
     document.getElementById('lang-toggle-btn').addEventListener('click', () => {
@@ -5294,7 +5666,7 @@ E-mail: Liao.Howard@gmail.com`;
     document.querySelectorAll('.bottom-nav-item').forEach(btn => {
       btn.classList.toggle('active', btn.getAttribute('data-tab') === tabKey);
     });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   }
   window.switchTab = switchTab;
 
@@ -5849,88 +6221,146 @@ E-mail: Liao.Howard@gmail.com`;
     renderTimelineView();
   };
 
-  // Chart 2: Tech Radar / Network
+  // Chart 2: Tech Radar / Network (Neon High-Contrast Collision-Free Topology)
   function renderSVGTechRadar() {
     const container = document.getElementById('svg-tech-radar');
     if (!container) return;
 
+    const isEn = state.currentLang === 'en';
+    const isJp = state.currentLang === 'jp';
+
     const clusters = [
-      { id: 'cloud', name: '多雲架構 FinOps', color: '#D96B27', cx: 100, cy: 60, skills: ['AWS/GCP/Azure', 'Kubernetes GKE', 'Terraform IaC', 'Zero Outage'] },
-      { id: 'security', name: '零信任與資安合規', color: '#a855f7', cx: 280, cy: 60, skills: ['ISO 27001', 'ISO 42001 AI', 'Zero Trust', 'DevSecOps'] },
-      { id: 'factory', name: '智慧製造 OT/IT', color: '#10b981', cx: 310, cy: 180, skills: ['MES/ERP/PLM', 'BPR 流程再造', 'Edge AIoT', 'OEE 優化'] },
-      { id: 'pm', name: '工程可行性與PM', color: '#f59e0b', cx: 70, cy: 180, skills: ['Feasibility Analysis', 'Monday.com', 'ClickUp/Notion', 'Agile Scrum'] },
-      { id: 'ai', name: 'AI & 大數據平台', color: '#ec4899', cx: 190, cy: 220, skills: ['Agentic AI', 'MongoDB Atlas', 'AI Yield Model', 'Data Governance'] }
+      {
+        id: 'cloud',
+        name: isEn ? 'Multi-Cloud & FinOps' : (isJp ? 'マルチクラウド FinOps' : '多雲架構 FinOps'),
+        short: isEn ? 'Cloud FinOps' : '多雲 FinOps',
+        query: '雲',
+        color: '#D96B27',
+        cx: 145, cy: 86,
+        skills: [
+          { label: 'AWS/GCP/Azure', dx: -76, dy: -46 },
+          { label: 'Kubernetes GKE', dx: 48, dy: -50 },
+          { label: 'Terraform IaC', dx: -82, dy: 28 },
+          { label: 'Zero Outage', dx: 12, dy: 48 }
+        ]
+      },
+      {
+        id: 'security',
+        name: isEn ? 'Zero-Trust & Compliance' : (isJp ? 'ゼロトラスト & 統制' : '零信任與資安合規'),
+        short: isEn ? 'Zero Trust' : '零信任資安',
+        query: '資安',
+        color: '#8B5CF6',
+        cx: 495, cy: 86,
+        skills: [
+          { label: 'ISO 27001', dx: -52, dy: -50 },
+          { label: 'ISO 42001 AI', dx: 72, dy: -46 },
+          { label: 'Zero Trust', dx: 82, dy: 26 },
+          { label: 'DevSecOps', dx: -12, dy: 48 }
+        ]
+      },
+      {
+        id: 'pm',
+        name: isEn ? 'Engineering & PMO' : (isJp ? 'エンジニアリング PM' : '工程可行性與PM'),
+        short: isEn ? 'Eng & PM' : '工程與PM',
+        query: '管理',
+        color: '#D97706',
+        cx: 135, cy: 256,
+        skills: [
+          { label: 'Feasibility', dx: -72, dy: -44 },
+          { label: 'Agile Scrum', dx: -70, dy: 42 },
+          { label: 'Monday / Notion', dx: 34, dy: 52 },
+          { label: 'C-Level PMO', dx: 58, dy: -34 }
+        ]
+      },
+      {
+        id: 'factory',
+        name: isEn ? 'Smart Mfg OT/IT' : (isJp ? 'スマート製造 OT/IT' : '智慧製造 OT/IT'),
+        short: isEn ? 'Smart Mfg' : '智慧製造',
+        query: '製造',
+        color: '#059669',
+        cx: 505, cy: 256,
+        skills: [
+          { label: 'SAP / MES / PLM', dx: -58, dy: -36 },
+          { label: 'BPR 流程再造', dx: 72, dy: -44 },
+          { label: 'Edge AIoT', dx: 74, dy: 40 },
+          { label: 'OEE 良率優化', dx: -26, dy: 52 }
+        ]
+      },
+      {
+        id: 'ai',
+        name: isEn ? 'Enterprise AI & Data' : (isJp ? 'AI & データ基盤' : 'AI & 大數據平台'),
+        short: isEn ? 'AI & Data' : 'AI & 大數據',
+        query: 'AI',
+        color: '#DB2777',
+        cx: 320, cy: 292,
+        skills: [
+          { label: 'Agentic AI', dx: -94, dy: -16 },
+          { label: 'MongoDB Atlas', dx: 96, dy: -16 },
+          { label: 'AI Yield Model', dx: -64, dy: 44 },
+          { label: 'Data Governance', dx: 68, dy: 44 }
+        ]
+      }
     ];
 
+    const centerCX = 320, centerCY = 162;
     let linesSVG = '';
     let nodesSVG = '';
-    const centerCX = 190, centerCY = 120;
 
     clusters.forEach(c => {
-      linesSVG += `<line x1="${centerCX}" y1="${centerCY}" x2="${c.cx}" y2="${c.cy}" stroke="${c.color}" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6"/>`;
-      
-      c.skills.forEach((sk, idx) => {
-        const angle = (idx * (360 / c.skills.length)) * (Math.PI / 180);
-        const radius = 38;
-        const sx = c.cx + Math.cos(angle) * radius;
-        const sy = c.cy + Math.sin(angle) * radius;
+      linesSVG += `<line x1="${centerCX}" y1="${centerCY}" x2="${c.cx}" y2="${c.cy}" stroke="${c.color}" stroke-width="2" stroke-dasharray="5,4" opacity="0.55"/>`;
 
-        linesSVG += `<line x1="${c.cx}" y1="${c.cy}" x2="${sx}" y2="${sy}" stroke="${c.color}" stroke-width="1" opacity="0.35"/>`;
-        
+      c.skills.forEach(sk => {
+        const sx = c.cx + sk.dx;
+        const sy = c.cy + sk.dy;
+        const pillW = Math.max(76, sk.label.length * 7.2 + 18);
+        linesSVG += `<line x1="${c.cx}" y1="${c.cy}" x2="${sx}" y2="${sy}" stroke="${c.color}" stroke-width="1.25" opacity="0.4"/>`;
         nodesSVG += `
-          <g class="radar-node-sub cluster-${c.id}" transform="translate(${sx},${sy})" onclick="window.showSkillTooltip('${sk}', '${c.name}', '${c.color}')" style="cursor:pointer; transition:all 0.3s ease;">
-            <circle r="6" fill="${c.color}" opacity="0.85" class="pulse-node" style="color:${c.color};"/>
-            <text y="12" fill="#1F2421" font-size="8" text-anchor="middle" font-weight="700">${sk}</text>
+          <g class="radar-node-sub cluster-${c.id}" transform="translate(${sx},${sy})" onclick="window.showSkillTooltip('${sk.label}', '${c.name}', '${c.color}', '${c.query}')" style="cursor:pointer; transition:all 0.25s ease;">
+            <rect x="${-pillW/2}" y="-11" width="${pillW}" height="22" rx="11" fill="var(--svg-node-bg)" stroke="${c.color}" stroke-width="1.35"/>
+            <text y="3.5" fill="var(--text-main)" font-size="9.5" text-anchor="middle" font-weight="700">${sk.label}</text>
           </g>
         `;
       });
 
+      const hubW = Math.max(92, c.short.length * 10 + 22);
       nodesSVG += `
-        <g class="radar-node-hub cluster-${c.id}" transform="translate(${c.cx},${c.cy})" onclick="window.showSkillTooltip('${c.name}', '主技術聚落', '${c.color}')" style="cursor:pointer; transition:all 0.3s ease;">
-          <circle r="16" fill="${c.color}" opacity="0.25"/>
-          <circle r="10" fill="${c.color}" opacity="0.9" class="pulse-node" style="color:${c.color};"/>
-          <text y="3.5" fill="#ffffff" font-size="8.5" text-anchor="middle" font-weight="800">${c.name.split(' ')[0]}</text>
+        <g class="radar-node-hub cluster-${c.id}" transform="translate(${c.cx},${c.cy})" onclick="window.showSkillTooltip('${c.name}', '${isEn ? 'Core Domain Cluster' : '核心技術聚落'}', '${c.color}', '${c.query}')" style="cursor:pointer; transition:all 0.25s ease;">
+          <rect x="${-hubW/2}" y="-15" width="${hubW}" height="30" rx="15" fill="${c.color}" stroke="var(--bg-card)" stroke-width="2"/>
+          <text y="4" fill="#FFFFFF" font-size="10.5" text-anchor="middle" font-weight="800">${c.short}</text>
         </g>
       `;
     });
 
     container.innerHTML = `
-      <div style="position:relative; width:100%; height:100%;">
-        <div class="viz-filter-pills">
-          <button class="viz-pill-btn active" onclick="window.filterRadarCluster('all')">全域視圖</button>
-          <button class="viz-pill-btn" onclick="window.filterRadarCluster('cloud')">多雲 FinOps</button>
-          <button class="viz-pill-btn" onclick="window.filterRadarCluster('security')">零信任資安</button>
-          <button class="viz-pill-btn" onclick="window.filterRadarCluster('factory')">智慧製造</button>
-          <button class="viz-pill-btn" onclick="window.filterRadarCluster('pm')">工程與PM</button>
-          <button class="viz-pill-btn" onclick="window.filterRadarCluster('ai')">AI & 大數據</button>
+      <div style="position:relative; width:100%;">
+        <div class="viz-filter-pills" style="margin-bottom:10px;">
+          <button class="viz-pill-btn active" onclick="window.filterRadarCluster('all')">${isEn ? 'All Domains' : '全域視圖'}</button>
+          <button class="viz-pill-btn" onclick="window.filterRadarCluster('cloud')">${isEn ? 'Cloud FinOps' : '多雲 FinOps'}</button>
+          <button class="viz-pill-btn" onclick="window.filterRadarCluster('security')">${isEn ? 'Zero Trust' : '零信任資安'}</button>
+          <button class="viz-pill-btn" onclick="window.filterRadarCluster('factory')">${isEn ? 'Smart Mfg' : '智慧製造'}</button>
+          <button class="viz-pill-btn" onclick="window.filterRadarCluster('pm')">${isEn ? 'Eng & PM' : '工程與PM'}</button>
+          <button class="viz-pill-btn" onclick="window.filterRadarCluster('ai')">${isEn ? 'AI & Data' : 'AI & 大數據'}</button>
         </div>
 
-        <svg width="100%" height="220" viewBox="0 0 380 260" style="overflow:visible;">
-          <defs>
-            <filter id="glow-effect" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
-
-          <circle cx="${centerCX}" cy="${centerCY}" r="110" fill="none" stroke="rgba(217,107,39,0.15)" stroke-width="1" stroke-dasharray="4,4" class="spin-ring"/>
-          <circle cx="${centerCX}" cy="${centerCY}" r="65" fill="none" stroke="rgba(217,107,39,0.25)" stroke-width="1"/>
+        <svg width="100%" viewBox="0 0 640 365" style="display:block; max-height:360px; overflow:visible;">
+          <circle cx="${centerCX}" cy="${centerCY}" r="148" fill="none" stroke="var(--svg-line-muted)" stroke-width="1.2" stroke-dasharray="5,5"/>
+          <circle cx="${centerCX}" cy="${centerCY}" r="88" fill="none" stroke="var(--svg-line-muted)" stroke-width="1.2"/>
 
           ${linesSVG}
 
-          <g transform="translate(${centerCX},${centerCY})" filter="url(#glow-effect)" style="cursor:pointer;">
-            <circle r="22" fill="#D96B27" opacity="0.25" class="pulse-node" style="color:#D96B27;"/>
-            <circle r="14" fill="#D96B27"/>
-            <text y="-2" fill="#ffffff" font-size="9" text-anchor="middle" font-weight="900">廖倫豪博士</text>
-            <text y="8" fill="#FFFFFF" font-size="7.5" text-anchor="middle" font-weight="700">π-Leader</text>
+          <g transform="translate(${centerCX},${centerCY})" style="cursor:pointer;" onclick="window.filterRadarCluster('all')">
+            <circle r="38" fill="var(--primary)" opacity="0.14"/>
+            <circle r="30" fill="var(--primary)" stroke="var(--bg-card)" stroke-width="2.5"/>
+            <text y="-2" fill="#FFFFFF" font-size="11" text-anchor="middle" font-weight="900">${isEn ? 'Dr. Liao' : '廖倫豪博士'}</text>
+            <text y="12" fill="#FFF7ED" font-size="9" text-anchor="middle" font-weight="700">π-Leader</text>
           </g>
 
           ${nodesSVG}
         </svg>
 
-        <div id="radar-tooltip-box" style="display:none; position:absolute; bottom:10px; right:10px; background:rgba(255,255,255,0.96); border:1px solid var(--primary); backdrop-filter:blur(8px); padding:10px 14px; border-radius:8px; font-size:0.8rem; color:#1F2421; box-shadow:0 8px 24px rgba(0,0,0,0.6); max-width:220px; z-index:100;">
-          <div id="radar-tooltip-title" style="font-weight:800; color:var(--primary-light); margin-bottom:4px;"></div>
-          <div id="radar-tooltip-body" style="font-size:0.75rem; color:#94a3b8; line-height:1.4;"></div>
+        <div id="radar-tooltip-box" style="display:none; position:absolute; bottom:8px; right:8px; background:var(--bg-card); border:1px solid var(--primary); padding:10px 14px; border-radius:10px; font-size:0.8rem; color:var(--text-main); box-shadow:var(--shadow-lg); max-width:250px; z-index:100;">
+          <div id="radar-tooltip-title" style="font-weight:800; color:var(--primary); margin-bottom:4px;"></div>
+          <div id="radar-tooltip-body" style="font-size:0.76rem; color:var(--text-muted); line-height:1.45;"></div>
         </div>
       </div>
     `;
@@ -6502,28 +6932,74 @@ E-mail: Liao.Howard@gmail.com`;
     }
   };
 
+  window.selectTopologyTier = function(tierId) {
+    const tiers = {
+      L1: {
+        title: 'L1 前端互動與智慧協同層 — 治理契約與 SLA',
+        sla: 'RAG Precision ≥ 95% · SSO/RBAC 權限同步 < 50ms · 25+ 格式解析',
+        controls: 'ISO 27001 A.5.15 (存取控制) · ISO 42001 透明度標記 · 會議語音自動去識別化',
+        detail: '所有 WebChat / Teams / Slack 請求均強制綁定企業 AD/Entra ID 身分與檔案級 ACL，檢索結果自動過濾無權限文件，確保「看得到才問得到」。'
+      },
+      L2: {
+        title: 'L2 智慧製造 AutoML 預測大腦 — 治理契約與 SLA',
+        sla: '模型推論延遲 < 200ms · 良率預測準確率 ≥ 92% · 產線零中斷',
+        controls: 'ISO 42001 模型漂移監控 (Drift Alert) · Domain Twin™ 版本簽章 · OT/IT 單向隔離',
+        detail: '針對生醫製造發酵萃取、精密刀具磨耗與微波量測數據建立結構化預測模型，推論建議僅透過審核通道送達 MES/SCADA，絕不繞過安全聯鎖直接寫入機台 PLC。'
+      },
+      L3: {
+        title: 'L3 多模型調度與智慧安全網關 — 治理契約與 SLA',
+        sla: 'Token FinOps 降本 20–40% · 毫秒級 Multi-Provider Failover · Zero Outage',
+        controls: 'PII / 機敏圖面自動遮罩 (DLP) · 地端模型優先路由 · 100% Prompt/Response 審計日誌',
+        detail: '以單一 OpenAI 相容閘道聚合 250+ 模型，依任務複雜度與資料機密等級動態路由（機敏研發與配方資料強制鎖定地端 VPC，一般行政協作走雲端高性價比模型）。'
+      },
+      L4: {
+        title: 'L4 上市櫃監管合規與智財無菌底座 — 治理契約與 SLA',
+        sla: 'IP Clean Room 租戶 100% 物理/邏輯隔離 · 稽核軌跡保存 ≥ 5 年',
+        controls: '金管會生成式 AI 六大原則 · 證交所上市上櫃資通安全管控標準 · 內控第 9 條之 1',
+        detail: '為跨國品牌與生醫客戶建置獨立 IP Clean Room 知識庫與加密金鑰 (BYOK)，搭配 4-Gate 產前門禁聯鎖與不可篡改 Audit Trail，隨時滿足董事會與外部會計師稽核。'
+      }
+    };
+    const info = tiers[tierId] || tiers.L1;
+    document.querySelectorAll('.topology-tier-card').forEach(el => {
+      el.classList.toggle('active', el.dataset.tier === tierId);
+    });
+    const panel = document.getElementById('topology-contract-panel');
+    if (panel) {
+      panel.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+          <strong style="color:var(--primary); font-size:0.9rem;">⚡ ${info.title}</strong>
+          <span class="status-badge verified" style="font-size:0.72rem;">${info.sla}</span>
+        </div>
+        <div style="font-size:0.82rem; color:var(--text-main); line-height:1.55; margin-bottom:6px;">${info.detail}</div>
+        <div style="font-size:0.76rem; color:var(--text-muted);"><strong>合規對照：</strong>${info.controls}</div>
+      `;
+    }
+  };
+
   function renderProposalView() {
     const page = document.getElementById('page-proposal');
     if (!page) return;
+    const isEn = state.currentLang === 'en';
+    const isJp = state.currentLang === 'jp';
 
     page.innerHTML = `
       <div class="container" style="padding-top: 10px;">
         <!-- Interactive Sub-tab Switcher -->
         <div class="proposal-subnav">
           <button class="proposal-subtab-btn active" id="subtab-btn-all" onclick="window.switchProposalSection('all')">
-            📑 展開全覽 (All)
+            📑 ${isEn ? 'All Blueprints' : (isJp ? '全体表示' : '展開全覽 (All)')}
           </button>
           <button class="proposal-subtab-btn" id="subtab-btn-serviceagent" onclick="window.switchProposalSection('serviceagent')">
-            🤖 建議書一：AI 雙中樞與上市櫃合規旗艦平台
+            🤖 ${isEn ? 'P1: Enterprise AI Dual-Hub' : '建議書一：AI 雙中樞與上市櫃合規旗艦平台'}
           </button>
           <button class="proposal-subtab-btn" id="subtab-btn-chatgpt" onclick="window.switchProposalSection('chatgpt')">
-            🚀 建議書二：ChatGPT Enterprise 藍圖
+            🚀 ${isEn ? 'P2: ChatGPT Enterprise' : '建議書二：ChatGPT Enterprise 藍圖'}
           </button>
           <button class="proposal-subtab-btn" id="subtab-btn-aisdlc" onclick="window.switchProposalSection('aisdlc')">
-            🛡️ 建議書三：AISDLC 雙軌開發治理
+            🛡️ ${isEn ? 'P3: AISDLC Governance' : '建議書三：AISDLC 雙軌開發治理'}
           </button>
           <button class="proposal-subtab-btn" id="subtab-btn-policy" onclick="window.switchProposalSection('policy')">
-            📜 附件四：AI 治理辦法與規範
+            📜 ${isEn ? 'A4: AI Governance Policy' : '附件四：AI 治理辦法與規範'}
           </button>
         </div>
 
@@ -6534,14 +7010,16 @@ E-mail: Liao.Howard@gmail.com`;
           <div class="hero-card" style="margin-top:0; margin-bottom:20px; border-color:var(--primary-light);">
             <div style="grid-column: 1 / -1;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
-                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">📄 建議書一：企業董事會專案服務建議書 (旗艦版)</span>
-                <span style="font-size:0.85rem; color:var(--text-muted);">專案負責人：廖倫豪 博士 (Howard Liao, Ph.D.)</span>
+                <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">📄 ${isEn ? 'Board-Level Strategic Blueprint (Flagship Edition)' : '建議書一：企業董事會專案服務建議書 (旗艦版)'}</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">${isEn ? 'Lead Architect: Howard Liao, Ph.D.' : '專案負責人：廖倫豪 博士 (Howard Liao, Ph.D.)'}</span>
               </div>
               <div style="font-size:1.7rem; font-weight:900; color:var(--text-main); margin-bottom:8px;">
-                ServiceAgent 企業級 AI 雙中樞與上市櫃合規落地建議書 (高科技與生醫製造旗艦版)
+                ${isEn ? 'ServiceAgent Enterprise AI Dual-Hub & Listed-Company Compliance Blueprint' : 'ServiceAgent 企業級 AI 雙中樞與上市櫃合規落地建議書 (高科技與生醫製造旗艦版)'}
               </div>
               <div style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">
-                本建議書由廖倫豪博士親自為高科技製造、生醫製造與上市櫃企業董事會規劃，旨在建立「<strong>生成式 AI 協同中樞 ＋ 工業預測大腦 ＋ 智慧多模型成本網關 ＋ 上市櫃資安治理</strong>」之全棧企業級 AI 神經系統。深度整合 <strong>Enterprise GPT (智能決策中控)</strong>、<strong>Enterprise KM (25+ 格式混合 RAG 檢索)</strong>、<strong>AutoML 智慧製造預測核心 (機台磨耗與良率尋優)</strong>、<strong>多模型智慧路由閘道 (250+ 模型聚合與成本動態調度)</strong> 與 <strong>OpenClaw (人機複核安全閘道)</strong>，全面對齊金管會生成式 AI 核心指引、證交所上市上櫃資通安全管控標準、內控第 9 條之 1 與 ISO 27001/42001。
+                ${isEn
+                  ? 'Architected by Howard Liao, Ph.D. for high-tech & biomedical manufacturing boards: uniting <strong>Generative AI Copilot & KM (25+ format Agentic RAG)</strong>, <strong>AutoML Smart Manufacturing Yield Core</strong>, <strong>Multi-Model FinOps Gateway (250+ LLMs, 20–40% token savings)</strong>, and <strong>ISO 27001/42001 Listed-Company Governance</strong> with strict Human-in-the-Loop 4-Gate controls. <em>(Detailed technical appendices below are preserved in Traditional Chinese for Taiwan board & regulatory alignment.)</em>'
+                  : '本建議書由廖倫豪博士親自為高科技製造、生醫製造與上市櫃企業董事會規劃，旨在建立「<strong>生成式 AI 協同中樞 ＋ 工業預測大腦 ＋ 智慧多模型成本網關 ＋ 上市櫃資安治理</strong>」之全棧企業級 AI 神經系統。深度整合 <strong>Enterprise GPT (智能決策中控)</strong>、<strong>Enterprise KM (25+ 格式混合 RAG 檢索)</strong>、<strong>AutoML 智慧製造預測核心 (機台磨耗與良率尋優)</strong>、<strong>多模型智慧路由閘道 (250+ 模型聚合與成本動態調度)</strong> 與 <strong>OpenClaw (人機複核安全閘道)</strong>，全面對齊金管會生成式 AI 核心指引、證交所上市上櫃資通安全管控標準、內控第 9 條之 1 與 ISO 27001/42001。'}
               </div>
             </div>
           </div>
@@ -6550,63 +7028,76 @@ E-mail: Liao.Howard@gmail.com`;
           <div class="bento-grid" style="margin-bottom:20px;">
             <div class="bento-card">
               <div style="font-size:1.6rem; margin-bottom:4px;">🏛️</div>
-              <div class="bento-lbl">多模型網關與成本治理</div>
-              <div class="bento-desc">借鑑 MixRoute 實戰：聚合 250+ 模型，Smart Routing 節省 20~40% Token 成本，毫秒級 Failover 達成 Zero Outage。</div>
+              <div class="bento-lbl">${isEn ? 'Multi-Model FinOps Gateway' : '多模型網關與成本治理'}</div>
+              <div class="bento-desc">${isEn ? 'Aggregates 250+ LLMs with Smart Routing (-20~40% token cost) and sub-second Zero-Outage failover.' : '借鑑 MixRoute 實戰：聚合 250+ 模型，Smart Routing 節省 20~40% Token 成本，毫秒級 Failover 達成 Zero Outage。'}</div>
             </div>
             <div class="bento-card">
               <div style="font-size:1.6rem; margin-bottom:4px;">🏭</div>
-              <div class="bento-lbl">AutoML 智慧製造預測</div>
-              <div class="bento-desc">借鑑 Profet AI 實踐：結構化數據建模，精密加工刀具磨耗、微波開關量測良率與生醫發酵萃取參數預知保養。</div>
+              <div class="bento-lbl">${isEn ? 'AutoML Smart Manufacturing' : 'AutoML 智慧製造預測'}</div>
+              <div class="bento-desc">${isEn ? 'Structured tabular AutoML for biomedical fermentation/extraction yield optimization and predictive maintenance.' : '借鑑 Profet AI 實踐：結構化數據建模，精密加工刀具磨耗、微波開關量測良率與生醫發酵萃取參數預知保養。'}</div>
             </div>
             <div class="bento-card">
               <div style="font-size:1.6rem; margin-bottom:4px;">🏗️</div>
-              <div class="bento-lbl">領域知識智能化 (KM)</div>
-              <div class="bento-desc">萃取製造領域專家經驗，支援 25+ 檔案 Parser 與圖表表格重構，實現 95% 精準度 RAG 與會議語音自動轉錄回寫。</div>
+              <div class="bento-lbl">${isEn ? 'Enterprise KM & 95% RAG' : '領域知識智能化 (KM)'}</div>
+              <div class="bento-desc">${isEn ? '25+ document parsers with table/diagram reconstruction, 95% RAG precision, and automated meeting knowledge capture.' : '萃取製造領域專家經驗，支援 25+ 檔案 Parser 與圖表表格重構，實現 95% 精準度 RAG 與會議語音自動轉錄回寫。'}</div>
             </div>
             <div class="bento-card">
               <div style="font-size:1.6rem; margin-bottom:4px;">🛡️</div>
-              <div class="bento-lbl">上市櫃合規與智財無菌</div>
-              <div class="bento-desc">對齊金管會 AI 指引與證交所資通安全管控標準，建立品牌客戶 IP Clean Room 專利隔離與 4-Gate 產前門禁聯鎖。</div>
+              <div class="bento-lbl">${isEn ? 'Listed-Co Compliance & IP Clean Room' : '上市櫃合規與智財無菌'}</div>
+              <div class="bento-desc">${isEn ? 'Aligned with FSC AI Guidelines, TWSE cybersecurity rules, ISO 27001/42001, and 4-Gate pre-production interlocks.' : '對齊金管會 AI 指引與證交所資通安全管控標準，建立品牌客戶 IP Clean Room 專利隔離與 4-Gate 產前門禁聯鎖。'}</div>
             </div>
           </div>
 
-          <!-- 4-Tier Enterprise AI Architecture Grid -->
+          <!-- 4-Tier Enterprise AI Architecture Grid (Neon Interactive) -->
           <div class="info-card" style="padding:20px; margin-bottom:20px;">
-            <div style="font-weight:800; color:var(--text-main); font-size:1.05rem; margin-bottom:14px;">🏗️ 四層立體企業級系統架構與人機複核拓撲 (4-Tier Enterprise AI Topology)</div>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:14px; margin-bottom:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:14px;">
+              <div style="font-weight:800; color:var(--text-main); font-size:1.05rem;">🏗️ ${isEn ? 'Interactive 4-Tier Enterprise AI Topology (Click Any Layer for Governance Contract)' : '四層立體企業級系統架構與人機複核拓撲 (點擊任一層檢視治理契約與 SLA)'}</div>
+              <span style="font-size:0.75rem; color:var(--primary); font-weight:700;">✨ Interactive Neon View</span>
+            </div>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:14px; margin-bottom:14px;">
               
               <!-- Tier 1 -->
-              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #38bdf8;">
-                <div style="font-weight:800; color:#38bdf8; margin-bottom:4px; font-size:0.9rem;">L1 前端互動與智慧協同層</div>
+              <div class="topology-tier-card active" data-tier="L1" onclick="window.selectTopologyTier('L1')" style="border-top:3px solid #0284c7;">
+                <div style="font-weight:800; color:#0284c7; margin-bottom:4px; font-size:0.9rem;">L1 前端互動與智慧協同層</div>
                 <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.45;">
                   <strong>Enterprise GPT & KM：</strong>支援 WebChat、Teams、Slack；封裝 25+ 檔案格式 Parser、圖表表格解析與 95% 精準度 Agentic RAG；整合 AI Meeting 會議語音即時轉錄回寫。
                 </div>
               </div>
 
               <!-- Tier 2 -->
-              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #10b981;">
-                <div style="font-weight:800; color:#10b981; margin-bottom:4px; font-size:0.9rem;">L2 智慧製造 AutoML 預測大腦</div>
+              <div class="topology-tier-card" data-tier="L2" onclick="window.selectTopologyTier('L2')" style="border-top:3px solid #059669;">
+                <div style="font-weight:800; color:#059669; margin-bottom:4px; font-size:0.9rem;">L2 智慧製造 AutoML 預測大腦</div>
                 <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.45;">
                   <strong>結構化數據預測 (借鑑 Profet AI)：</strong>無程式碼 AutoML 建模，針對精密刀具磨耗、微波開關量測良率與生醫配方尋優；封裝 Domain Twin™ 與 NPI/PMC 場景包，把師傅調機經驗結構化。
                 </div>
               </div>
 
               <!-- Tier 3 -->
-              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #f59e0b;">
-                <div style="font-weight:800; color:#f59e0b; margin-bottom:4px; font-size:0.9rem;">L3 多模型調度與智慧安全網關</div>
+              <div class="topology-tier-card" data-tier="L3" onclick="window.selectTopologyTier('L3')" style="border-top:3px solid #d97706;">
+                <div style="font-weight:800; color:#d97706; margin-bottom:4px; font-size:0.9rem;">L3 多模型調度與智慧安全網關</div>
                 <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.45;">
                   <strong>成本與流量路由 (借鑑 MixRoute)：</strong>單一 OpenAI 相容 API 端點調度 250+ 款模型；Smart Routing 動態分流節省 20~40% Token 成本；毫秒級 Failover 備援；地端開源模型優先處理機敏圖面，數據不落地。
                 </div>
               </div>
 
               <!-- Tier 4 -->
-              <div style="background:var(--bg-input); padding:14px; border-radius:var(--radius-sm); border-top:3px solid #a855f7;">
-                <div style="font-weight:800; color:#a855f7; margin-bottom:4px; font-size:0.9rem;">L4 上市櫃監管合規與智財無菌底座</div>
+              <div class="topology-tier-card" data-tier="L4" onclick="window.selectTopologyTier('L4')" style="border-top:3px solid #7c3aed;">
+                <div style="font-weight:800; color:#7c3aed; margin-bottom:4px; font-size:0.9rem;">L4 上市櫃監管合規與智財無菌底座</div>
                 <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.45;">
                   <strong>Listed Enterprise Governance：</strong>國際成衣/生醫品牌智財無菌室 (IP Clean Room) 專利隔離；對齊金管會 AI 六大原則、證交所上市上櫃資通安全管控標準與內控第 9 條之 1 審計鏈。
                 </div>
               </div>
 
+            </div>
+
+            <!-- Interactive Governance Contract Callout -->
+            <div id="topology-contract-panel" class="topology-contract-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+                <strong style="color:var(--primary); font-size:0.9rem;">⚡ L1 前端互動與智慧協同層 — 治理契約與 SLA</strong>
+                <span class="status-badge verified" style="font-size:0.72rem;">RAG Precision ≥ 95% · SSO/RBAC 權限同步 &lt; 50ms · 25+ 格式解析</span>
+              </div>
+              <div style="font-size:0.82rem; color:var(--text-main); line-height:1.55; margin-bottom:6px;">所有 WebChat / Teams / Slack 請求均強制綁定企業 AD/Entra ID 身分與檔案級 ACL，檢索結果自動過濾無權限文件，確保「看得到才問得到」。</div>
+              <div style="font-size:0.76rem; color:var(--text-muted);"><strong>合規對照：</strong>ISO 27001 A.5.15 (存取控制) · ISO 42001 透明度標記 · 會議語音自動去識別化</div>
             </div>
 
             <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); padding:12px; border-radius:var(--radius-sm); font-size:0.82rem; color:var(--accent-amber); line-height:1.6;">
@@ -7709,7 +8200,7 @@ E-mail: Liao.Howard@gmail.com`;
 
     if (engCont) {
       engCont.innerHTML = data.engineering.map(tag => 
-        `<span class="node-pill" style="background:#1e293b; color:#1F2421; border:1px solid #334155;">${tag}</span>`
+        `<span class="node-pill" class="node-pill">${tag}</span>`
       ).join('');
     }
 
@@ -7796,21 +8287,27 @@ E-mail: Liao.Howard@gmail.com`;
     if (!page) return;
 
     const inventory = state.inventory || [];
-    const categories = ['全部', '個人形象 / Cover 主視覺', '媒體採訪 / 專題報導', '專業資格 / 認證影本', 'Keynote 大會演講 / 專題'];
+    const isEn = state.currentLang === 'en';
+    const isJp = state.currentLang === 'jp';
+    const cMedia = inventory.filter(x => x.fileCategory === '媒體採訪 / 專題報導').length;
+    const cCert = inventory.filter(x => x.fileCategory === '專業資格 / 認證影本').length;
+    const cKey = inventory.filter(x => x.fileCategory === 'Keynote 大會演講 / 專題').length;
 
     page.innerHTML = `
       <div class="container" style="padding-top: 10px;">
         <div class="hero-card" style="margin-top:0; margin-bottom:24px; border-color:var(--primary-light);">
           <div style="grid-column: 1 / -1;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:10px;">
-              <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">🖼️ 作品集</span>
-              <span style="font-size:0.85rem; color:var(--text-muted);">共 ${inventory.length} 件</span>
+              <span class="status-badge verified" style="font-size:0.85rem; padding:4px 12px;">🖼️ ${isEn ? 'Verified Portfolio' : (isJp ? 'ポートフォリオ' : '作品集')}</span>
+              <span style="font-size:0.85rem; color:var(--text-muted);">${isEn ? `${inventory.length} Verified Assets · WebP Accelerated` : `共 ${inventory.length} 件 · WebP 極速預覽`}</span>
             </div>
             <div style="font-size:1.6rem; font-weight:900; color:var(--text-main); margin-bottom:6px;">
-              媒體報導、演講與專業證照
+              ${isEn ? 'Media Features, Keynotes & Executive Certifications' : (isJp ? 'メディア掲載・講演実績・専門資格' : '媒體報導、演講與專業證照')}
             </div>
             <div style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
-              收錄 CIO Taiwan、iThome、Google Cloud、MongoDB.local 等媒體報導與演講紀錄，以及專業證照。點擊圖片可放大檢視。
+              ${isEn
+                ? 'Curated archive of CIO Taiwan, iThome, Google Cloud, and MongoDB.local features, keynotes, and ISO/Cloud certifications. Click any card for full-resolution Lightbox view.'
+                : '收錄 CIO Taiwan、iThome、Google Cloud、MongoDB.local 等媒體報導、大會演講與 ISO／雲端專業證照。卡片採輕量 WebP 縮圖秒開，點擊可放大檢視原始高解析圖檔。'}
             </div>
           </div>
         </div>
@@ -7818,15 +8315,15 @@ E-mail: Liao.Howard@gmail.com`;
         <!-- Filter & Search Controls -->
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
           <div class="viz-filter-pills" id="portfolio-filter-pills" style="margin-bottom:0; flex-wrap:wrap; gap:6px;">
-            <button class="viz-pill-btn active" onclick="window.filterPortfolioCategory('全部')">🌟 全部 (${inventory.length})</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('媒體採訪 / 專題報導')">📰 媒體報導 (16)</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('專業資格 / 認證影本')">📜 專業證照 (9)</button>
-            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('Keynote 大會演講 / 專題')">🎤 大會演講 (8)</button>
+            <button class="viz-pill-btn active" onclick="window.filterPortfolioCategory('全部')">🌟 ${isEn ? 'All' : '全部'} (${inventory.length})</button>
+            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('媒體採訪 / 專題報導')">📰 ${isEn ? 'Media' : '媒體報導'} (${cMedia})</button>
+            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('專業資格 / 認證影本')">📜 ${isEn ? 'Certifications' : '專業證照'} (${cCert})</button>
+            <button class="viz-pill-btn" onclick="window.filterPortfolioCategory('Keynote 大會演講 / 專題')">🎤 ${isEn ? 'Keynotes' : '大會演講'} (${cKey})</button>
           </div>
 
           <div class="search-box-header" style="max-width:280px; width:100%;">
             <span class="search-icon">🔍</span>
-            <input type="text" id="portfolio-search-input" placeholder="搜尋作品集圖檔..." oninput="window.filterPortfolioSearch(this.value)">
+            <input type="text" id="portfolio-search-input" placeholder="${isEn ? 'Search portfolio assets...' : '搜尋作品集圖檔...'}" oninput="window.filterPortfolioSearch(this.value)">
           </div>
         </div>
 
@@ -7839,32 +8336,33 @@ E-mail: Liao.Howard@gmail.com`;
   }
 
   function renderGalleryCards(items) {
+    const isEn = state.currentLang === 'en';
     if (!items || items.length === 0) {
-      return `<div style="grid-column: 1 / -1; text-align:center; padding:60px; color:var(--text-muted); font-size:1rem;">查無符合條件之本機作品集檔案</div>`;
+      return `<div style="grid-column: 1 / -1; text-align:center; padding:60px; color:var(--text-muted); font-size:1rem;">${isEn ? 'No matching portfolio assets found.' : '查無符合條件之作品集檔案'}</div>`;
     }
 
     return items.map(item => {
       const displayTitle = item.fileName.replace(/\.[^/.]+$/, '').replace(/_/g, ' ');
+      const safeTitle = displayTitle.replace(/'/g, "\\'");
       const sizeMb = (item.sizeBytes / (1024 * 1024)).toFixed(2);
       const assetUrl = item.originalAssetPath || `assets/${item.fileName}`;
+      const stem = item.fileName.replace(/\.[^/.]+$/, '');
+      const thumbUrl = `assets/thumbs/${stem}.webp`;
 
       return `
-        <div class="info-card gallery-item" style="padding:12px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; transition:transform 0.2s ease, border-color 0.2s ease;" onclick="window.openLightbox('${assetUrl}', '${displayTitle}')">
-          <div style="position:relative; width:100%; height:200px; background:#000000; border-radius:var(--radius-sm); overflow:hidden; display:flex; align-items:center; justify-content:center; margin-bottom:10px;">
-            <img src="${assetUrl}" alt="${displayTitle}" loading="lazy" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.onerror=null; this.src='assets/howard_portrait.jpg';">
-            <span style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.7); color:#94a3b8; font-size:0.7rem; padding:2px 6px; border-radius:4px;">🔍 點擊放大</span>
+        <div class="info-card gallery-item" style="padding:12px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; transition:transform 0.2s ease, border-color 0.2s ease;" onclick="window.openLightbox('${assetUrl}', '${safeTitle}')">
+          <div class="gallery-stage">
+            <img src="${thumbUrl}" alt="${displayTitle}" loading="lazy" decoding="async" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='${assetUrl}';}else{this.onerror=null;this.src='assets/howard_portrait.jpg';}">
+            <span class="gallery-zoom-badge">🔍 ${isEn ? 'HD Zoom' : '高解析放大'}</span>
           </div>
 
           <div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:6px;">
               <span class="status-badge verified" style="font-size:0.7rem; padding:2px 8px;">${item.fileCategory || ''}</span>
               <span style="font-size:0.72rem; color:var(--text-muted);">${sizeMb} MB</span>
             </div>
-            <div style="font-weight:700; font-size:0.9rem; color:var(--text-main); line-height:1.4; margin-bottom:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${displayTitle}">
+            <div style="font-weight:700; font-size:0.9rem; color:var(--text-main); line-height:1.4; margin-bottom:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${displayTitle}">
               ${displayTitle}
-            </div>
-            <div style="font-size:0.75rem; color:var(--text-muted); line-height:1.4;">
-              
             </div>
           </div>
         </div>
@@ -8137,6 +8635,42 @@ E-mail: Liao.Howard@gmail.com`;
       </div>
     </div>
   </div>
+
+
+  <!-- Executive 1-Click Contact FAB & Toast -->
+  <div class="quick-contact-fab" id="quick-contact-fab">
+    <button class="fab-btn" onclick="window.copyExecutiveContact()" title="一鍵複製廖倫豪博士聯絡名片">
+      <span>📇</span>
+      <span>一鍵複製名片</span>
+    </button>
+  </div>
+
+  <div class="hunter-toast" id="hunter-toast" role="status" aria-live="polite">
+    <span id="hunter-toast-msg">已複製至剪貼簿</span>
+  </div>
+
+  <script>
+  window.copyExecutiveContact = function() {
+    const card = [
+      '廖倫豪 博士 (Howard Liao, Ph.D.)',
+      '資訊長 (CIO) / 技術副總 (VP of Technology)',
+      'Email: Liao.Howard@gmail.com',
+      'LinkedIn: https://www.linkedin.com/in/howardliao78/',
+      'Portfolio: https://howardliao.github.io/portfolio/'
+    ].join('\n');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(card).then(() => {
+        if (typeof showHunterToast === 'function') {
+          showHunterToast('✅ 已複製廖倫豪博士高管聯絡名片！');
+        }
+      }).catch(() => {
+        window.prompt('請複製聯絡資訊：', card);
+      });
+    } else {
+      window.prompt('請複製聯絡資訊：', card);
+    }
+  };
+  </script>
 
 </body>
 </html>
