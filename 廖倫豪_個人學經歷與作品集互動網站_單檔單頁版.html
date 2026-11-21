@@ -2580,54 +2580,462 @@ body.dark-mode .arch-mode-btn.active {
   .reveal-item { opacity: 1 !important; transform: none !important; }
 }
 
+/* =========================================================================
+   EXECUTIVE TWO-TIER NAVIGATION ARCHITECTURE (V7 ZERO-CLIPPING POLISH)
+   ========================================================================= */
+.navbar {
+  padding: 0 !important;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(217, 107, 39, 0.14);
+  box-shadow: 0 2px 14px rgba(31, 36, 33, 0.04);
+  transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.navbar.is-scrolled {
+  background: rgba(250, 247, 242, 0.97);
+  box-shadow: 0 10px 30px rgba(31, 36, 33, 0.08);
+  border-bottom-color: rgba(217, 107, 39, 0.22);
+}
+body.dark-mode .navbar {
+  background: rgba(11, 17, 32, 0.88);
+  border-bottom-color: rgba(56, 189, 248, 0.16);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+}
+body.dark-mode .navbar.is-scrolled {
+  background: rgba(11, 17, 32, 0.96);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.48);
+  border-bottom-color: rgba(56, 189, 248, 0.26);
+}
+
+.navbar .container {
+  max-width: 1320px;
+  padding: 0 24px;
+}
+
+/* Desktop & Tablet (> 768px): Two-Tier Executive Layout */
+@media (min-width: 769px) {
+  .navbar .nav-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .navbar .nav-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 9px 0 7px 0;
+    transition: padding 0.25s ease;
+  }
+  .navbar.is-scrolled .nav-top-row {
+    padding: 6px 0 5px 0;
+  }
+
+  /* Brand Identity */
+  .navbar .brand {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.04rem !important;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    flex: 0 0 auto;
+    order: 0 !important;
+  }
+  .navbar .brand-text-desktop {
+    display: inline !important;
+    white-space: nowrap;
+  }
+  .navbar .brand-text-mobile {
+    display: none !important;
+  }
+  .navbar .brand-text-en-ext {
+    display: inline !important;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #D96B27 0%, #B45309 100%);
+    color: #FFFFFF;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    box-shadow: 0 3px 10px rgba(217, 107, 39, 0.30);
+    flex-shrink: 0;
+  }
+  body.dark-mode .brand-monogram {
+    background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
+    box-shadow: 0 3px 12px rgba(56, 189, 248, 0.32);
+  }
+  .brand-verified-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.42);
+    color: #059669;
+    font-size: 0.65rem;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  body.dark-mode .brand-verified-dot {
+    background: rgba(16, 185, 129, 0.18);
+    color: #34D399;
+    border-color: rgba(52, 211, 153, 0.45);
+  }
+
+  /* Right Utility & CTA Cluster */
+  .navbar .nav-actions {
+    display: flex !important;
+    align-items: center;
+    gap: 8px !important;
+    flex: 0 0 auto;
+    order: 0 !important;
+    margin-left: auto;
+  }
+  .nav-action-divider {
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background: var(--border-color);
+    opacity: 0.85;
+    margin: 0 2px;
+    flex-shrink: 0;
+  }
+
+  /* Full-Ready Pill Search with ⌘K Shortcut Badge (Zero Nav Shifting) */
+  .navbar .search-box-header {
+    position: relative;
+    display: flex !important;
+    align-items: center;
+    max-width: none !important;
+  }
+  .navbar .search-box-header input {
+    width: 184px !important;
+    height: 34px !important;
+    padding: 0 42px 0 32px !important;
+    border-radius: 999px !important;
+    font-size: 0.8rem !important;
+    color: var(--text-main) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid var(--border-color) !important;
+    cursor: text !important;
+    transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  body.dark-mode .navbar .search-box-header input {
+    background: rgba(15, 23, 42, 0.72) !important;
+  }
+  .navbar .search-box-header input::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.85;
+  }
+  .navbar .search-box-header input:focus {
+    width: 240px !important;
+    border-color: var(--primary) !important;
+    background: var(--bg-input) !important;
+    box-shadow: 0 0 0 3px var(--primary-glow) !important;
+  }
+  .navbar .search-box-header .search-icon {
+    left: 11px !important;
+    font-size: 0.8rem !important;
+    opacity: 0.75;
+  }
+  .search-kbd {
+    position: absolute;
+    right: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.66rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.045);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 1px 5px;
+    line-height: 1.3;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+  }
+  body.dark-mode .search-kbd {
+    background: rgba(255, 255, 255, 0.07);
+  }
+  .navbar .search-box-header input:focus + .search-kbd,
+  .navbar .search-box-header input:not(:placeholder-shown) + .search-kbd {
+    opacity: 0;
+  }
+
+  .navbar .btn-icon {
+    width: 34px !important;
+    height: 34px !important;
+    padding: 0 !important;
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.78);
+    transition: var(--transition);
+  }
+  body.dark-mode .navbar .btn-icon {
+    background: rgba(15, 23, 42, 0.72);
+  }
+  .navbar .btn-icon:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(217, 107, 39, 0.14);
+  }
+  .navbar .nav-actions .btn-primary {
+    padding: 7px 13px !important;
+    font-size: 0.8rem !important;
+    border-radius: 10px !important;
+    white-space: nowrap;
+    line-height: 1.25;
+  }
+  .navbar .nav-actions .btn-primary:hover {
+    transform: translateY(-1px);
+  }
+  .navbar .btn-text-desktop { display: inline !important; }
+  .navbar .btn-text-mobile { display: none !important; }
+
+  /* Tier 2: Dedicated Centered Segmented Pill Navigation Dock (Zero Left-Clipping) */
+  .navbar .nav-tabs-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0 8px 0;
+    border-top: 1px solid rgba(217, 107, 39, 0.10);
+    transition: padding 0.25s ease;
+  }
+  .navbar.is-scrolled .nav-tabs-bar {
+    padding: 4px 0 6px 0;
+  }
+  body.dark-mode .navbar .nav-tabs-bar {
+    border-top-color: rgba(56, 189, 248, 0.12);
+  }
+
+  .navbar .nav-tabs {
+    position: relative;
+    display: flex !important;
+    flex: 0 1 auto !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    justify-content: flex-start !important; /* Prevents CSS flex left-edge clipping */
+    align-items: center;
+    gap: 4px !important;
+    padding: 4px !important;
+    border-radius: 12px;
+    background: rgba(217, 107, 39, 0.055);
+    border: 1px solid rgba(217, 107, 39, 0.14) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch;
+    list-style: none !important;
+    order: 0 !important;
+  }
+  body.dark-mode .navbar .nav-tabs {
+    background: rgba(15, 23, 42, 0.68);
+    border-color: rgba(56, 189, 248, 0.18) !important;
+  }
+  .navbar .nav-tabs::-webkit-scrollbar { display: none !important; }
+
+  .navbar .nav-tabs > li {
+    flex: 0 0 auto;
+    display: flex;
+  }
+
+  .navbar .nav-tab-btn {
+    position: relative;
+    z-index: 1;
+    padding: 6px 13px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em;
+    gap: 5px !important;
+    border-radius: 8px !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    color: var(--text-muted);
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+  .navbar .nav-tab-btn:hover {
+    color: var(--primary);
+    background: rgba(217, 107, 39, 0.07) !important;
+  }
+  body.dark-mode .navbar .nav-tab-btn:hover {
+    color: #7DD3FC;
+    background: rgba(56, 189, 248, 0.09) !important;
+  }
+  .navbar .nav-tab-btn.active {
+    color: var(--primary) !important;
+    background: transparent !important;
+    border-color: transparent !important;
+  }
+  body.dark-mode .navbar .nav-tab-btn.active {
+    color: #38BDF8 !important;
+  }
+
+  /* Sliding Pill aligned exactly to Dock padding (4px) */
+  .nav-sliding-pill {
+    top: 4px;
+    bottom: 4px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    border: 1px solid rgba(217, 107, 39, 0.34);
+    box-shadow: 0 2px 8px rgba(217, 107, 39, 0.14);
+  }
+  body.dark-mode .nav-sliding-pill {
+    background: rgba(56, 189, 248, 0.16);
+    border-color: rgba(56, 189, 248, 0.45);
+    box-shadow: 0 2px 12px rgba(56, 189, 248, 0.18);
+  }
+
+  /* Ensure page top padding & sticky subnav sit cleanly below two-tier header (~104px) */
+  .tab-page {
+    padding-top: 124px !important;
+  }
+  #page-proposal {
+    padding-top: 126px !important;
+  }
+  html {
+    scroll-padding-top: 118px;
+  }
+  [id^="prop-"], .hero-card {
+    scroll-margin-top: 118px;
+  }
+  .proposal-subnav {
+    top: 108px;
+  }
+}
+
+/* Laptop Refinement (1081px ~ 1320px) */
+@media (min-width: 1081px) and (max-width: 1320px) {
+  .navbar .nav-tab-btn {
+    padding: 6px 10px !important;
+    font-size: 0.79rem !important;
+  }
+}
+
+/* Tablet / Compact Laptop Refinement (769px ~ 1080px) */
+@media (min-width: 769px) and (max-width: 1080px) {
+  .navbar .container {
+    padding: 0 16px;
+  }
+  .navbar .brand-text-en-ext {
+    display: none !important;
+  }
+  .navbar .search-box-header input {
+    width: 145px !important;
+  }
+  .navbar .search-box-header input:focus {
+    width: 190px !important;
+  }
+  .navbar .nav-tab-btn {
+    padding: 6px 8px !important;
+    font-size: 0.76rem !important;
+  }
+}
+
+/* Mobile (<= 768px): Preserve Compact 54px Top Header + Bottom Nav */
+@media (max-width: 768px) {
+  .navbar .nav-top-row {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .navbar .nav-tabs-bar {
+    display: none !important;
+  }
+  .brand-monogram {
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    font-size: 0.66rem;
+  }
+  .brand-verified-dot,
+  .nav-action-divider,
+  .search-kbd {
+    display: none !important;
+  }
+}
+
 </style>
 </head>
 <body>
   <!-- Interactive Ambient Constellation & Flowing Silk Canvas -->
   <canvas id="kinetic-bg-canvas" aria-hidden="true"></canvas>
 
-  <!-- Sticky Navbar -->
-  <header class="navbar">
+  <!-- Sticky Navbar (Two-Tier Executive Navigation Architecture) -->
+  <header class="navbar" id="site-navbar">
     <div id="scroll-progress-bar" aria-hidden="true"></div>
     <div class="container nav-content">
-      <div class="brand" onclick="window.location.reload();">
-        <span class="brand-text-desktop" style="white-space:nowrap;">廖倫豪 博士<span class="brand-text-en-ext"> · Howard Liao, Ph.D.</span></span>
-        <span class="brand-text-mobile">廖倫豪 博士</span>
-      </div>
-
-      <ul class="nav-tabs">
-        <li><button class="nav-tab-btn active" data-tab="dashboard">📊 首頁儀表板</button></li>
-        <li><button class="nav-tab-btn" data-tab="timeline">⏳ 職涯時間軸</button></li>
-        <li><button class="nav-tab-btn" data-tab="education">🎓 學歷與研究</button></li>
-        <li><button class="nav-tab-btn" data-tab="experience">🏢 工作與專案</button></li>
-        <li><button class="nav-tab-btn" data-tab="media">🎤 演講與媒體</button></li>
-        <li><button class="nav-tab-btn" data-tab="proposal">💡 專案建議書</button></li>
-        <li><button class="nav-tab-btn" data-tab="portfolio">🖼️ 作品集</button></li>
-        <li><button class="nav-tab-btn" data-tab="sources">🔗 媒體出處</button></li>
-      </ul>
-
-      <div class="nav-actions">
-        <div class="search-box-header">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="header-search-input" placeholder="全站搜尋...">
+      <div class="nav-top-row">
+        <div class="brand" onclick="window.location.reload();">
+          <span class="brand-monogram" aria-hidden="true">HL</span>
+          <span class="brand-text-desktop" style="white-space:nowrap;">廖倫豪 博士<span class="brand-text-en-ext"> · Howard Liao, Ph.D.</span></span>
+          <span class="brand-text-mobile">廖倫豪 博士</span>
+          <span class="brand-verified-dot" title="雙重驗證檔案庫">✓</span>
         </div>
 
-        <button class="btn-icon" id="lang-toggle-btn" title="切換語言 (ZH/EN/JP)">
-          <span id="lang-label" style="font-size:0.75rem; font-weight:800;">ZH</span>
-        </button>
+        <div class="nav-actions">
+          <div class="search-box-header">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="header-search-input" placeholder="全站搜尋...">
+            <kbd class="search-kbd" aria-hidden="true">⌘K</kbd>
+          </div>
 
-        <button class="btn-icon" id="theme-toggle-btn" title="深淺模式切換">
-          <span>🌙</span>
-        </button>
+          <span class="nav-action-divider" aria-hidden="true"></span>
 
-        <button class="btn-primary" id="btn-copy-cover-letter">
-          ✉️ 自薦信
-        </button>
+          <button class="btn-icon" id="lang-toggle-btn" title="切換語言 (ZH/EN/JP)">
+            <span id="lang-label" style="font-size:0.75rem; font-weight:800;">ZH</span>
+          </button>
 
-        <a class="btn-primary" id="btn-download-word-resume" href="Howard_Liao_PhD_CV.pdf" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); font-weight:700; text-decoration:none;">
-          📄 <span class="btn-text-desktop">履歷 PDF</span><span class="btn-text-mobile">CV</span>
-        </a>
+          <button class="btn-icon" id="theme-toggle-btn" title="深淺模式切換">
+            <span>🌙</span>
+          </button>
+
+          <span class="nav-action-divider" aria-hidden="true"></span>
+
+          <button class="btn-primary" id="btn-copy-cover-letter">
+            ✉️ 自薦信
+          </button>
+
+          <a class="btn-primary" id="btn-download-word-resume" href="Howard_Liao_PhD_CV.pdf" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); font-weight:700; text-decoration:none;">
+            📄 <span class="btn-text-desktop">履歷 PDF</span><span class="btn-text-mobile">CV</span>
+          </a>
+        </div>
       </div>
+
+      <nav class="nav-tabs-bar" aria-label="主要導覽選單">
+        <ul class="nav-tabs">
+          <li><button class="nav-tab-btn active" data-tab="dashboard">📊 首頁儀表板</button></li>
+          <li><button class="nav-tab-btn" data-tab="timeline">⏳ 職涯時間軸</button></li>
+          <li><button class="nav-tab-btn" data-tab="education">🎓 學歷與研究</button></li>
+          <li><button class="nav-tab-btn" data-tab="experience">🏢 工作與專案</button></li>
+          <li><button class="nav-tab-btn" data-tab="media">🎤 演講與媒體</button></li>
+          <li><button class="nav-tab-btn" data-tab="proposal">💡 專案建議書</button></li>
+          <li><button class="nav-tab-btn" data-tab="portfolio">🖼️ 作品集</button></li>
+          <li><button class="nav-tab-btn" data-tab="sources">🔗 媒體出處</button></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
@@ -10360,7 +10768,8 @@ E-mail: Liao.Howard@gmail.com`;
 
     // 5. Fluid Sliding Pill on Desktop Navbar Tabs
     let slidingPill = null;
-    function updateNavSlidingPill() {
+    let pillInitialized = false;
+    function updateNavSlidingPill(instant = false) {
       const navList = document.querySelector('.navbar .nav-tabs');
       if (!navList) return;
       if (!slidingPill) {
@@ -10369,35 +10778,63 @@ E-mail: Liao.Howard@gmail.com`;
         navList.insertBefore(slidingPill, navList.firstChild);
       }
       const activeBtn = navList.querySelector('.nav-tab-btn.active');
-      if (!activeBtn) {
+      if (!activeBtn || navList.offsetWidth === 0) {
         slidingPill.style.opacity = '0';
         return;
       }
       const listRect = navList.getBoundingClientRect();
       const btnRect = activeBtn.getBoundingClientRect();
-      const left = btnRect.left - listRect.left + navList.scrollLeft;
+      const left = btnRect.left - listRect.left + navList.scrollLeft - (navList.clientLeft || 0);
+      const snapNow = instant || !pillInitialized;
+      if (snapNow) slidingPill.style.transition = 'none';
       slidingPill.style.width = `${btnRect.width}px`;
       slidingPill.style.transform = `translateX(${left}px)`;
       slidingPill.style.opacity = '1';
+      if (snapNow) {
+        void slidingPill.offsetWidth;
+        slidingPill.style.transition = '';
+        pillInitialized = true;
+      }
+      if (navList.scrollWidth > navList.clientWidth + 2) {
+        activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+      }
     }
+    const navListEl = document.querySelector('.navbar .nav-tabs');
+    if (navListEl) {
+      navListEl.addEventListener('click', (e) => {
+        if (e.target.closest('.nav-tab-btn')) {
+          setTimeout(() => updateNavSlidingPill(false), 0);
+          setTimeout(() => updateNavSlidingPill(false), 60);
+        }
+      });
+      if (typeof MutationObserver !== 'undefined') {
+        const navClassObserver = new MutationObserver(() => updateNavSlidingPill(false));
+        navClassObserver.observe(navListEl, { subtree: true, attributes: true, attributeFilter: ['class'] });
+      }
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => updateNavSlidingPill(true));
+    }
+    window.addEventListener('load', () => updateNavSlidingPill(true));
 
     // Wrap switchTab so sliding pill & scroll reveal stay synced
     if (typeof window.switchTab === 'function') {
       const origSwitchTab = window.switchTab;
       window.switchTab = function(tabKey) {
         origSwitchTab(tabKey);
-        updateNavSlidingPill();
-        requestAnimationFrame(() => {
-          updateNavSlidingPill();
+        updateNavSlidingPill(false);
+        setTimeout(() => {
+          updateNavSlidingPill(false);
           window.refreshKineticObservers();
-        });
+        }, 40);
       };
     }
-    window.addEventListener('resize', () => requestAnimationFrame(updateNavSlidingPill), { passive: true });
+    window.addEventListener('resize', () => updateNavSlidingPill(true), { passive: true });
 
-    // 6. Scroll Progress Ribbon + Floating Scroll-to-Top Orb
+    // 6. Scroll Progress Ribbon + Floating Scroll-to-Top Orb + Navbar Elevation
     const progressBar = document.getElementById('scroll-progress-bar');
     const scrollOrb = document.getElementById('scroll-top-orb');
+    const siteNavbar = document.getElementById('site-navbar') || document.querySelector('.navbar');
     function onScroll() {
       const doc = document.documentElement;
       const scrollTop = window.scrollY || doc.scrollTop || 0;
@@ -10405,6 +10842,7 @@ E-mail: Liao.Howard@gmail.com`;
       const pct = Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100));
       if (progressBar) progressBar.style.width = `${pct.toFixed(2)}%`;
       if (scrollOrb) scrollOrb.classList.toggle('visible', scrollTop > 320);
+      if (siteNavbar) siteNavbar.classList.toggle('is-scrolled', scrollTop > 36);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     if (scrollOrb) {
@@ -10494,8 +10932,9 @@ E-mail: Liao.Howard@gmail.com`;
       window.selectArchMode('cloud');
     }
     window.triggerDashboardCounters();
+    updateNavSlidingPill(true);
     setTimeout(() => {
-      updateNavSlidingPill();
+      updateNavSlidingPill(true);
       window.refreshKineticObservers();
       onScroll();
     }, 80);
@@ -10503,7 +10942,10 @@ E-mail: Liao.Howard@gmail.com`;
     // Re-sync pill after language switch
     const langBtn = document.getElementById('lang-toggle-btn');
     if (langBtn) {
-      langBtn.addEventListener('click', () => setTimeout(updateNavSlidingPill, 90));
+      langBtn.addEventListener('click', () => {
+        setTimeout(() => updateNavSlidingPill(true), 0);
+        setTimeout(() => updateNavSlidingPill(true), 90);
+      });
     }
   })();
   </script>
