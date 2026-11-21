@@ -1835,13 +1835,14 @@ body.dark-mode .hunter-toast {
   #kinetic-bg-canvas,
   #scroll-progress-bar,
   #scroll-top-orb,
+  #ef-control-dock,
   .kinetic-marquee-wrap {
     display: none !important;
   }
 }
 
 /* ==========================================
-   7. KINETIC FLUID MOTION & INTERACTIVE ENGINE (V5)
+   7. V6 CLEAN EXECUTIVE POLISH + ELECTRO-FLUID INTERACTIVE ENGINE
    ========================================== */
 #kinetic-bg-canvas {
   position: fixed;
@@ -1850,17 +1851,240 @@ body.dark-mode .hunter-toast {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.78;
+  opacity: 0.92;
   transition: opacity 0.4s ease;
 }
 body.dark-mode #kinetic-bg-canvas {
-  opacity: 0.92;
+  opacity: 0.96;
 }
 
 .tab-page,
 footer {
   position: relative;
   z-index: 1;
+}
+
+/* Clean Translucent Layered Surfaces so Electro-Fluid Engine breathes cleanly */
+.hero-card,
+.bento-card,
+.live-arch-deck,
+.viz-card,
+.kinetic-marquee-wrap,
+.info-card,
+.timeline-card {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(217, 107, 39, 0.16);
+}
+body.dark-mode .hero-card,
+body.dark-mode .bento-card,
+body.dark-mode .live-arch-deck,
+body.dark-mode .viz-card,
+body.dark-mode .kinetic-marquee-wrap,
+body.dark-mode .info-card,
+body.dark-mode .timeline-card {
+  background: rgba(19, 28, 49, 0.84);
+  border-color: rgba(56, 189, 248, 0.2);
+}
+.hero-card {
+  box-shadow: 0 14px 40px rgba(31, 36, 33, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+body.dark-mode .hero-card {
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(56, 189, 248, 0.14);
+}
+.bento-card:hover,
+.info-card:hover,
+.timeline-card:hover {
+  border-color: rgba(217, 107, 39, 0.48);
+  box-shadow: 0 16px 34px rgba(217, 107, 39, 0.14);
+}
+body.dark-mode .bento-card:hover,
+body.dark-mode .info-card:hover,
+body.dark-mode .timeline-card:hover {
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 18px 38px rgba(56, 189, 248, 0.16);
+}
+
+/* Electric Conduit Border Trace on Hero Card */
+.hero-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(125deg,
+    transparent 15%,
+    rgba(217, 107, 39, 0.55) 38%,
+    rgba(43, 95, 107, 0.5) 52%,
+    rgba(229, 169, 60, 0.65) 64%,
+    transparent 85%);
+  background-size: 260% 260%;
+  animation: electricBorderSweep 8s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.72;
+}
+body.dark-mode .hero-card::after {
+  background: linear-gradient(125deg,
+    transparent 15%,
+    rgba(56, 189, 248, 0.72) 38%,
+    rgba(245, 158, 11, 0.65) 52%,
+    rgba(16, 185, 129, 0.7) 64%,
+    transparent 85%);
+  background-size: 260% 260%;
+  opacity: 0.85;
+}
+@keyframes electricBorderSweep {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Electro-Fluid Interactive Control Dock */
+#ef-control-dock {
+  position: fixed;
+  left: 20px;
+  bottom: 22px;
+  z-index: 940;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(217, 107, 39, 0.28);
+  box-shadow: 0 10px 28px rgba(31, 36, 33, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.dark-mode #ef-control-dock {
+  background: rgba(15, 23, 42, 0.92);
+  border-color: rgba(56, 189, 248, 0.36);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+#ef-control-dock:hover {
+  transform: translateY(-2px);
+}
+.ef-dock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.ef-dock-btn:hover {
+  color: var(--primary);
+  background: rgba(217, 107, 39, 0.09);
+}
+.ef-dock-btn.active {
+  color: var(--primary);
+  background: rgba(217, 107, 39, 0.14);
+  border-color: rgba(217, 107, 39, 0.35);
+}
+body.dark-mode .ef-dock-btn:hover {
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.12);
+}
+body.dark-mode .ef-dock-btn.active {
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+.ef-dock-btn.surge-btn {
+  background: linear-gradient(135deg, #D96B27 0%, #E5A93C 100%);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(217, 107, 39, 0.32);
+}
+body.dark-mode .ef-dock-btn.surge-btn {
+  background: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%);
+  color: #0B1120;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+}
+.ef-dock-btn.surge-btn:hover {
+  transform: scale(1.04);
+  filter: brightness(1.06);
+}
+.ef-dock-sep {
+  width: 1px;
+  height: 16px;
+  background: var(--border-color);
+  opacity: 0.8;
+}
+
+/* Architecture Deck Surge State */
+.live-arch-deck.is-surging {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(217, 107, 39, 0.25), 0 18px 42px rgba(217, 107, 39, 0.2) !important;
+}
+body.dark-mode .live-arch-deck.is-surging {
+  border-color: #38BDF8 !important;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3), 0 18px 46px rgba(56, 189, 248, 0.25) !important;
+}
+.arch-surge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 107, 39, 0.42);
+  background: rgba(217, 107, 39, 0.1);
+  color: var(--primary);
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+.arch-surge-btn:hover {
+  background: var(--primary);
+  color: #FFFFFF;
+  box-shadow: 0 6px 16px rgba(217, 107, 39, 0.3);
+}
+body.dark-mode .arch-surge-btn {
+  border-color: rgba(56, 189, 248, 0.45);
+  background: rgba(56, 189, 248, 0.12);
+  color: #38BDF8;
+}
+body.dark-mode .arch-surge-btn:hover {
+  background: #38BDF8;
+  color: #0B1120;
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
+}
+.arch-electric-arc {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+  animation: archElectricFlicker 0.9s ease-in-out infinite alternate;
+}
+@keyframes archElectricFlicker {
+  0%   { opacity: 0.42; stroke-width: 1.6; }
+  50%  { opacity: 0.92; stroke-width: 2.4; }
+  100% { opacity: 0.62; stroke-width: 1.9; }
+}
+@media (max-width: 768px) {
+  #ef-control-dock {
+    left: 10px;
+    bottom: 74px;
+    padding: 4px 6px;
+    gap: 3px;
+  }
+  .ef-dock-btn {
+    padding: 4px 7px;
+    font-size: 0.68rem;
+  }
+  .ef-dock-label-desktop {
+    display: none;
+  }
 }
 
 /* Scroll Progress Ribbon on Navbar */
@@ -6650,9 +6874,14 @@ E-mail: Liao.Howard@gmail.com`;
         <div class="live-arch-deck reveal-item" id="live-arch-deck">
           <div class="live-arch-header">
             <div class="section-title" style="margin-bottom:0;">⚡ 企業級架構即時動態模擬室 (Interactive Architecture Flow)</div>
-            <div class="live-status-pill">
-              <span class="live-dot-pulse"></span>
-              <span id="arch-live-status-text">LIVE TELEMETRY · 點擊模式或節點切換檢視</span>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <div class="live-status-pill">
+                <span class="live-dot-pulse"></span>
+                <span id="arch-live-status-text">LIVE TELEMETRY · 點擊模式或節點切換檢視</span>
+              </div>
+              <button type="button" class="arch-surge-btn" onclick="window.triggerArchElectricSurge()" title="觸發跨節點電流脈衝與流體能量測試">
+                ⚡ 模擬脈衝測試
+              </button>
             </div>
           </div>
           <div class="arch-mode-tabs" id="arch-mode-tabs">
@@ -9277,6 +9506,23 @@ E-mail: Liao.Howard@gmail.com`;
   <button id="scroll-top-orb" aria-label="回到頂端" title="回到頂端">↑</button>
 
   <!-- Executive 1-Click Contact FAB & Toast -->
+  <!-- Floating Electro-Fluid Interactive Control Dock -->
+  <div id="ef-control-dock" role="toolbar" aria-label="電流與流體互動控制台">
+    <button type="button" class="ef-dock-btn active" id="ef-toggle-electric" title="切換高壓電流電弧效果">
+      <span>⚡</span><span class="ef-dock-label-desktop">電流</span>
+    </button>
+    <button type="button" class="ef-dock-btn active" id="ef-toggle-fluid" title="切換流體動力與游標波紋">
+      <span>🌊</span><span class="ef-dock-label-desktop">流體</span>
+    </button>
+    <span class="ef-dock-sep" aria-hidden="true"></span>
+    <button type="button" class="ef-dock-btn" id="ef-cycle-mode" title="切換磁場互動模式 (吸引 / 渦流 / 排斥)">
+      <span id="ef-mode-icon">🧲</span><span id="ef-mode-label" class="ef-dock-label-desktop">吸引</span>
+    </button>
+    <button type="button" class="ef-dock-btn surge-btn" id="ef-trigger-surge" title="釋放全頁電流與流體能量脈衝">
+      <span>💥</span><span class="ef-dock-label-desktop">脈衝</span>
+    </button>
+  </div>
+
   <div class="quick-contact-fab" id="quick-contact-fab">
     <button class="fab-btn" onclick="window.copyExecutiveContact()" title="一鍵複製廖倫豪博士聯絡名片">
       <span>📇</span>
@@ -9311,12 +9557,57 @@ E-mail: Liao.Howard@gmail.com`;
   };
 
   // ==========================================
-  // KINETIC FLUID MOTION & INTERACTIVE ENGINE (V5)
+  // V6 ELECTRO-FLUID KINETIC & INTERACTIVE ENGINE
   // ==========================================
   (function initPortfolioKineticEngine() {
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const efState = {
+      electric: true,
+      fluid: true,
+      fieldMode: 'attract', // 'attract' | 'vortex' | 'repel'
+      surgeBoost: 0
+    };
+    window.__efState = efState;
 
-    // 1. Ambient Constellation & Flowing Silk Canvas
+    // Helper: Midpoint-displacement fractal electric arc
+    function buildLightningPoints(x1, y1, x2, y2, displace, depth) {
+      if (depth <= 0 || displace < 1.8) {
+        return [{ x: x1, y: y1 }, { x: x2, y: y2 }];
+      }
+      const midX = (x1 + x2) * 0.5 + (Math.random() - 0.5) * displace;
+      const midY = (y1 + y2) * 0.5 + (Math.random() - 0.5) * displace;
+      const left = buildLightningPoints(x1, y1, midX, midY, displace * 0.55, depth - 1);
+      const right = buildLightningPoints(midX, midY, x2, y2, displace * 0.55, depth - 1);
+      return left.slice(0, -1).concat(right);
+    }
+
+    function strokeElectricArc(ctx, x1, y1, x2, y2, displace, depth, glowRGB, coreColor, alpha, widthPx) {
+      const pts = buildLightningPoints(x1, y1, x2, y2, displace, depth);
+      if (pts.length < 2) return;
+      ctx.save();
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      // Outer plasma glow pass
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.strokeStyle = `rgba(${glowRGB}, ${(alpha * 0.42).toFixed(3)})`;
+      ctx.lineWidth = widthPx * 3.4;
+      ctx.stroke();
+      // Hot electric core pass
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.strokeStyle = coreColor;
+      ctx.globalAlpha = Math.min(1, alpha);
+      ctx.lineWidth = widthPx;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    let triggerCanvasSurge = function() {};
+
+    // 1. Dual-Layer Electro-Fluid Interactive Canvas (30fps guarded)
     function initKineticCanvas() {
       if (prefersReduced) return;
       const canvas = document.getElementById('kinetic-bg-canvas');
@@ -9325,9 +9616,13 @@ E-mail: Liao.Howard@gmail.com`;
       if (!ctx) return;
 
       let width = 0, height = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const mouse = { x: -9999, y: -9999, active: false };
+      const mouse = { x: -9999, y: -9999, px: -9999, py: -9999, vx: 0, vy: 0, speed: 0, active: false };
       const pulses = [];
+      const sparks = [];
+      const bolts = [];
+      const fluidTrail = [];
       let nodes = [];
+      let fluidBlobs = [];
 
       function resize() {
         width = window.innerWidth;
@@ -9335,67 +9630,237 @@ E-mail: Liao.Howard@gmail.com`;
         canvas.width = Math.floor(width * dpr);
         canvas.height = Math.floor(height * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        const targetCount = Math.min(34, Math.max(18, Math.floor((width * height) / 42000)));
+        const targetCount = Math.min(32, Math.max(18, Math.floor((width * height) / 44000)));
         if (nodes.length !== targetCount) {
           nodes = Array.from({ length: targetCount }, (_, i) => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.48,
-            vy: (Math.random() - 0.5) * 0.48,
-            r: 1.6 + (i % 3) * 0.8,
+            vx: (Math.random() - 0.5) * 0.55,
+            vy: (Math.random() - 0.5) * 0.55,
+            r: 1.8 + (i % 3) * 0.75,
+            charge: Math.random(),
             phase: Math.random() * Math.PI * 2
           }));
+        }
+        if (fluidBlobs.length === 0) {
+          fluidBlobs = [
+            { x: width * 0.18, y: height * 0.25, vx: 0.45, vy: 0.32, r: 220, phase: 0.4, tone: 0 },
+            { x: width * 0.82, y: height * 0.35, vx: -0.38, vy: 0.42, r: 240, phase: 1.9, tone: 1 },
+            { x: width * 0.52, y: height * 0.78, vx: 0.34, vy: -0.36, r: 260, phase: 3.4, tone: 2 },
+            { x: width * 0.28, y: height * 0.72, vx: -0.30, vy: -0.28, r: 195, phase: 5.1, tone: 0 }
+          ];
         }
       }
       resize();
       window.addEventListener('resize', resize, { passive: true });
 
-      window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+      function spawnElectricBurst(cx, cy, branchCount, radius) {
+        if (pulses.length > 6) pulses.shift();
+        pulses.push({ x: cx, y: cy, r: 10, maxR: radius, alpha: 0.58 });
+        if (efState.electric) {
+          for (let b = 0; b < branchCount; b++) {
+            const ang = (Math.PI * 2 * b) / branchCount + (Math.random() - 0.5) * 0.5;
+            const dist = radius * (0.55 + Math.random() * 0.55);
+            bolts.push({
+              x1: cx, y1: cy,
+              x2: cx + Math.cos(ang) * dist,
+              y2: cy + Math.sin(ang) * dist,
+              life: 1.0,
+              displace: 28 + Math.random() * 18
+            });
+          }
+          for (let s = 0; s < 10; s++) {
+            const ang = Math.random() * Math.PI * 2;
+            const spd = 2.2 + Math.random() * 4.5;
+            sparks.push({
+              x: cx, y: cy,
+              vx: Math.cos(ang) * spd,
+              vy: Math.sin(ang) * spd,
+              life: 1.0,
+              r: 1.4 + Math.random() * 1.6
+            });
+          }
+        }
+        // Apply fluid velocity impulse to nearby nodes
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          const dx = n.x - cx, dy = n.y - cy;
+          const dSq = dx * dx + dy * dy;
+          if (dSq < radius * radius && dSq > 1) {
+            const d = Math.sqrt(dSq);
+            const push = (1 - d / radius) * 2.8;
+            n.vx += (dx / d) * push;
+            n.vy += (dy / d) * push;
+          }
+        }
+      }
+
+      triggerCanvasSurge = function(cx, cy) {
+        const sx = typeof cx === 'number' ? cx : width * 0.5;
+        const sy = typeof cy === 'number' ? cy : height * 0.36;
+        efState.surgeBoost = 1.0;
+        spawnElectricBurst(sx, sy, 6, Math.min(width, height) * 0.42);
+      };
+
+      function handlePointerMove(clientX, clientY) {
+        if (mouse.active) {
+          mouse.vx = (clientX - mouse.x) * 0.45 + mouse.vx * 0.55;
+          mouse.vy = (clientY - mouse.y) * 0.45 + mouse.vy * 0.55;
+          mouse.speed = Math.min(48, Math.hypot(mouse.vx, mouse.vy));
+        }
+        mouse.px = mouse.x;
+        mouse.py = mouse.y;
+        mouse.x = clientX;
+        mouse.y = clientY;
         mouse.active = true;
+        if (efState.fluid) {
+          fluidTrail.push({ x: clientX, y: clientY, vx: mouse.vx * 0.16, vy: mouse.vy * 0.16, life: 1.0 });
+          if (fluidTrail.length > 18) fluidTrail.shift();
+        }
+      }
+
+      window.addEventListener('mousemove', (e) => handlePointerMove(e.clientX, e.clientY), { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
       }, { passive: true });
-      window.addEventListener('mouseleave', () => { mouse.active = false; });
+      window.addEventListener('mouseleave', () => { mouse.active = false; mouse.speed = 0; });
       window.addEventListener('click', (e) => {
-        if (pulses.length > 5) pulses.shift();
-        pulses.push({ x: e.clientX, y: e.clientY, r: 8, maxR: 170, alpha: 0.42 });
+        spawnElectricBurst(e.clientX, e.clientY, 4, 185);
       }, { passive: true });
 
       let t = 0;
       let lastTs = 0;
-      const maxDist = 148;
+      const maxDist = 152;
       const maxDistSq = maxDist * maxDist;
-      const mouseDistSq = 185 * 185;
+      const mouseDist = 205;
+      const mouseDistSq = mouseDist * mouseDist;
+
       function frame(now) {
         requestAnimationFrame(frame);
         if (document.hidden || (now - lastTs < 32)) return;
         lastTs = now;
-        t += 0.016;
+        if (width !== window.innerWidth || height !== window.innerHeight) resize();
+        t += 0.02;
+        mouse.speed *= 0.92;
+        mouse.vx *= 0.9;
+        mouse.vy *= 0.9;
+        efState.surgeBoost *= 0.94;
+        if (efState.surgeBoost < 0.01) efState.surgeBoost = 0;
+
         ctx.clearRect(0, 0, width, height);
         const isDark = document.body.classList.contains('dark-mode');
-        const primaryRGB = isDark ? '56, 189, 248' : '217, 107, 39';
-        const accentRGB  = isDark ? '245, 158, 11' : '43, 95, 107';
+        const primaryRGB  = isDark ? '56, 189, 248' : '217, 107, 39';
+        const accentRGB   = isDark ? '245, 158, 11' : '43, 95, 107';
+        const electricRGB = isDark ? '56, 189, 248' : '217, 107, 39';
+        const coreColor   = isDark ? '#E0F2FE' : '#B45309';
 
-        // Flowing translucent silk waves
-        for (let w = 0; w < 2; w++) {
-          ctx.beginPath();
-          const baseY = height * (0.28 + w * 0.42);
-          ctx.moveTo(0, baseY);
-          for (let x = 0; x <= width; x += 72) {
-            const y = baseY + Math.sin(x * 0.0035 + t * (1.1 + w * 0.4) + w * 2.1) * (24 + w * 10)
-                            + Math.cos(x * 0.0018 - t * 0.7) * 14;
-            ctx.lineTo(x, y);
+        // ---- LAYER A: FLUID DYNAMICS (Vortex Blobs + Advected Ribbons + Cursor Liquid Wake) ----
+        if (efState.fluid) {
+          // 1. Drifting fluid energy blobs warped by pointer curl
+          for (let i = 0; i < fluidBlobs.length; i++) {
+            const b = fluidBlobs[i];
+            b.x += b.vx + Math.sin(t * 0.7 + b.phase) * 0.45;
+            b.y += b.vy + Math.cos(t * 0.6 + b.phase) * 0.45;
+            if (mouse.active) {
+              const dx = b.x - mouse.x, dy = b.y - mouse.y;
+              const d = Math.hypot(dx, dy) + 1;
+              if (d < 340) {
+                const influence = (1 - d / 340) * 1.4;
+                if (efState.fieldMode === 'vortex') {
+                  b.x += (-dy / d) * influence * 2.2;
+                  b.y += (dx / d) * influence * 2.2;
+                } else if (efState.fieldMode === 'repel') {
+                  b.x += (dx / d) * influence * 2.4;
+                  b.y += (dy / d) * influence * 2.4;
+                } else {
+                  b.x += mouse.vx * 0.08 * influence;
+                  b.y += mouse.vy * 0.08 * influence;
+                }
+              }
+            }
+            if (b.x < -b.r) b.x = width + b.r * 0.8;
+            if (b.x > width + b.r) b.x = -b.r * 0.8;
+            if (b.y < -b.r) b.y = height + b.r * 0.8;
+            if (b.y > height + b.r) b.y = -b.r * 0.8;
+
+            const pulseR = b.r * (1 + Math.sin(t * 1.1 + b.phase) * 0.08 + efState.surgeBoost * 0.16);
+            const grad = ctx.createRadialGradient(b.x, b.y, 8, b.x, b.y, pulseR);
+            const rgb = b.tone === 0 ? primaryRGB : (b.tone === 1 ? accentRGB : (isDark ? '16, 185, 129' : '229, 169, 60'));
+            const peakA = (isDark ? 0.14 : 0.095) + efState.surgeBoost * 0.07;
+            grad.addColorStop(0, `rgba(${rgb}, ${peakA.toFixed(3)})`);
+            grad.addColorStop(0.55, `rgba(${rgb}, ${(peakA * 0.35).toFixed(3)})`);
+            grad.addColorStop(1, `rgba(${rgb}, 0)`);
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, pulseR, 0, Math.PI * 2);
+            ctx.fill();
           }
-          ctx.strokeStyle = `rgba(${w === 0 ? primaryRGB : accentRGB}, ${isDark ? 0.11 : 0.075})`;
-          ctx.lineWidth = 1.4;
-          ctx.stroke();
+
+          // 2. Advected Multi-Harmonic Liquid Silk Currents (displaced by cursor)
+          for (let w = 0; w < 3; w++) {
+            const baseY = height * (0.22 + w * 0.28);
+            const pts = [];
+            const stepX = 56;
+            for (let x = -stepX; x <= width + stepX; x += stepX) {
+              let y = baseY
+                + Math.sin(x * 0.0036 + t * (1.2 + w * 0.35) + w * 1.9) * (24 + w * 8 + efState.surgeBoost * 24)
+                + Math.cos(x * 0.0019 - t * 0.85 + w) * 14;
+              if (mouse.active) {
+                const dx = x - mouse.x;
+                const dy = y - mouse.y;
+                const dSq = dx * dx + dy * dy;
+                if (dSq < 260 * 260) {
+                  const factor = Math.pow(1 - Math.sqrt(dSq) / 260, 2);
+                  const dir = efState.fieldMode === 'repel' ? 1 : -0.65;
+                  y += (dy * 0.28 * dir + mouse.vy * 1.35) * factor;
+                }
+              }
+              pts.push({ x, y });
+            }
+            ctx.beginPath();
+            ctx.moveTo(pts[0].x, pts[0].y);
+            for (let i = 1; i < pts.length - 1; i++) {
+              const xc = (pts[i].x + pts[i + 1].x) * 0.5;
+              const yc = (pts[i].y + pts[i + 1].y) * 0.5;
+              ctx.quadraticCurveTo(pts[i].x, pts[i].y, xc, yc);
+            }
+            const waveRGB = w === 0 ? primaryRGB : (w === 1 ? accentRGB : (isDark ? '16, 185, 129' : '229, 169, 60'));
+            const waveAlpha = (isDark ? 0.2 : 0.145) + efState.surgeBoost * 0.12;
+            ctx.strokeStyle = `rgba(${waveRGB}, ${waveAlpha.toFixed(3)})`;
+            ctx.lineWidth = 1.8 + (w === 0 ? 0.6 : 0);
+            ctx.stroke();
+          }
+
+          // 3. Silky Fluid Wake Trail following cursor
+          if (fluidTrail.length > 2) {
+            for (let i = fluidTrail.length - 1; i >= 0; i--) {
+              const p = fluidTrail[i];
+              p.x += p.vx;
+              p.y += p.vy;
+              p.vx *= 0.94;
+              p.vy *= 0.94;
+              p.life -= 0.045;
+              if (p.life <= 0) fluidTrail.splice(i, 1);
+            }
+            for (let i = 1; i < fluidTrail.length; i++) {
+              const a = fluidTrail[i - 1], b = fluidTrail[i];
+              const ratio = i / fluidTrail.length;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(${primaryRGB}, ${(b.life * ratio * (isDark ? 0.42 : 0.3)).toFixed(3)})`;
+              ctx.lineWidth = Math.max(1, ratio * 9 * b.life);
+              ctx.lineCap = 'round';
+              ctx.stroke();
+            }
+          }
         }
 
-        // Kinetic click ripples
+        // ---- LAYER B: ELECTROMAGNETIC SHOCKWAVES ----
         for (let i = pulses.length - 1; i >= 0; i--) {
           const p = pulses[i];
-          p.r += 5.5;
-          p.alpha *= 0.92;
+          p.r += 7.2;
+          p.alpha *= 0.91;
           if (p.alpha < 0.015 || p.r > p.maxR) {
             pulses.splice(i, 1);
             continue;
@@ -9403,13 +9868,26 @@ E-mail: Liao.Howard@gmail.com`;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
           ctx.strokeStyle = `rgba(${primaryRGB}, ${p.alpha.toFixed(3)})`;
-          ctx.lineWidth = 1.6;
+          ctx.lineWidth = 2.0;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r * 0.72, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${accentRGB}, ${(p.alpha * 0.55).toFixed(3)})`;
+          ctx.lineWidth = 1.1;
           ctx.stroke();
         }
 
-        // Update & draw constellation nodes
+        // ---- LAYER C: INTERACTIVE CONSTELLATION + HIGH-VOLTAGE ELECTRIC ARCS ----
+        const nearMouseNodes = [];
         for (let i = 0; i < nodes.length; i++) {
           const n = nodes[i];
+          n.vx *= 0.985;
+          n.vy *= 0.985;
+          const minV = 0.22;
+          if (Math.hypot(n.vx, n.vy) < minV) {
+            n.vx += Math.cos(t + n.phase) * 0.04;
+            n.vy += Math.sin(t + n.phase) * 0.04;
+          }
           n.x += n.vx;
           n.y += n.vy;
           if (n.x < -20) n.x = width + 20;
@@ -9423,15 +9901,18 @@ E-mail: Liao.Howard@gmail.com`;
             const dSq = dx * dx + dy * dy;
             if (dSq < mouseDistSq && dSq > 1) {
               const d = Math.sqrt(dSq);
-              const force = (1 - d / 185) * 0.022;
-              n.x += dx * force;
-              n.y += dy * force;
-              ctx.beginPath();
-              ctx.moveTo(n.x, n.y);
-              ctx.lineTo(mouse.x, mouse.y);
-              ctx.strokeStyle = `rgba(${primaryRGB}, ${((1 - d / 185) * (isDark ? 0.34 : 0.24)).toFixed(3)})`;
-              ctx.lineWidth = 1.05;
-              ctx.stroke();
+              const strength = (1 - d / mouseDist);
+              if (efState.fieldMode === 'attract') {
+                n.vx += (dx / d) * strength * 0.24;
+                n.vy += (dy / d) * strength * 0.24;
+              } else if (efState.fieldMode === 'vortex') {
+                n.vx += (-dy / d) * strength * 0.38 + (dx / d) * strength * 0.08;
+                n.vy += (dx / d) * strength * 0.38 + (dy / d) * strength * 0.08;
+              } else {
+                n.vx -= (dx / d) * strength * 0.42;
+                n.vy -= (dy / d) * strength * 0.42;
+              }
+              nearMouseNodes.push({ n, d });
             }
           }
 
@@ -9441,25 +9922,144 @@ E-mail: Liao.Howard@gmail.com`;
             const dy = n.y - m.y;
             const dSq = dx * dx + dy * dy;
             if (dSq < maxDistSq) {
-              const alpha = (1 - Math.sqrt(dSq) / maxDist) * (isDark ? 0.2 : 0.14);
+              const d = Math.sqrt(dSq);
+              const prox = 1 - d / maxDist;
               ctx.beginPath();
               ctx.moveTo(n.x, n.y);
               ctx.lineTo(m.x, m.y);
-              ctx.strokeStyle = `rgba(${accentRGB}, ${alpha.toFixed(3)})`;
-              ctx.lineWidth = 0.85;
+              ctx.strokeStyle = `rgba(${accentRGB}, ${(prox * (isDark ? 0.24 : 0.16)).toFixed(3)})`;
+              ctx.lineWidth = 0.9;
               ctx.stroke();
+
+              // Spontaneous high-voltage synaptic arc between close nodes
+              if (efState.electric && d < 125 && Math.random() < (0.0045 + efState.surgeBoost * 0.035)) {
+                strokeElectricArc(ctx, n.x, n.y, m.x, m.y, 16, 3, electricRGB, coreColor, isDark ? 0.78 : 0.62, 1.25);
+              }
             }
           }
 
-          const glowR = n.r + Math.sin(t * 2.4 + n.phase) * 0.55;
+          const glowR = n.r + Math.sin(t * 2.6 + n.phase) * 0.65 + efState.surgeBoost * 1.4;
           ctx.beginPath();
-          ctx.arc(n.x, n.y, Math.max(0.8, glowR), 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${primaryRGB}, ${isDark ? 0.55 : 0.42})`;
+          ctx.arc(n.x, n.y, Math.max(0.9, glowR), 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${primaryRGB}, ${isDark ? 0.65 : 0.48})`;
+          ctx.fill();
+        }
+
+        // Cursor-to-node live electric arcs (top 3 closest nodes)
+        if (efState.electric && mouse.active && nearMouseNodes.length > 0) {
+          nearMouseNodes.sort((a, b) => a.d - b.d);
+          const count = Math.min(3, nearMouseNodes.length);
+          for (let k = 0; k < count; k++) {
+            const { n, d } = nearMouseNodes[k];
+            const intensity = (1 - d / mouseDist) * (isDark ? 0.92 : 0.76);
+            const disp = 12 + (mouse.speed * 0.45) + (1 - d / mouseDist) * 14;
+            strokeElectricArc(ctx, mouse.x, mouse.y, n.x, n.y, disp, 3, electricRGB, coreColor, intensity, 1.35);
+            // Node junction glow
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.r + 3.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${electricRGB}, ${(intensity * 0.45).toFixed(3)})`;
+            ctx.fill();
+          }
+        }
+
+        // Click / Surge multi-branch fractal lightning bolts
+        if (efState.electric && bolts.length > 0) {
+          for (let i = bolts.length - 1; i >= 0; i--) {
+            const b = bolts[i];
+            b.life -= 0.11;
+            if (b.life <= 0) {
+              bolts.splice(i, 1);
+              continue;
+            }
+            strokeElectricArc(ctx, b.x1, b.y1, b.x2, b.y2, b.displace * b.life, 3, electricRGB, coreColor, b.life * (isDark ? 0.95 : 0.8), 1.65);
+          }
+        }
+
+        // Electric sparks
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const s = sparks[i];
+          s.x += s.vx;
+          s.y += s.vy;
+          s.vx *= 0.93;
+          s.vy *= 0.93;
+          s.life -= 0.045;
+          if (s.life <= 0) {
+            sparks.splice(i, 1);
+            continue;
+          }
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, Math.max(0.6, s.r * s.life), 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${electricRGB}, ${s.life.toFixed(3)})`;
           ctx.fill();
         }
       }
       requestAnimationFrame(frame);
     }
+
+    // Public Surge & Control Dock bindings
+    window.triggerElectroFluidSurge = function(x, y) {
+      triggerCanvasSurge(x, y);
+      if (typeof window.showToast === 'function') {
+        window.showToast('⚡🌊 已釋放高壓電流與流體能量脈衝！');
+      }
+    };
+
+    (function bindControlDock() {
+      const btnElec = document.getElementById('ef-toggle-electric');
+      const btnFluid = document.getElementById('ef-toggle-fluid');
+      const btnMode = document.getElementById('ef-cycle-mode');
+      const btnSurge = document.getElementById('ef-trigger-surge');
+      const modeIcon = document.getElementById('ef-mode-icon');
+      const modeLbl = document.getElementById('ef-mode-label');
+
+      if (btnElec) {
+        btnElec.addEventListener('click', (e) => {
+          e.stopPropagation();
+          efState.electric = !efState.electric;
+          btnElec.classList.toggle('active', efState.electric);
+          if (typeof window.showToast === 'function') {
+            window.showToast(efState.electric ? '⚡ 高壓電流電弧：已開啟' : '⚡ 高壓電流電弧：已關閉');
+          }
+        });
+      }
+      if (btnFluid) {
+        btnFluid.addEventListener('click', (e) => {
+          e.stopPropagation();
+          efState.fluid = !efState.fluid;
+          btnFluid.classList.toggle('active', efState.fluid);
+          if (typeof window.showToast === 'function') {
+            window.showToast(efState.fluid ? '🌊 流體動力波紋：已開啟' : '🌊 流體動力波紋：已關閉');
+          }
+        });
+      }
+      if (btnMode) {
+        const modes = [
+          { key: 'attract', icon: '🧲', label: '吸引', toast: '🧲 磁場模式：引力聚合 (Attract)' },
+          { key: 'vortex',  icon: '🌀', label: '渦流', toast: '🌀 磁場模式：流體渦旋 (Vortex)' },
+          { key: 'repel',   icon: '💨', label: '排斥', toast: '💨 磁場模式：斥力波紋 (Repel)' }
+        ];
+        let mIdx = 0;
+        btnMode.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mIdx = (mIdx + 1) % modes.length;
+          const m = modes[mIdx];
+          efState.fieldMode = m.key;
+          if (modeIcon) modeIcon.textContent = m.icon;
+          if (modeLbl) modeLbl.textContent = m.label;
+          btnMode.classList.toggle('active', m.key !== 'attract');
+          if (typeof window.showToast === 'function') window.showToast(m.toast);
+        });
+      }
+      if (btnSurge) {
+        btnSurge.addEventListener('click', (e) => {
+          e.stopPropagation();
+          window.triggerElectroFluidSurge(window.innerWidth * 0.5, window.innerHeight * 0.35);
+          if (typeof window.triggerArchElectricSurge === 'function') {
+            window.triggerArchElectricSurge(true);
+          }
+        });
+      }
+    })();
 
     // 2. Interactive C-Level Live Architecture Telemetry Deck
     const ARCH_SCENARIOS = {
@@ -9549,13 +10149,38 @@ E-mail: Liao.Howard@gmail.com`;
       }
     };
 
-    window.selectArchMode = function(modeKey, activeNodeId) {
-      const data = ARCH_SCENARIOS[modeKey] || ARCH_SCENARIOS.cloud;
+    let currentArchMode = 'cloud';
+    let archSurgeTimer = null;
+
+    function buildSvgElectricPath(ax, ay, bx, by) {
+      const steps = 6;
+      let d = `M ${ax} ${ay}`;
+      const dx = bx - ax, dy = by - ay;
+      const len = Math.hypot(dx, dy) || 1;
+      const nx = -dy / len, ny = dx / len;
+      for (let i = 1; i < steps; i++) {
+        const ratio = i / steps;
+        const jitter = ((i % 2 === 0 ? 1 : -1) * (6 + Math.random() * 6));
+        const px = (ax + dx * ratio + nx * jitter).toFixed(1);
+        const py = (ay + dy * ratio + ny * jitter).toFixed(1);
+        d += ` L ${px} ${py}`;
+      }
+      d += ` L ${bx} ${by}`;
+      return d;
+    }
+
+    window.selectArchMode = function(modeKey, activeNodeId, surging) {
+      currentArchMode = modeKey || currentArchMode || 'cloud';
+      const data = ARCH_SCENARIOS[currentArchMode] || ARCH_SCENARIOS.cloud;
       document.querySelectorAll('#arch-mode-tabs .arch-mode-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.archMode === modeKey);
+        btn.classList.toggle('active', btn.dataset.archMode === currentArchMode);
       });
       const statusEl = document.getElementById('arch-live-status-text');
-      if (statusEl) statusEl.textContent = data.status;
+      if (statusEl) {
+        statusEl.textContent = surging
+          ? `⚡ SURGE TEST ACTIVE · ${data.status}`
+          : data.status;
+      }
 
       const stage = document.getElementById('arch-svg-stage');
       const panel = document.getElementById('arch-telemetry-panel');
@@ -9566,19 +10191,25 @@ E-mail: Liao.Howard@gmail.com`;
       const selectedNode = activeNodeId && nodeMap[activeNodeId] ? nodeMap[activeNodeId] : null;
 
       let pathsSVG = '';
+      let electricSVG = '';
       let packetsSVG = '';
       data.links.forEach(([fromId, toId], idx) => {
         const a = nodeMap[fromId], b = nodeMap[toId];
         if (!a || !b) return;
         const midX = (a.x + b.x) / 2;
         const d = `M ${a.x} ${a.y} C ${midX} ${a.y}, ${midX} ${b.y}, ${b.x} ${b.y}`;
-        pathsSVG += `<path d="${d}" fill="none" stroke="${b.color}" stroke-width="2.2" opacity="0.62" class="arch-flow-line"/>`;
+        const dur = surging ? (0.75 + idx * 0.14).toFixed(2) : (1.8 + idx * 0.32).toFixed(2);
+        pathsSVG += `<path d="${d}" fill="none" stroke="${b.color}" stroke-width="${surging ? 3 : 2.2}" opacity="${surging ? 0.88 : 0.62}" class="arch-flow-line"/>`;
+        if (surging || (selectedNode && (selectedNode.id === fromId || selectedNode.id === toId))) {
+          const arcD = buildSvgElectricPath(a.x, a.y, b.x, b.y);
+          electricSVG += `<path d="${arcD}" stroke="${b.color}" filter="url(#ef-arc-glow)" class="arch-electric-arc"/>`;
+        }
         packetsSVG += `
-          <circle r="4" fill="${b.color}">
-            <animateMotion dur="${(1.8 + idx * 0.32).toFixed(2)}s" repeatCount="indefinite" path="${d}"/>
+          <circle r="${surging ? 5.2 : 4}" fill="${b.color}" filter="url(#ef-arc-glow)">
+            <animateMotion dur="${dur}s" repeatCount="indefinite" path="${d}"/>
           </circle>
           <circle r="2.2" fill="#FFFFFF">
-            <animateMotion dur="${(1.8 + idx * 0.32).toFixed(2)}s" begin="0.9s" repeatCount="indefinite" path="${d}"/>
+            <animateMotion dur="${dur}s" begin="${(parseFloat(dur) * 0.5).toFixed(2)}s" repeatCount="indefinite" path="${d}"/>
           </circle>
         `;
       });
@@ -9587,9 +10218,13 @@ E-mail: Liao.Howard@gmail.com`;
       data.nodes.forEach(n => {
         const isSel = selectedNode && selectedNode.id === n.id;
         nodesSVG += `
-          <g class="arch-svg-node" transform="translate(${n.x}, ${n.y})" onclick="window.selectArchMode('${modeKey}', '${n.id}')">
+          <g class="arch-svg-node" tabindex="0" role="button" aria-label="${n.label} ${n.sub}"
+             transform="translate(${n.x}, ${n.y})"
+             onclick="window.selectArchMode('${currentArchMode}', '${n.id}')"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.selectArchMode('${currentArchMode}', '${n.id}');}">
             <rect x="-56" y="-27" width="112" height="54" rx="12"
-                  fill="var(--bg-card)" stroke="${n.color}" stroke-width="${isSel ? 3 : 1.8}"/>
+                  fill="var(--bg-card)" stroke="${n.color}" stroke-width="${(isSel || surging) ? 3 : 1.8}"
+                  ${(isSel || surging) ? 'filter="url(#ef-arc-glow)"' : ''}/>
             <circle cx="-42" cy="-14" r="3.5" fill="${n.color}"/>
             <text y="-2" text-anchor="middle" fill="var(--text-main)" font-size="11" font-weight="800">${n.label}</text>
             <text y="14" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-weight="600">${n.sub}</text>
@@ -9599,7 +10234,17 @@ E-mail: Liao.Howard@gmail.com`;
 
       stage.innerHTML = `
         <svg width="100%" viewBox="0 0 440 220" style="display:block; max-height:230px; overflow:visible;">
+          <defs>
+            <filter id="ef-arc-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="2.4" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
           ${pathsSVG}
+          ${electricSVG}
           ${packetsSVG}
           ${nodesSVG}
         </svg>
@@ -9623,10 +10268,28 @@ E-mail: Liao.Howard@gmail.com`;
           `).join('')}
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
-          <span style="font-size:0.74rem; color:var(--text-muted);">💡 點擊左側任一架構節點查看細節</span>
+          <span style="font-size:0.74rem; color:var(--text-muted);">💡 點擊左側任一架構節點查看電弧連線與細節</span>
           <button type="button" class="btn-secondary" style="padding:5px 12px; font-size:0.78rem;" onclick="window.switchTab('${data.jumpTab}')">檢視佐證實績 ↗</button>
         </div>
       `;
+    };
+
+    window.triggerArchElectricSurge = function(silentToast) {
+      const deck = document.getElementById('live-arch-deck');
+      if (deck) {
+        deck.classList.add('is-surging');
+        const r = deck.getBoundingClientRect();
+        triggerCanvasSurge(r.left + r.width * 0.4, r.top + r.height * 0.5);
+      }
+      window.selectArchMode(currentArchMode, null, true);
+      if (!silentToast && typeof window.showToast === 'function') {
+        window.showToast('⚡ 已觸發企業架構高併發電流脈衝模擬！');
+      }
+      clearTimeout(archSurgeTimer);
+      archSurgeTimer = setTimeout(() => {
+        if (deck) deck.classList.remove('is-surging');
+        window.selectArchMode(currentArchMode, null, false);
+      }, 2400);
     };
 
     // 3. Clickable Hero Tag Jump
@@ -9642,7 +10305,7 @@ E-mail: Liao.Howard@gmail.com`;
       }
     };
 
-    // 4. Smooth KPI Count-Up & Sparkline Fill
+    // 4. Smooth KPI Count-Up & Sparkline Fill (Clamped progress — never flashes negative!)
     window.triggerDashboardCounters = function() {
       const cards = document.querySelectorAll('#page-dashboard .bento-card');
       cards.forEach((card, idx) => {
@@ -9653,18 +10316,26 @@ E-mail: Liao.Howard@gmail.com`;
             sparkEl.style.width = sparkEl.getAttribute('data-spark') || '88%';
           }, 180 + idx * 120);
         }
-        if (!valEl || prefersReduced) return;
+        if (!valEl) return;
         const raw = (valEl.getAttribute('data-kpi-raw') || valEl.textContent || '').trim();
+        if (prefersReduced) {
+          valEl.textContent = raw;
+          return;
+        }
         const m = raw.match(/^([^\d]*)(\d+(?:\.\d+)?)(.*)$/);
-        if (!m) return;
+        if (!m) {
+          valEl.textContent = raw;
+          return;
+        }
         const prefix = m[1], target = parseFloat(m[2]), suffix = m[3];
         const isFloat = m[2].includes('.');
-        const duration = 950 + idx * 140;
-        const start = performance.now();
+        const duration = 900 + idx * 120;
+        let start = null;
         function step(now) {
-          const p = Math.min(1, (now - start) / duration);
+          if (start === null) start = now;
+          const p = Math.max(0, Math.min(1, (now - start) / duration));
           const eased = 1 - Math.pow(1 - p, 3);
-          const current = target * eased;
+          const current = Math.max(0, target * eased);
           valEl.textContent = prefix + (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
           if (p < 1) requestAnimationFrame(step);
           else valEl.textContent = raw;
@@ -9672,6 +10343,20 @@ E-mail: Liao.Howard@gmail.com`;
         requestAnimationFrame(step);
       });
     };
+
+    // 4b. Quick Search Keyboard Shortcut (/ or Cmd+K / Ctrl+K)
+    document.addEventListener('keydown', (e) => {
+      const searchInput = document.getElementById('header-search-input');
+      if (!searchInput) return;
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      } else if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test((document.activeElement && document.activeElement.tagName) || '')) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
 
     // 5. Fluid Sliding Pill on Desktop Navbar Tabs
     let slidingPill = null;
